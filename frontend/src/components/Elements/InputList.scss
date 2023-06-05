@@ -1,0 +1,22 @@
+.InputList {
+  display: flex;
+  justify-content: center;
+
+  select {
+    background-color: $buttonColorLight;
+    width: 92%;
+    height: 48px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-family: $fontFamily;
+    padding-left: 12px;
+
+    #selected {
+      color: $textColorDark;
+    }
+
+    #notselected {
+      color: $textColorInput;
+    }
+  }
+}

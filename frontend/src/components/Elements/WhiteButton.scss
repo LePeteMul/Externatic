@@ -1,7 +1,6 @@
 .WhiteButton {
   display: flex;
   justify-content: center;
-  text-align: center;
 
   button {
     background-color: $buttonColorLight;
@@ -11,5 +10,6 @@
     border-radius: 12px;
     font-size: 16px;
     font-family: $fontFamily;
+    text-align: center;
   }
 }

@@ -1,0 +1,27 @@
+.InputText {
+  display: flex;
+  justify-content: center;
+
+  label {
+    color: $textColorLight;
+  }
+
+  input {
+    background-color: $buttonColorLight;
+    color: $textColorInput;
+    width: 92%;
+    height: 48px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-family: $fontFamily;
+    padding-left: 12px;
+
+    #selected {
+      color: $textColorDark;
+    }
+
+    #notselected {
+      color: $textColorInput;
+    }
+  }
+}
