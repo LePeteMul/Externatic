@@ -5,6 +5,7 @@ import logo from "../../assets/images/Header/logoExternatic.svg";
 import BurgerMenu from "./BurgerMenu";
 import ProfilePicture from "../Elements/ProfilePicture";
 
+
 function HeaderBasic() {
   return (
     <div className="HeaderBasic">

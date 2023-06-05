@@ -2,12 +2,15 @@
 
 $primaryColor: #a42056;
 $secondColor: #872950;
-$TextColorDark: #212529;
-$TextColorMedium: #404040;
-$TextColorLight: #ffffff;
-$ButtonColorDark: #212529;
-$ButtonColorMedium: #404040;
-$ButtonColorLight: #ffffff;
+$textColorDark: #212529;
+$textColorMedium: #404040;
+$textColorInput: #737373;
+$textColorLight: #ffffff;
+$buttonColorDark: #212529;
+$buttonColorMedium: #404040;
+$buttonColorLight: #ffffff;
+$fontFamily: "Instrument Sans", sans-serif;
+$boxshadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
 * {
   margin: 0;
