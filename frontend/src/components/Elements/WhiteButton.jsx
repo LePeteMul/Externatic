@@ -1,8 +1,11 @@
 import React from "react";
-import "./WhiteButton.scss";
 
 function WhiteButton() {
-  return <div />;
+  return (
+    <div className="WhiteButton">
+      <button type="button">Texte</button>
+    </div>
+  );
 }
 
 export default WhiteButton;
