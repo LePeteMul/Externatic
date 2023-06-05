@@ -1,0 +1,31 @@
+.InputList {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  label {
+    font-family: $fontFamily;
+    color: $textColorLight;
+  }
+
+  select {
+    border: none;
+    outline: none;
+    background-color: $buttonColorLight;
+    width: 100%;
+    height: 48px;
+    border-color: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-family: $fontFamily;
+    padding-left: 12px;
+  }
+
+  .selected {
+    color: $textColorDark;
+  }
+
+  .notselected {
+    color: $textColorInput;
+  }
+}
