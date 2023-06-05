@@ -1,0 +1,19 @@
+.navbar {
+  height: 100vh;
+  width: 500px;
+  background-color: $primaryColor;
+}
+
+ul {
+  margin-left: 70px;
+}
+.navbar_item {
+  color: white;
+  font-family: $fontFamily;
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.navbar_item:hover {
+  color: #212529;
+}
