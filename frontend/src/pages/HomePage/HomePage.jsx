@@ -15,6 +15,7 @@ function HomePage() {
         <InputText />
         <InputList />
       </div>
+
     </div>
   );
 }

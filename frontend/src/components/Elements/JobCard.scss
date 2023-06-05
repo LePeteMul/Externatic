@@ -1,0 +1,56 @@
+h1 {
+  color: $primaryColor;
+}
+
+.jobCard {
+  padding-top: 5px;
+  height: 90px;
+  width: 370px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-shadow: $boxshadow;
+}
+
+.company_logo {
+  height: 80px;
+  width: 100px;
+
+  border-radius: 10px;
+  margin-right: 5px;
+
+  .logo {
+    height: 100%;
+    width: 100%;
+    border-radius: 7px;
+  }
+}
+
+.job_details {
+  height: 80px;
+  width: 250px;
+  padding-top: 7px;
+}
+
+.job_title {
+  font-family: $fontFamily;
+  color: $textColorDark;
+  font-size: 18px;
+}
+
+.contractLocation {
+  font-family: $fontFamily;
+  color: $textColorDark;
+  font-size: 13px;
+}
+
+.publication {
+  font-family: $fontFamily;
+
+  color: $textColorMedium;
+  font-size: 12px;
+}
