@@ -1,3 +1,8 @@
 .HomePage {
   height: 100dvh;
+  background-color: $secondColor;
+
+  .boxWithoutHeader {
+    padding: 4%;
+  }
 }

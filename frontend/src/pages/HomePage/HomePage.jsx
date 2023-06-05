@@ -2,17 +2,19 @@ import React from "react";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import BlackButton from "../../components/Elements/BlackButton";
 import WhiteButton from "../../components/Elements/WhiteButton";
-
-// import cross from "../../"
+import InputText from "../../components/Elements/InputText";
+import InputList from "../../components/Elements/InputList";
 
 function HomePage() {
   return (
     <div className="HomePage">
-
-      <h1>Hello aussi</h1>
       <HeaderBasic />
-      <BlackButton />
-      <WhiteButton />
+      <div className="boxWithoutHeader">
+        <BlackButton />
+        <WhiteButton />
+        <InputText />
+        <InputList />
+      </div>
 
     </div>
   );
