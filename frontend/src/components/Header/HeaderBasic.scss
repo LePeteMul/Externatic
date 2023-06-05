@@ -1,20 +1,17 @@
 .HeaderBasic {
-    width: 100%;
-    display: flex;
-      justify-content: space-between;
-      height: 10dvh;
-      .BurgerMenu {
-        height: 100%;
-        padding: 20px;
-      }
-      .Logo {
-        height: 100%;
-      }
-      .ProfilePicture {
-        height: 100%;
-        padding: 20px;
-      }
-  
-
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 10dvh;
+  .BurgerMenu {
+    height: 100%;
+    padding: 20px;
   }
-  
+  .Logo {
+    height: 100%;
+  }
+  .ProfilePicture {
+    height: 100%;
+    padding: 20px;
+  }
+}
