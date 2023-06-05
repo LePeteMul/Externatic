@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
-function InputList() {
+function InputList({ label, inputMessage, data }) {
   const [classSelect, setClassSelect] = useState("notselected");
 
   const handleSelect = () => {
@@ -10,24 +11,32 @@ function InputList() {
   return (
     <div className="InputList">
       <br />
-      <label htmlFor="label">Label </label>
+      <label htmlFor="label">{label} </label>
       <br />
       <select className={classSelect} onChange={handleSelect}>
         <option className="notselected" value="">
-          Sélectionner un choix
+          {inputMessage}
         </option>
-        <option className="selected" value="choix1">
-          Choix n°1
-        </option>
-        <option className="selected" value="choix2">
-          Choix n°2
-        </option>
-        <option className="selected" value="choix3">
-          Choix n°3
-        </option>
+        {data.map((element) => {
+          return (
+            <option
+              className="selected"
+              value={element.value}
+              key={element.value}
+            >
+              {element.name}
+            </option>
+          );
+        })}
       </select>
     </div>
   );
 }
+
+InputList.propTypes = {
+  label: PropTypes.string.isRequired,
+  inputMessage: PropTypes.string.isRequired,
+  data: PropTypes.string.isRequired,
+};
 
 export default InputList;

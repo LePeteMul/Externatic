@@ -10,12 +10,25 @@ function HomePage() {
     <div className="HomePage">
       <HeaderBasic />
       <div className="boxWithoutHeader">
-        <BlackButton />
-        <WhiteButton />
-        <InputText />
-        <InputList />
+        <BlackButton
+          buttonName="Suivant"
+          buttonFunction={console.info("Fonction")}
+        />
+        <WhiteButton
+          buttonName="Suivant"
+          buttonFunction={console.info("Fonction")}
+        />
+        <InputText label="Label" inputMessage={"Entrez l'information"} />
+        <InputList
+          label="Label"
+          inputMessage="Selectionner un choix"
+          data={[
+            { value: "choix1", name: "Choix n°1" },
+            { value: "choix2", name: "Choix n°2" },
+            { value: "choix3", name: "Choix n°3" },
+          ]}
+        />
       </div>
-
     </div>
   );
 }
