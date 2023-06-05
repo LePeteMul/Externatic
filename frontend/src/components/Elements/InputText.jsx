@@ -2,17 +2,27 @@ import React, { useState } from "react";
 
 function InputText() {
   const [entry, setEntry] = useState("Champ vide");
-  const [colorText, setColorText] = useState("notselected");
 
-  const handleChange = (event) => {
+  const handleClickInput = () => {
+    setEntry("");
+  };
+
+  const handleChangeInput = (event) => {
     setEntry(event.target.value);
-    setColorText("selected");
   };
 
   return (
     <div className="InputText">
+      <br />
       <label htmlFor="label">Label </label>
-      <input type="text" value={entry} id={colorText} onChange={handleChange} />
+      <br />
+      <input
+        className={entry === "Champ vide" ? "notselected" : "selected"}
+        type="text"
+        value={entry}
+        onChange={handleChangeInput}
+        onClick={handleClickInput}
+      />
     </div>
   );
 }

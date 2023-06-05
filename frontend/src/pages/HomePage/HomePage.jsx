@@ -9,10 +9,12 @@ function HomePage() {
   return (
     <div className="HomePage">
       <HeaderBasic />
-      <BlackButton />
-      <WhiteButton />
-      <InputText />
-      <InputList />
+      <div className="boxWithoutHeader">
+        <BlackButton />
+        <WhiteButton />
+        <InputText />
+        <InputList />
+      </div>
     </div>
   );
 }
