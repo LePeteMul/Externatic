@@ -1,8 +1,11 @@
 import React from "react";
-import "./BlackButton.scss";
 
 function BlackButton() {
-  return <div />;
+  return (
+    <div className="BlackButton">
+      <button type="button">Texte</button>
+    </div>
+  );
 }
 
 export default BlackButton;
