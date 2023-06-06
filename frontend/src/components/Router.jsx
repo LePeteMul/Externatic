@@ -1,13 +1,12 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import HeaderWave from "./Header/HeaderWave";
+import HomePage from "../pages/HomePage/HomePage";
 
 function Router() {
   return (
     <div>
       <Routes>
-        
-        <Route path="/" element={<HeaderWave/>} />
+        <Route path="/" element={<HomePage />} />
       </Routes>
     </div>
   );
