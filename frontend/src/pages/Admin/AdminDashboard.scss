@@ -1,5 +1,45 @@
-.boxWithoutHeader {
-  padding: 4%;
-  background-color: $primaryColor;
-  height: 90dvh;
+.boxInside {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* Centrer les éléments horizontalement */
+}
+
+.boxInside > * {
+  flex-basis: calc(50% - 10px);
+  /* Ajustez la largeur des éléments en fonction de vos besoins */
+  margin-bottom: 20px;
+}
+
+@media (max-width: 480px) {
+  .boxInside > * {
+    flex-basis: 100%;
+    /* La largeur est définie à 100% pour les écrans de largeur inférieure à 480px */
+  }
+}
+
+// .pp-import {
+//   display: flex;
+//   justify-content: center;
+
+// }
+
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+.pp-import {
+  width: 100%;
+  max-width: 150px;
+  height: 150px;
+  background-color: #a42056;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px rgba(255, 255, 255, 0.24);
+  border: 2px solid rgba(7, 7, 7, 0.12);
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
 }

@@ -7,35 +7,39 @@ function AdminDashboard() {
     <div className="HomePage">
       <HeaderWave />
 
-      <div className="pp-import">
-        <p className="pp-import-text"> Télécharger une photo PNG ou JPG</p>
-        <img src="" alt="pp-import-logo" />
-      </div>
-
-      <h1>Interface Administrateur</h1>
-
       <div className="boxWithoutHeader">
+        <div className="pp-import">
+          <p className="pp-import-text"> Télécharger une photo PNG ou JPG</p>
+          <img src="" alt="pp-import-logo" />
+        </div>
+
+        <h1>Interface Administrateur</h1>
+
         <DashboardCard
           description="Cliquer ici pour voir votre profil"
           title="Mon profil"
         />
         <br />
-        <DashboardCard
-          description="Cliquer ici pour voir votre profil"
-          title="Créer une entreprise"
-        />
-        <DashboardCard
-          description="Cliquer ici pour voir votre profil"
-          title="Gestion des entreprises"
-        />
-        <DashboardCard
-          description="Cliquer ici pour voir votre profil"
-          title="Gestion des offres d'emploi"
-        />
-        <DashboardCard
-          description="Cliquer ici pour voir votre profil"
-          title="Gestion des utilisateurs"
-        />
+
+        <div className="boxInside">
+          <DashboardCard
+            description="Cliquer ici pour voir votre profil"
+            title="Créer une entreprise"
+          />
+          <DashboardCard
+            description="Cliquer ici pour voir votre profil"
+            title="Gestion des entreprises"
+          />
+          <DashboardCard
+            description="Cliquer ici pour voir votre profil"
+            title="Gestion des offres d'emploi"
+          />
+          <DashboardCard
+            description="Cliquer ici pour voir votre profil"
+            title="Gestion des utilisateurs"
+          />
+        </div>
+
         {/* <CandidateCard
         profilePicture="https://cdn.discordapp.com/attachments/1115020679276920872/1115235734031454208/design.png"
         lastname="bonjour"
