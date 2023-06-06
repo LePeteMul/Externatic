@@ -1,0 +1,28 @@
+.HeaderWave {
+  width: 100%;
+
+  .TopHeader {
+    display: flex;
+    justify-content: space-between;
+    height: 10dvh;
+
+    .BurgerMenu {
+      height: 1%;
+      padding: 20px;
+    }
+
+    .Logo {
+      height: 10%;
+      position: fixed;
+      top: 0;
+      left: 300px;
+      margin-left: 500px;
+    }
+  }
+
+  .Wave {
+    width: 100%;
+    background-color: $primaryColor;
+    height: 100px;
+  }
+}
