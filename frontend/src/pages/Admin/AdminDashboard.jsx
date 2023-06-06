@@ -6,6 +6,16 @@ function AdminDashboard() {
   return (
     <div className="HomePage">
       <HeaderWave />
+
+
+      <div className="pp-import">
+        <p className="pp-import-text"> Télécharger une photo PNG ou JPG</p>
+        <img src="" alt="pp-import-logo" />
+
+      </div>
+
+      <h1>Interface Administrateur</h1>
+
       <div className="boxWithoutHeader">
         <DashboardCard
           description="Cliquer ici pour voir votre profil"
