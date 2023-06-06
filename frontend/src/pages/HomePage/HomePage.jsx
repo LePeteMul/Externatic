@@ -5,7 +5,7 @@ import WhiteButton from "../../components/Elements/WhiteButton";
 import InputText from "../../components/Elements/InputText";
 import InputList from "../../components/Elements/InputList";
 import JobCard from "../../components/Elements/JobCard";
-import CandidateCard from "../../components/Elements/CandidateCard";
+// import CandidateCard from "../../components/Elements/CandidateCard";
 
 function HomePage() {
   return (
