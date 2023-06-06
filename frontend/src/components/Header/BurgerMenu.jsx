@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./BurgerMenu.scss";
 import burger from "../../assets/icons/burgerMenu.png";
 import NavBar from "../NavBar/NavBar";
 

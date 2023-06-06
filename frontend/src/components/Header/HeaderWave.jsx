@@ -28,7 +28,7 @@ function HeaderWave() {
         </div>
 
         <img className="Wave" src={waveWhite} alt="La Vague Blanche" />
-      </div>{" "}
+      </div>
     </>
   );
 }

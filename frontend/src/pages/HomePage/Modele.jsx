@@ -1,5 +1,6 @@
 import React from "react";
 import HeaderWave from "../../components/Header/HeaderWave";
+// import HeaderBasic from "../../components/Header/HeaderBasic";
 import BlackButton from "../../components/Elements/BlackButton";
 import WhiteButton from "../../components/Elements/WhiteButton";
 import InputText from "../../components/Elements/InputText";
@@ -9,6 +10,7 @@ function Modele() {
   return (
     <div className="HomePage">
       <HeaderWave />
+      {/* <HeaderBasic /> */}
       <div className="boxWithoutHeader">
         <BlackButton
           buttonName="Suivant"
