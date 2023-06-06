@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import burger from "../../assets/icons/burgerMenu.png";
-import NavBar from "../NavBar/NavBar";
 
 function BurgerMenu({ open, handleOpen }) {
   return (
@@ -9,7 +8,16 @@ function BurgerMenu({ open, handleOpen }) {
       <button type="button" onClick={handleOpen}>
         <img className="IconBurger" src={burger} alt="Le Burger" />
       </button>
-      {open && <NavBar />}
+      {open && (
+        <nav className="navbar">
+          <ul className="navbar_ul">
+            <li className="navbar_item">Mon espace</li>
+            <li className="navbar_item">Contact</li>
+            <li className="navbar_item">Mentions légales</li>
+            <li className="navbar_item">Se déconnecter</li>
+          </ul>
+        </nav>
+      )}
     </div>
   );
 }

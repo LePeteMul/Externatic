@@ -1,16 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import waveWhite from "../../assets/images/Header/wave_white.png";
 import logo from "../../assets/images/Header/logoExternatic.svg";
 import BurgerMenu from "./BurgerMenu";
 import ProfilePicture from "../Elements/ProfilePicture";
 
-function HeaderWave() {
-  const [open, setOpen] = useState(false);
-
-  const handleOpen = () => {
-    setOpen(!open);
-  };
-
+function HeaderWave({ open, handleOpen }) {
   return (
     <>
       {" "}
@@ -20,7 +15,6 @@ function HeaderWave() {
           <BurgerMenu
             className="BurgerMenu"
             open={open}
-            setOpen={setOpen}
             handleOpen={handleOpen}
           />
           <img className="Logo" src={logo} alt="Le Logo" />
@@ -33,4 +27,8 @@ function HeaderWave() {
   );
 }
 
+HeaderWave.propTypes = {
+  open: PropTypes.bool.isRequired,
+  handleOpen: PropTypes.func.isRequired,
+};
 export default HeaderWave;
