@@ -1,23 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import "./BurgerMenu.scss";
 import burger from "../../assets/icons/burgerMenu.png";
 import NavBar from "../NavBar/NavBar";
 
-
-
-function BurgerMenu({open, setOpen, handleOpen}) {
-
-
-
- return (
-
+function BurgerMenu({ open, handleOpen }) {
+  return (
     <div className="BurgerMenu">
-      <img  onClick={handleOpen}  className="IconBurger" src={burger} alt="Le Burger" />
+      <button type="button" onClick={handleOpen}>
+        <img className="IconBurger" src={burger} alt="Le Burger" />
+      </button>
       {open && <NavBar />}
     </div>
-  
-
   );
 }
+
+BurgerMenu.propTypes = {
+  open: PropTypes.bool.isRequired,
+  handleOpen: PropTypes.func.isRequired,
+};
 
 export default BurgerMenu;
