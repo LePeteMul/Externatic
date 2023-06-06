@@ -5,20 +5,33 @@
     display: flex;
     justify-content: space-between;
     height: 10dvh;
+ 
+  
+
     .BurgerMenu {
       height: 100%;
       padding: 20px;
+
+      
     }
     .Logo {
-      height: 100%;
+      height: 10%;
+   position: fixed;
+   top: 0;
+   left: 300px;
+      margin-left: 500px;
+     
     }
     .ProfilePicture {
-      height: 100%;
+      height: 10%;
       padding: 20px;
+      position: fixed;
+      right: 0px;
     }
   }
   .Wave {
     width: 100%;
     background-color: #a42056;
+    height: 100px;
   }
 }

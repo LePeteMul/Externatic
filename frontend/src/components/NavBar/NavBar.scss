@@ -1,7 +1,13 @@
 .navbar {
   height: 100vh;
-  width: 500px;
+  width: 100vw;
   background-color: $primaryColor;
+  margin-top: 100px;
+  padding-top: 200px;
+  margin-left: -20px;
+
+
+  
 }
 
 ul {
@@ -10,8 +16,8 @@ ul {
 .navbar_item {
   color: white;
   font-family: $fontFamily;
-  font-size: 20px;
-  margin-bottom: 30px;
+  font-size: 22px;
+  margin-bottom: 35px;
 }
 
 .navbar_item:hover {

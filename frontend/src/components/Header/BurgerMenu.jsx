@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import "./BurgerMenu.scss";
 import burger from "../../assets/icons/burgerMenu.png";
+import NavBar from "../NavBar/NavBar";
 
-function BurgerMenu() {
-  return (
+
+
+function BurgerMenu({open, setOpen, handleOpen}) {
+
+
+
+ return (
+
     <div className="BurgerMenu">
-      <img className="IconBurger" src={burger} alt="Le Burger" />
+      <img  onClick={handleOpen}  className="IconBurger" src={burger} alt="Le Burger" />
+      {open && <NavBar />}
     </div>
+  
+
   );
 }
 
