@@ -1,34 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import HeaderBasic from "../../components/Header/HeaderBasic";
-import InputList from "../../components/Elements/InputList";
-import BlackButton from "../../components/Elements/BlackButton";
+import YourSearch from "./YourSearch";
+import Results from "./Results";
+import SearchFilters from "./SearchFilters";
 
 function JobSearch() {
+  const [count, setCount] = useState(1);
+  const handleClick = () => {
+    setCount((c) => c + 1);
+  };
+
+  const [resultVisibility, setResultVisibility] = useState(true);
+  const [filterVisibility, setFilterVisibility] = useState(false);
+  const handleClickFilters = () => {
+    setResultVisibility(!resultVisibility);
+    setFilterVisibility(!filterVisibility);
+  };
+
   return (
     <div className="JobSearch">
       <HeaderBasic />
-      <div className="boxWithoutHeader">
-        <div className="JobSearchTitle">
-          <h2>Etape 1/3</h2>
-          <h1>Votre recherche</h1>
+      {count < 4 && (
+        <div className="boxWithoutHeader">
+          <YourSearch count={count} handleClick={handleClick} />
         </div>
-        <div className="JobSearchSelection">
-          <InputList
-            label="Je recherche un poste de"
-            inputMessage="Selectionner un métier"
-            data={[
-              { value: "metier1", name: "Metier n°1" },
-              { value: "metier2", name: "Metier n°2" },
-              { value: "metier3", name: "Metier n°3" },
-            ]}
-          />
+      )}
+      {count < 4 || (
+        <div
+          className={`boxWithoutHeader2 ${
+            resultVisibility ? "visible" : "hidden"
+          }`}
+        >
+          <Results handleClickFilters={handleClickFilters} />
         </div>
-        <div className="JobSearchEnd">
-          <BlackButton
-            buttonName="Suivant"
-            buttonFunction={console.info("Fonction")}
-          />
-        </div>
+      )}
+      <div
+        className={`boxWithoutHeader ${
+          filterVisibility ? "visible" : "hidden"
+        }`}
+      >
+        <SearchFilters handleClickFilters={handleClickFilters} />
       </div>
     </div>
   );

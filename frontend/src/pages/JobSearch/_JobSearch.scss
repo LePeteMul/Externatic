@@ -1,4 +1,10 @@
 .JobSearch {
+  .visible {
+    display: block;
+  }
+  .hidden {
+    display: none;
+  }
   .boxWithoutHeader {
     padding: 4%;
     background-color: $primaryColor;
@@ -36,6 +42,54 @@
 
       .BlackButton {
         width: 100%;
+      }
+    }
+    .SearchFilters {
+    }
+  }
+
+  .boxWithoutHeader2 {
+    height: auto;
+
+    .SearchResume {
+      padding: 4%;
+      background-color: $primaryColor;
+      height: 25dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+
+    .MoreFilters {
+      background-color: $buttonColorLight;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 15dvh;
+
+      .BlackButton {
+        width: 100%;
+      }
+
+      h2 {
+        font-size: 20px;
+        font-weight: $bold;
+
+        span {
+          font-size: 16px;
+          font-weight: $regular;
+        }
+      }
+    }
+
+    .JobResults {
+      padding: 4%;
+      background-color: $buttonColorLight;
+
+      .jobCard {
+        padding: 4%;
+        background-color: $buttonColorLight;
       }
     }
   }

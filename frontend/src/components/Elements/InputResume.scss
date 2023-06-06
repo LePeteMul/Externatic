@@ -1,0 +1,18 @@
+.InputResume {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  input {
+    border: none;
+    outline: none;
+    background-color: $buttonColorLight;
+    color: $textColorDark;
+    width: 100%;
+    height: 48px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-family: $fontFamily;
+    padding-left: 12px;
+  }
+}
