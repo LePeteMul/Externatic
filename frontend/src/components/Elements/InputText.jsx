@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
-function InputText() {
-  const [entry, setEntry] = useState("Champ vide");
+function InputText({ label, inputMessage }) {
+  const [entry, setEntry] = useState(inputMessage);
 
   const handleClickInput = () => {
     setEntry("");
@@ -14,10 +15,10 @@ function InputText() {
   return (
     <div className="InputText">
       <br />
-      <label htmlFor="label">Label </label>
+      <label htmlFor="label">{label} </label>
       <br />
       <input
-        className={entry === "Champ vide" ? "notselected" : "selected"}
+        className={entry === inputMessage ? "notselected" : "selected"}
         type="text"
         value={entry}
         onChange={handleChangeInput}
@@ -26,5 +27,10 @@ function InputText() {
     </div>
   );
 }
+
+InputText.propTypes = {
+  label: PropTypes.string.isRequired,
+  inputMessage: PropTypes.string.isRequired,
+};
 
 export default InputText;

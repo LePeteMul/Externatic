@@ -1,0 +1,27 @@
+.HeaderWave {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .TopHeader {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 8vh;
+    padding: 0 2% 0 2%;
+
+    .Logo {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 16vh;
+    }
+  }
+
+  .Wave {
+    flex: 1;
+    background-color: $primaryColor;
+  }
+}

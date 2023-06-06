@@ -1,15 +1,16 @@
 import React from "react";
 import HeaderWave from "../../components/Header/HeaderWave";
+// import HeaderBasic from "../../components/Header/HeaderBasic";
 import BlackButton from "../../components/Elements/BlackButton";
 import WhiteButton from "../../components/Elements/WhiteButton";
 import InputText from "../../components/Elements/InputText";
 import InputList from "../../components/Elements/InputList";
-import JobCard from "../../components/Elements/JobCard";
 
-function HomePage() {
+function Modele() {
   return (
     <div className="HomePage">
       <HeaderWave />
+      {/* <HeaderBasic /> */}
       <div className="boxWithoutHeader">
         <BlackButton
           buttonName="Suivant"
@@ -29,18 +30,9 @@ function HomePage() {
             { value: "choix3", name: "Choix n°3" },
           ]}
         />
-        <br />
-        <JobCard
-          logo="../../assets/images/HomePage/logo-nickel.png"
-          companyName="Nickel"
-          job="Service Delivery Manager"
-          contractType="CDI"
-          jobCity="Bordeaux"
-          date="31/05/2023"
-        />
       </div>
     </div>
   );
 }
 
-export default HomePage;
+export default Modele;
