@@ -9,7 +9,6 @@ function HeaderBasic() {
       <BurgerMenu className="BurgerMenu" />
       <img className="Logo" src={logo} alt="Le Logo" />
       <ProfilePicture />
-      {/* <BurgerMenu  className="BurgerMenu" /> */}
     </div>
   );
 }
