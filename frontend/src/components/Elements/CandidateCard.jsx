@@ -1,23 +1,29 @@
 import React from "react";
-import testImage from "../../assets/images/image_test.png";
 import loupe from "../../assets/icons/loupe.png";
 import croix from "../../assets/icons/cross.png";
 
-function CandidateCard() {
+function CandidateCard(profilpicture, lastname, firstname, email) {
   return (
     <div className="candidateCard">
       <ul className="liste">
         <li className="image">
-          <img src={testImage} alt="image_candidat" />
+          <img src={profilpicture} alt="image_candidat" />
         </li>
         <div className="info">
-          <li>Marie Dupont</li>
-          <li>marie.dupont@gmail.com</li>
+          <li>
+            {lastname}" "{firstname}
+          </li>
+          <li>{email}</li>
         </div>
       </ul>
       <div className="navigation">
-        <img src={croix} alt="croix" />
-        <img src={loupe} alt="loupe" />
+        <button type="button">
+          {" "}
+          <img src={croix} alt="croix" />
+        </button>
+        <button type="button">
+          <img src={loupe} alt="loupe" />
+        </button>
       </div>
     </div>
   );
