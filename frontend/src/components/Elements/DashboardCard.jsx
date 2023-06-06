@@ -97,26 +97,37 @@ function getIcon(title) {
   switch (title) {
     case "Mon profil":
       return profil;
+
     case "Favoris":
       return favoris;
+
     case "Ma recherche":
       return recherche;
+
     case "Mes candidatures":
       return candidatures;
-    case "Gestion des entreprises":
-      return gestionEntreprise;
+
     case "Gestion des utilisateurs":
       return gestionUsers;
+
     case "Gestion des offres d'emploi":
       return gestionOffres;
+
     case "Mon profil Employeur":
       return profilEmployeur;
+
     case "Présentation de l’entreprise":
       return presentationEntreprise;
+
     case "Gestion des offres et candidatures":
       return candidatures;
-    case "Créer une offre d’émploi":
+
+    case "Créer une entreprise":
       return addEntreprise;
+
+    case "Gestion des entreprises":
+      return gestionEntreprise;
+
     default:
       return profil;
   }
