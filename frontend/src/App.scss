@@ -10,6 +10,9 @@ $buttonColorDark: #212529;
 $buttonColorMedium: #404040;
 $buttonColorLight: #ffffff;
 $fontFamily: "Instrument Sans", sans-serif;
+$regular: 400;
+$medium: 500;
+$semiBold: 600;
 $boxshadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
 * {
@@ -19,6 +22,8 @@ $boxshadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   box-sizing: border-box;
   text-decoration: none;
   list-style: none;
+  font-family: $fontFamily;
+  font-weight: $regular;
 }
 
 @import "./components/Elements/BlackButton.scss";

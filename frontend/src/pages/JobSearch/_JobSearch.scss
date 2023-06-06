@@ -1,0 +1,42 @@
+.JobSearch {
+  .boxWithoutHeader {
+    padding: 4%;
+    background-color: $primaryColor;
+    height: 90dvh;
+
+    .JobSearchTitle {
+      height: 25%;
+      color: $textColorLight;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      h1 {
+        font-size: 36px;
+        font-weight: $semiBold;
+      }
+
+      h2 {
+        font-size: 16px;
+      }
+    }
+    .JobSearchSelection {
+      height: 25%;
+
+      .InputList {
+        font-size: 16px;
+      }
+    }
+
+    .JobSearchEnd {
+      display: flex;
+      align-items: flex-end;
+      height: 47%;
+
+      .BlackButton {
+        width: 100%;
+      }
+    }
+  }
+}
