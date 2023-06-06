@@ -10,10 +10,9 @@ function AdminDashboard() {
       <div className="boxWithoutHeader">
         <div className="pp-import">
           <p className="pp-import-text"> Télécharger une photo PNG ou JPG</p>
-          <img src="" alt="pp-import-logo" />
+          {/* <img src="" alt="pp-import-logo" /> */}
         </div>
-
-        <h1>Interface Administrateur</h1>
+        <h1 className="titleHeader">Interface Administrateur</h1>
 
         <DashboardCard
           description="Cliquer ici pour voir votre profil"
