@@ -8,7 +8,7 @@ import Login from "../pages/Login/Login";
 import JobSearch from "../pages/JobSearch/JobSearch";
 import Registration from "../pages/Candidate/Registration";
 import CandidateProfile from "../pages/Candidate/CandidateProfile";
-
+import OfferCreation from "../pages/Company/OfferCreation";
 
 function Router() {
   return (
@@ -22,7 +22,7 @@ function Router() {
         <Route path="/jobsearch" element={<JobSearch />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/profile" element={<CandidateProfile />} />
-
+        <Route path="/offercreation" element={<OfferCreation />} />
       </Routes>
     </div>
   );

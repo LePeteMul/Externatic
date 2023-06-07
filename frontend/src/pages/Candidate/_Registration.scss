@@ -13,13 +13,13 @@
     padding: 50px;
   }
 
-  .inputs {
+  .inpuuts {
     position: relative;
   }
 
   .eyeIcon1 {
-    position: absolute;
-    top: 285px;
+    position: fixed;
+    top: 340px;
     right: 20px;
     height: 25px;
     width: 35px;
@@ -27,7 +27,7 @@
 
   .eyeIcon2 {
     position: absolute;
-    top: 185px;
+    top: 530px;
     right: 20px;
     height: 25px;
     width: 35px;

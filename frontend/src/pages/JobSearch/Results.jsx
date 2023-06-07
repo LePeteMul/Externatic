@@ -3,13 +3,17 @@ import PropTypes from "prop-types";
 import InputResume from "../../components/Elements/InputResume";
 import BlackButton from "../../components/Elements/BlackButton";
 import JobCard from "../../components/Elements/JobCard";
+import logoGroupama from "../../assets/images/HomePage/logo-groupama.jpg";
+import logoAllovoisins from "../../assets/images/HomePage/logo-allovoisins.png";
+import logoklaxoon from "../../assets/images/HomePage/logo-klaxoon.jpg";
+import logolengow from "../../assets/images/HomePage/logo-lengow.png";
 
 function Results({ handleClickFilters }) {
   const resultsNumber = 56;
 
   const jobs = [
     {
-      logo: "../../images/HomePage/logo-groupama.jpg",
+      logo: logoGroupama,
       companyName: "Groupama",
       job: "Developpeur Web",
       contractType: "CDI",
@@ -17,7 +21,7 @@ function Results({ handleClickFilters }) {
       date: "06/06/2023",
     },
     {
-      logo: "../../images/HomePage/logo-allovoisins.jpg",
+      logo: logoAllovoisins,
       companyName: "AlloVoisins",
       job: "Developpeur Web",
       contractType: "CDI",
@@ -25,7 +29,7 @@ function Results({ handleClickFilters }) {
       date: "06/06/2023",
     },
     {
-      logo: "../../images/HomePage/logo-klaxoon.jpg",
+      logo: logoklaxoon,
       companyName: "Klaxoon",
       job: "Developpeur Web",
       contractType: "CDI",
@@ -33,7 +37,7 @@ function Results({ handleClickFilters }) {
       date: "06/06/2023",
     },
     {
-      logo: "../../images/HomePage/logo-lengow.jpg",
+      logo: logolengow,
       companyName: "Lengow",
       job: "Developpeur Web",
       contractType: "CDI",
@@ -61,14 +65,16 @@ function Results({ handleClickFilters }) {
       <div className="JobResults">
         {jobs.map((job) => {
           return (
-            <JobCard
-              logo={job.logo}
-              companyName={job.companyName}
-              job={job.job}
-              contractType={job.contractType}
-              jobCity={job.jobCity}
-              date={job.date}
-            />
+            <div>
+              <JobCard
+                logo={job.logo}
+                companyName={job.companyName}
+                job={job.job}
+                contractType={job.contractType}
+                jobCity={job.jobCity}
+                date={job.date}
+              />
+            </div>
           );
         })}
       </div>
