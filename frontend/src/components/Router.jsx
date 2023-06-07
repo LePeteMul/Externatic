@@ -13,7 +13,6 @@ import OfferCreation from "../pages/Company/OfferCreation";
 import CandidateJobApplications from "../pages/Candidate/CandidateJobApplications";
 import FavoriteOffers from "../pages/Candidate/FavoriteOffers";
 
-
 function Router() {
   return (
     <div>
@@ -33,7 +32,6 @@ function Router() {
           element={<CandidateJobApplications />}
         />
         <Route path="/favorite" element={<FavoriteOffers />} />
-
       </Routes>
     </div>
   );
