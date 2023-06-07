@@ -23,11 +23,13 @@ function Router() {
         <Route path="/jobsearch" element={<JobSearch />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/profile" element={<CandidateProfile />} />
+
         <Route
           path="/candidate-job-application"
           element={<CandidateJobApplications />}
         />
         <Route path="/favorite" element={<FavoriteOffers />} />
+
       </Routes>
     </div>
   );
