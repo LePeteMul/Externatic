@@ -11,7 +11,6 @@ function Registration() {
     setConfirmation(true);
   };
 
-
   return (
     <div>
       <HeaderBasic />
@@ -59,7 +58,6 @@ function Registration() {
             inscription
           </div>
         )}
-
       </div>
     </div>
   );
