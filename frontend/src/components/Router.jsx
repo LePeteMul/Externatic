@@ -22,7 +22,6 @@ function Router() {
         <Route path="/jobsearch" element={<JobSearch />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/profile" element={<CandidateProfile />} />
-
       </Routes>
     </div>
   );
