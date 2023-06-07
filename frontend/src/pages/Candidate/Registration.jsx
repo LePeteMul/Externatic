@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import InputText from "../../components/Elements/InputText";
@@ -11,9 +12,11 @@ function Registration() {
     setConfirmation(true);
   };
 
+
   return (
     <div>
       <HeaderBasic />
+
       <div className="registration">
         <div className="page_title">
           <h1>M'inscrire </h1>
@@ -57,6 +60,7 @@ function Registration() {
             inscription
           </div>
         )}
+
       </div>
     </div>
   );
