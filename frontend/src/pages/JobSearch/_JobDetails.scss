@@ -1,0 +1,71 @@
+.JobDetails {
+  .visible {
+    display: block;
+  }
+  .hidden {
+    display: none;
+  }
+
+  .boxWithoutHeader3 {
+    padding: 4%;
+
+    .ConnectMessage {
+      color: $secondColor;
+      font-size: 17px;
+    }
+
+    .OfferResume {
+      h1 {
+        font-size: 26px;
+        color: black;
+      }
+      h2 {
+        font-size: 16px;
+      }
+      p {
+        font-size: 14px;
+        color: $textColorInput;
+      }
+    }
+
+    .CompanyDescription {
+      h3 {
+        font-size: 24px;
+        color: black;
+      }
+      p {
+        font-size: 16px;
+      }
+    }
+
+    .OfferMissions {
+      h3 {
+        font-size: 24px;
+        color: black;
+      }
+      p {
+        font-size: 16px;
+      }
+    }
+
+    .OfferTechno {
+      h3 {
+        font-size: 24px;
+        color: black;
+      }
+      p {
+        font-size: 16px;
+      }
+    }
+
+    .OfferConditions {
+      h3 {
+        font-size: 24px;
+        color: black;
+      }
+      p {
+        font-size: 16px;
+      }
+    }
+  }
+}
