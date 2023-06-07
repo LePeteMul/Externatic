@@ -10,6 +10,10 @@ $buttonColorDark: #212529;
 $buttonColorMedium: #404040;
 $buttonColorLight: #ffffff;
 $fontFamily: "Instrument Sans", sans-serif;
+$regular: 400;
+$medium: 500;
+$semiBold: 600;
+$bold: 700;
 $boxshadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
 * {
@@ -19,6 +23,8 @@ $boxshadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   box-sizing: border-box;
   text-decoration: none;
   list-style: none;
+  font-family: $fontFamily;
+  font-weight: $regular;
 }
 
 @import "./components/Elements/BlackButton.scss";
@@ -26,12 +32,11 @@ $boxshadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 @import "./components/Elements/DashboardCard.scss";
 @import "./components/Elements/InputList.scss";
 @import "./components/Elements/InputText.scss";
+@import "./components/Elements/InputResume.scss";
 @import "./components/Elements/JobCard.scss";
 @import "./components/Elements/ProfilePicture.scss";
 @import "./components/Elements/SortBy.scss";
 @import "./components/Elements/WhiteButton.scss";
-@import "./components/Elements/InputList.scss";
-@import "./components/Elements/InputList.scss";
 @import "./components/Header/HeaderBasic.scss";
 @import "./components/Header/HeaderWave.scss";
 @import "./components/NavBar/NavBar.scss";
@@ -54,6 +59,5 @@ $boxshadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 @import "./pages/Company/OfferCreation.scss";
 @import "./pages/HomePage/HomePage.scss";
 @import "./pages/JobSearch/JobSearch.scss";
-@import "./pages/JobSearch/SearchFilters.scss";
 @import "./pages/Login/ForgottenPassword.scss";
 @import "./pages/Login/Login.scss";

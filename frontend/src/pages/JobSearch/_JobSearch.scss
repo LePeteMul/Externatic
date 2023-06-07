@@ -1,0 +1,96 @@
+.JobSearch {
+  .visible {
+    display: block;
+  }
+  .hidden {
+    display: none;
+  }
+  .boxWithoutHeader {
+    padding: 4%;
+    background-color: $primaryColor;
+    height: 90dvh;
+
+    .JobSearchTitle {
+      height: 25%;
+      color: $textColorLight;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      h1 {
+        font-size: 36px;
+        font-weight: $semiBold;
+      }
+
+      h2 {
+        font-size: 16px;
+      }
+    }
+    .JobSearchSelection {
+      height: 25%;
+
+      .InputList {
+        font-size: 16px;
+      }
+    }
+
+    .JobSearchEnd {
+      display: flex;
+      align-items: flex-end;
+      height: 47%;
+
+      .BlackButton {
+        width: 100%;
+      }
+    }
+    .SearchFilters {
+    }
+  }
+
+  .boxWithoutHeader2 {
+    height: auto;
+
+    .SearchResume {
+      padding: 4%;
+      background-color: $primaryColor;
+      height: 25dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+
+    .MoreFilters {
+      background-color: $buttonColorLight;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 15dvh;
+
+      .BlackButton {
+        width: 100%;
+      }
+
+      h2 {
+        font-size: 20px;
+        font-weight: $bold;
+
+        span {
+          font-size: 16px;
+          font-weight: $regular;
+        }
+      }
+    }
+
+    .JobResults {
+      padding: 4%;
+      background-color: $buttonColorLight;
+
+      .jobCard {
+        padding: 4%;
+        background-color: $buttonColorLight;
+      }
+    }
+  }
+}

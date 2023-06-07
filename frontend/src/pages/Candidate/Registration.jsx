@@ -1,60 +1,66 @@
-import React from "react";
+
+import React, { useState } from "react";
+import HeaderBasic from "../../components/Header/HeaderBasic";
 import InputText from "../../components/Elements/InputText";
 import BlackButton from "../../components/Elements/BlackButton";
-import HeaderBasic from "../../components/Header/HeaderBasic";
+import eye from "../../assets/icons/eye.png";
 
 function Registration() {
-  const handleClick = () => {};
+  const [confirmation, setConfirmation] = useState(false);
+
+  const handleConfirmation = () => {
+    setConfirmation(true);
+  };
+
 
   return (
     <div>
       <HeaderBasic />
 
-      <div className="boxWithoutHeader">
-        <h2 className="info">Mon profil</h2>
-
-        <div className="civilite">
-          <h3>Genre :</h3>
-
-          <InputText />
+      <div className="registration">
+        <div className="page_title">
+          <h1>M'inscrire </h1>
         </div>
 
-        <div className="name">
-          <h3>Name :</h3>
+        <div className="inputs">
+          <InputText
+            label="Nom du contact :"
+            inputMessage={"Entrez l'information"}
+          />
 
-          <InputText />
-        </div>
+          <InputText
+            label="Mot de passe :"
+            inputMessage={"Entrez l'information"}
+          />
+          <img className="eyeIcon1" src={eye} alt="" />
 
-        <div className="prenom">
-          <h3>Prénom :</h3>
+          <InputText
+            label="Confirmer le mot de passe :"
+            inputMessage={"Entrez l'information"}
+          />
+          <img className="eyeIcon2" src={eye} alt="" />
 
-          <InputText />
-        </div>
-
-        <div className="tel">
-          <h3>Téléphone :</h3>
-
-          <InputText />
-        </div>
-
-        <div className="ville">
-          <h3>Ville :</h3>
-
-          <InputText />
-        </div>
-
-        <div className="techno">
-          <h3>Technologie maitrisées :</h3>
-
-          <InputText />
-        </div>
-
-        <div className="validation">
-          <BlackButton
-            buttonName="Valider mes changements"
-            buttonFunction={handleClick}
+          <InputText
+            label="adresse mail de contact :"
+            inputMessage={"Entrez l'information"}
           />
         </div>
+
+        <div className="btn_registration">
+          <BlackButton
+            buttonName="Je m'inscris"
+            buttonFunction={handleConfirmation}
+          />
+        </div>
+
+        {confirmation && (
+          <div className="conf_registration">
+            Un email de confirmation vous a été envoyé à XYZ@gmail.com Consultez
+            votre boite mail et suivez les instructions pour confirmer votre
+            inscription
+          </div>
+        )}
+
       </div>
     </div>
   );

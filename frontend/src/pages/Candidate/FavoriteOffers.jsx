@@ -1,3 +1,4 @@
+
 import React from "react";
 import JobCard from "../../components/Elements/JobCard";
 import HeaderBasic from "../../components/Header/HeaderBasic";
@@ -58,3 +59,4 @@ function FavoriteOffers() {
 }
 
 export default FavoriteOffers;
+

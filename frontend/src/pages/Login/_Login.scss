@@ -1,0 +1,72 @@
+.connexion {
+  background-color: $primaryColor;
+  width: 100vw;
+  height: 100vh;
+  margin-top: -4px;
+}
+
+.page_title {
+  display: flex;
+  justify-content: center;
+  font-family: $fontFamily;
+  color: $textColorLight;
+  font-size: 20px;
+  padding: 50px;
+}
+
+.inputs {
+  margin: 0 auto;
+  width: 80%;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.inputIcon {
+  position: absolute;
+  top: 42px;
+  left: 4px;
+  margin-right: 10px;
+}
+
+.lockIcon {
+  position: absolute;
+  top: 140px;
+  left: 5px;
+  margin-right: 10px;
+}
+
+.btn_Connexion {
+  margin: 0 auto;
+  width: 80%;
+  margin-bottom: 50px;
+}
+
+.forget_psw {
+  margin: 0 auto;
+  font-weight: lighter;
+  width: 80%;
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.forget_psw_text {
+  color: $textColorLight;
+  font-weight: lighter;
+  font-family: $fontFamily;
+  text-decoration: underline;
+}
+.forget_psw_text:hover {
+  color: rgb(22, 22, 142);
+}
+
+.card_signing {
+  margin: 0 auto;
+  width: 80%;
+  text-align: center;
+}
+
+.no_Count {
+  font-family: $fontFamily;
+  color: $textColorLight;
+  margin-bottom: 10px;
+}
