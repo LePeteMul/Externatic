@@ -10,6 +10,8 @@ import Registration from "../pages/Candidate/Registration";
 import CandidateProfile from "../pages/Candidate/CandidateProfile";
 import CandidateJobApplications from "../pages/Candidate/CandidateJobApplications";
 import FavoriteOffers from "../pages/Candidate/FavoriteOffers";
+import CompanyFirstLogin from "../pages/Company/CompanyFirstLogin";
+import CompanyPresentation from "../pages/Company/CompanyPresentation";
 
 function Router() {
   return (
@@ -29,7 +31,8 @@ function Router() {
           element={<CandidateJobApplications />}
         />
         <Route path="/favorite" element={<FavoriteOffers />} />
-
+        <Route path="/companyfirstlogin" element={<CompanyFirstLogin />} />
+        <Route path="/companypresentation" element={<CompanyPresentation />} />
       </Routes>
     </div>
   );

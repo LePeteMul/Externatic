@@ -1,7 +1,11 @@
 import React from "react";
 
 function CompanyPresentation() {
-  return <div />;
+  return (
+    <div>
+      <p>CompanyPresentation </p>
+    </div>
+  );
 }
 
 export default CompanyPresentation;
