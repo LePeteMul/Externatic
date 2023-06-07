@@ -9,7 +9,7 @@ function Results({ handleClickFilters }) {
 
   const jobs = [
     {
-      logo: "../../images/HomePage/logo-groupama.jpg",
+      logo: "./../../assets/images/HomePage/logo-groupama.jpg",
       companyName: "Groupama",
       job: "Developpeur Web",
       contractType: "CDI",
@@ -17,7 +17,7 @@ function Results({ handleClickFilters }) {
       date: "06/06/2023",
     },
     {
-      logo: "../../images/HomePage/logo-allovoisins.jpg",
+      logo: "./../../assets/images/HomePage/logo-allovoisins.jpg",
       companyName: "AlloVoisins",
       job: "Developpeur Web",
       contractType: "CDI",
@@ -25,7 +25,7 @@ function Results({ handleClickFilters }) {
       date: "06/06/2023",
     },
     {
-      logo: "../../images/HomePage/logo-klaxoon.jpg",
+      logo: "./../../assets/images/HomePage/logo-klaxoon.jpg",
       companyName: "Klaxoon",
       job: "Developpeur Web",
       contractType: "CDI",
@@ -33,7 +33,7 @@ function Results({ handleClickFilters }) {
       date: "06/06/2023",
     },
     {
-      logo: "../../images/HomePage/logo-lengow.jpg",
+      logo: "./../../assets/images/HomePage/logo-lengow.jpg",
       companyName: "Lengow",
       job: "Developpeur Web",
       contractType: "CDI",

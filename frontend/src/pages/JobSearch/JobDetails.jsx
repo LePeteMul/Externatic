@@ -1,11 +1,13 @@
 import React from "react";
 import HeaderBasic from "../../components/Header/HeaderBasic";
+import BlackButton from "../../components/Elements/BlackButton";
+import HeartButton from "../../assets/icons/heart.png";
 
 function JobDetails() {
   const job = {
-    logo: "../../images/HomePage/logo-groupama.jpg",
+    logo: "./../../assets/images/HomePage/logo-groupama.jpg",
     companyName: "Groupama",
-    job: "Developpeur Web",
+    job: "Developpeur Web fullstack Java Angular",
     contractType: "CDI",
     jobCity: "Nantes",
     date: "06/06/2023",
@@ -39,6 +41,8 @@ function JobDetails() {
           <p>Publiée le {job.date}</p>
         </div>
         <br />
+        <hr className="Line" />
+        <br />
         <div className="CompanyDescription">
           <h3>L'entreprise et l'équipe</h3>
           <br />
@@ -65,6 +69,15 @@ function JobDetails() {
           <p>
             Salaire : de {job.min_income} € à {job.max_income} €
           </p>
+        </div>
+        <div className="ConnectButtons">
+          <BlackButton
+            buttonName="Candidater"
+            buttonFunction={console.info("Nav to CandidatePage")}
+          />
+          <div className="Heart">
+            <img src={HeartButton} alt="FavoriteButton" />
+          </div>
         </div>
       </div>
     </div>
