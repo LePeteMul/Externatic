@@ -14,9 +14,7 @@ function InputText({ label, inputMessage }) {
 
   return (
     <div className="InputText">
-      <br />
       <label htmlFor="label">{label} </label>
-      <br />
       <input
         className={entry === inputMessage ? "notselected" : "selected"}
         type="text"
