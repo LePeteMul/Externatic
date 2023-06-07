@@ -14,6 +14,7 @@ function Registration() {
   return (
     <div>
       <HeaderBasic />
+
       <div className="registration">
         <div className="page_title">
           <h1>M'inscrire </h1>
