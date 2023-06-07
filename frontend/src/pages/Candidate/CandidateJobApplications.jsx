@@ -1,4 +1,3 @@
-
 import React from "react";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import JobCard from "../../components/Elements/JobCard";
@@ -118,4 +117,3 @@ function CandidateJobApplications() {
 }
 
 export default CandidateJobApplications;
-

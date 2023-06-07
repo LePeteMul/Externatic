@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import InputText from "../../components/Elements/InputText";
@@ -11,7 +10,6 @@ function Registration() {
   const handleConfirmation = () => {
     setConfirmation(true);
   };
-
 
   return (
     <div>
@@ -60,7 +58,6 @@ function Registration() {
             inscription
           </div>
         )}
-
       </div>
     </div>
   );
