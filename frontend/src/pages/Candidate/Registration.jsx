@@ -27,14 +27,16 @@ function Registration() {
           />
 
           <InputText
-            label="Mot de passe :"
+            className="inpuuts"
+            label="Mot de passe"
             inputMessage={"Entrez l'information"}
           />
           <img className="eyeIcon1" src={eye} alt="" />
 
           <InputText
+            className="inpuuts"
             label="Confirmer le mot de passe :"
-            inputMessage={"Entrez l'information"}
+            inputMessage="Entrez l'information"
           />
           <img className="eyeIcon2" src={eye} alt="" />
 

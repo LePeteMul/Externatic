@@ -1,0 +1,21 @@
+.offer_creation {
+  background-color: $primaryColor;
+  width: 100vw;
+  min-height: 100vh;
+  margin-top: -4px;
+}
+
+.offerinputs {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.confOfferCreation {
+  margin: 0 auto;
+  width: 80%;
+
+  text-align: center;
+  padding-top: 200px;
+  font-family: $fontFamily;
+  color: $textColorLight;
+}

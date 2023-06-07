@@ -9,8 +9,10 @@ import JobDetails from "../pages/JobSearch/JobDetails";
 import JobSearch from "../pages/JobSearch/JobSearch";
 import Registration from "../pages/Candidate/Registration";
 import CandidateProfile from "../pages/Candidate/CandidateProfile";
+import OfferCreation from "../pages/Company/OfferCreation";
 import CandidateJobApplications from "../pages/Candidate/CandidateJobApplications";
 import FavoriteOffers from "../pages/Candidate/FavoriteOffers";
+
 
 function Router() {
   return (
@@ -25,7 +27,7 @@ function Router() {
         <Route path="/jobdetails" element={<JobDetails />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/profile" element={<CandidateProfile />} />
-
+        <Route path="/offercreation" element={<OfferCreation />} />
         <Route
           path="/candidate-job-application"
           element={<CandidateJobApplications />}
