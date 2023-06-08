@@ -11,11 +11,13 @@ function JobSearch() {
 
   return (
     <div className="JobSearch">
-      <HeaderBasic />
       {count < 4 && (
-        <div className="boxWithoutHeader">
-          <YourSearch count={count} handleClick={handleClick} />
-        </div>
+        <>
+          <HeaderBasic />
+          <div className="boxWithoutHeader">
+            <YourSearch count={count} handleClick={handleClick} />
+          </div>
+        </>
       )}
       {count < 4 || <Results />}
     </div>

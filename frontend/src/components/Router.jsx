@@ -28,6 +28,7 @@ function Router() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/jobsearch" element={<JobSearch />} />
         <Route path="/results" element={<Results />} />
+        <Route path="/jobdetails/:id" element={<JobDetails />} />
         <Route path="/jobdetails" element={<JobDetails />} />
         <Route
           path="/applicationconfirmation"
