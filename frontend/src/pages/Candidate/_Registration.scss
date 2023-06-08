@@ -1,0 +1,36 @@
+.registration {
+  background-color: $primaryColor;
+  width: 100vw;
+  min-height: 90dvh;
+  // margin-top: -4px;
+  padding: 4%;
+
+  .page_title {
+    display: flex;
+
+    font-family: $fontFamily;
+    color: $textColorLight;
+    font-size: 20px;
+
+    height: 25%;
+  }
+
+  .inputs {
+    height: 50%;
+    width: 100%;
+  }
+
+  .btn_registration {
+    height: 25%;
+    .BlackButton {
+      width: 100%;
+    }
+  }
+
+  .conf_registration {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    color: $textColorLight;
+  }
+}

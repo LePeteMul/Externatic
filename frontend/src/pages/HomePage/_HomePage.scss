@@ -1,0 +1,47 @@
+.HomePage {
+  .boxWithoutHeader {
+    padding: 4%;
+    background-color: $primaryColor;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .descriptionText {
+    color: $textColorLight;
+    padding: 4% 0 4% 0;
+  }
+
+  .handshakeContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 8%;
+  }
+
+  .handshake {
+    border-radius: 12px;
+    width: 100%;
+  }
+
+  .trust {
+    margin-top: 8%;
+    color: $textColorLight;
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+  }
+
+  .trustingCompanies {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    margin: 4% auto;
+  }
+
+  .logo {
+    padding: 0 4px;
+    overflow: hidden;
+    max-width: auto;
+    height: auto;
+  }
+}

@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import HeaderWave from "../Header/HeaderWave";
 
 function NavBar() {
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(!open);
+  };
   return (
-    <nav className="navbar">
-      <ul>
-        <li className="navbar_item">Mon espace</li>
-        <li className="navbar_item">Contact</li>
-        <li className="navbar_item">Mentions légales</li>
-        <li className="navbar_item">Se déconnecter</li>
-      </ul>
-    </nav>
+    <div>
+      <HeaderWave open={open} setOpen={setOpen} handleOpen={handleOpen} />
+    </div>
   );
 }
 

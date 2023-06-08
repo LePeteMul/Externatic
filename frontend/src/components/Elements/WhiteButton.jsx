@@ -13,7 +13,11 @@ function WhiteButton({ buttonName, buttonFunction }) {
 
 WhiteButton.propTypes = {
   buttonName: PropTypes.string.isRequired,
-  buttonFunction: PropTypes.string.isRequired,
+  buttonFunction: PropTypes.string,
+};
+
+WhiteButton.defaultProps = {
+  buttonFunction: console.info("Fonction"),
 };
 
 export default WhiteButton;
