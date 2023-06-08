@@ -19,14 +19,14 @@ function ApplicationConfirmation() {
             d'avancement.
           </h2>
           <h2>
-            L'entreprise {jobOffer[0].companyName} vous rencontacteras dans les
+            L'entreprise {jobOffer[0].companyName} vous rencontactera dans les
             meilleurs délais
           </h2>
         </div>
         <div className="ResultsButton">
           <NavLink to="/results">
             <WhiteButton
-              buttonName="Retour à mes résultats"
+              buttonName="Retour aux résulats"
               buttonFunction={console.info("Fonction")}
             />
           </NavLink>
