@@ -7,6 +7,7 @@ import HeaderWave from "./Header/HeaderWave";
 import Login from "../pages/Login/Login";
 import JobDetails from "../pages/JobSearch/JobDetails";
 import JobSearch from "../pages/JobSearch/JobSearch";
+import Results from "../pages/JobSearch/Results";
 import Registration from "../pages/Candidate/Registration";
 import CandidateProfile from "../pages/Candidate/CandidateProfile";
 import OfferCreation from "../pages/Company/OfferCreation";
@@ -14,7 +15,7 @@ import CandidateJobApplications from "../pages/Candidate/CandidateJobApplication
 import FavoriteOffers from "../pages/Candidate/FavoriteOffers";
 import CompanyFirstLogin from "../pages/Company/CompanyFirstLogin";
 import CompanyPresentation from "../pages/Company/CompanyPresentation";
-
+import ApplicationConfirmation from "../pages/JobSearch/ApplicationConfirmation";
 
 function Router() {
   return (
@@ -26,7 +27,12 @@ function Router() {
         <Route path="/" element={<Modele />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/jobsearch" element={<JobSearch />} />
+        <Route path="/results" element={<Results />} />
         <Route path="/jobdetails" element={<JobDetails />} />
+        <Route
+          path="/applicationconfirmation"
+          element={<ApplicationConfirmation />}
+        />
         <Route path="/registration" element={<Registration />} />
         <Route path="/profile" element={<CandidateProfile />} />
         <Route path="/offercreation" element={<OfferCreation />} />
