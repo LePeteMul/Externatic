@@ -14,7 +14,10 @@ import CandidateJobApplications from "../pages/Candidate/CandidateJobApplication
 import FavoriteOffers from "../pages/Candidate/FavoriteOffers";
 import CompanyFirstLogin from "../pages/Company/CompanyFirstLogin";
 import CompanyPresentation from "../pages/Company/CompanyPresentation";
+import Application from "../pages/Company/Application";
+import ProfileCandidate from "../pages/Company/ProfileCandidate";
 import ApplicationConfirmation from "../pages/JobSearch/ApplicationConfirmation";
+
 
 function Router() {
   return (
@@ -42,6 +45,9 @@ function Router() {
         <Route path="/favorite" element={<FavoriteOffers />} />
         <Route path="/companyfirstlogin" element={<CompanyFirstLogin />} />
         <Route path="/companypresentation" element={<CompanyPresentation />} />
+        <Route path="/application" element={<Application />} />
+        <Route path="/profilecandidate" element={<ProfileCandidate />} />
+
       </Routes>
     </div>
   );
