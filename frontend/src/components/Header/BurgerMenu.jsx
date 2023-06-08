@@ -21,7 +21,7 @@ function BurgerMenu({ handleOpen }) {
         <nav className="menuHover">
           <img className="Wave" src={waveWhite} alt="La Vague Blanche" />
           <ul className="menuHover_ul">
-            <Link to="/dashboard">
+            <Link to="/candidate/dashboard">
               <li className="menuHover_item">Mon espace</li>
             </Link>
             <li className="menuHover_item">Contact</li>
