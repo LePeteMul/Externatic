@@ -1,13 +1,13 @@
 import React from "react";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 
-function CompanyCreation() {
+function OffersList() {
   return (
-    <div className="CompanyCreation">
+    <div className="OffersList">
       <HeaderBasic />
       <div className="boxWithoutHeader" />
     </div>
   );
 }
 
-export default CompanyCreation;
+export default OffersList;

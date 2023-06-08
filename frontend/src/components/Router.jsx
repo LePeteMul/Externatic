@@ -31,7 +31,7 @@ function Router() {
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/dashboard" element={<CandidateDashboard />} />
         <Route path="/pro/dashboard" element={<CompanyDashboard />} />
-          
+
         <Route path="/navbar" element={<NavBar />} />
         <Route path="/headerwave" element={<HeaderWave />} />
         <Route path="/login" element={<Login />} />
