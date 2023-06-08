@@ -40,7 +40,7 @@ function Router() {
         />
         <Route
           path="/admin/deletionconfirmation"
-          element={<ConfirmationDeletion />
+          element={<ConfirmationDeletion/>}/>
 
         {/* Global section */}
         <Route path="/login" element={<Login />} />
