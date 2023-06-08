@@ -5,6 +5,7 @@ import BlackButton from "../../components/Elements/BlackButton";
 import WhiteButton from "../../components/Elements/WhiteButton";
 import InputText from "../../components/Elements/InputText";
 import InputList from "../../components/Elements/InputList";
+import InputImage from "../../components/Elements/InputImage";
 
 function Modele() {
   return (
@@ -30,6 +31,7 @@ function Modele() {
             { value: "choix3", name: "Choix n°3" },
           ]}
         />
+        <InputImage label="CV" />
       </div>
     </div>
   );

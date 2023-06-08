@@ -44,13 +44,16 @@ function Router() {
           element={<ApplicationConfirmation />}
         />
         <Route path="/registration" element={<Registration />} />
+
         <Route path="/profile" element={<CandidateProfile />} />
         <Route path="/offercreation" element={<OfferCreation />} />
+
         <Route
           path="/candidate-job-application"
           element={<CandidateJobApplications />}
         />
         <Route path="/favorite" element={<FavoriteOffers />} />
+
         <Route path="/companyfirstlogin" element={<CompanyFirstLogin />} />
         <Route path="/companypresentation" element={<CompanyPresentation />} />
         <Route path="/application" element={<Application />} />
