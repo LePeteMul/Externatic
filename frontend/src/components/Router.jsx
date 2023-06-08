@@ -28,19 +28,19 @@ function Router() {
     <div>
       <Routes>
         <Route path="/" element={<HomePage />} />
-       
 
         {/* Admin section */}
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/admin/profile" element={<AdminDashboard />} />
         <Route path="/admin/companycreation" element={<CompanyCreation />} />
-                  <Route
+        <Route
           path="/admin/creationconfirmation"
           element={<ConfirmationCreation />}
         />
         <Route
           path="/admin/deletionconfirmation"
-          element={<ConfirmationDeletion />
+          element={<ConfirmationDeletion />}
+        />
 
         {/* Global section */}
         <Route path="/login" element={<Login />} />

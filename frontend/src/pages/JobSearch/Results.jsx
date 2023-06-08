@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import CityInput from "./SearchedElements/CityInput";
+import ContractInput from "./SearchedElements/ContractInput";
+import JobInput from "./SearchedElements/JobInput";
 import SearchFilters from "./SearchFilters";
-import InputResume from "../../components/Elements/InputResume";
 import BlackButton from "../../components/Elements/BlackButton";
 import JobCard from "../../components/Elements/JobCard";
 import logoGroupama from "../../assets/images/HomePage/logo-groupama.jpg";
@@ -68,9 +70,15 @@ function Results() {
         }`}
       >
         <div className="SearchResume">
-          <InputResume />
-          <InputResume />
-          <InputResume />
+          <div className="InputList">
+            <JobInput />
+          </div>
+          <div className="InputList">
+            <ContractInput />
+          </div>
+          <div className="InputText">
+            <CityInput />
+          </div>
         </div>
         <div className="MoreFilters">
           <BlackButton
