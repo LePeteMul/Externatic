@@ -1,6 +1,5 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Modele from "../pages/HomePage/Modele";
 import HomePage from "../pages/HomePage/HomePage";
 import NavBar from "./NavBar/NavBar";
 import HeaderWave from "./Header/HeaderWave";
@@ -17,19 +16,17 @@ import CompanyFirstLogin from "../pages/Company/CompanyFirstLogin";
 import CompanyPresentation from "../pages/Company/CompanyPresentation";
 import ApplicationConfirmation from "../pages/JobSearch/ApplicationConfirmation";
 
-
 function Router() {
   return (
     <div>
       <Routes>
+        <Route path="/" element={<HomePage />} />
         <Route path="/navbar" element={<NavBar />} />
         <Route path="/headerwave" element={<HeaderWave />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Modele />} />
-        <Route path="/home" element={<HomePage />} />
         <Route path="/jobsearch" element={<JobSearch />} />
         <Route path="/results" element={<Results />} />
-        <Route path="/jobdetails/:id" element={<JobDetails />} />
+        <Route path="/job/:id" element={<JobDetails />} />
         <Route path="/jobdetails" element={<JobDetails />} />
         <Route
           path="/applicationconfirmation"
@@ -45,7 +42,6 @@ function Router() {
         <Route path="/favorite" element={<FavoriteOffers />} />
         <Route path="/companyfirstlogin" element={<CompanyFirstLogin />} />
         <Route path="/companypresentation" element={<CompanyPresentation />} />
-
       </Routes>
     </div>
   );
