@@ -1,5 +1,39 @@
 .BurgerMenu {
-  .IconBurger {
-    height: 4vh;
-  }
+  position: relative;
+  z-index: 2;
+}
+
+.BurgerMenu .IconBurger {
+  height: 4vh;
+}
+
+.menuHover {
+  position: fixed;
+  top: 10dvh;
+  left: 0;
+  background-color: $primaryColor;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+}
+
+.menuHover .Wave {
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+}
+
+.menuHover_ul {
+  margin-top: 6dvh;
+  padding-left: 4%;
+}
+
+.menuHover_item {
+  width: fit-content;
+  text-decoration: none;
+  background-color: $primaryColor;
+  padding: 4%;
+  font-weight: 500;
+  font-family: $fontFamily;
+  color: $textColorLight;
 }
