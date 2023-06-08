@@ -17,6 +17,7 @@ import CompanyFirstLogin from "../pages/Company/CompanyFirstLogin";
 import CompanyPresentation from "../pages/Company/CompanyPresentation";
 import ApplicationConfirmation from "../pages/JobSearch/ApplicationConfirmation";
 
+
 function Router() {
   return (
     <div>
@@ -44,6 +45,7 @@ function Router() {
         <Route path="/favorite" element={<FavoriteOffers />} />
         <Route path="/companyfirstlogin" element={<CompanyFirstLogin />} />
         <Route path="/companypresentation" element={<CompanyPresentation />} />
+
       </Routes>
     </div>
   );
