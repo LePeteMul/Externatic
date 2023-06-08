@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
+import upload from "../../assets/icons/upload.png";
 
 function InputImage({ label }) {
   const [file, setFile] = useState(null);
+  const fileInputRef = useRef(null);
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
@@ -10,6 +12,16 @@ function InputImage({ label }) {
     // Traitez le fichier ici selon vos besoins
     console.info(selectedFile);
     console.info(file);
+  };
+
+  const handleImageClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleImageClick();
+    }
   };
 
   return (

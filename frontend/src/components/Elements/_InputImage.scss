@@ -2,7 +2,9 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-
+  img {
+    width: 40px;
+  }
   label {
     font-family: $fontFamily;
     color: $textColorLight;
@@ -21,10 +23,6 @@
     font-size: 20px;
     font-family: $fontFamily;
     padding-left: 12px;
-
-    #fileInput {
-      display: flex;
-    }
   }
 
   .selected {
@@ -33,5 +31,12 @@
 
   .notselected {
     color: $textColorInput;
+  }
+
+  .input-wrapper {
+    display: flex;
+    img {
+      background-position: left;
+    }
   }
 }

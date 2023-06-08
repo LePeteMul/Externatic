@@ -25,18 +25,22 @@ function CompanyDashboard() {
           <DashboardCard
             description="Cliquer ici pour voir votre profil"
             title="Mon profil employeur"
+            link="/company/presentation"
           />
           <DashboardCard
             description="Cliquer ici pour voir votre profil"
             title="Présentation de l’entreprise"
+            link="/company/presentation"
           />
           <DashboardCard
             description="Cliquer ici pour voir votre profil"
             title="Gestion des offres et candidatures"
+            link="/company/profilecandidate"
           />
           <DashboardCard
             description="Cliquer ici pour voir votre profil"
             title="Créer une offre d’emploi"
+            link="/company/offercreation"
           />
         </div>
       </div>

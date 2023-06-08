@@ -5,8 +5,6 @@ import HomePage from "../pages/HomePage/HomePage";
 import AdminDashboard from "../pages/Admin/AdminDashboard";
 import CandidateDashboard from "../pages/Candidate/CandidateDashboard";
 import CompanyDashboard from "../pages/Company/CompanyDashboard";
-import NavBar from "./NavBar/NavBar";
-import HeaderWave from "./Header/HeaderWave";
 import Login from "../pages/Login/Login";
 import JobDetails from "../pages/JobSearch/JobDetails";
 import JobSearch from "../pages/JobSearch/JobSearch";
@@ -30,41 +28,50 @@ function Router() {
     <div>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/admin/companycreation" element={<CompanyCreation />} />
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
-        <Route path="/dashboard" element={<CandidateDashboard />} />
-        <Route path="/pro/dashboard" element={<CompanyDashboard />} />
+       
 
-        <Route path="/navbar" element={<NavBar />} />
-        <Route path="/headerwave" element={<HeaderWave />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/jobsearch" element={<JobSearch />} />
-        <Route path="/results" element={<Results />} />
-        <Route path="/job/:id" element={<JobDetails />} />
-        <Route path="/jobdetails" element={<JobDetails />} />
-        <Route
-          path="/applicationconfirmation"
-          element={<ApplicationConfirmation />}
-        />
-        <Route path="/registration" element={<Registration />} />
-        <Route path="/profile" element={<CandidateProfile />} />
-        <Route path="/offercreation" element={<OfferCreation />} />
-        <Route
-          path="/candidate-job-application"
-          element={<CandidateJobApplications />}
-        />
-        <Route path="/favorite" element={<FavoriteOffers />} />
-        <Route path="/companyfirstlogin" element={<CompanyFirstLogin />} />
-        <Route path="/companypresentation" element={<CompanyPresentation />} />
-        <Route path="/application" element={<Application />} />
-        <Route path="/profilecandidate" element={<ProfileCandidate />} />
-        <Route
+        {/* Admin section */}
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/admin/profile" element={<AdminDashboard />} />
+        <Route path="/admin/companycreation" element={<CompanyCreation />} />
+                  <Route
           path="/admin/creationconfirmation"
           element={<ConfirmationCreation />}
         />
         <Route
           path="/admin/deletionconfirmation"
-          element={<ConfirmationDeletion />}
+          element={<ConfirmationDeletion />
+
+        {/* Global section */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/jobsearch" element={<JobSearch />} />
+        <Route path="/results" element={<Results />} />
+        <Route path="/job/:id" element={<JobDetails />} />
+        <Route path="/jobdetails" element={<JobDetails />} />
+
+        {/* Candidate section */}
+        <Route
+          path="/candidate/applicationconfirmation"
+          element={<ApplicationConfirmation />}
+        />
+        <Route path="/candidate/registration" element={<Registration />} />
+        <Route path="/candidate/profile" element={<CandidateProfile />} />
+        <Route
+          path="/candidate/job-application"
+          element={<CandidateJobApplications />}
+        />
+        <Route path="/candidate/favorite" element={<FavoriteOffers />} />
+        <Route path="/candidate/dashboard" element={<CandidateDashboard />} />
+
+        {/* Company section */}
+        <Route path="/company/dashboard" element={<CompanyDashboard />} />
+        <Route path="/company/offercreation" element={<OfferCreation />} />
+        <Route path="/company/firstlogin" element={<CompanyFirstLogin />} />
+        <Route path="/company/presentation" element={<CompanyPresentation />} />
+        <Route path="/company/application" element={<Application />} />
+        <Route
+          path="/company/profilecandidate"
+          element={<ProfileCandidate />}
         />
       </Routes>
     </div>

@@ -13,7 +13,7 @@ function HomePage() {
   const navigate = useNavigate();
 
   const handleRegistrationClick = () => {
-    navigate("/registration");
+    navigate("/candidate/registration");
   };
 
   const handleJobSearchClick = () => {

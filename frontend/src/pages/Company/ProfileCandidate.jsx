@@ -31,7 +31,7 @@ function ProfileCandidate() {
           />
 
           <InputText label="Consulter le CV :" inputMessage="Consulter le CV" />
-          <NavLink to="/application">
+          <NavLink to="/company/application">
             <BlackButton
               buttonName="Retour aux candidatures"
               buttonFunction={console.info("Fonction")}

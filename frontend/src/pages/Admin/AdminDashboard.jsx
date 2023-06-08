@@ -1,7 +1,7 @@
 import React from "react";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import DashboardCard from "../../components/Elements/DashboardCard";
-import "./AdminDashboard.scss";
+// import "./AdminDashboard.scss";
 
 function AdminDashboard() {
   return (
@@ -21,28 +21,35 @@ function AdminDashboard() {
       </div>
 
       <div className="boxWithoutHeader">
-        <DashboardCard
-          description="Cliquer ici pour voir votre profil"
-          title="Mon profil"
-        />
-        <br />
+        <div>
+          <DashboardCard
+            description="Cliquer ici pour voir votre profil"
+            title="Mon profil"
+            link="/admin/profile"
+          />
+          <br />
+        </div>
 
         <div className="boxInside">
           <DashboardCard
             description="Cliquer ici pour voir votre profil"
             title="Créer une entreprise"
+            link="/favorite"
           />
           <DashboardCard
             description="Cliquer ici pour voir votre profil"
             title="Gestion des entreprises"
+            link="/favorite"
           />
           <DashboardCard
             description="Cliquer ici pour voir votre profil"
             title="Gestion des offres d'emploi"
+            link="/favorite"
           />
           <DashboardCard
             description="Cliquer ici pour voir votre profil"
             title="Gestion des utilisateurs"
+            link="/favorite"
           />
         </div>
       </div>
