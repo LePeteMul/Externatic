@@ -1,0 +1,12 @@
+.CompanyFirstLogin {
+  .boxWithoutHeader {
+    padding: 4%;
+    background-color: $primaryColor;
+
+    .welcomeText {
+      margin-top: 20vh;
+      margin-bottom: 20vh;
+      text-align: center;
+    }
+  }
+}
