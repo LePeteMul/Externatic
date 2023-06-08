@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
+import { Slider } from "@material-ui/core";
 import PropTypes from "prop-types";
 import BlackButton from "../../components/Elements/BlackButton";
 import InputList from "../../components/Elements/InputList";
 
 function SearchFilters({ handleClickFilters }) {
+  const [mensualSalary, setMensualSalary] = useState(1700);
+  const annualSalary = mensualSalary * 12;
+
+  const handleSliderChange = (event, newValue) => {
+    setMensualSalary(newValue);
+  };
+
   return (
     <>
       <div className="SearchFiltersTitle">
@@ -30,13 +38,24 @@ function SearchFilters({ handleClickFilters }) {
         />
         <div className="Salary">
           <h2>Mon salaire minimum</h2>
+          <div>
+            <Slider
+              value={mensualSalary}
+              min={1700}
+              max={10000}
+              step={100}
+              onChange={handleSliderChange}
+              orientation="horizontal"
+              style={{ color: "white" }}
+            />
+          </div>
           <div className="AnnualSalary">
             <p>Brut Annuel</p>
-            <p>20 000 €</p>
+            <p>{annualSalary} €</p>
           </div>
           <div className="MensualSalary">
             <p>Brut Mensuel</p>
-            <p>1 667 €</p>
+            <p>{mensualSalary} €</p>
           </div>
         </div>
       </div>
