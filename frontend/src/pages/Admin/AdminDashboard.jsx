@@ -1,20 +1,26 @@
 import React from "react";
-// import HeaderWave from "../../components/Header/HeaderWave";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import DashboardCard from "../../components/Elements/DashboardCard";
+import "./AdminDashboard.scss";
 
 function AdminDashboard() {
   return (
     <div className="AdminDashboard">
       <HeaderBasic />
 
-      <div className="boxWithoutHeader">
-        <div className="pp-import">
-          <p className="pp-import-text"> Télécharger une photo PNG ou JPG</p>
-          {/* <img src="" alt="pp-import-logo" /> */}
+      <div className="vague">
+        <div className="container-top">
+          <div className="pp-import">
+            <p className="pp-import-text"> Télécharger une photo PNG ou JPG</p>
+            {/* <img src="" alt="pp-import-logo" /> */}
+          </div>
+          <h1 className="titleHeader">Interface administrateur</h1>
         </div>
-        <h1 className="titleHeader">Interface Administrateur</h1>
 
+        <br />
+      </div>
+
+      <div className="boxWithoutHeader">
         <DashboardCard
           description="Cliquer ici pour voir votre profil"
           title="Mon profil"

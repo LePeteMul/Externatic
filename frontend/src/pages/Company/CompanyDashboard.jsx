@@ -1,21 +1,26 @@
 import React from "react";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import DashboardCard from "../../components/Elements/DashboardCard";
+import "./CompanyDashboard.scss";
 
 function CompanyDashboard() {
   return (
     <div className="CompanyDashboard">
       <HeaderBasic />
 
-      <div className="boxWithoutHeader">
-        <div className="pp-import">
-          <p className="pp-import-text"> Télécharger une photo PNG ou JPG</p>
-          {/* <img src="" alt="pp-import-logo" /> */}
+      <div className="vagueCompany">
+        <div className="container-top">
+          <div className="pp-import">
+            <p className="pp-import-text"> Télécharger une photo PNG ou JPG</p>
+            {/* <img src="" alt="pp-import-logo" /> */}
+          </div>
+          <h1 className="titleHeader">Mon profil Employeur</h1>
         </div>
-        <h1 className="titleHeader">Mon profil Employeur</h1>
 
         <br />
+      </div>
 
+      <div className="boxWithoutHeader">
         <div className="boxInside">
           <DashboardCard
             description="Cliquer ici pour voir votre profil"

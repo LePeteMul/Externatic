@@ -1,20 +1,24 @@
 import React from "react";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import DashboardCard from "../../components/Elements/DashboardCard";
+import "./CandidateDashboard.scss";
 
 function CandidateDashboard() {
   return (
     <div className="CandidateDashboard">
       <HeaderBasic />
 
-      <div className="boxWithoutHeader">
-        <div className="pp-import">
-          <p className="pp-import-text"> Télécharger une photo PNG ou JPG</p>
-          {/* <img src="" alt="pp-import-logo" /> */}
+      <div className="vagueCompany">
+        <div className="container-top">
+          <div className="pp-import">
+            <p className="pp-import-text"> Télécharger une photo PNG ou JPG</p>
+            {/* <img src="" alt="pp-import-logo" /> */}
+          </div>
+          <h1 className="titleHeader">Bonjour #name</h1>
         </div>
-        <h1 className="titleHeader">Bonjour, "pseudo"</h1>
-        <br />
+      </div>
 
+      <div className="boxWithoutHeader">
         <div className="boxInside">
           <DashboardCard
             description="Cliquer ici pour voir votre profil"
