@@ -1,6 +1,10 @@
 import React from "react";
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { Routes, Route } from "react-router-dom";
 import HomePage from "../pages/HomePage/HomePage";
+import AdminDashboard from "../pages/Admin/AdminDashboard";
+import CandidateDashboard from "../pages/Candidate/CandidateDashboard";
+import CompanyDashboard from "../pages/Company/CompanyDashboard";
 import NavBar from "./NavBar/NavBar";
 import HeaderWave from "./Header/HeaderWave";
 import Login from "../pages/Login/Login";
@@ -18,12 +22,16 @@ import Application from "../pages/Company/Application";
 import ProfileCandidate from "../pages/Company/ProfileCandidate";
 import ApplicationConfirmation from "../pages/JobSearch/ApplicationConfirmation";
 
-
 function Router() {
   return (
     <div>
       <Routes>
         <Route path="/" element={<HomePage />} />
+
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/dashboard" element={<CandidateDashboard />} />
+        <Route path="/pro/dashboard" element={<CompanyDashboard />} />
+          
         <Route path="/navbar" element={<NavBar />} />
         <Route path="/headerwave" element={<HeaderWave />} />
         <Route path="/login" element={<Login />} />
@@ -47,7 +55,6 @@ function Router() {
         <Route path="/companypresentation" element={<CompanyPresentation />} />
         <Route path="/application" element={<Application />} />
         <Route path="/profilecandidate" element={<ProfileCandidate />} />
-
       </Routes>
     </div>
   );

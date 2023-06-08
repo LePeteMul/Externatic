@@ -3,8 +3,7 @@
   align-items: center;
   justify-content: center;
   background-color: #fff9;
-  width: fit-content;
-  height: fit-content;
+  height: auto;
   flex-direction: row;
 }
 
@@ -13,7 +12,6 @@
   max-width: 300px;
   min-width: 200px;
   height: 250px;
-  background-color: #a42056;
   margin: 10px;
   border-radius: 10px;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.24);
@@ -27,7 +25,74 @@
   flex-direction: column;
   cursor: pointer;
   font-family: "Poppins", sans-serif;
-  background-image: url("https://cdn.discordapp.com/attachments/1110947672048816161/1115197035868606515/depositphotos_580102470-stock-photo-pink-retro-heart-y2k-pattern_1.png");
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #872950a1;
+  z-index: 1;
+}
+
+.card .title,
+.card .text {
+  position: relative;
+  z-index: 2;
+}
+
+.card.background-image-1 {
+  background-image: url("../../assets/images/Dashboard/profil.png");
+}
+
+.card.background-image-2 {
+  background-image: url("../../assets/images/Dashboard/cree-entreprise.png");
+}
+
+.card.background-image-3 {
+  background-image: url("../../assets/images/Dashboard/gestion-entreprise.png");
+}
+
+.card.background-image-4 {
+  background-image: url("../../assets/images/Dashboard/gestion-emplois.png");
+}
+
+.card.background-image-5 {
+  background-image: url("../../assets/images/Dashboard/gestion-utilisateurs.png");
+}
+
+.card.background-image-6 {
+  background-image: url("../../assets/images/Dashboard/mon-profil-employeur.png");
+}
+
+.card.background-image-7 {
+  background-image: url("../../assets/images/Dashboard/presentation-entreprise.png");
+}
+
+.card.background-image-8 {
+  background-image: url("../../assets/images/Dashboard/gestion-offres-candidatures.png");
+}
+
+.card.background-image-9 {
+  background-image: url("../../assets/images/Dashboard/creer-offre.png");
+}
+
+.card.background-image-10 {
+  background-image: url("../../assets/images/Dashboard/favorite.png");
+}
+
+.card.background-image-11 {
+  background-image: url("../../assets/images/Dashboard/ma-recherche.png");
+}
+
+.card.background-image-12 {
+  background-image: url("../../assets/images/Dashboard/mes-candidatures.png");
 }
 
 .icon {
@@ -59,7 +124,7 @@
   margin: 0;
   text-align: center;
   margin-top: 30px;
-  color: white;
+  color: rgb(255, 255, 255);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -101,13 +166,9 @@
 
 .site-element {
   opacity: 0;
-  /* Opacité initiale des éléments */
   transition: opacity 0.5s ease-in-out;
-  /* Transition d'opacité pour les éléments */
 }
 
-/* Classes pour contrôler l'animation des éléments */
 .fade-in {
   opacity: 1;
-  /* Opacité finale des éléments */
 }
