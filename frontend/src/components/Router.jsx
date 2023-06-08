@@ -15,7 +15,6 @@ import FavoriteOffers from "../pages/Candidate/FavoriteOffers";
 import CompanyFirstLogin from "../pages/Company/CompanyFirstLogin";
 import CompanyPresentation from "../pages/Company/CompanyPresentation";
 
-
 function Router() {
   return (
     <div>
