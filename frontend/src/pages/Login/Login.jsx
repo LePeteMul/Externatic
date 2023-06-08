@@ -31,7 +31,7 @@ function Login() {
 
         <div className="card_signing">
           <h3 className="no_Count">Pas encore de compte ?</h3>
-          <NavLink to="/registration">
+          <NavLink to="/candidate/registration">
             <WhiteButton buttonName="M'inscrire" />
           </NavLink>
         </div>
