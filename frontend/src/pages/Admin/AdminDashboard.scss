@@ -1,35 +1,25 @@
-// .boxWithoutHeader {
-//   padding: 4%;
-//   background-color: $primaryColor;
-//   height: 90dvh;
-//   color: white;
-// }
+.boxWithoutHeader {
+  padding: 4%;
+  background-color: white;
+  height: auto;
+}
 
 .boxInside {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* Centrer les éléments horizontalement */
 }
 
 .boxInside > * {
   flex-basis: calc(50% - 10px);
-  /* Ajustez la largeur des éléments en fonction de vos besoins */
   margin-bottom: 20px;
 }
 
 @media (max-width: 480px) {
   .boxInside > * {
     flex-basis: 100%;
-    /* La largeur est définie à 100% pour les écrans de largeur inférieure à 480px */
   }
 }
-
-// .pp-import {
-//   display: flex;
-//   justify-content: center;
-
-// }
 
 .titleHeader {
   display: flex;
@@ -44,11 +34,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 200px;
-  max-height: 200px;
-  width: 100%;
-  height: 100%;
-  background-color: #a42056;
+  width: 150px;
+  height: 150px;
+  background-color: #fff;
   border-radius: 10px;
   border: 2px solid rgba(7, 7, 7, 0.12);
   font-size: 16px;
