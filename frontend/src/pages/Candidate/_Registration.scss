@@ -1,0 +1,48 @@
+.registration {
+  background-color: $primaryColor;
+  width: 100vw;
+  height: 100vh;
+  margin-top: -4px;
+
+  .page_title {
+    display: flex;
+    justify-content: center;
+    font-family: $fontFamily;
+    color: $textColorLight;
+    font-size: 20px;
+    padding: 50px;
+  }
+
+  .inpuuts {
+    position: relative;
+  }
+
+  .eyeIcon1 {
+    position: fixed;
+    top: 340px;
+    right: 20px;
+    height: 25px;
+    width: 35px;
+  }
+
+  .eyeIcon2 {
+    position: absolute;
+    top: 530px;
+    right: 20px;
+    height: 25px;
+    width: 35px;
+  }
+
+  .btn_registration {
+    margin: 0 auto;
+    width: 80%;
+    margin-bottom: 50px;
+  }
+
+  .conf_registration {
+    margin: 0 auto;
+    width: 80%;
+    text-align: center;
+    color: $textColorLight;
+  }
+}

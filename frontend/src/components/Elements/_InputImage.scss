@@ -1,16 +1,13 @@
-.InputText {
+.InputImage {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  position: relative;
 
   label {
     font-family: $fontFamily;
     color: $textColorLight;
     margin-top: 5%;
-    font-size: 20px;
   }
-
   input {
     border: none;
     outline: none;
@@ -23,6 +20,10 @@
     font-size: 16px;
     font-family: $fontFamily;
     padding-left: 12px;
+
+    #fileInput {
+      display: flex;
+    }
   }
 
   .selected {
