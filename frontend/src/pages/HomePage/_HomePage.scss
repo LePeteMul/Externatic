@@ -4,6 +4,7 @@
     background-color: $primaryColor;
     display: flex;
     flex-direction: column;
+    min-height: 90dvh;
   }
 
   .descriptionText {
