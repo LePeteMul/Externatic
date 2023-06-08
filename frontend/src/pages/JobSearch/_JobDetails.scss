@@ -83,15 +83,15 @@
       display: flex;
       justify-content: space-between;
       position: fixed;
-      top: 80dvh;
+      bottom: 1%;
       width: 100%;
 
-      .BlackButton {
-        width: 79%;
+      a {
+        width: 75%;
       }
 
       .Heart {
-        width: 19%;
+        width: 25%;
       }
     }
   }
