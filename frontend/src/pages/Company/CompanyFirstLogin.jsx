@@ -8,7 +8,7 @@ function CompanyFirstLogin() {
   const navigate = useNavigate();
 
   const handleValidateNewPwdClick = () => {
-    navigate("/companypresentation");
+    navigate("/company/presentation");
   };
   return (
     <div className="CompanyFirstLogin">

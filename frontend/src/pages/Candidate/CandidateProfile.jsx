@@ -9,6 +9,7 @@ import InputList from "../../components/Elements/InputList";
 function CandidateProfile() {
   const handleValidation = () => {
     if (
+      // eslint-disable-next-line no-alert
       window.confirm("Êtes-vous sûr de vouloir valider vos modifications ?")
     ) {
       // Code à exécuter si l'utilisateur confirme la validation
@@ -17,6 +18,7 @@ function CandidateProfile() {
   };
 
   const handleDeletion = () => {
+    // eslint-disable-next-line no-alert
     if (window.confirm("Êtes-vous sûr de vouloir supprimer vos données ?")) {
       // Code à exécuter si l'utilisateur confirme la suppression
       // Par exemple, vous pouvez envoyer une requête au serveur pour supprimer les données
