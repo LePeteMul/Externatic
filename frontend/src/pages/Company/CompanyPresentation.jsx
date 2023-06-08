@@ -8,12 +8,11 @@ import Textearea from "../../components/Elements/Textearea";
 function CompanyPresentation() {
   const navigate = useNavigate();
 
-  // const handleValidateModifClick = () => {
+  const handleValidateModifClick = () => {
+    navigate("/pro/dashboard");
 
-  // comportement de "valider la modification"
-  // + REQUETE POST DB non encore implémentée
-
-  // };
+    // + REQUETE POST DB non encore implémentée
+  };
 
   const handleReturnDashboardClick = () => {
     navigate("/pro/dashboard");
@@ -34,13 +33,13 @@ function CompanyPresentation() {
         <div className="actionbuttons">
           <BlackButton
             className="validate"
-            buttonName="Valider la modification"
-            // buttonFunction={handleValidateModifClick}
+            buttonName="Sauvegarder"
+            buttonFunction={handleValidateModifClick}
           />{" "}
           <br />
           <WhiteButton
             className="validate"
-            buttonName="Retour à mon espace"
+            buttonName="Retour sans sauvegarder"
             buttonFunction={handleReturnDashboardClick}
           />
         </div>
