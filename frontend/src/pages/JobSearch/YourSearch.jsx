@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import InputList from "../../components/Elements/InputList";
-import InputText from "../../components/Elements/InputText";
 import BlackButton from "../../components/Elements/BlackButton";
+import CityInput from "./SearchedElements/CityInput";
+import ContractInput from "./SearchedElements/ContractInput";
+import JobInput from "./SearchedElements/JobInput";
 
 function YourSearch({ count, handleClick }) {
   return (
@@ -13,32 +14,22 @@ function YourSearch({ count, handleClick }) {
       </div>
       <div className="JobSearchSelection">
         {count === 1 && (
-          <InputList
-            label="Je recherche un poste de"
-            inputMessage="Selectionner un métier"
-            data={[
-              { value: "metier1", name: "Metier n°1" },
-              { value: "metier2", name: "Metier n°2" },
-              { value: "metier3", name: "Metier n°3" },
-            ]}
-          />
+          <div className="InputList">
+            <label htmlFor="label">Je recherche un poste de </label>
+            <JobInput />
+          </div>
         )}
         {count === 2 && (
-          <InputList
-            label="Mon type de poste"
-            inputMessage="Selectionner un contrat"
-            data={[
-              { value: "CDI", name: "CDI" },
-              { value: "CDD", name: "CDD" },
-              { value: "Stage", name: "Stage" },
-            ]}
-          />
+          <div className="InputList">
+            <label htmlFor="label">Mon type de poste </label>
+            <ContractInput />
+          </div>
         )}
         {count === 3 && (
-          <InputText
-            label="Mon périmètre de recherche"
-            inputMessage="Indiquer la ville ou France entière"
-          />
+          <div className="InputText">
+            <label htmlFor="label">Mon périmètre de recherche </label>
+            <CityInput />
+          </div>
         )}
       </div>
       <div className="JobSearchEnd">

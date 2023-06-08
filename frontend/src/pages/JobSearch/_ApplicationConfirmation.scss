@@ -1,6 +1,9 @@
 .ApplicationConfirmation {
   .boxWithoutHeader {
     height: 90dvh;
+    padding: 4%;
+    background-color: $primaryColor;
+
     .ApplicationMessage {
       display: flex;
       flex-direction: column;
