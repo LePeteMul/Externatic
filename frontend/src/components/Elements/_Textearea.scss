@@ -1,0 +1,17 @@
+.TextArea {
+  display: flex;
+
+  flex-direction: column;
+  display: flex;
+
+  label {
+    font-family: $fontFamily;
+    color: $textColorLight;
+    margin-top: 5%;
+    border-radius: 12px;
+  }
+
+  .textField {
+    border-radius: 12px;
+  }
+}

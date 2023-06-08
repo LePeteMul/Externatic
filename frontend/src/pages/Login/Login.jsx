@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import HeaderWave from "../../components/Header/HeaderWave";
 import InputText from "../../components/Elements/InputText";
 import BlackButton from "../../components/Elements/BlackButton";
@@ -16,10 +17,8 @@ function Login() {
         </div>
 
         <div className="inputs">
-          <InputText inputMessage="Identifiant" />
-          <img className="inputIcon" src={profil} alt="" />
-          <InputText inputMessage="Mot de passe" />
-          <img className="lockIcon" src={lock} alt="" />
+          <InputText inputMessage="Identifiant" image2={profil} />
+          <InputText inputMessage="Mot de passe" image3={lock} />
         </div>
 
         <div className="btn_Connexion">
@@ -32,11 +31,13 @@ function Login() {
 
         <div className="card_signing">
           <h3 className="no_Count">Pas encore de compte ?</h3>
-          <WhiteButton buttonName="M'inscrire" />
+          <NavLink to="/registration">
+            <WhiteButton buttonName="M'inscrire" />
+          </NavLink>
         </div>
       </div>
     </div>
   );
 }
-
+// just a test
 export default Login;

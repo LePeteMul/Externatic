@@ -1,0 +1,51 @@
+.application {
+  height: 100dvh;
+  width: 100vw;
+  background-color: $primaryColor;
+}
+
+.application_details {
+  display: flex;
+
+  flex-direction: column;
+  font-family: $fontFamily;
+  color: $textColorLight;
+  font-size: 15px;
+  width: 80%;
+
+  margin: 25px auto;
+  text-align: center;
+}
+
+.Card_application {
+  width: 80%;
+  min-height: 100px;
+  background-color: rgb(200, 193, 193);
+  border-radius: 12px;
+  display: flex;
+  margin: 0 auto;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+
+  .card_info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .user_pic {
+    border-radius: 50%;
+    height: 60px;
+    width: 70px;
+    margin-right: 5px;
+  }
+
+  .loupe {
+    margin-top: 10px;
+    margin-right: 5px;
+    height: 35px;
+    width: 35px;
+    margin-left: 5px;
+  }
+}
