@@ -1,14 +1,13 @@
 .HeaderWave {
   display: flex;
   flex-direction: column;
-  height: 10dvh;
 
   .TopHeader {
     margin: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 8dvh;
+    height: 10dvh;
     padding: 0 2% 0 2%;
 
     .Logo {
@@ -17,6 +16,7 @@
       left: 50%;
       transform: translateX(-50%);
       height: 16vh;
+      z-index: 3;
     }
   }
 

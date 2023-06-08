@@ -9,5 +9,48 @@
     padding: 4%;
     background-color: $primaryColor;
     height: 90dvh;
+
+    .CompanyCreationTitle {
+      height: 15%;
+      display: flex;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+
+      h1 {
+        font-size: 36px;
+        font-weight: $regular;
+      }
+    }
+
+    .CompanyCreationInformations {
+      height: 60%;
+
+      .InputText {
+        font-size: 20px;
+        font-weight: $semiBold;
+      }
+
+      .InputImage {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        input {
+          width: 180px;
+          height: 100px;
+        }
+      }
+    }
+
+    .CompanyCreationEnd {
+      height: 25%;
+      display: flex;
+      align-items: flex-end;
+    }
+    a {
+      width: 100%;
+    }
   }
 }
