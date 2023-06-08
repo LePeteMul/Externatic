@@ -65,9 +65,9 @@ function OfferCreation() {
                 ]}
               />
 
-              <Textearea label="Soft Skills" inputMessage="Yes" />
+              <Textearea label="Soft Skills" inputMessage="Yes" rows={9} />
 
-              <Textearea label="Hard Skills" inputMessage="Yes" />
+              <Textearea label="Hard Skills" inputMessage="Yes" rows={9} />
 
               <BlackButton
                 buttonName="Ajouter cette offre"

@@ -21,6 +21,9 @@ import CompanyPresentation from "../pages/Company/CompanyPresentation";
 import Application from "../pages/Company/Application";
 import ProfileCandidate from "../pages/Company/ProfileCandidate";
 import ApplicationConfirmation from "../pages/JobSearch/ApplicationConfirmation";
+import OffersList from "../pages/Admin/OffersList";
+import CandidateList from "../pages/Admin/CandidateList";
+import CompanyList from "../pages/Admin/CompanyList";
 
 function Router() {
   return (
@@ -55,6 +58,9 @@ function Router() {
         <Route path="/companypresentation" element={<CompanyPresentation />} />
         <Route path="/application" element={<Application />} />
         <Route path="/profilecandidate" element={<ProfileCandidate />} />
+        <Route path="/offerlist" element={<OffersList />} />
+        <Route path="/candidatelist" element={<CandidateList />} />
+        <Route path="/companylist" element={<CompanyList />} />
       </Routes>
     </div>
   );
