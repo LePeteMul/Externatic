@@ -19,16 +19,28 @@ import CompanyPresentation from "../pages/Company/CompanyPresentation";
 import Application from "../pages/Company/Application";
 import ProfileCandidate from "../pages/Company/ProfileCandidate";
 import ApplicationConfirmation from "../pages/JobSearch/ApplicationConfirmation";
+import CompanyCreation from "../pages/Admin/CompanyCreation";
+import ConfirmationCreation from "../pages/Admin/ConfirmationCreation";
+import ConfirmationDeletion from "../pages/Admin/ConfirmationDeletion";
 
 function Router() {
   return (
     <div>
       <Routes>
         <Route path="/" element={<HomePage />} />
+       
 
         {/* Admin section */}
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/admin/profile" element={<AdminDashboard />} />
+        <Route path="/admin/companycreation" element={<CompanyCreation />} />
+                  <Route
+          path="/admin/creationconfirmation"
+          element={<ConfirmationCreation />}
+        />
+        <Route
+          path="/admin/deletionconfirmation"
+          element={<ConfirmationDeletion />
 
         {/* Global section */}
         <Route path="/login" element={<Login />} />

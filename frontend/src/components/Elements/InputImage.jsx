@@ -26,30 +26,14 @@ function InputImage({ label }) {
 
   return (
     <div className="InputImage">
-      <span>{label}</span>
-      <label htmlFor="fileInput" className="upload-label">
-        <div
-          role="button"
-          tabIndex="0"
-          onClick={handleImageClick}
-          onKeyPress={handleKeyPress}
-        >
-          <img
-            src={upload}
-            alt="Sélectionner un fichier"
-            className="upload-icon"
-          />
-        </div>
-        <input
-          id="fileInput"
-          type="file"
-          accept=".png, .jpeg, .jpg, .pdf"
-          style={{ display: "none" }}
-          onChange={handleFileChange}
-          ref={fileInputRef}
-        />
-        {file && <span>{file.name}</span>}
-      </label>
+      <label htmlFor="fileInput">{label}</label>
+      <input
+        id="fileInput"
+        type="file"
+        accept=".png, .jpeg, .jpg, .pdf"
+        onChange={handleFileChange}
+        placeholder="Choisissez un fichier"
+      />
     </div>
   );
 }
