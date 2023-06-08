@@ -10,4 +10,12 @@
     background-color: $primaryColor;
     height: 90dvh;
   }
+
+  .company {
+    width: 70%;
+
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+  }
 }

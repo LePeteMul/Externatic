@@ -19,9 +19,15 @@ import CompanyPresentation from "../pages/Company/CompanyPresentation";
 import Application from "../pages/Company/Application";
 import ProfileCandidate from "../pages/Company/ProfileCandidate";
 import ApplicationConfirmation from "../pages/JobSearch/ApplicationConfirmation";
+
+import OffersList from "../pages/Admin/OffersList";
+import CandidateList from "../pages/Admin/CandidateList";
+import CompanyList from "../pages/Admin/CompanyList";
+
 import CompanyCreation from "../pages/Admin/CompanyCreation";
 import ConfirmationCreation from "../pages/Admin/ConfirmationCreation";
 import ConfirmationDeletion from "../pages/Admin/ConfirmationDeletion";
+
 
 function Router() {
   return (
@@ -60,6 +66,16 @@ function Router() {
           path="/candidate/job-application"
           element={<CandidateJobApplications />}
         />
+
+        <Route path="/favorite" element={<FavoriteOffers />} />
+        <Route path="/companyfirstlogin" element={<CompanyFirstLogin />} />
+        <Route path="/companypresentation" element={<CompanyPresentation />} />
+        <Route path="/application" element={<Application />} />
+        <Route path="/profilecandidate" element={<ProfileCandidate />} />
+        <Route path="/admin/offerlist" element={<OffersList />} />
+        <Route path="/admin/candidatelist" element={<CandidateList />} />
+        <Route path="/admin/companylist" element={<CompanyList />} />
+
         <Route path="/candidate/favorite" element={<FavoriteOffers />} />
         <Route path="/candidate/dashboard" element={<CandidateDashboard />} />
 
@@ -73,6 +89,7 @@ function Router() {
           path="/company/profilecandidate"
           element={<ProfileCandidate />}
         />
+
       </Routes>
     </div>
   );

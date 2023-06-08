@@ -1,13 +1,18 @@
 import React from "react";
+import PropTypes from "prop-types";
 import loupe from "../../assets/icons/loupe.png";
 import croix from "../../assets/icons/cross.png";
 
-function CandidateCard(profilpicture, lastname, firstname, email) {
+function CandidateCard({ profilpicture, lastname, firstname, email }) {
   return (
     <div className="candidateCard">
       <ul className="liste">
         <li className="image">
-          <img src={profilpicture} alt="image_candidat" />
+          <img
+            className="profil_picture"
+            src={profilpicture}
+            alt="image_candidat"
+          />
         </li>
         <div className="info">
           <li>
@@ -28,5 +33,12 @@ function CandidateCard(profilpicture, lastname, firstname, email) {
     </div>
   );
 }
+
+CandidateCard.propTypes = {
+  profilpicture: PropTypes.string.isRequired,
+  lastname: PropTypes.string.isRequired,
+  firstname: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+};
 
 export default CandidateCard;
