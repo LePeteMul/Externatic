@@ -1,0 +1,30 @@
+.vague {
+  background-image: url("https://cdn.discordapp.com/attachments/1115020679276920872/1116318619341705326/vague.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 85px;
+}
+
+.container-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.boxWithoutHeader {
+  padding: 4%;
+  background-color: white;
+  height: auto;
+}
+
+.titleHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  padding-top: 25px;
+}

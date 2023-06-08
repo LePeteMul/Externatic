@@ -84,7 +84,7 @@ function OfferCreation() {
             </div>
             <div className="confOfferCreation">
               <WhiteButton
-                buttonName="Suivant"
+                buttonName="Retour à mon espace"
                 buttonFunction={console.info("Fonction")}
               />
             </div>

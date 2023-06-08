@@ -1,0 +1,112 @@
+.Results {
+  .visible {
+    display: block;
+  }
+  .hidden {
+    display: none;
+  }
+
+  .boxWithoutHeader {
+    padding: 4%;
+    background-color: $primaryColor;
+    height: 90dvh;
+
+    .SearchFiltersTitle {
+      height: 25%;
+      color: $textColorLight;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      h1 {
+        font-size: 36px;
+        font-weight: $semiBold;
+      }
+    }
+
+    .SearchFiltersSelection {
+      height: 25%;
+      .Salary {
+        color: white;
+        h2 {
+          font-size: 20px;
+          font-weight: $regular;
+          margin-top: 5%;
+          margin-bottom: 3%;
+        }
+        p {
+          font-size: 18px;
+          font-weight: $regular;
+          padding-left: 5%;
+          padding-right: 5%;
+        }
+
+        .AnnualSalary {
+          display: flex;
+          justify-content: space-between;
+        }
+        .MensualSalary {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+
+    .SearchFiltersEnd {
+      height: 50%;
+      display: flex;
+      align-items: flex-end;
+
+      .BlackButton {
+        width: 100%;
+      }
+    }
+  }
+
+  .boxWithoutHeader2 {
+    height: auto;
+
+    .SearchResume {
+      padding: 4%;
+      background-color: $primaryColor;
+      height: 25dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+
+    .MoreFilters {
+      background-color: $buttonColorLight;
+      padding: 4% 4% 0 4%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      height: 13dvh;
+
+      .BlackButton {
+        width: 100%;
+      }
+
+      h2 {
+        font-size: 20px;
+        font-weight: $bold;
+
+        span {
+          font-size: 16px;
+          font-weight: $regular;
+        }
+      }
+    }
+
+    .JobResults {
+      padding: 4%;
+      background-color: $buttonColorLight;
+
+      .jobCard {
+        padding: 4%;
+        background-color: $buttonColorLight;
+      }
+    }
+  }
+}

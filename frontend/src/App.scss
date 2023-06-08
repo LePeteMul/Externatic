@@ -16,6 +16,9 @@ $medium: 500;
 $semiBold: 600;
 $bold: 700;
 $boxshadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+$regular: 400;
+$medium: 500;
+$semiBold: 600;
 
 * {
   margin: 0;
@@ -37,7 +40,6 @@ $boxshadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 @import "./components/Elements/InputText.scss";
 @import "./components/Elements/InputResume.scss";
 @import "./components/Elements/Textearea.scss";
-
 @import "./components/Elements/JobCard.scss";
 @import "./components/Elements/ProfilePicture.scss";
 @import "./components/Elements/WhiteButton.scss";
@@ -61,9 +63,13 @@ $boxshadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 @import "./pages/Company/CompanyJobApplications.scss";
 @import "./pages/Company/CompanyPresentation.scss";
 @import "./pages/Company/CompanyProfile.scss";
+@import "./pages/Company/Application.scss";
 @import "./pages/Company/OfferCreation.scss";
+@import "./pages/Company/ProfileCandidate.scss";
 @import "./pages/HomePage/HomePage.scss";
 @import "./pages/JobSearch/JobSearch.scss";
-@import "./pages/JobSearch/JobDetails";
+@import "./pages/JobSearch/JobDetails.scss";
+@import "./pages/JobSearch/Results.scss";
+@import "./pages/JobSearch/ApplicationConfirmation.scss";
 @import "./pages/Login/ForgottenPassword.scss";
 @import "./pages/Login/Login.scss";

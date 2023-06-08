@@ -1,11 +1,13 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import BlackButton from "../../components/Elements/BlackButton";
 import HeartButton from "../../assets/icons/heart.png";
+import logoGroupama from "../../assets/images/HomePage/logo-groupama.jpg";
 
 function JobDetails() {
   const job = {
-    logo: "./../../assets/images/HomePage/logo-groupama.jpg",
+    logo: logoGroupama,
     companyName: "Groupama",
     job: "Developpeur Web fullstack Java Angular",
     contractType: "CDI",
@@ -31,9 +33,10 @@ function JobDetails() {
         <div className="ConnectMessage">
           <p>Pour postuler à cette offre, connectez vous à votre compte</p>
         </div>
-        <br />
         <div className="OfferResume">
-          <img className="logo" src={job.logo} alt={job.companyName} />
+          <div className="OfferLogo">
+            <img className="logo" src={job.logo} alt={job.companyName} />
+          </div>
           <h1>{job.job}</h1>
           <h2>
             {job.contractType} | {job.jobCity}
@@ -71,10 +74,12 @@ function JobDetails() {
           </p>
         </div>
         <div className="ConnectButtons">
-          <BlackButton
-            buttonName="Candidater"
-            buttonFunction={console.info("Nav to CandidatePage")}
-          />
+          <NavLink to="/applicationconfirmation">
+            <BlackButton
+              buttonName="Candidater"
+              buttonFunction={console.info("Nav to CandidatePage")}
+            />
+          </NavLink>
           <div className="Heart">
             <img src={HeartButton} alt="FavoriteButton" />
           </div>
