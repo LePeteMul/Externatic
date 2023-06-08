@@ -37,7 +37,6 @@ $boxshadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 @import "./components/Elements/InputText.scss";
 @import "./components/Elements/InputResume.scss";
 @import "./components/Elements/Textearea.scss";
-
 @import "./components/Elements/JobCard.scss";
 @import "./components/Elements/ProfilePicture.scss";
 @import "./components/Elements/WhiteButton.scss";
@@ -66,6 +65,8 @@ $boxshadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 @import "./pages/Company/ProfileCandidate.scss";
 @import "./pages/HomePage/HomePage.scss";
 @import "./pages/JobSearch/JobSearch.scss";
-@import "./pages/JobSearch/JobDetails";
+@import "./pages/JobSearch/JobDetails.scss";
+@import "./pages/JobSearch/Results.scss";
+@import "./pages/JobSearch/ApplicationConfirmation.scss";
 @import "./pages/Login/ForgottenPassword.scss";
 @import "./pages/Login/Login.scss";
