@@ -1,0 +1,13 @@
+.AdminProfile {
+  .visible {
+    display: block;
+  }
+  .hidden {
+    display: none;
+  }
+  .boxWithoutHeader {
+    padding: 4%;
+    background-color: $primaryColor;
+    height: 90dvh;
+  }
+}
