@@ -10,7 +10,9 @@ function InputList({ label, inputMessage, data }) {
 
   return (
     <div className="InputList">
+      <br />
       <label htmlFor="label">{label} </label>
+      <br />
       <select className={classSelect} onChange={handleSelect}>
         <option className="notselected" value="">
           {inputMessage}

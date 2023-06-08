@@ -1,67 +1,44 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import HeaderWave from "../../components/Header/HeaderWave";
 import BlackButton from "../../components/Elements/BlackButton";
-import Handshake from "../../assets/images/HomePage/handshake.png";
-import logoAcc from "../../assets/images/HomePage/logo-acc.jpg";
-import logoAllovoisins from "../../assets/images/HomePage/logo-allovoisins.png";
-import logoKlaxoon from "../../assets/images/HomePage/logo-klaxoon.jpg";
-import logoMaincare from "../../assets/images/HomePage/logo-maincare.jpg";
-import logoU from "../../assets/images/HomePage/logo-u.png";
+import WhiteButton from "../../components/Elements/WhiteButton";
+import InputText from "../../components/Elements/InputText";
+import InputList from "../../components/Elements/InputList";
+import JobCard from "../../components/Elements/JobCard";
 
 function HomePage() {
-  const navigate = useNavigate();
-
-  const handleRegistrationClick = () => {
-    navigate("/registration");
-  };
-
-  const handleJobSearchClick = () => {
-    navigate("/jobsearch");
-  };
-
   return (
     <div className="HomePage">
       <HeaderWave />
-
-      <section className="boxWithoutHeader">
-        <div className="descriptionText">
-          Décuplez votre potentiel professionnel dans le domaine de
-          l'informatique avec EXTERNATIC : où expertise humaine et technologie
-          se rencontrent pour vous offrir des opportunités uniques.
-        </div>
-
+      <div className="boxWithoutHeader">
         <BlackButton
-          buttonName="Trouver mon futur emploi"
-          buttonFunction={handleJobSearchClick}
+          buttonName="Suivant"
+          buttonFunction={console.info("Fonction")}
         />
-
-        <div className="handshakeContainer">
-          <img className="handshake" src={Handshake} alt="handshake" />
-        </div>
-
-        <div className="descriptionText">
-          Afin de bénéficier d'une expérience personnalisée et candidater aux
-          offres d'emploi, inscrivez-vous. Vous découvrirez pourquoi des
-          milliers de professionnels de l'informatique font confiance à notre
-          plateforme pour trouver leur emploi idéal.
-        </div>
-
-        <BlackButton
-          buttonName="M'inscrire"
-          buttonFunction={handleRegistrationClick}
+        <WhiteButton
+          buttonName="Suivant"
+          buttonFunction={console.info("Fonction")}
         />
-
-        <div className="trust">Ils nous font confiance :</div>
-
-        <div className="trustingCompanies">
-          <img className="logo" src={logoAcc} alt="acc" />
-          <img className="logo" src={logoAllovoisins} alt="allovoisins" />
-          <img className="logo" src={logoKlaxoon} alt="Klaxoon" />
-          <img className="logo" src={logoMaincare} alt="Maincare" />
-          <img className="logo" src={logoU} alt="Système U" />
-        </div>
-      </section>
+        <InputText label="Label" inputMessage={"Entrez l'information"} />
+        <InputList
+          label="Label"
+          inputMessage="Selectionner un choix"
+          data={[
+            { value: "choix1", name: "Choix n°1" },
+            { value: "choix2", name: "Choix n°2" },
+            { value: "choix3", name: "Choix n°3" },
+          ]}
+        />
+        <br />
+        <JobCard
+          logo="../../assets/images/HomePage/logo-nickel.png"
+          companyName="Nickel"
+          job="Service Delivery Manager"
+          contractType="CDI"
+          jobCity="Bordeaux"
+          date="31/05/2023"
+        />
+      </div>
     </div>
   );
 }
