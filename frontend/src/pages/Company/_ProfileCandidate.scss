@@ -1,0 +1,29 @@
+.profile_candidate {
+  height: 100dvh;
+  width: 100vw;
+  background-color: $primaryColor;
+  padding-top: 50px;
+}
+
+.name {
+  display: flex;
+
+  flex-direction: column;
+  font-family: $fontFamily;
+  color: $textColorLight;
+  font-size: 15px;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.picture {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+
+  img {
+    border-radius: 50%;
+  }
+}
