@@ -13,7 +13,6 @@ function Results({ handleClickFilters }) {
 
   const jobs = [
     {
-
       logo: logoGroupama,
       companyName: "Groupama",
       job: "Developpeur Web",
@@ -22,7 +21,6 @@ function Results({ handleClickFilters }) {
       date: "06/06/2023",
     },
     {
-
       logo: logoAllovoisins,
       companyName: "AlloVoisins",
       job: "Developpeur Web",
@@ -31,7 +29,6 @@ function Results({ handleClickFilters }) {
       date: "06/06/2023",
     },
     {
-
       logo: logoklaxoon,
       companyName: "Klaxoon",
       job: "Developpeur Web",
@@ -40,7 +37,6 @@ function Results({ handleClickFilters }) {
       date: "06/06/2023",
     },
     {
-
       logo: logolengow,
       companyName: "Lengow",
       job: "Developpeur Web",
