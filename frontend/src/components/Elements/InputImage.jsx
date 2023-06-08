@@ -13,13 +13,14 @@ function InputImage({ label }) {
   };
 
   return (
-    <div className="InputText">
+    <div className="InputImage">
       <label htmlFor="fileInput">{label}</label>
       <input
         id="fileInput"
         type="file"
         accept=".png, .jpeg, .jpg, .pdf"
         onChange={handleFileChange}
+        placeholder="Choisissez un fichier"
       />
     </div>
   );

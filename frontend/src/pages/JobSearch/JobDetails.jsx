@@ -74,11 +74,8 @@ function JobDetails() {
           </p>
         </div>
         <div className="ConnectButtons">
-          <NavLink to="/applicationconfirmation">
-            <BlackButton
-              buttonName="Candidater"
-              buttonFunction={console.info("Nav to CandidatePage")}
-            />
+          <NavLink to="/candidate/applicationconfirmation">
+            <BlackButton buttonName="Candidater" />
           </NavLink>
           <div className="Heart">
             <img src={HeartButton} alt="FavoriteButton" />
