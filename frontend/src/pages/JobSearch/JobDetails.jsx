@@ -14,7 +14,7 @@ function JobDetails() {
     <div className="JobDetails">
       <HeaderBasic />
       <div className="boxWithoutHeader3">
-        {userConnected && (
+        {!userConnected && (
           <div className="ConnectMessage">
             <p>Pour postuler à cette offre, connectez vous à votre compte</p>
           </div>
