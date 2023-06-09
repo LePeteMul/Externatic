@@ -16,6 +16,15 @@
     }
 
     .OfferResume {
+      height: 25dvh;
+      .OfferLogo {
+        height: 65%;
+        img {
+          height: 100%;
+          width: auto;
+        }
+      }
+
       h1 {
         font-size: 26px;
         font-weight: $bold;
@@ -92,6 +101,8 @@
       }
 
       .Heart {
+        display: flex;
+        justify-content: center;
         width: 25%;
       }
     }
