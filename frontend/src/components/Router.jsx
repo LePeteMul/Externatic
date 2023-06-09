@@ -87,7 +87,6 @@ function Router() {
         <Route path="/company/firstlogin" element={<CompanyFirstLogin />} />
         <Route path="/company/presentation" element={<CompanyPresentation />} />
         <Route path="/company/application" element={<Application />} />
-
       </Routes>
     </div>
   );
