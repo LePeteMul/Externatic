@@ -17,7 +17,7 @@ function MenuList() {
 
   return (
     <div className="LanguageList">
-      <h3>Language</h3>
+      <h4>Language</h4>
       <select onChange={(e) => handleItemClick(e.target.value)}>
         <option value="">Sélectionnez un élément</option>
         <option value="JavaScript">JavaScript</option>
