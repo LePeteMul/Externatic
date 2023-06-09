@@ -9,13 +9,37 @@
     padding: 4%;
     background-color: $primaryColor;
     height: 90dvh;
-  }
 
-  .company {
-    width: 70%;
+    .CompanyListTitle {
+      height: 15%;
+      display: flex;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
 
-    display: flex;
-    margin: 0 auto;
-    justify-content: center;
+      h1 {
+        font-size: 36px;
+        font-weight: $regular;
+      }
+    }
+
+    .company {
+      height: 70%;
+
+      .candidateCard {
+        width: 100%;
+        margin-bottom: 5%;
+      }
+    }
+
+    .returnButton {
+      display: flex;
+      align-items: center;
+      height: 15%;
+
+      a {
+        width: 100%;
+      }
+    }
   }
 }
