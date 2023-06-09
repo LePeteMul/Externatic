@@ -1,39 +1,54 @@
 .BurgerMenu {
   position: relative;
-  z-index: 2;
+  z-index: 5;
 }
 
 .BurgerMenu .IconBurger {
   height: 4vh;
 }
 
-.menuHover {
+.BurgerMenuOpened {
   position: fixed;
-  top: 10dvh;
+  top: 0dvh;
   left: 0;
-  background-color: $primaryColor;
   width: 100vw;
   height: 100vh;
-  z-index: 2;
-}
-
-.menuHover .Wave {
-  width: 100%;
-  height: auto;
-  background-color: transparent;
-}
-
-.menuHover_ul {
-  margin-top: 6dvh;
-  padding-left: 4%;
-}
-
-.menuHover_item {
-  width: fit-content;
-  text-decoration: none;
+  z-index: 5;
   background-color: $primaryColor;
-  padding: 4%;
-  font-weight: 500;
-  font-family: $fontFamily;
-  color: $textColorLight;
+
+  .HoverHeader {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .TopHoverBar {
+    display: flex;
+    justify-content: space-between;
+    background-color: $buttonColorLight;
+    height: 10dvh;
+    padding: 0 2% 0 2%;
+    align-items: center;
+  }
+
+  .HoverHeader .Wave {
+    width: 100%;
+    height: auto;
+    background-color: $primaryColor;
+  }
+
+  .menuList {
+    margin-top: 6dvh;
+    padding-left: 4%;
+    height: 100dvh;
+  }
+
+  .menuItem {
+    width: fit-content;
+    text-decoration: none;
+    background-color: $primaryColor;
+    padding: 4%;
+    font-weight: 500;
+    font-family: $fontFamily;
+    color: $textColorLight;
+  }
 }
