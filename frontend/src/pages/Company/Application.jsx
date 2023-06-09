@@ -9,8 +9,8 @@ function Application() {
     <div>
       <HeaderBasic />
       <div className="application">
-        <div className="page_title">
-          <h1>Candidature</h1>
+        <div className="applicationTitle">
+          <h1>Candidature(s)</h1>
         </div>
 
         <div className="application_details">
@@ -38,7 +38,7 @@ function Application() {
                   name: "En cours de traitement",
                 },
                 { value: "Entretien planifié", name: "Entretien planifié" },
-                { value: "Accepté", name: "accepté" },
+                { value: "Accepté", name: "Accepté" },
                 { value: "Refusé", name: "Refusé" },
               ]}
             />

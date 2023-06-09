@@ -18,6 +18,7 @@ import CompanyFirstLogin from "../pages/Company/CompanyFirstLogin";
 import CompanyPresentation from "../pages/Company/CompanyPresentation";
 import Application from "../pages/Company/Application";
 import ProfileCandidate from "../pages/Company/ProfileCandidate";
+import CompanyProfile from "../pages/Company/CompanyProfile";
 import ApplicationConfirmation from "../pages/JobSearch/ApplicationConfirmation";
 
 import OffersList from "../pages/Admin/OffersList";
@@ -46,6 +47,9 @@ function Router() {
           path="/admin/deletionconfirmation"
           element={<ConfirmationDeletion />}
         />
+        <Route path="/admin/offerlist" element={<OffersList />} />
+        <Route path="/admin/candidatelist" element={<CandidateList />} />
+        <Route path="/admin/companylist" element={<CompanyList />} />
 
         {/* Global section */}
         <Route path="/login" element={<Login />} />
@@ -74,10 +78,6 @@ function Router() {
           path="/company/profilecandidate"
           element={<ProfileCandidate />}
         />
-        <Route path="/admin/offerlist" element={<OffersList />} />
-        <Route path="/admin/candidatelist" element={<CandidateList />} />
-        <Route path="/admin/companylist" element={<CompanyList />} />
-
         <Route path="/candidate/favorite" element={<FavoriteOffers />} />
         <Route path="/candidate/dashboard" element={<CandidateDashboard />} />
 
@@ -87,6 +87,11 @@ function Router() {
         <Route path="/company/firstlogin" element={<CompanyFirstLogin />} />
         <Route path="/company/presentation" element={<CompanyPresentation />} />
         <Route path="/company/application" element={<Application />} />
+        <Route path="/company/profile" element={<CompanyProfile />} />
+        <Route
+          path="/company/profilecandidate"
+          element={<ProfileCandidate />}
+        />
       </Routes>
     </div>
   );

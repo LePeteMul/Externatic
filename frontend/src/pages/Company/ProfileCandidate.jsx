@@ -18,7 +18,7 @@ function ProfileCandidate() {
           <h2>Marie Dupont</h2>
         </div>
 
-        <div className="inputs">
+        <div className="candidateResume">
           <InputText label="Email:" inputMessage="marie.dupont@gmail.com" />
 
           <InputText label="Telephone :" inputMessage="06 61 62 63 64" />
@@ -31,11 +31,10 @@ function ProfileCandidate() {
           />
 
           <InputText label="Consulter le CV :" inputMessage="Consulter le CV" />
+        </div>
+        <div className="profileButton">
           <NavLink to="/company/application">
-            <BlackButton
-              buttonName="Retour aux candidatures"
-              buttonFunction={console.info("Fonction")}
-            />
+            <BlackButton buttonName="Retour aux candidatures" />
           </NavLink>
         </div>
       </div>
