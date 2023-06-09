@@ -5,6 +5,7 @@ import BlackButton from "../../components/Elements/BlackButton";
 import RedButton from "../../components/Elements/RedButton";
 import InputImage from "../../components/Elements/InputImage";
 import InputList from "../../components/Elements/InputList";
+import LanguageList from "../../components/Elements/LanguageList";
 
 function CandidateProfile() {
   const handleValidation = () => {
@@ -12,6 +13,7 @@ function CandidateProfile() {
       // eslint-disable-next-line no-alert
       window.confirm("Êtes-vous sûr de vouloir valider vos modifications ?")
     ) {
+      window.location.href = "/Candidate/dashboard";
       // Code à exécuter si l'utilisateur confirme la validation
       // Par exemple, vous pouvez envoyer une requête au serveur pour sauvegarder les modifications
     }
@@ -20,6 +22,7 @@ function CandidateProfile() {
   const handleDeletion = () => {
     // eslint-disable-next-line no-alert
     if (window.confirm("Êtes-vous sûr de vouloir supprimer vos données ?")) {
+      window.location.href = "/";
       // Code à exécuter si l'utilisateur confirme la suppression
       // Par exemple, vous pouvez envoyer une requête au serveur pour supprimer les données
     }
@@ -31,9 +34,14 @@ function CandidateProfile() {
       <div className="boxWithoutHeader">
         <h3>Mon profil</h3>
         <div className="input">
-          <InputText
+          <InputList
             label="Genre"
-            inputMessage="je suis une femme un homme, non binaire"
+            inputMessage="Ex :Je suis une femme , un homme , non binaire"
+            data={[
+              { value: "genre1", name: "Je suis une femme" },
+              { value: "genre 2", name: "Je suis un homme" },
+              { value: "genre 3", name: "je suis non binaire" },
+            ]}
           />
           <InputText label="Nom" inputMessage="Ex : Dupont" />
           <InputText label="Prénom" inputMessage="Ex :Marie" />
@@ -46,15 +54,7 @@ function CandidateProfile() {
           <InputImage label="CV" accept=".pdf" />
         </div>
 
-        <InputList
-          label="Technologies Maitrisées"
-          inputMessage="Ex : JavaScript , Angular , Php , ..."
-          data={[
-            { value: "language1", name: "JavaScript" },
-            { value: "language2", name: "Metier n°2" },
-            { value: "language3", name: "Metier n°3" },
-          ]}
-        />
+        <LanguageList />
 
         <div className="validationSuppression">
           <BlackButton
