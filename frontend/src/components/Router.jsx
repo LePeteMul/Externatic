@@ -66,11 +66,14 @@ function Router() {
           element={<CandidateJobApplications />}
         />
 
-        <Route path="/favorite" element={<FavoriteOffers />} />
-        <Route path="/companyfirstlogin" element={<CompanyFirstLogin />} />
-        <Route path="/companypresentation" element={<CompanyPresentation />} />
-        <Route path="/application" element={<Application />} />
-        <Route path="/profilecandidate" element={<ProfileCandidate />} />
+        <Route path="/candidate/favorite" element={<FavoriteOffers />} />
+        <Route path="/company/firstlogin" element={<CompanyFirstLogin />} />
+        <Route path="/company/presentation" element={<CompanyPresentation />} />
+        <Route path="/candidate/application" element={<Application />} />
+        <Route
+          path="/company/profilecandidate"
+          element={<ProfileCandidate />}
+        />
         <Route path="/admin/offerlist" element={<OffersList />} />
         <Route path="/admin/candidatelist" element={<CandidateList />} />
         <Route path="/admin/companylist" element={<CompanyList />} />
@@ -84,10 +87,7 @@ function Router() {
         <Route path="/company/firstlogin" element={<CompanyFirstLogin />} />
         <Route path="/company/presentation" element={<CompanyPresentation />} />
         <Route path="/company/application" element={<Application />} />
-        <Route
-          path="/company/profilecandidate"
-          element={<ProfileCandidate />}
-        />
+
       </Routes>
     </div>
   );

@@ -4,7 +4,7 @@ import HeaderBasic from "../../components/Header/HeaderBasic";
 
 function FavoriteOffers() {
   return (
-    <div>
+    <div className="favoriteOffers">
       <HeaderBasic />
       <div className="boxWithoutHeader">
         <div className="titleFavoris">

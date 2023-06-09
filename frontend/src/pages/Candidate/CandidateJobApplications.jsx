@@ -4,7 +4,7 @@ import JobCard from "../../components/Elements/JobCard";
 
 function CandidateJobApplications() {
   return (
-    <div>
+    <div className="jobapplications">
       <HeaderBasic />
 
       <div className="boxWithoutHeader">

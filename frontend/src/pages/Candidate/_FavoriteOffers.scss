@@ -1,13 +1,15 @@
-.boxWithoutHeader {
-  padding: 4%;
-  background-color: $primaryColor;
-  min-height: 90dvh;
-  height: auto;
-  color: white;
+.favoriteOffers {
+  .boxWithoutHeader {
+    padding: 4%;
+    background-color: $primaryColor;
+    min-height: 90dvh;
+    height: auto;
+    color: white;
 
-  .titleFavoris {
-    display: flex;
-    justify-content: center;
-    font-size: 36px;
+    .titleFavoris {
+      display: flex;
+      justify-content: center;
+      font-size: 36px;
+    }
   }
 }

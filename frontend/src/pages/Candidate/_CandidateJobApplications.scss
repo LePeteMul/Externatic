@@ -1,33 +1,35 @@
-.boxWithoutHeader {
-  padding: 4%;
-  background-color: $primaryColor;
-  min-height: 90dvh;
-  height: auto;
-  color: white;
+.jobapplications {
+  .boxWithoutHeader {
+    padding: 4%;
+    background-color: $primaryColor;
+    min-height: 90dvh;
+    height: auto;
+    color: white;
 
-  .titleMesCandidature {
-    display: flex;
-    justify-content: center;
-    font-size: 36px;
-  }
+    .titleMesCandidature {
+      display: flex;
+      justify-content: center;
+      font-size: 36px;
+    }
 
-  .recu {
-    margin-top: 5%;
-  }
+    .recu {
+      margin-top: 5%;
+    }
 
-  .EnCours {
-    margin-top: 5%;
-  }
+    .EnCours {
+      margin-top: 5%;
+    }
 
-  .entretienPlanifié {
-    margin-top: 5%;
-  }
+    .entretienPlanifié {
+      margin-top: 5%;
+    }
 
-  .accepté {
-    margin-top: 5%;
-  }
+    .accepté {
+      margin-top: 5%;
+    }
 
-  .refusé {
-    margin-top: 5%;
+    .refusé {
+      margin-top: 5%;
+    }
   }
 }
