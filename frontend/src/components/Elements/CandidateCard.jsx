@@ -16,7 +16,7 @@ function CandidateCard({ profilpicture, lastname, firstname, email }) {
         </li>
         <div className="info">
           <li>
-            {lastname}" "{firstname}
+            {lastname} {firstname}
           </li>
           <li>{email}</li>
         </div>
