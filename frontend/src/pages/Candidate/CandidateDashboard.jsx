@@ -14,7 +14,7 @@ function CandidateDashboard() {
             <p className="pp-import-text"> Télécharger une photo PNG ou JPG</p>
             {/* <img src="" alt="pp-import-logo" /> */}
           </div>
-          <h1 className="titleHeader">Bonjour #name</h1>
+          <h1 className="titleHeader">Bonjour John,</h1>
         </div>
       </div>
 
@@ -33,7 +33,7 @@ function CandidateDashboard() {
           <DashboardCard
             description="Cliquer ici pour voir votre profil"
             title="Ma recherche"
-            link="/candidate/job-application"
+            link="/results"
           />
           <DashboardCard
             description="Cliquer ici pour voir votre profil"
