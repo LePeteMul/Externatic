@@ -9,13 +9,13 @@ function CompanyPresentation() {
   const navigate = useNavigate();
 
   const handleValidateModifClick = () => {
-    navigate("/pro/dashboard");
+    navigate("/company/dashboard");
 
     // + REQUETE POST DB non encore implémentée
   };
 
   const handleReturnDashboardClick = () => {
-    navigate("/pro/dashboard");
+    navigate("/company/dashboard");
   };
 
   return (
