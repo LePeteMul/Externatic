@@ -28,7 +28,6 @@ import CompanyCreation from "../pages/Admin/CompanyCreation";
 import ConfirmationCreation from "../pages/Admin/ConfirmationCreation";
 import ConfirmationDeletion from "../pages/Admin/ConfirmationDeletion";
 
-
 function Router() {
   return (
     <div>
@@ -89,7 +88,6 @@ function Router() {
           path="/company/profilecandidate"
           element={<ProfileCandidate />}
         />
-
       </Routes>
     </div>
   );
