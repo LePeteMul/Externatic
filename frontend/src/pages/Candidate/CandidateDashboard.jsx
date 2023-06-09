@@ -1,7 +1,8 @@
 import React from "react";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import DashboardCard from "../../components/Elements/DashboardCard";
-// import "./CandidateDashboard.scss";
+import InputImage from "../../components/Elements/InputImage";
+import "./CandidateDashboard.scss";
 
 function CandidateDashboard() {
   return (
@@ -11,10 +12,11 @@ function CandidateDashboard() {
       <div className="vagueCompany">
         <div className="container-top">
           <div className="pp-import">
-            <p className="pp-import-text"> Télécharger une photo PNG ou JPG</p>
+            <InputImage />
+            {/* <p className="pp-import-text"> Télécharger une photo PNG ou JPG</p> */}
             {/* <img src="" alt="pp-import-logo" /> */}
           </div>
-          <h1 className="titleHeader">Bonjour #name</h1>
+          <h1 className="titleHeader">Bonjour John,</h1>
         </div>
       </div>
 
@@ -33,7 +35,7 @@ function CandidateDashboard() {
           <DashboardCard
             description="Cliquer ici pour voir votre profil"
             title="Ma recherche"
-            link="/candidate/job-application"
+            link="/results"
           />
           <DashboardCard
             description="Cliquer ici pour voir votre profil"
