@@ -6,29 +6,30 @@ import croix from "../../assets/icons/cross.png";
 function CandidateCard({ profilpicture, lastname, firstname, email }) {
   return (
     <div className="candidateCard">
-      <ul className="liste">
-        <li className="image">
+      <div className="liste">
+        <div className="image">
           <img
             className="profil_picture"
             src={profilpicture}
             alt="image_candidat"
           />
-        </li>
-        <div className="info">
-          <li>
-            {lastname} {firstname}
-          </li>
-          <li>{email}</li>
         </div>
-      </ul>
-      <div className="navigation">
-        <button type="button">
-          {" "}
-          <img src={croix} alt="croix" />
-        </button>
-        <button type="button">
-          <img src={loupe} alt="loupe" />
-        </button>
+        <div className="info">
+          <h3>
+            {lastname} {firstname}
+          </h3>
+          <p>{email}</p>
+        </div>
+
+        <div className="navigation">
+          <button type="button">
+            {" "}
+            <img src={croix} alt="croix" />
+          </button>
+          <button type="button">
+            <img src={loupe} alt="loupe" />
+          </button>
+        </div>
       </div>
     </div>
   );

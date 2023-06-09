@@ -1,35 +1,51 @@
 .candidateCard {
   display: flex;
   align-items: center;
-  padding: 20px;
+  padding: 3%;
   display: flex;
-  gap: 40px;
   height: 100px;
-  width: 500px;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   background-color: $buttonColorLight;
   color: $buttonColorDark;
 
   .liste {
+    width: 100%;
     display: flex;
-    gap: 40px;
-  }
-  .info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
+    padding: 2px;
 
-  .navigation {
-    display: flex;
-    flex-direction: column;
-  }
+    .image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 25%;
+      height: 100px;
 
-  .profil_picture {
-    margin-top: 5px;
-    border-radius: 50%;
-    height: 90px;
-    width: 90px;
+      .profil_picture {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+
+    .info {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      h3 {
+        font-size: 20px;
+      }
+      p {
+        font-size: 16px;
+      }
+    }
+
+    .navigation {
+      width: 15%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    }
   }
 }

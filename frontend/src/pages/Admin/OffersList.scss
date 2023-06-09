@@ -9,21 +9,37 @@
     padding: 4%;
     background-color: $primaryColor;
     height: 90dvh;
-  }
 
-  .btnblack {
-    margin-top: 12px;
-  }
+    .OffersListTitle {
+      height: 15%;
+      display: flex;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
 
-  .offer {
-    margin-bottom: 120px;
-  }
+      h1 {
+        font-size: 36px;
+        font-weight: $regular;
+      }
+    }
 
-  .offer {
-    width: 70%;
+    .offer {
+      height: 70%;
 
-    display: flex;
-    margin: 0 auto;
-    justify-content: center;
+      .candidateCard {
+        width: 100%;
+        margin-bottom: 5%;
+      }
+    }
+
+    .returnButton {
+      display: flex;
+      align-items: center;
+      height: 15%;
+
+      a {
+        width: 100%;
+      }
+    }
   }
 }

@@ -1,7 +1,9 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import CandidateCard from "../../components/Elements/CandidateCard";
-import userlogo from "../../assets/icons/user.png";
+import userlogo from "../../assets/icons/userIcon2.png";
+import BlackButton from "../../components/Elements/BlackButton";
 
 function CandidateList() {
   return (
@@ -9,7 +11,7 @@ function CandidateList() {
       <HeaderBasic />
 
       <div className="boxWithoutHeader">
-        <div className="page_title">
+        <div className="CandidateListTitle">
           <h1>Candidats</h1>
         </div>
 
@@ -20,11 +22,18 @@ function CandidateList() {
             firstname="Marie"
             email="marie.dupont@gmail.com"
           />
-        </div>
-        <br />
-        <br />
-
-        <div className="candidate">
+          <CandidateCard
+            profilpicture={userlogo}
+            lastname="Dupont"
+            firstname="Marie"
+            email="marie.dupont@gmail.com"
+          />
+          <CandidateCard
+            profilpicture={userlogo}
+            lastname="Dupont"
+            firstname="Marie"
+            email="marie.dupont@gmail.com"
+          />
           <CandidateCard
             profilpicture={userlogo}
             lastname="Dupont"
@@ -32,27 +41,10 @@ function CandidateList() {
             email="marie.dupont@gmail.com"
           />
         </div>
-        <br />
-        <br />
-
-        <div className="candidate">
-          <CandidateCard
-            profilpicture={userlogo}
-            lastname="Dupont"
-            firstname="Marie"
-            email="marie.dupont@gmail.com"
-          />
-        </div>
-        <br />
-        <br />
-
-        <div className="candidate">
-          <CandidateCard
-            profilpicture={userlogo}
-            lastname="Dupont"
-            firstname="Marie"
-            email="marie.dupont@gmail.com"
-          />
+        <div className="returnButton">
+          <NavLink to="/admin/dashboard">
+            <BlackButton buttonName="Retour à l'administration" />
+          </NavLink>
         </div>
       </div>
     </div>

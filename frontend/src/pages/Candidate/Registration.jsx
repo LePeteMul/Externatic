@@ -16,7 +16,7 @@ function Registration() {
       <HeaderBasic />
 
       <div className="registration">
-        <div className="page_title">
+        <div className="registrationTitle">
           <h1>M'inscrire </h1>
         </div>
 
@@ -27,21 +27,19 @@ function Registration() {
           />
 
           <InputText
-            className="inpuuts"
             label="Mot de passe"
             inputMessage={"Entrez l'information"}
             image={eye}
           />
 
           <InputText
-            className="inpuuts"
             label="Confirmer le mot de passe :"
             inputMessage="Entrez l'information"
             image={eye}
           />
 
           <InputText
-            label="adresse mail de contact :"
+            label="Adresse mail de contact :"
             inputMessage={"Entrez l'information"}
           />
         </div>
