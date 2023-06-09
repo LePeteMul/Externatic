@@ -2,7 +2,6 @@ import React from "react";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import CandidateCard from "../../components/Elements/CandidateCard";
 import nickel from "../../assets/images/HomePage/logo-nickel.png";
-import groupama from "../../assets/images/HomePage/Groupama-logo.png";
 
 function CompanyList() {
   return (
@@ -25,11 +24,12 @@ function CompanyList() {
 
         <div className="company">
           <CandidateCard
-            profilpicture={groupama}
-            lastname="Groupama"
-            email="admin.groupama@gmail.com"
+            profilpicture={nickel}
+            lastname="Nickel"
+            email="admin.nickel@gmail.com"
           />
         </div>
+
         <br />
         <br />
         <div className="company">
@@ -43,9 +43,9 @@ function CompanyList() {
         <br />
         <div className="company">
           <CandidateCard
-            profilpicture={groupama}
-            lastname="Groupama"
-            email="admin.groupama@gmail.com"
+            profilpicture={nickel}
+            lastname="Nickel"
+            email="admin.nickel@gmail.com"
           />
         </div>
       </div>
