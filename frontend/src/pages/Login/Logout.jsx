@@ -9,7 +9,7 @@ function Logout() {
       <HeaderWave />
       <div className="boxWithoutHeader">
         <div className="logoutMessage">
-          <h1>Déconnecté</h1>
+          <h1>Vous êtes à présent déconnecté.</h1>
         </div>
         <div className="backHome">
           <NavLink to="/">
