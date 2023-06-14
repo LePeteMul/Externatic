@@ -24,7 +24,7 @@ import ApplicationConfirmation from "../pages/JobSearch/ApplicationConfirmation"
 import OffersList from "../pages/Admin/OffersList";
 import CandidateList from "../pages/Admin/CandidateList";
 import CompanyList from "../pages/Admin/CompanyList";
-
+import AdminProfile from "../pages/Admin/AdminProfile";
 import CompanyCreation from "../pages/Admin/CompanyCreation";
 import ConfirmationCreation from "../pages/Admin/ConfirmationCreation";
 import ConfirmationDeletion from "../pages/Admin/ConfirmationDeletion";
@@ -37,7 +37,7 @@ function Router() {
 
         {/* Admin section */}
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
-        <Route path="/admin/profile" element={<AdminDashboard />} />
+        <Route path="/admin/profile" element={<AdminProfile />} />
         <Route path="/admin/companycreation" element={<CompanyCreation />} />
         <Route
           path="/admin/creationconfirmation"

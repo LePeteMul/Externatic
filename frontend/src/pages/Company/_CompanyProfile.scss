@@ -1,4 +1,4 @@
-.CompanyCreation {
+.CompanyProfile {
   .visible {
     display: block;
   }
@@ -8,10 +8,10 @@
   .boxWithoutHeader {
     padding: 4%;
     background-color: $primaryColor;
-    height: 90dvh;
+    min-height: 90dvh;
 
-    .CompanyCreationTitle {
-      height: 15%;
+    .CompanyProfileTitle {
+      padding-bottom: 10%;
       display: flex;
       text-align: center;
       align-items: center;
@@ -20,16 +20,14 @@
       h1 {
         color: $textColorLight;
         font-size: 36px;
-        font-weight: $regular;
+        font-weight: $semiBold;
       }
     }
 
-    .CompanyCreationInformations {
-      height: 60%;
-
+    .CompanyProfileInformations {
       .InputText {
         font-size: 20px;
-        font-weight: $semiBold;
+        font-weight: $regular;
       }
 
       .InputImage {
@@ -37,18 +35,18 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        margin-top: 5%;
 
         input {
-          width: 180px;
-          height: 100px;
+          width: 120px;
+          max-width: 50%;
+          height: 120px;
         }
       }
     }
 
-    .CompanyCreationEnd {
-      height: 25%;
-      display: flex;
-      align-items: flex-end;
+    .CompanyProfileEnd {
+      padding-top: 10%;
     }
     a {
       width: 100%;

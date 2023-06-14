@@ -1,4 +1,4 @@
-.CompanyList {
+.AdminProfile {
   .visible {
     display: block;
   }
@@ -10,7 +10,7 @@
     background-color: $primaryColor;
     min-height: 90dvh;
 
-    .CompanyListTitle {
+    .AdminProfileTitle {
       padding-bottom: 10%;
       display: flex;
       text-align: center;
@@ -24,19 +24,23 @@
       }
     }
 
-    .company {
-      .candidateCard {
-        width: 100%;
-        margin-bottom: 5%;
+    .AdminProfileInformations {
+      .InputText {
+        font-size: 20px;
+        font-weight: $regular;
+      }
+
+      .InputList {
+        display: flex;
+        flex-direction: column;
       }
     }
 
-    .returnButton {
+    .AdminProfileEnd {
       padding-top: 10%;
-
-      a {
-        width: 100%;
-      }
+    }
+    a {
+      width: 100%;
     }
   }
 }

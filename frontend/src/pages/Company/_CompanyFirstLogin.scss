@@ -2,6 +2,7 @@
   .boxWithoutHeader {
     padding: 4%;
     background-color: $primaryColor;
+    min-height: 90dvh;
 
     .welcomeText {
       margin-top: 20vh;
