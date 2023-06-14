@@ -1,55 +1,56 @@
 .BurgerMenu {
-  position: relative;
-  z-index: 5;
-}
-
-.BurgerMenu .IconBurger {
-  height: 4vh;
-  background-color: white;
-}
-
-.BurgerMenuOpened {
-  position: fixed;
-  top: 0dvh;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 5;
-  background-color: $primaryColor;
-
-  .HoverHeader {
+  .BurgerContainer {
     display: flex;
-    flex-direction: column;
   }
 
-  .TopHoverBar {
-    display: flex;
-    justify-content: space-between;
-    background-color: $buttonColorLight;
-    height: 10dvh;
-    padding: 0 2% 0 2%;
-    align-items: center;
+  .IconBurger {
+    height: 4dvh;
+    background-color: $textColorLight;
   }
 
-  .HoverHeader .Wave {
-    width: 100%;
-    height: auto;
+  .BurgerMenuOpened {
+    position: fixed;
+    top: 0dvh;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
     background-color: $primaryColor;
-  }
 
-  .menuList {
-    margin-top: 6dvh;
-    padding-left: 4%;
-    height: 100dvh;
-  }
+    .HoverHeader {
+      display: flex;
+      flex-direction: column;
+    }
 
-  .menuItem {
-    width: fit-content;
-    text-decoration: none;
-    background-color: $primaryColor;
-    padding: 4%;
-    font-weight: 500;
-    font-family: $fontFamily;
-    color: $textColorLight;
+    .TopHoverBar {
+      display: flex;
+      justify-content: space-between;
+      background-color: $buttonColorLight;
+      height: 10dvh;
+      padding: 0 2% 0 2%;
+      align-items: center;
+    }
+
+    .HoverHeader .Wave {
+      width: 100%;
+      height: auto;
+      background-color: $primaryColor;
+    }
+
+    .menuList {
+      margin-top: 6dvh;
+      padding-left: 4%;
+      height: 100dvh;
+    }
+
+    .menuItem {
+      // width: fit-content;
+      text-decoration: none;
+      background-color: $primaryColor;
+      padding: 4%;
+      // font-weight: 500;
+      // font-family: $fontFamily;
+      color: $textColorLight;
+    }
   }
 }

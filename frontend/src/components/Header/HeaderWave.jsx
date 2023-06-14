@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import waveWhite from "../../assets/images/Header/wave_white.png";
 import logo from "../../assets/images/Header/logoExternatic.svg";
@@ -7,12 +7,6 @@ import BurgerMenu from "./BurgerMenu";
 import ProfilePicture from "../Elements/ProfilePicture";
 
 function HeaderWave({ open, handleOpen }) {
-  const navigate = useNavigate();
-
-  const backtoHome = () => {
-    navigate("/");
-  };
-
   return (
     <>
       {" "}
@@ -24,9 +18,9 @@ function HeaderWave({ open, handleOpen }) {
             open={open}
             handleOpen={handleOpen}
           />
-          <button type="button" onClick={backtoHome}>
+          <NavLink to="/">
             <img className="Logo" src={logo} alt="Le Logo" />
-          </button>
+          </NavLink>
           <ProfilePicture />
         </div>
 

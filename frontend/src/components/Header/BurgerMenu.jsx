@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import burger from "../../assets/icons/burgerMenu.png";
 import logo from "../../assets/images/Header/logoExternatic.svg";
@@ -7,17 +7,11 @@ import waveWhite from "../../assets/images/Header/wave_white.png";
 import ProfilePicture from "../Elements/ProfilePicture";
 
 function BurgerMenu({ handleOpen }) {
-  const navigate = useNavigate();
-
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
     setOpen(!open);
     handleOpen(!open);
-  };
-
-  const backtoHome = () => {
-    navigate("/");
   };
 
   useEffect(() => {
@@ -37,7 +31,7 @@ function BurgerMenu({ handleOpen }) {
   if (open === false) {
     return (
       <div className="BurgerMenu">
-        <button type="button" onClick={handleClick}>
+        <button className="BurgerContainer" type="button" onClick={handleClick}>
           <img className="IconBurger" src={burger} alt="Le Burger" />
         </button>
       </div>
@@ -48,12 +42,16 @@ function BurgerMenu({ handleOpen }) {
       <section className="BurgerMenuOpened">
         <div className="HoverHeader">
           <div className="TopHoverBar">
-            <button type="button" onClick={handleClick}>
+            <button
+              className="BurgerContainer"
+              type="button"
+              onClick={handleClick}
+            >
               <img className="IconBurger" src={burger} alt="Le Burger" />
             </button>
-            <button type="button" onClick={backtoHome}>
+            <NavLink to="/">
               <img className="Logo" src={logo} alt="Le Logo" />
-            </button>
+            </NavLink>
             <ProfilePicture />
           </div>
           <img className="Wave" src={waveWhite} alt="La Vague Blanche" />

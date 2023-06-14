@@ -5,9 +5,14 @@
   padding: 0 2% 0 2%;
   height: 10dvh;
 
+  .BurgerMenuContainer {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
   .Logo {
     height: 8vh;
-    z-index: 3;
-    background-color: white;
+    background-color: $buttonColorLight;
   }
 }
