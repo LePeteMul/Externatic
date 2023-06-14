@@ -28,6 +28,9 @@ import AdminProfile from "../pages/Admin/AdminProfile";
 import CompanyCreation from "../pages/Admin/CompanyCreation";
 import ConfirmationCreation from "../pages/Admin/ConfirmationCreation";
 import ConfirmationDeletion from "../pages/Admin/ConfirmationDeletion";
+import LegalInformations from "../pages/LegalInformations/LegalInformations";
+import Contact from "../pages/Contact/Contact";
+import Logout from "../pages/Login/Logout";
 
 function Router() {
   return (
@@ -53,10 +56,13 @@ function Router() {
 
         {/* Global section */}
         <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
         <Route path="/jobsearch" element={<JobSearch />} />
         <Route path="/results" element={<Results />} />
         <Route path="/job/:id" element={<JobDetails />} />
         <Route path="/jobdetails" element={<JobDetails />} />
+        <Route path="/legalinformations" element={<LegalInformations />} />
+        <Route path="/contact" element={<Contact />} />
 
         {/* Candidate section */}
         <Route
