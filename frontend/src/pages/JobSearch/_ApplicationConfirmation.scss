@@ -1,29 +1,30 @@
 .ApplicationConfirmation {
   .boxWithoutHeader {
-    height: 90dvh;
     padding: 4%;
     background-color: $primaryColor;
+    height: 90dvh;
 
     .ApplicationMessage {
+      padding-top: 20%;
+      padding-bottom: 10%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       text-align: center;
-      height: 75%;
       font-size: 20px;
+      color: $textColorLight;
+
       h1 {
-        color: $textColorLight;
         font-size: 20px;
         font-weight: $medium;
       }
       h2 {
-        color: $textColorLight;
         font-size: 20px;
         font-weight: $regular;
       }
     }
     .ResultsButton {
-      height: 25%;
+      padding-top: 20%;
     }
   }
 }

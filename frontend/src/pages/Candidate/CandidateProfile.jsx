@@ -32,7 +32,9 @@ function CandidateProfile() {
     <div className="CandidateProfile">
       <HeaderBasic />
       <div className="boxWithoutHeader">
-        <h3>Mon profil</h3>
+        <div className="candidateProfileTitle">
+          <h1>Mon profil</h1>
+        </div>
         <div className="input">
           <InputList
             label="Genre"

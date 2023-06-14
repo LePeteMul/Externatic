@@ -1,45 +1,45 @@
 .registration {
-  background-color: $primaryColor;
-  width: 100vw;
-  height: 90dvh;
-  padding: 4%;
+  .boxWithoutHeader {
+    padding: 4%;
+    background-color: $primaryColor;
+    min-height: 90dvh;
 
-  .registrationTitle {
-    color: $textColorLight;
-    height: 15%;
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+    .registrationTitle {
+      padding-bottom: 10%;
+      display: flex;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
 
-    h1 {
-      font-size: 36px;
-      font-weight: $regular;
+      h1 {
+        color: $textColorLight;
+        font-size: 36px;
+        font-weight: $semiBold;
+      }
     }
-  }
 
-  .inputs {
-    height: 55%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+    .registrationDetails {
+      .InputText {
+        font-size: 20px;
+        font-weight: $regular;
+      }
+    }
 
-  .btn_registration {
-    height: 10%;
+    .btn_registration {
+      padding-top: 10%;
 
-    .BlackButton {
+      .BlackButton {
+        width: 100%;
+      }
+    }
+
+    .conf_registration {
       width: 100%;
+      margin-top: 5%;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      color: $textColorLight;
     }
-  }
-
-  .conf_registration {
-    height: 10%;
-    width: 100%;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    color: $textColorLight;
   }
 }
