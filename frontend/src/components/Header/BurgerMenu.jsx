@@ -62,8 +62,12 @@ function BurgerMenu({ handleOpen }) {
             <li className="menuItem">Mon espace</li>
           </Link>
           <li className="menuItem">Contact</li>
-          <li className="menuItem">Mentions légales</li>
-          <li className="menuItem">Se déconnecter</li>
+          <Link to="/legalinformations">
+            <li className="menuItem">Mentions légales</li>{" "}
+          </Link>
+          <Link to="/logout">
+            <li className="menuItem">Se déconnecter</li>
+          </Link>
         </ul>
       </section>
     </div>
