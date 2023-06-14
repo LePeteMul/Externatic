@@ -12,38 +12,32 @@ function Registration() {
   };
 
   return (
-    <div>
+    <div className="registration">
       <HeaderBasic />
-
-      <div className="registration">
+      <div className="boxWithoutHeader">
         <div className="registrationTitle">
           <h1>M'inscrire </h1>
         </div>
-
-        <div className="inputs">
+        <div className="registrationDetails">
           <InputText
             label="Nom du contact :"
             inputMessage={"Entrez l'information"}
           />
-
           <InputText
             label="Mot de passe"
             inputMessage={"Entrez l'information"}
             image={eye}
           />
-
           <InputText
             label="Confirmer le mot de passe :"
             inputMessage="Entrez l'information"
             image={eye}
           />
-
           <InputText
             label="Adresse mail de contact :"
             inputMessage={"Entrez l'information"}
           />
         </div>
-
         <div className="btn_registration">
           <BlackButton
             buttonName="Je m'inscris"

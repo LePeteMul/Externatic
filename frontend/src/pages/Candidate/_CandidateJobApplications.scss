@@ -3,33 +3,51 @@
     padding: 4%;
     background-color: $primaryColor;
     min-height: 90dvh;
-    height: auto;
-    color: white;
 
     .titleMesCandidature {
+      padding-bottom: 10%;
       display: flex;
+      text-align: center;
+      align-items: center;
       justify-content: center;
-      font-size: 36px;
+
+      h1 {
+        color: $textColorLight;
+        font-size: 36px;
+        font-weight: $semiBold;
+      }
     }
 
-    .recu {
-      margin-top: 5%;
-    }
+    .applicationDetails {
+      font-size: 20px;
+      font-weight: $regular;
+      color: $textColorLight;
 
-    .EnCours {
-      margin-top: 5%;
-    }
+      .recu {
+        margin-top: 5%;
+      }
 
-    .entretienPlanifié {
-      margin-top: 5%;
-    }
+      .enCours {
+        margin-top: 5%;
+      }
 
-    .accepté {
-      margin-top: 5%;
-    }
+      .entretienPlanifie {
+        margin-top: 5%;
+      }
 
-    .refusé {
-      margin-top: 5%;
+      .accepte {
+        margin-top: 5%;
+      }
+
+      .refuse {
+        margin-top: 5%;
+      }
+    }
+    .jobapplicationsEnd {
+      padding-top: 10%;
+    }
+    a {
+      width: 100%;
     }
   }
 }

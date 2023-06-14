@@ -8,28 +8,28 @@
   .boxWithoutHeader {
     padding: 4%;
     background-color: $primaryColor;
-    height: 90dvh;
+    min-height: 90dvh;
 
     .JobSearchTitle {
-      height: 25%;
-      color: $textColorLight;
+      padding-top: 10%;
+      padding-bottom: 10%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
 
       h1 {
+        color: $textColorLight;
         font-size: 36px;
         font-weight: $semiBold;
       }
 
       h2 {
+        color: $textColorLight;
         font-size: 16px;
       }
     }
     .JobSearchSelection {
-      height: 25%;
-
       .InputList {
         font-size: 16px;
       }
@@ -38,7 +38,7 @@
     .JobSearchEnd {
       display: flex;
       align-items: flex-end;
-      height: 47%;
+      padding-top: 20%;
 
       .BlackButton {
         width: 100%;
