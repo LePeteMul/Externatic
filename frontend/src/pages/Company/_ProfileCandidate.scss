@@ -1,16 +1,11 @@
 .profile_candidate {
-  min-height: 90dvh;
-  background-color: $primaryColor;
   padding: 4%;
+  background-color: $primaryColor;
+  min-height: 90dvh;
 
   .name {
-    height: 5%;
-    display: flex;
-    flex-direction: column;
-    font-family: $fontFamily;
     color: $textColorLight;
     font-size: 15px;
-    margin: 0 auto;
     text-align: center;
   }
 
@@ -18,25 +13,14 @@
     height: 10%;
     display: flex;
     justify-content: center;
-    width: 80%;
-    margin: 0 auto;
 
     img {
       border-radius: 50%;
     }
   }
 
-  .candidateResume {
-    height: 70%;
-    width: 100%;
-    margin: 0;
-  }
-
   .profileButton {
-    display: flex;
-    align-items: center;
-    height: 15%;
-    margin-top: 5%;
+    padding-top: 10%;
 
     a {
       width: 100%;

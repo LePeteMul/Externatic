@@ -1,26 +1,28 @@
 .CompanyPresentation {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-
   .boxWithoutHeader {
-    flex: 1;
     padding: 4%;
     background-color: $primaryColor;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-bottom: 8%;
+    min-height: 90dvh;
 
     .title {
-      color: $textColorLight;
-      margin-top: 2dvh;
-      font-size: 32px;
-      font-weight: 500;
+      padding-bottom: 10%;
+      display: flex;
       text-align: center;
+      align-items: center;
+      justify-content: center;
+
+      h1 {
+        color: $textColorLight;
+        font-size: 36px;
+        font-weight: $semiBold;
+      }
     }
     .textField {
       min-height: 50dvh;
+    }
+
+    .actionbuttons {
+      padding-top: 10%;
     }
   }
 }

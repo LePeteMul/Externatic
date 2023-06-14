@@ -6,9 +6,9 @@ import InputList from "../../components/Elements/InputList";
 
 function Application() {
   return (
-    <div>
+    <div className="application">
       <HeaderBasic />
-      <div className="application">
+      <div className="boxWithoutHeader">
         <div className="applicationTitle">
           <h1>Candidature(s)</h1>
         </div>
@@ -18,7 +18,7 @@ function Application() {
           <h2 className="date_location">31/05/2023 | CDI | Bordeaux</h2>
         </div>
 
-        <div className="Card_application">
+        <div className="card_application">
           <div className="card_info">
             <img className="user_pic" src={user} alt="" srcSet="" />
             <div className="name_email">

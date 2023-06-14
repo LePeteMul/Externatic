@@ -23,9 +23,7 @@ function CompanyPresentation() {
       <HeaderBasic />
       <section className="boxWithoutHeader">
         <div className="title">
-          Présentation de
-          <br />
-          votre entreprise
+          <h1>Présentation de votre entreprise</h1>
         </div>
         <div className="textAreaContainer">
           <Textearea className="textPres" rows={16} />

@@ -1,70 +1,66 @@
 .application {
-  height: 100dvh;
-  width: 100vw;
-  background-color: $primaryColor;
+  .boxWithoutHeader {
+    padding: 4%;
+    background-color: $primaryColor;
+    min-height: 90dvh;
 
-  .applicationTitle {
-    height: 15%;
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-
-    h1 {
-      color: $textColorLight;
-      font-size: 36px;
-      font-weight: $regular;
-    }
-  }
-
-  .application_details {
-    display: flex;
-    flex-direction: column;
-    font-family: $fontFamily;
-    color: $textColorLight;
-    font-size: 15px;
-    width: 80%;
-    margin: 25px auto;
-    text-align: center;
-  }
-
-  .Card_application {
-    width: 80%;
-    min-height: 100px;
-    background-color: rgb(200, 193, 193);
-    border-radius: 12px;
-    display: flex;
-    margin: 0 auto;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-
-    .card_info {
+    .applicationTitle {
+      padding-bottom: 10%;
       display: flex;
-      justify-content: space-between;
-      width: 100%;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+
+      h1 {
+        color: $textColorLight;
+        font-size: 36px;
+        font-weight: $semiBold;
+      }
     }
 
-    .user_pic {
-      width: 15%;
-      border-radius: 50%;
-      height: 60px;
-      max-height: 100%;
-      width: 70px;
-      max-width: 100%;
-      padding: 2px;
+    .application_details {
+      padding-bottom: 10%;
+      display: flex;
+      flex-direction: column;
+      font-family: $fontFamily;
+      color: $textColorLight;
+      font-size: 15px;
+      text-align: center;
     }
 
-    .name_email {
-      width: 70%;
-      padding: 2px;
-    }
+    .card_application {
+      min-height: 100px;
+      background-color: $buttonColorLight;
+      border-radius: 12px;
+      display: flex;
+      padding: 15px;
+      flex-direction: column;
 
-    .loupe {
-      width: 15%;
-      height: 35px;
-      width: 35px;
-      padding: 2px;
+      .card_info {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .user_pic {
+        border-radius: 50%;
+        height: 60px;
+        max-width: 100%;
+      }
+
+      .loupe {
+        height: 50%;
+        width: auto;
+      }
+
+      .status {
+        .notselected {
+          background-color: #d9d9d9;
+        }
+        .selected {
+          background-color: #d9d9d9;
+        }
+      }
     }
   }
 }
