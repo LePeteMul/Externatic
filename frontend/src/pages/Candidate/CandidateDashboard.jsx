@@ -2,7 +2,7 @@ import React from "react";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import DashboardCard from "../../components/Elements/DashboardCard";
 import InputImage from "../../components/Elements/InputImage";
-import "./CandidateDashboard.scss";
+import "./_CandidateDashboard.scss";
 
 function CandidateDashboard() {
   return (

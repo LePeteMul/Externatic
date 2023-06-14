@@ -1,7 +1,7 @@
 import React from "react";
 // eslint-disable-next-line import/no-duplicates
 import PropTypes from "prop-types";
-import "./DashboardCard.scss";
+import "./_DashboardCard.scss";
 
 function DashboardCard({ title, description, link }) {
   const handleClick = () => {

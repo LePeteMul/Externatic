@@ -1,0 +1,32 @@
+.AdminDashboard {
+  .vague {
+    background-image: url("./../../assets/images/Dashboard/vague.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 85px;
+  }
+
+  .container-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .boxWithoutHeader {
+    padding: 4%;
+    background-color: $buttonColorLight;
+    height: auto;
+  }
+
+  .titleHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    color: $textColorLight;
+    padding-top: 25px;
+    text-align: center;
+  }
+}

@@ -1,10 +1,16 @@
-.CompanyPresentation {
+.AdminProfile {
+  .visible {
+    display: block;
+  }
+  .hidden {
+    display: none;
+  }
   .boxWithoutHeader {
     padding: 4%;
     background-color: $primaryColor;
     min-height: 90dvh;
 
-    .title {
+    .AdminProfileTitle {
       padding-bottom: 10%;
       display: flex;
       text-align: center;
@@ -17,12 +23,24 @@
         font-weight: $semiBold;
       }
     }
-    .textField {
-      min-height: 50dvh;
+
+    .AdminProfileInformations {
+      .InputText {
+        font-size: 20px;
+        font-weight: $regular;
+      }
+
+      .InputList {
+        display: flex;
+        flex-direction: column;
+      }
     }
 
-    .actionbuttons {
+    .AdminProfileEnd {
       padding-top: 10%;
+    }
+    a {
+      width: 100%;
     }
   }
 }
