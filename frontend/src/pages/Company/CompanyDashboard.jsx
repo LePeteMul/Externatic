@@ -37,7 +37,7 @@ function CompanyDashboard() {
           <DashboardCard
             description="Cliquer ici pour voir votre profil"
             title="Gestion des offres et candidatures"
-            link="/company/profilecandidate"
+            link="/company/application"
           />
           <DashboardCard
             description="Cliquer ici pour voir votre profil"
