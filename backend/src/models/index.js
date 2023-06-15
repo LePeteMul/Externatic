@@ -29,10 +29,34 @@ pool.getConnection().catch(() => {
 
 const models = {};
 
-const ItemManager = require("./ItemManager");
+const ApplicationManager = require("./ApplicationManager");
+const CompanyManager = require("./CompanyManager");
+const ContractManager = require("./ContractManager");
+const FavoriteManager = require("./FavoriteManager");
+const OfferManager = require("./OfferManager");
+const StatusManager = require("./StatusManager");
+const TechnoManager = require("./TechnoManager");
+const UserManager = require("./UserManager");
 
-models.item = new ItemManager();
-models.item.setDatabase(pool);
+// Initialisation des managers
+models.application = new ApplicationManager();
+models.company = new CompanyManager();
+models.contract = new ContractManager();
+models.favorite = new FavoriteManager();
+models.offer = new OfferManager();
+models.status = new StatusManager();
+models.techno = new TechnoManager();
+models.user = new UserManager();
+
+// Définition des bases de données en fonction des managers
+models.application.setDatabase(pool);
+models.company.setDatabase(pool);
+models.contract.setDatabase(pool);
+models.favorite.setDatabase(pool);
+models.offer.setDatabase(pool);
+models.status.setDatabase(pool);
+models.techno.setDatabase(pool);
+models.user.setDatabase(pool);
 
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model

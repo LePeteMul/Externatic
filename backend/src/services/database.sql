@@ -27,24 +27,30 @@ CREATE DATABASE externatic;
 
 USE externatic;
 
-
+CREATE TABLE contract(
+  id INT NOT NULL AUTO_INCREMENT,
+  contract_type VARCHAR(250),
+  PRIMARY KEY (id)
+);
 
 CREATE TABLE user (
   id INT NOT NULL AUTO_INCREMENT,
-  gender VARCHAR(200),
+  gender VARCHAR(250),
   lastname VARCHAR(250) NOT NULL,
-  firstname VARCHAR(250) NOT NULL,
+  firstname VARCHAR(250),
   email VARCHAR(450) NOT NULL,
-  phone VARCHAR(450) NOT NULL,
+  phone VARCHAR(450),
   city VARCHAR(250),
   cv TEXT,
   admin BOOLEAN NOT NULL,
   password VARCHAR(250) NOT NULL,
   profil_picture VARCHAR(250),
   contact_mode VARCHAR(250),
-  job_pref VARCHAR(250) NOT NULL,
-  job_city VARCHAR(300) NOT NULL,
-  PRIMARY KEY (id)
+  pref_job VARCHAR(250),
+  job_city VARCHAR(300),
+  pref_contract INT,
+  PRIMARY KEY (id),
+  FOREIGN KEY ( pref_contract) REFERENCES contract(id)
 );
 
 CREATE TABLE company(
@@ -53,15 +59,12 @@ CREATE TABLE company(
   email VARCHAR(450) NOT NULL,
   password VARCHAR(250) NOT NULL,
   phone VARCHAR(450) NOT NULL,
-  logo VARCHAR(300) NOT NULL,
+  logo VARCHAR(300),
+  presentation TEXT,
   PRIMARY KEY (id)
 );
 
-CREATE TABLE contract(
-  id INT NOT NULL AUTO_INCREMENT,
-  contract_type VARCHAR(250),
-  PRIMARY KEY (id)
-);
+
 
 CREATE TABLE status(
   id INT NOT NULL AUTO_INCREMENT,
@@ -127,4 +130,11 @@ CREATE TABLE user_techno(
   FOREIGN KEY (techno_id) REFERENCES techno (id),
   PRIMARY KEY (user_id, techno_id)
 );
+
+INSERT INTO contract (contract_type) VALUES ("CDI");
+
+
+INSERT INTO user (gender,lastname,firstname,email,phone,city,cv,admin,password,profil_picture, contact_mode,pref_job,job_city, pref_contract)VALUES ("Feminine","Dupont", "Marie", "marie.dupont@gmail.com", "06 62 19 98", "Nantes","cv", 0, "marie", "profilpic","email", "Dévloppeuse front-end","Nantes", 1);
+
+INSERT INTO company (company_name, email, password, phone, logo, presentation) VALUES ("Groupama", "groupama@gmail.com", "groupama", "00", "logogroupama", "We are Groupama");
 
