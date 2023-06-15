@@ -3,9 +3,9 @@ import HeaderBasic from "../../components/Header/HeaderBasic";
 import InputText from "../../components/Elements/InputText";
 import BlackButton from "../../components/Elements/BlackButton";
 import RedButton from "../../components/Elements/RedButton";
-import InputImage from "../../components/Elements/InputImage";
 import InputList from "../../components/Elements/InputList";
 import LanguageList from "../../components/Elements/LanguageList";
+import InputCv from "../../components/Elements/InputCv";
 
 function CandidateProfile() {
   const handleValidation = () => {
@@ -53,7 +53,7 @@ function CandidateProfile() {
         </div>
 
         <div className="input">
-          <InputImage label="CV" accept=".pdf" />
+          <InputCv label="CV" accept=".pdf" />
         </div>
 
         <LanguageList />
