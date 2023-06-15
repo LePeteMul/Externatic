@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-function InputText({ label, inputMessage, image, image2, image3 }) {
+function LargeInputText({ label, inputMessage, image, image2, image3 }) {
   const [entry, setEntry] = useState(inputMessage);
 
   const handleClickInput = () => {
@@ -13,9 +13,9 @@ function InputText({ label, inputMessage, image, image2, image3 }) {
   };
 
   return (
-    <div className="InputText">
+    <div className="LargeInputText">
       <label htmlFor="label">{label} </label>
-      <input
+      <textarea
         className={entry === inputMessage ? "notselected" : "selected"}
         type="text"
         value={entry}
@@ -29,7 +29,7 @@ function InputText({ label, inputMessage, image, image2, image3 }) {
   );
 }
 
-InputText.propTypes = {
+LargeInputText.propTypes = {
   label: PropTypes.string.isRequired,
   inputMessage: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
@@ -37,4 +37,4 @@ InputText.propTypes = {
   image3: PropTypes.string.isRequired,
 };
 
-export default InputText;
+export default LargeInputText;

@@ -29,4 +29,21 @@
     padding-top: 25px;
     text-align: center;
   }
+
+  .boxInside {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .boxInside > * {
+    flex-basis: calc(50% - 10px);
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 480px) {
+    .boxInside > * {
+      flex-basis: 100%;
+    }
+  }
 }
