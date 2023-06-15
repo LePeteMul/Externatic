@@ -5,54 +5,45 @@ import HeaderBasic from "../../components/Header/HeaderBasic";
 import BlackButton from "../../components/Elements/BlackButton";
 
 function FavoriteOffers() {
+  const offers = [
+    {
+      companyLogo: "https://www.moneyvox.fr/i/media/05l/005668l5dd.jpg",
+      companyName: "Nickel",
+      job: "Chef de projet",
+      contractType: "CDI",
+      jobCity: "Nantes",
+      date: "06/06/2023",
+    },
+    {
+      companyLogo: "https://www.moneyvox.fr/i/media/05l/005668l5dd.jpg",
+      companyName: "Nickel",
+      job: "Chef de projet",
+      contractType: "CDI",
+      jobCity: "Nantes",
+      date: "06/06/2023",
+    },
+  ];
+
   return (
     <div className="favoriteOffers">
       <HeaderBasic />
       <div className="boxWithoutHeader">
         <div className="titleFavoris">
-          <h1>Favoris</h1>
+          <h1>Mes favoris</h1>
         </div>
         <div className="cardFavoris">
-          <JobCard
-            logo="https://www.moneyvox.fr/i/media/05l/005668l5dd.jpg"
-            companyName="Nickel"
-            job="Chef de projet"
-            contractType="CDI"
-            jobCity="Nantes"
-            date="06/06/2023"
-          />
-          <JobCard
-            logo="https://www.moneyvox.fr/i/media/05l/005668l5dd.jpg"
-            companyName="Nickel"
-            job="Chef de projet"
-            contractType="CDI"
-            jobCity="Nantes"
-            date="06/06/2023"
-          />
-          <JobCard
-            logo="https://www.moneyvox.fr/i/media/05l/005668l5dd.jpg"
-            companyName="Nickel"
-            job="Chef de projet"
-            contractType="CDI"
-            jobCity="Nantes"
-            date="06/06/2023"
-          />
-          <JobCard
-            logo="https://www.moneyvox.fr/i/media/05l/005668l5dd.jpg"
-            companyName="Nickel"
-            job="Chef de projet"
-            contractType="CDI"
-            jobCity="Nantes"
-            date="06/06/2023"
-          />{" "}
-          <JobCard
-            logo="https://www.moneyvox.fr/i/media/05l/005668l5dd.jpg"
-            companyName="Nickel"
-            job="Chef de projet"
-            contractType="CDI"
-            jobCity="Nantes"
-            date="06/06/2023"
-          />
+          {offers.map((offer) => {
+            return (
+              <JobCard
+                logo={offer.companyLogo}
+                companyName={offer.companyName}
+                job={offer.job}
+                contractType={offer.contractType}
+                jobCity={offer.jobCity}
+                date={offer.date}
+              />
+            );
+          })}
         </div>
         <div className="favoriteEnd">
           <NavLink to="/candidate/dashboard">

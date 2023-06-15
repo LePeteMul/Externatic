@@ -1,13 +1,47 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
-import logoGroupama from "../../assets/images/HomePage/logo-groupama.jpg";
-import Lengow from "../../assets/images/HomePage/logo-lengow.png";
-import CandidateCard from "../../components/Elements/CandidateCard";
+import JobCard from "../../components/Elements/JobCard";
 import logoAllovoisins from "../../assets/images/HomePage/logo-allovoisins.png";
+import logoGroupama from "../../assets/images/HomePage/logo-groupama.jpg";
 import BlackButton from "../../components/Elements/BlackButton";
 
 function OffersList() {
+  const offers = [
+    {
+      companyLogo: logoGroupama,
+      companyName: "Nickel",
+      job: "Chef de projet",
+      contractType: "CDI",
+      jobCity: "Nantes",
+      date: "06/06/2023",
+    },
+    {
+      companyLogo: logoAllovoisins,
+      companyName: "Nickel",
+      job: "Chef de projet",
+      contractType: "CDI",
+      jobCity: "Nantes",
+      date: "06/06/2023",
+    },
+    {
+      companyLogo: logoGroupama,
+      companyName: "Nickel",
+      job: "Chef de projet",
+      contractType: "CDI",
+      jobCity: "Nantes",
+      date: "06/06/2023",
+    },
+    {
+      companyLogo: logoAllovoisins,
+      companyName: "Nickel",
+      job: "Chef de projet",
+      contractType: "CDI",
+      jobCity: "Nantes",
+      date: "06/06/2023",
+    },
+  ];
+
   return (
     <div className="OffersList">
       <HeaderBasic />
@@ -17,27 +51,18 @@ function OffersList() {
         </div>
 
         <div className="offer">
-          <CandidateCard
-            profilpicture={logoGroupama}
-            lastname="Service Delivery Manager"
-            email="admin.XYZ@gmail.com"
-          />
-          <CandidateCard
-            profilpicture={Lengow}
-            lastname="Service Delivery Manager"
-            email="admin.XYZ@gmail.com"
-          />
-
-          <CandidateCard
-            profilpicture={logoAllovoisins}
-            lastname="Service Delivery Manager"
-            email="admin.XYZ@gmail.com"
-          />
-          <CandidateCard
-            profilpicture={Lengow}
-            lastname="Service Delivery Manager"
-            email="admin.XYZ@gmail.com"
-          />
+          {offers.map((offer) => {
+            return (
+              <JobCard
+                logo={offer.companyLogo}
+                companyName={offer.companyName}
+                job={offer.job}
+                contractType={offer.contractType}
+                jobCity={offer.jobCity}
+                date={offer.date}
+              />
+            );
+          })}
         </div>
         <div className="returnButton">
           <NavLink to="/admin/dashboard">

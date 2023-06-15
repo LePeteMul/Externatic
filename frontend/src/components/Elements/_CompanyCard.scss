@@ -35,11 +35,12 @@
       justify-content: center;
       overflow: hidden;
 
-      .h1 {
+      h3 {
         font-size: 18px;
+        font-weight: $semiBold;
       }
       .p {
-        font-size: 18px;
+        font-size: 16px;
         word-wrap: break-word;
       }
     }

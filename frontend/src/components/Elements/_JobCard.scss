@@ -49,4 +49,15 @@
     color: $textColorMedium;
     font-size: 12px;
   }
+
+  .navigation {
+    width: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    .jobCardButtons {
+      background-color: $textColorLight;
+    }
+  }
 }

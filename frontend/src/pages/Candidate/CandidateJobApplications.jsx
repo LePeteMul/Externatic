@@ -5,6 +5,24 @@ import JobCard from "../../components/Elements/JobCard";
 import BlackButton from "../../components/Elements/BlackButton";
 
 function CandidateJobApplications() {
+  const offers = [
+    {
+      companyLogo: "https://www.moneyvox.fr/i/media/05l/005668l5dd.jpg",
+      companyName: "Nickel",
+      job: "Chef de projet",
+      contractType: "CDI",
+      jobCity: "Nantes",
+      date: "06/06/2023",
+    },
+    {
+      companyLogo: "https://www.moneyvox.fr/i/media/05l/005668l5dd.jpg",
+      companyName: "Nickel",
+      job: "Chef de projet",
+      contractType: "CDI",
+      jobCity: "Nantes",
+      date: "06/06/2023",
+    },
+  ];
   return (
     <div className="jobapplications">
       <HeaderBasic />
@@ -16,63 +34,83 @@ function CandidateJobApplications() {
         <div className="applicationDetails">
           <div className="recu">
             <p>Reçue(s)</p>
-            <JobCard
-              logo="https://www.moneyvox.fr/i/media/05l/005668l5dd.jpg"
-              companyName="Nickel"
-              job="Chef de project"
-              contractType="CDI"
-              jobCity="Nantes"
-              date="06/06/2023"
-            />
+            {offers.map((offer) => {
+              return (
+                <JobCard
+                  logo={offer.companyLogo}
+                  companyName={offer.companyName}
+                  job={offer.job}
+                  contractType={offer.contractType}
+                  jobCity={offer.jobCity}
+                  date={offer.date}
+                />
+              );
+            })}
           </div>
           <div className="enCours">
             <p>En cours de traitement</p>
-            <JobCard
-              logo="https://www.moneyvox.fr/i/media/05l/005668l5dd.jpg"
-              companyName="Nickel"
-              job="Chef de project"
-              contractType="CDI"
-              jobCity="Nantes"
-              date="06/06/2023"
-            />
+            {offers.map((offer) => {
+              return (
+                <JobCard
+                  logo={offer.companyLogo}
+                  companyName={offer.companyName}
+                  job={offer.job}
+                  contractType={offer.contractType}
+                  jobCity={offer.jobCity}
+                  date={offer.date}
+                />
+              );
+            })}
           </div>
 
           <div className="entretienPlanifie">
             <p>Entretien(s) planifié(s)</p>
-            <JobCard
-              logo="https://www.moneyvox.fr/i/media/05l/005668l5dd.jpg"
-              companyName="Nickel"
-              job="Chef de project"
-              contractType="CDI"
-              jobCity="Nantes"
-              date="06/06/2023"
-            />
+            {offers.map((offer) => {
+              return (
+                <JobCard
+                  logo={offer.companyLogo}
+                  companyName={offer.companyName}
+                  job={offer.job}
+                  contractType={offer.contractType}
+                  jobCity={offer.jobCity}
+                  date={offer.date}
+                />
+              );
+            })}
           </div>
 
           <div className="accepte">
             <p>Acceptée(s)</p>
 
-            <JobCard
-              logo="https://www.moneyvox.fr/i/media/05l/005668l5dd.jpg"
-              companyName="Nickel"
-              job="Chef de project"
-              contractType="CDI"
-              jobCity="Nantes"
-              date="06/06/2023"
-            />
+            {offers.map((offer) => {
+              return (
+                <JobCard
+                  logo={offer.companyLogo}
+                  companyName={offer.companyName}
+                  job={offer.job}
+                  contractType={offer.contractType}
+                  jobCity={offer.jobCity}
+                  date={offer.date}
+                />
+              );
+            })}
           </div>
 
           <div className="refuse">
             <p>Refusée(s)</p>
 
-            <JobCard
-              logo="https://www.moneyvox.fr/i/media/05l/005668l5dd.jpg"
-              companyName="Nickel"
-              job="Chef de project"
-              contractType="CDI"
-              jobCity="Nantes"
-              date="06/06/2023"
-            />
+            {offers.map((offer) => {
+              return (
+                <JobCard
+                  logo={offer.companyLogo}
+                  companyName={offer.companyName}
+                  job={offer.job}
+                  contractType={offer.contractType}
+                  jobCity={offer.jobCity}
+                  date={offer.date}
+                />
+              );
+            })}
           </div>
         </div>
         <div className="jobapplicationsEnd">

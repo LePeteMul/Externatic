@@ -1,21 +1,37 @@
 .offer_creation {
-  background-color: $primaryColor;
-  width: 100vw;
-  min-height: 160vh;
-  margin-top: -4px;
-}
+  .boxWithoutHeader {
+    padding: 4%;
+    background-color: $primaryColor;
+    min-height: 90dvh;
 
-.offerinputs {
-  margin: 0 auto;
-  width: 80%;
-}
+    .page_title {
+      padding-bottom: 10%;
+      display: flex;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
 
-.confOfferCreation {
-  margin: 0 auto;
-  width: 80%;
+      h1 {
+        color: $textColorLight;
+        font-size: 36px;
+        font-weight: $semiBold;
+      }
+    }
 
-  text-align: center;
-  padding-top: 200px;
-  font-family: $fontFamily;
-  color: $textColorLight;
+    .offerinputs {
+      margin: 0 auto;
+    }
+
+    .confOfferCreation {
+      margin: 0 auto;
+      text-align: center;
+      padding-top: 200px;
+      font-family: $fontFamily;
+      color: $textColorLight;
+    }
+
+    .offerEnd {
+      padding-top: 20%;
+    }
+  }
 }
