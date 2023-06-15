@@ -1,0 +1,7 @@
+.app-root {
+  height: 100%;
+  overflow: auto; /* Enable scrolling by default */
+}
+.app-root.burger-menu-open {
+  overflow: hidden; /* Disable scrolling when burger menu is open */
+}
