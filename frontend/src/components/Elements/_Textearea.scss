@@ -1,17 +1,26 @@
 .TextArea {
   display: flex;
-
+  justify-content: center;
   flex-direction: column;
-  display: flex;
 
   label {
     font-family: $fontFamily;
     color: $textColorLight;
     margin-top: 5%;
+    font-size: 20px;
     border-radius: 12px;
   }
 
   .textField {
+    border: none;
+    outline: none;
+    background-color: $buttonColorLight;
+    margin-top: 3%;
+    color: $textColorInput;
+    width: 100%;
     border-radius: 12px;
+    font-size: 16px;
+    font-family: $fontFamily;
+    padding-left: 12px;
   }
 }

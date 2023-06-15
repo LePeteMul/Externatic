@@ -5,7 +5,7 @@ function InputText({ label, inputMessage, image, image2, image3 }) {
   const [entry, setEntry] = useState(inputMessage);
 
   const handleClickInput = () => {
-    // setEntry("");
+    setEntry("");
   };
 
   const handleChangeInput = (event) => {

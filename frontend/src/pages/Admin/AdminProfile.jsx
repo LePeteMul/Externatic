@@ -31,7 +31,7 @@ function AdminProfile() {
         </div>
         <div className="AdminProfileEnd">
           <NavLink to="/admin/dashboard">
-            <BlackButton buttonName="Valider mes modifications" />
+            <BlackButton buttonName="Valider les modifications" />
           </NavLink>
         </div>
       </div>

@@ -3,7 +3,6 @@ import HeaderBasic from "../../components/Header/HeaderBasic";
 import InputText from "../../components/Elements/InputText";
 import BlackButton from "../../components/Elements/BlackButton";
 import LargeTextInput from "../../components/Elements/LargeTextInput";
-import ReCAPTCHA from "react-google-recaptcha";
 
 function Contact() {
   return (
@@ -17,10 +16,7 @@ function Contact() {
         <InputText label="Votre adresse mail :" />
         <LargeTextInput label="Votre message :" />
         <br />
-        <ReCAPTCHA
-    sitekey="Your client site key"
-    onChange={onChange}
-  />
+
         <br />
         <BlackButton buttonName="Envoyer votre message" />
         <div className="contactPageInformations">
