@@ -9,9 +9,9 @@ import lock from "../../assets/icons/lock.png";
 
 function Login() {
   return (
-    <div>
+    <div className="connexion">
       <HeaderWave />
-      <div className="connexion">
+      <div className="boxWithoutHeader">
         <div className="page_title">
           <h1>Connexion </h1>
         </div>
