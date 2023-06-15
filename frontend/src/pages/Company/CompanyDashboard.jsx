@@ -1,7 +1,7 @@
 import React from "react";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import DashboardCard from "../../components/Elements/DashboardCard";
-import InputImage from "../../components/Elements/InputImage";
+import InputLogo from "../../components/Elements/InputLogo";
 import "./_CompanyDashboard.scss";
 
 function CompanyDashboard() {
@@ -13,7 +13,7 @@ function CompanyDashboard() {
         <div className="container-top">
           <div className="pp-import">
             {/* <p className="pp-import-text"> Télécharger une photo PNG ou JPG</p> */}
-            <InputImage />
+            <InputLogo />
             {/* <img src="" alt="pp-import-logo" /> */}
           </div>
           <h1 className="titleHeader">Mon profil Employeur</h1>
