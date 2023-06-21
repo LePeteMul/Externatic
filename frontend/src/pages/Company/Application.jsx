@@ -21,15 +21,16 @@ function Application() {
         </div>
 
         <div className="card_application">
-          <div className="card_info">
-            <img className="user_pic" src={user} alt="" srcSet="" />
-            <div className="name_email">
-              <h3>Marie Dupont</h3>
-              <h3>maria.dupont@gmail.com</h3>
+          <NavLink to="/company/profilecandidate">
+            <div className="card_info">
+              <img className="user_pic" src={user} alt="" srcSet="" />
+              <div className="name_email">
+                <h3>Marie Dupont</h3>
+                <h3>maria.dupont@gmail.com</h3>
+              </div>
+              <img className="loupe" src={loupe} alt="" />
             </div>
-            <img className="loupe" src={loupe} alt="" />
-          </div>
-
+          </NavLink>
           <div className="status">
             <InputList
               inputMessage="Selectionner un statut"
