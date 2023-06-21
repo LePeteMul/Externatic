@@ -19,6 +19,8 @@ import CompanyPresentation from "../pages/Company/CompanyPresentation";
 import Application from "../pages/Company/Application";
 import ProfileCandidate from "../pages/Company/ProfileCandidate";
 import CompanyProfile from "../pages/Company/CompanyProfile";
+import OffersListCompany from "../pages/Company/OffersListCompany";
+
 import ApplicationConfirmation from "../pages/JobSearch/ApplicationConfirmation";
 
 import OffersList from "../pages/Admin/OffersList";
@@ -92,6 +94,7 @@ function Router() {
         <Route path="/company/offercreation" element={<OfferCreation />} />
         <Route path="/company/firstlogin" element={<CompanyFirstLogin />} />
         <Route path="/company/presentation" element={<CompanyPresentation />} />
+        <Route path="/company/offers" element={<OffersListCompany />} />
         <Route path="/company/application" element={<Application />} />
         <Route path="/company/profile" element={<CompanyProfile />} />
         <Route
