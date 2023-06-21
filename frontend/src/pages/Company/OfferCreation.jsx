@@ -5,6 +5,7 @@ import InputList from "../../components/Elements/InputList";
 import Textearea from "../../components/Elements/Textearea";
 import BlackButton from "../../components/Elements/BlackButton";
 import WhiteButton from "../../components/Elements/WhiteButton";
+import InputText from "../../components/Elements/InputText";
 
 function OfferCreation() {
   const [posted, setPosted] = useState(false);
@@ -43,7 +44,8 @@ function OfferCreation() {
                   { value: "Stage", name: "Stage" },
                 ]}
               />
-
+              <InputText label="Salaire annuel brut min" inputMessage="" />
+              <InputText label="Salaire annuel brut max" inputMessage="" />
               <Textearea
                 label="Missions du poste"
                 inputMessage="Yes"
