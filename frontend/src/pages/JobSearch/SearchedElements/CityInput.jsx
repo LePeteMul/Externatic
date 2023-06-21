@@ -4,10 +4,6 @@ import SearchCityContext from "../../../contexts/SearchCityContext/SearchCityCon
 function CityInput() {
   const { searchCity, setSearchCity } = useContext(SearchCityContext);
 
-  const handleClickInput = () => {
-    setSearchCity("");
-  };
-
   const handleChangeInput = (event) => {
     setSearchCity(event.target.value);
   };
@@ -17,8 +13,8 @@ function CityInput() {
       className={searchCity === "France entière" ? "notselected" : "selected"}
       type="text"
       value={searchCity}
+      placeholder="France entière"
       onChange={handleChangeInput}
-      onClick={handleClickInput}
     />
   );
 }
