@@ -19,6 +19,7 @@
       transform: translateX(-50%);
       height: 10vh;
       z-index: 3;
+      background-color: transparent;
       // background-color: $primaryColor;
     }
   }
@@ -38,7 +39,7 @@
 
     .titleHeader {
       // width: 100px;
-      z-index: 12;
+      z-index: 5;
       font-weight: $semiBold;
       font-size: 36px;
       text-align: center;

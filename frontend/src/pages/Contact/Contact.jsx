@@ -12,8 +12,11 @@ function Contact() {
         <div className="contactPageTitle">
           <h1>Nous contacter</h1>
         </div>
-        <InputText label="Votre nom :" />
-        <InputText label="Votre adresse mail :" />
+        <InputText label="Votre nom :" placeholder="Jean Dupont" />
+        <InputText
+          label="Votre adresse mail :"
+          placeholder="adresse@gmail.com"
+        />
         <LargeTextInput label="Votre message :" />
         <br />
         <br />

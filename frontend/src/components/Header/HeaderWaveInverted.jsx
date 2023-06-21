@@ -25,9 +25,11 @@ function HeaderWaveInverted({ open, handleOpen, title }) {
           <ProfilePicture />
         </div>
 
-        <div className="pp-import">
-          <InputImage />
-          <h1 className="titleHeader">{title}</h1>
+        <div className="bonjour">
+          <div className="pp-import">
+            <InputImage />
+            <h1 className="titleHeader">{title}</h1>
+          </div>
         </div>
         <img className="Wave" src={waveWhite} alt="La Vague Blanche" />
       </div>
