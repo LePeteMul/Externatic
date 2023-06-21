@@ -57,14 +57,7 @@ function CandidateProfile() {
         </div>
 
         <LanguageList />
-        <InputText
-          label="Nouveau mot de passe"
-          inputMessage="****************"
-        />
-        <InputText
-          label="Validation du nouveau mot de passe"
-          inputMessage="****************"
-        />
+
         <div className="validationSuppression">
           <BlackButton
             buttonName="Valider mes modifications"

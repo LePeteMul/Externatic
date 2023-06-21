@@ -1,11 +1,20 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-function InputText({ label, inputMessage, image, image2, image3 }) {
+function InputText({
+  label,
+  inputMessage,
+  placeholder,
+  image,
+  image2,
+  image3,
+}) {
   const [entry, setEntry] = useState(inputMessage);
 
   const handleClickInput = () => {
-    setEntry("");
+    if (entry === inputMessage) {
+      setEntry("");
+    }
   };
 
   const handleChangeInput = (event) => {
@@ -21,6 +30,7 @@ function InputText({ label, inputMessage, image, image2, image3 }) {
         value={entry}
         onChange={handleChangeInput}
         onClick={handleClickInput}
+        placeholder={entry === inputMessage ? placeholder : ""}
       />
       {image && <img className="eye" src={image} alt="IconEye" />}
       {image2 && <img className="profil" src={image2} alt="IconProfil" />}
@@ -32,6 +42,7 @@ function InputText({ label, inputMessage, image, image2, image3 }) {
 InputText.propTypes = {
   label: PropTypes.string.isRequired,
   inputMessage: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   image2: PropTypes.string.isRequired,
   image3: PropTypes.string.isRequired,
