@@ -32,13 +32,16 @@
     }
 
     .HoverHeader .Wave {
+      flex: 1;
+      position: absolute;
+      height: 10dvh;
+      margin-top: 10dvh;
       width: 100%;
-      height: auto;
       background-color: $primaryColor;
     }
 
     .menuList {
-      margin-top: 6dvh;
+      margin-top: 20dvh;
       padding-left: 4%;
       height: 100dvh;
     }

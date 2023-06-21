@@ -14,7 +14,9 @@ function HeaderBasic() {
       <NavLink to="/">
         <img className="Logo" src={logo} alt="Le Logo" />
       </NavLink>
-      <ProfilePicture />
+      <NavLink to="/login">
+        <ProfilePicture />
+      </NavLink>
     </div>
   );
 }

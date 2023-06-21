@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
-import CandidateCard from "../../components/Elements/CandidateCard";
+import CompanyCard from "../../components/Elements/CompanyCard";
 import nickel from "../../assets/images/HomePage/logo-nickel.png";
 import BlackButton from "../../components/Elements/BlackButton";
 
@@ -15,27 +15,27 @@ function CompanyList() {
         </div>
 
         <div className="company">
-          <CandidateCard
-            profilpicture={nickel}
-            lastname="Nickel"
+          <CompanyCard
+            logo={nickel}
+            name="Nickel"
             email="admin.nickel@gmail.com"
           />
 
-          <CandidateCard
-            profilpicture={nickel}
-            lastname="Nickel"
+          <CompanyCard
+            logo={nickel}
+            name="Nickel"
             email="admin.nickel@gmail.com"
           />
 
-          <CandidateCard
-            profilpicture={nickel}
-            lastname="Nickel"
+          <CompanyCard
+            logo={nickel}
+            name="Nickel"
             email="admin.nickel@gmail.com"
           />
 
-          <CandidateCard
-            profilpicture={nickel}
-            lastname="Nickel"
+          <CompanyCard
+            logo={nickel}
+            name="Nickel"
             email="admin.nickel@gmail.com"
           />
         </div>

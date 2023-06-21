@@ -17,12 +17,16 @@
       transform: translateX(-50%);
       height: 16vh;
       z-index: 3;
-      background-color: $buttonColorLight;
+      background-color: transparent;
     }
   }
 
   .Wave {
     flex: 1;
+    position: absolute;
+    height: 10dvh;
+    margin-top: 10dvh;
+    width: 100%;
     background-color: $primaryColor;
   }
 }

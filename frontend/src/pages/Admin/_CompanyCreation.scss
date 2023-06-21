@@ -31,11 +31,13 @@
       }
 
       .InputImage {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 5%;
+        .custom-label {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 5%;
+        }
 
         input {
           width: 120px;

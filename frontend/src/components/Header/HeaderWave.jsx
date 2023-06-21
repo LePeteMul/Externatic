@@ -21,7 +21,9 @@ function HeaderWave({ open, handleOpen }) {
           <NavLink to="/">
             <img className="Logo" src={logo} alt="Le Logo" />
           </NavLink>
-          <ProfilePicture />
+          <NavLink to="/login">
+            <ProfilePicture />
+          </NavLink>
         </div>
 
         <img className="Wave" src={waveWhite} alt="La Vague Blanche" />

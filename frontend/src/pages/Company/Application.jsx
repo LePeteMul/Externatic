@@ -1,8 +1,10 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import user from "../../assets/icons/user.png";
 import loupe from "../../assets/icons/loupe.png";
 import InputList from "../../components/Elements/InputList";
+import BlackButton from "../../components/Elements/BlackButton";
 
 function Application() {
   return (
@@ -43,6 +45,11 @@ function Application() {
               ]}
             />
           </div>
+        </div>
+        <div className="applicationEnd">
+          <NavLink to="/company/dashboard">
+            <BlackButton buttonName="Retour à mon espace" />
+          </NavLink>
         </div>
       </div>
     </div>

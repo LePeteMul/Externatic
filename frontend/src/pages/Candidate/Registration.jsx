@@ -19,8 +19,10 @@ function Registration() {
           <h1>M'inscrire </h1>
         </div>
         <div className="registrationDetails">
+          <InputText label="Nom" inputMessage={"Entrez l'information"} />
+          <InputText label="Prénom" inputMessage={"Entrez l'information"} />
           <InputText
-            label="Nom du contact :"
+            label="Adresse mail :"
             inputMessage={"Entrez l'information"}
           />
           <InputText
@@ -32,10 +34,6 @@ function Registration() {
             label="Confirmer le mot de passe :"
             inputMessage="Entrez l'information"
             image={eye}
-          />
-          <InputText
-            label="Adresse mail de contact :"
-            inputMessage={"Entrez l'information"}
           />
         </div>
         <div className="btn_registration">

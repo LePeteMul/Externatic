@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import InputList from "../../components/Elements/InputList";
 import Textearea from "../../components/Elements/Textearea";
@@ -13,9 +14,9 @@ function OfferCreation() {
   };
 
   return (
-    <>
+    <div className="offer_creation">
       <HeaderBasic />
-      <div className="offer_creation">
+      <div className="boxWithoutHeader">
         {!posted && (
           <div>
             <div className="page_title">
@@ -24,7 +25,7 @@ function OfferCreation() {
 
             <div className="offerinputs">
               <InputList
-                label="Je recherche un poste de"
+                label="Poste"
                 inputMessage="Selectionner un métier"
                 data={[
                   { value: "metier1", name: "Metier n°1" },
@@ -35,7 +36,7 @@ function OfferCreation() {
 
               <InputList
                 label="Type de contrat"
-                inputMessage="Selectionner un métier"
+                inputMessage="Selectionner un contrat"
                 data={[
                   { value: "CDI", name: "CDI" },
                   { value: "CDD", name: "CDD" },
@@ -43,7 +44,11 @@ function OfferCreation() {
                 ]}
               />
 
-              <Textearea label="Missions du poste" inputMessage="Yes" />
+              <Textearea
+                label="Missions du poste"
+                inputMessage="Yes"
+                rows={3}
+              />
 
               <InputList
                 label="Localisation"
@@ -69,10 +74,12 @@ function OfferCreation() {
 
               <Textearea label="Hard Skills" inputMessage="Yes" rows={9} />
 
-              <BlackButton
-                buttonName="Ajouter cette offre"
-                buttonFunction={handlePosted}
-              />
+              <div className="offerEnd">
+                <BlackButton
+                  buttonName="Ajouter cette offre"
+                  buttonFunction={handlePosted}
+                />
+              </div>
             </div>
           </div>
         )}
@@ -83,15 +90,14 @@ function OfferCreation() {
               <h2>L'offre d'emploi a bien été publiée</h2>
             </div>
             <div className="confOfferCreation">
-              <WhiteButton
-                buttonName="Retour à mon espace"
-                buttonFunction={console.info("Fonction")}
-              />
+              <NavLink to="/company/dashboard">
+                <WhiteButton buttonName="Retour à mon espace" />
+              </NavLink>
             </div>
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }
 

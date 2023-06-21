@@ -1,73 +1,64 @@
 .connexion {
-  background-color: $primaryColor;
-  width: 100vw;
-  height: 100vh;
-  margin-top: -4px;
-}
+  .boxWithoutHeader {
+    padding: 4%;
+    background-color: $primaryColor;
+    min-height: 90dvh;
 
-.page_title {
-  display: flex;
-  justify-content: center;
-  font-family: $fontFamily;
-  font-weight: $semiBold;
-  color: $textColorLight;
-  font-size: 20px;
-  padding: 50px;
-}
+    .page_title {
+      padding-top: 40%;
+      padding-bottom: 10%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      h1 {
+        color: $textColorLight;
+        font-size: 36px;
+        font-weight: $semiBold;
+      }
+    }
 
-.inputs {
-  margin: 0 auto;
-  width: 80%;
-  margin-bottom: 50px;
-  position: relative;
-}
+    .inputs {
+      padding-bottom: 10%;
 
-.inputIcon {
-  position: absolute;
-  top: 42px;
-  left: 4px;
-  margin-right: 10px;
-}
+      .notselected {
+        padding-left: 40px;
+      }
 
-.lockIcon {
-  position: absolute;
-  top: 140px;
-  left: 5px;
-  margin-right: 10px;
-}
+      .selected {
+        padding-left: 40px;
+      }
+    }
 
-.btn_Connexion {
-  margin: 0 auto;
-  width: 80%;
-  margin-bottom: 50px;
-}
+    .btn_Connexion {
+      margin-bottom: 10%;
+    }
 
-.forget_psw {
-  margin: 0 auto;
-  font-weight: lighter;
-  width: 80%;
-  text-align: center;
-  margin-bottom: 80px;
-}
+    .forget_psw {
+      font-size: 16px;
+      text-align: center;
+      margin-bottom: 20%;
+    }
 
-.forget_psw_text {
-  color: $textColorLight;
-  font-weight: lighter;
-  font-family: $fontFamily;
-  text-decoration: underline;
-}
-.forget_psw_text:hover {
-  color: rgb(22, 22, 142);
-}
+    .forget_psw_text {
+      color: $textColorLight;
+      font-weight: lighter;
+      font-family: $fontFamily;
+      text-decoration: underline;
+    }
+    .forget_psw_text:hover {
+      color: rgb(22, 22, 142);
+    }
 
-.card_signing {
-  margin: 0 auto;
-  width: 80%;
-  text-align: center;
-}
+    .card_signing {
+      margin: 0 auto;
+      text-align: center;
+    }
 
-.no_Count {
-  font-family: $fontFamily;
-  color: $textColorLight;
-  margin-bottom: 10px;
+    .no_Count {
+      font-family: $fontFamily;
+      color: $textColorLight;
+      margin-bottom: 10px;
+    }
+  }
 }
