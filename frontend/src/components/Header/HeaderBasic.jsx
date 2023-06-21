@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/images/Header/logoExternatic.svg";
-import BurgerMenu from "./BurgerMenu";
+import BurgerMenuBasic from "./BurgerMenuBasic";
 import ProfilePicture from "../Elements/ProfilePicture";
 
 function HeaderBasic() {
@@ -9,7 +9,7 @@ function HeaderBasic() {
     <div className="HeaderBasic">
       <div className="BurgerMenuContainer">
         {" "}
-        <BurgerMenu />
+        <BurgerMenuBasic />
       </div>
       <NavLink to="/">
         <img className="Logo" src={logo} alt="Le Logo" />
