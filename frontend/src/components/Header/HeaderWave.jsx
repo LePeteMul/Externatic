@@ -1,23 +1,18 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import PropTypes from "prop-types";
 import waveWhite from "../../assets/images/Header/wave_white.png";
 import logo from "../../assets/images/Header/logoExternatic.svg";
-import BurgerMenu from "./BurgerMenu";
+import BurgerMenuWave from "./BurgerMenuWave";
 import ProfilePicture from "../Elements/ProfilePicture";
 
-function HeaderWave({ open, handleOpen }) {
+function HeaderWave() {
   return (
     <>
       {" "}
       <div className="HeaderWave">
         <div className="TopHeader">
           {" "}
-          <BurgerMenu
-            className="BurgerMenu"
-            open={open}
-            handleOpen={handleOpen}
-          />
+          <BurgerMenuWave />
           <NavLink to="/">
             <img className="Logo" src={logo} alt="Le Logo" />
           </NavLink>
@@ -32,8 +27,4 @@ function HeaderWave({ open, handleOpen }) {
   );
 }
 
-HeaderWave.propTypes = {
-  open: PropTypes.bool.isRequired,
-  handleOpen: PropTypes.func.isRequired,
-};
 export default HeaderWave;

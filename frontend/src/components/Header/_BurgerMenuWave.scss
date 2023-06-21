@@ -1,0 +1,40 @@
+.BurgerMenuWave {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: calc(0.5rem + 1.5vw);
+
+  .BurgerContainer {
+    .IconBurger {
+      width: 5dvh;
+      background-color: $textColorLight;
+    }
+  }
+
+  ul {
+    position: fixed;
+    width: 100%;
+    height: 80dvh;
+    background-color: $primaryColor;
+  }
+  .menuClosed {
+    left: -100%;
+  }
+  .menuOpened {
+    top: 20dvh;
+  }
+
+  .menuItem {
+    width: fit-content;
+    text-decoration: none;
+    background-color: $primaryColor;
+    padding: 4%;
+    font-weight: 500;
+    font-family: $fontFamily;
+    color: $textColorLight;
+  }
+}
