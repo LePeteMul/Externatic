@@ -1,24 +1,11 @@
 import React from "react";
-import HeaderBasic from "../../components/Header/HeaderBasic";
 import DashboardCard from "../../components/Elements/DashboardCard";
-import InputImage from "../../components/Elements/InputImage";
-import "./_CandidateDashboard.scss";
+import HeaderWaveInverted from "../../components/Header/HeaderWaveInverted";
 
 function CandidateDashboard() {
   return (
-    <div className="CandidateDashboard">
-      <HeaderBasic />
-
-      <div className="vagueCompany">
-        <div className="container-top">
-          <div className="pp-import">
-            <InputImage />
-            {/* <p className="pp-import-text"> Télécharger une photo PNG ou JPG</p> */}
-            {/* <img src="" alt="pp-import-logo" /> */}
-          </div>
-          <h1 className="titleHeader">Bonjour John,</h1>
-        </div>
-      </div>
+    <div className="CandidateDashboard test">
+      <HeaderWaveInverted title="Bonjour Damien" />
 
       <div className="boxWithoutHeader">
         <div className="boxInside">

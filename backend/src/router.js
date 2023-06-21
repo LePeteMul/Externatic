@@ -52,7 +52,7 @@ router.delete("/status/:id", statusControllers.destroy);
 const technoControllers = require("./controllers/technoControllers");
 
 router.get("/techno", technoControllers.browse);
-router.get("/techno/:id", technoControllers.read);
+router.get("/techno/:id", technoControllers.read);0.
 router.put("/techno/:id", technoControllers.edit);
 router.post("/techno", technoControllers.add);
 router.delete("/techno/:id", technoControllers.destroy);
