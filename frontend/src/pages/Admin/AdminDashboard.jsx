@@ -1,25 +1,11 @@
 import React from "react";
-import HeaderBasic from "../../components/Header/HeaderBasic";
 import DashboardCard from "../../components/Elements/DashboardCard";
-import InputImage from "../../components/Elements/InputImage";
+import HeaderWaveInverted from "../../components/Header/HeaderWaveInverted";
 
 function AdminDashboard() {
   return (
     <div className="AdminDashboard">
-      <HeaderBasic />
-
-      <div className="vague">
-        <div className="container-top">
-          <div className="pp-import">
-            <InputImage />
-            {/* <p className="pp-import-text"> Télécharger une photo PNG ou JPG</p> */}
-            {/* <img src="" alt="pp-import-logo" /> */}
-          </div>
-          <h1 className="titleHeader">Interface administrateur</h1>
-        </div>
-
-        <br />
-      </div>
+      <HeaderWaveInverted title="Interface administrateur" />
 
       <div className="boxWithoutHeader">
         <div>

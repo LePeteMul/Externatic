@@ -16,7 +16,6 @@ function Contact() {
         <InputText label="Votre adresse mail :" />
         <LargeTextInput label="Votre message :" />
         <br />
-
         <br />
         <BlackButton buttonName="Envoyer votre message" />
         <div className="contactPageInformations">
