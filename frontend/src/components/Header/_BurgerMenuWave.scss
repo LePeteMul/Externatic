@@ -2,13 +2,13 @@
   padding: 0;
   margin: 0;
   text-decoration: none;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: calc(0.5rem + 1.5vw);
 
   .BurgerContainer {
+    padding-left: 2dvw;
     .IconBurger {
       width: 5dvh;
       background-color: $textColorLight;
@@ -29,7 +29,7 @@
   }
 
   .menuItem {
-    width: fit-content;
+    width: 100%;
     text-decoration: none;
     background-color: $primaryColor;
     padding: 4%;
