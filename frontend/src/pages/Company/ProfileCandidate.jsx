@@ -4,6 +4,7 @@ import HeaderBasic from "../../components/Header/HeaderBasic";
 import InputText from "../../components/Elements/InputText";
 import user from "../../assets/icons/user.png";
 import BlackButton from "../../components/Elements/BlackButton";
+import InputList from "../../components/Elements/InputList";
 
 function ProfileCandidate() {
   return (
@@ -19,6 +20,15 @@ function ProfileCandidate() {
         </div>
 
         <div className="candidateResume">
+          <InputList
+            label="Genre"
+            inputMessage="Ex :Je suis "
+            data={[
+              { value: "genre1", name: "Je suis une femme" },
+              { value: "genre 2", name: "Je suis un homme" },
+              { value: "genre 3", name: "je suis non binaire" },
+            ]}
+          />
           <InputText label="Email:" inputMessage="marie.dupont@gmail.com" />
 
           <InputText label="Telephone :" inputMessage="06 61 62 63 64" />
