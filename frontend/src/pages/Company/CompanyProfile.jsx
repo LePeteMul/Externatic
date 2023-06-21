@@ -15,7 +15,11 @@ function CompanyProfile() {
         <div className="CompanyProfileInformations">
           <InputText label="Email" inputMessage="bob@groupama.fr" />
           <InputText label="Téléphone" inputMessage="06 99 99 99 99" />
-          <InputText label="Mot de passe" inputMessage="*********" />
+          <InputText label="Nouveau mot de passe" inputMessage="*********" />
+          <InputText
+            label="Validation du nouveau mot de passe"
+            inputMessage="****************"
+          />
         </div>
         <div className="CompanyProfileEnd">
           <NavLink to="/company/dashboard">
