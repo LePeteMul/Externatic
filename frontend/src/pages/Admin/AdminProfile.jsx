@@ -27,7 +27,6 @@ function AdminProfile() {
           <InputText label="Prénom" inputMessage="Franck" />
           <InputText label="Email" inputMessage="f.durand@externatic.fr" />
           <InputText label="Téléphone" inputMessage="06 99 99 99 99" />
-          <InputText label="Mot de passe" inputMessage="****************" />
         </div>
         <div className="AdminProfileEnd">
           <NavLink to="/admin/dashboard">
