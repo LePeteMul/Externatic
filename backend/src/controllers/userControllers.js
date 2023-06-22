@@ -58,11 +58,15 @@ const add = (req, res) => {
   models.user
     .insert(user)
     .then(([result]) => {
-      res.location(`/user/${result.insertId}`).sendStatus(201);
+      res.location(`/api/user/${result.insertId}`).sendStatus(201);
     })
     .catch((err) => {
       console.error(err);
-      res.sendStatus(500);
+      if (err.code === "ER_DUP_ENTRY") {
+        res.status(400).send("Email deja utilisé");
+      } else {
+        res.status(500).send("Internal server error");
+      }
     });
 };
 

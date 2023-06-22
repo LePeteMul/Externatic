@@ -58,7 +58,7 @@ const add = (req, res) => {
   models.techno
     .insert(techno)
     .then(([result]) => {
-      res.location(`/techno/${result.insertId}`).sendStatus(201);
+      res.location(`/api/techno/${result.insertId}`).sendStatus(201);
     })
     .catch((err) => {
       console.error(err);

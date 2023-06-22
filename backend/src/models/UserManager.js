@@ -7,8 +7,8 @@ class UserManager extends AbstractManager {
 
   insert(user) {
     return this.database.query(
-      `insert into ${this.table} gender, lastname, email, password  values (?, ?, ?, ?)`,
-      [user.gender, user.lastname, user.email, user.password]
+      `insert into ${this.table} (gender, lastname, firstname, email, password, admin) values (?, ?, ?, ?, ?, ?)`,
+      [user.gender, user.lastname, user.firstname, user.email, user.password, 0]
     );
   }
 

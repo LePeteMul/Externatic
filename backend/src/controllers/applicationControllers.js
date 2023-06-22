@@ -58,7 +58,7 @@ const add = (req, res) => {
   models.application
     .insert(application)
     .then(([result]) => {
-      res.location(`/application/${result.insertId}`).sendStatus(201);
+      res.location(`/api/application/${result.insertId}`).sendStatus(201);
     })
     .catch((err) => {
       console.error(err);

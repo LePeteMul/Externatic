@@ -1,3 +1,4 @@
+-- SQLBook: Code
 
 -- CREATE TABLE item (
 --   id int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -37,12 +38,12 @@ CREATE TABLE user (
   id INT NOT NULL AUTO_INCREMENT,
   gender VARCHAR(250),
   lastname VARCHAR(250) NOT NULL,
-  firstname VARCHAR(250),
-  email VARCHAR(450) NOT NULL,
+  firstname VARCHAR(250) NOT NULL,
+  email VARCHAR(450) NOT NULL UNIQUE,
   phone VARCHAR(450),
   city VARCHAR(250),
   cv TEXT,
-  admin BOOLEAN NOT NULL,
+  admin BOOLEAN NOT NULL DEFAULT 0,
   password VARCHAR(250) NOT NULL,
   profil_picture VARCHAR(250),
   contact_mode VARCHAR(250),
