@@ -2,11 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 function Textearea({ label, inputMessage, rows }) {
-  const [entry, setEntry] = useState(inputMessage);
-  console.warn(entry);
-  const handleClickInput = () => {
-    setEntry("");
-  };
+  const [entry, setEntry] = useState("");
 
   const handleChangeInput = (event) => {
     setEntry(event.target.value);
@@ -15,10 +11,10 @@ function Textearea({ label, inputMessage, rows }) {
     <div className="TextArea">
       <label htmlFor="label">{label} </label>
       <textarea
-        className="textField"
+        className={entry === "" ? "notselected" : "selected"}
         onChange={handleChangeInput}
-        onClick={handleClickInput}
         rows={rows}
+        placeholder={inputMessage}
       />
     </div>
   );

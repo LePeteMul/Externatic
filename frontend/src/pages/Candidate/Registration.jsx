@@ -19,21 +19,24 @@ function Registration() {
           <h1>M'inscrire </h1>
         </div>
         <div className="registrationDetails">
-          <InputText label="Nom" inputMessage={"Entrez l'information"} />
-          <InputText label="Prénom" inputMessage={"Entrez l'information"} />
+          <InputText label="Nom" inputMessage="DUPONT" />
+          <InputText label="Prénom" inputMessage="Bob" />
           <InputText
             label="Adresse mail :"
-            inputMessage={"Entrez l'information"}
+            inputMessage="bob@gmail.com"
+            type="email"
           />
           <InputText
             label="Mot de passe"
-            inputMessage={"Entrez l'information"}
+            inputMessage=""
             image={eye}
+            type="password"
           />
           <InputText
             label="Confirmer le mot de passe :"
-            inputMessage="Entrez l'information"
+            inputMessage=""
             image={eye}
+            type="password"
           />
         </div>
         <div className="btn_registration">

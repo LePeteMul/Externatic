@@ -27,6 +27,7 @@ function CompanyFirstLogin() {
             className="passwordInputField"
             label="Mot de passe"
             inputMessage="Nouveau mot de passe"
+            type="password"
           />
           <BlackButton
             className="validate"

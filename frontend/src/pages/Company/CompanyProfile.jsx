@@ -13,8 +13,16 @@ function CompanyProfile() {
           <h1>Mon profil employeur</h1>
         </div>
         <div className="CompanyProfileInformations">
-          <InputText label="Email" inputMessage="bob@groupama.fr" />
-          <InputText label="Téléphone" inputMessage="06 99 99 99 99" />
+          <InputText
+            label="Email"
+            inputMessage="bob@groupama.fr"
+            type="email"
+          />
+          <InputText
+            label="Téléphone"
+            inputMessage="06 99 99 99 99"
+            type="tel"
+          />
         </div>
         <div className="CompanyProfileEnd">
           <NavLink to="/company/dashboard">

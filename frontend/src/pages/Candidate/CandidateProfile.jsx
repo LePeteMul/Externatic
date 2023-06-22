@@ -38,18 +38,26 @@ function CandidateProfile() {
         <div className="input">
           <InputList
             label="Genre"
-            inputMessage="Ex :Je suis une femme , un homme , non binaire"
+            inputMessage="Selectionner votre genre"
             data={[
               { value: "genre1", name: "Je suis une femme" },
               { value: "genre 2", name: "Je suis un homme" },
               { value: "genre 3", name: "je suis non binaire" },
             ]}
           />
-          <InputText label="Nom" inputMessage="Ex : Dupont" />
-          <InputText label="Prénom" inputMessage="Ex :Marie" />
-          <InputText label="Email" inputMessage="Ex : m.dupont@gmail.com" />
-          <InputText label="Téléphone" inputMessage="Ex : 06 XX XX XX XX" />
-          <InputText label="Ville" inputMessage="Ex : Paris" />
+          <InputText label="Nom" inputMessage="Dupont" type="text" />
+          <InputText label="Prénom" inputMessage="Marie" type="text" />
+          <InputText
+            label="Email"
+            inputMessage="m.dupont@gmail.com"
+            type="email"
+          />
+          <InputText
+            label="Téléphone"
+            inputMessage="06 06 06 06 06"
+            type="tel"
+          />
+          <InputText label="Ville" inputMessage="Paris" type="text" />
         </div>
 
         <div className="input">
