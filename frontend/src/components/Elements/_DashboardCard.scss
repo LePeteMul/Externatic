@@ -47,51 +47,51 @@
 }
 
 .card.background-image-1 {
-  background-image: url("../../assets/images/Dashboard/profil.png");
+  background-image: $dashboardProfil;
 }
 
 .card.background-image-2 {
-  background-image: url("../../assets/images/Dashboard/cree-entreprise.png");
+  background-image: $dashboardCreationEntreprise;
 }
 
 .card.background-image-3 {
-  background-image: url("../../assets/images/Dashboard/gestion-entreprise.png");
+  background-image: $dashboardGestionEntreprise;
 }
 
 .card.background-image-4 {
-  background-image: url("../../assets/images/Dashboard/gestion-emplois.png");
+  background-image: $dashboardGestionEmploi;
 }
 
 .card.background-image-5 {
-  background-image: url("../../assets/images/Dashboard/gestion-utilisateurs.png");
+  background-image: $dashboardGestionUtilisateur;
 }
 
 .card.background-image-6 {
-  background-image: url("../../assets/images/Dashboard/mon-profil-employeur.png");
+  background-image: $dashboardProfilEmployeur;
 }
 
 .card.background-image-7 {
-  background-image: url("../../assets/images/Dashboard/presentation-entreprise.png");
+  background-image: $dashboardPresentationEntreprise;
 }
 
 .card.background-image-8 {
-  background-image: url("../../assets/images/Dashboard/gestion-offres-candidatures.png");
+  background-image: $dashboardGestionOffre;
 }
 
 .card.background-image-9 {
-  background-image: url("../../assets/images/Dashboard/creer-offre.png");
+  background-image: $dashboardCreationOffre;
 }
 
 .card.background-image-10 {
-  background-image: url("../../assets/images/Dashboard/favorite.png");
+  background-image: $dashboardFavorite;
 }
 
 .card.background-image-11 {
-  background-image: url("../../assets/images/Dashboard/ma-recherche.png");
+  background-image: $dashboardRecherche;
 }
 
 .card.background-image-12 {
-  background-image: url("../../assets/images/Dashboard/mes-candidatures.png");
+  background-image: $dashboardCandidature;
 }
 
 .card .title {
@@ -99,21 +99,17 @@
   margin: 0;
   text-align: center;
   margin-top: 30px;
-  color: rgb(255, 255, 255);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 4px;
+  color: $textColorLight;
+  font-size: 26px;
 }
 
 .card .text {
   width: 80%;
   margin: 0 auto;
-  font-size: 13px;
+  font-size: 20px;
   text-align: center;
   margin-top: 20px;
-  color: white;
-  font-weight: 200;
-  letter-spacing: 2px;
+  color: $textColorLight;
   opacity: 0;
   max-height: 0;
   transition: all 0.3s ease;
