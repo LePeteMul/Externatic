@@ -1,13 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import SearchJobContext from "../../../contexts/SearchJobContext/SearchJobContext";
 
 function JobInput() {
   const { searchJob, setSearchJob } = useContext(SearchJobContext);
 
-  const [classSelect, setClassSelect] = useState("notselected");
-
   const handleSelect = (event) => {
-    setClassSelect("selected");
     setSearchJob(event.target.value);
   };
 
@@ -18,7 +15,7 @@ function JobInput() {
   ];
 
   return (
-    <select className={classSelect} onChange={handleSelect} value={searchJob}>
+    <select onChange={handleSelect} value={searchJob}>
       <option className="notselected" value="">
         Selectionner un métier
       </option>

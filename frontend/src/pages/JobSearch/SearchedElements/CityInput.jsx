@@ -10,7 +10,7 @@ function CityInput() {
 
   return (
     <input
-      className={searchCity === "France entière" ? "notselected" : "selected"}
+      className="selected"
       type="text"
       value={searchCity}
       placeholder="France entière"

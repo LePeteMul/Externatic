@@ -5,7 +5,7 @@ import HeaderWaveInverted from "../../components/Header/HeaderWaveInverted";
 function CompanyDashboard() {
   return (
     <div className="CompanyDashboard">
-      <HeaderWaveInverted title="Bonjour Joe" />
+      <HeaderWaveInverted title="Bienvenue" />
 
       <div className="boxWithoutHeader">
         <div className="boxInside">

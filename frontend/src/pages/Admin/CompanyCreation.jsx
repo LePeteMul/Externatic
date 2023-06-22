@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import InputText from "../../components/Elements/InputText";
-import InputImage from "../../components/Elements/InputImage";
+import InputLogo from "../../components/Elements/InputLogo";
 import BlackButton from "../../components/Elements/BlackButton";
 
 function CompanyCreation() {
@@ -18,7 +18,7 @@ function CompanyCreation() {
             label="Nom de la société"
             inputMessage={"Entrez l'information"}
           />
-          <InputImage label="Logo de la société" />
+          <InputLogo label="Logo de la société" />
           <InputText
             label="Adresse mail de contact"
             inputMessage={"Entrez l'information"}

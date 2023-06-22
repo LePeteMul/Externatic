@@ -35,7 +35,7 @@ function InputLogo({ label }) {
   return (
     <div className="InputLogo">
       <label htmlFor="fileInput" className="custom-label">
-        {label}
+        <div className="labelInput">{label}</div>
         <div className="imageHeigth">
           <input
             id="fileInput"

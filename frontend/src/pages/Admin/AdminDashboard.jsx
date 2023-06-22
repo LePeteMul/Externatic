@@ -5,7 +5,7 @@ import HeaderWaveInverted from "../../components/Header/HeaderWaveInverted";
 function AdminDashboard() {
   return (
     <div className="AdminDashboard">
-      <HeaderWaveInverted title="Interface administrateur" />
+      <HeaderWaveInverted title="Bienvenue" />
 
       <div className="boxWithoutHeader">
         <div>

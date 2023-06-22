@@ -26,8 +26,8 @@ function HeaderWaveInverted({ open, handleOpen, title }) {
         </div>
 
         <div className="pp-import">
-          <InputImage />
           <h1 className="titleHeader">{title}</h1>
+          <InputImage />
         </div>
         <img className="Wave" src={waveWhite} alt="La Vague Blanche" />
       </div>
