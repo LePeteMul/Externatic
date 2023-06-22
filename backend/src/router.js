@@ -1,68 +1,69 @@
 const express = require("express");
 
 const router = express.Router();
+const { hashPassword } = require("./services/auth");
 
 const applicationControllers = require("./controllers/applicationControllers");
 
-router.get("/application", applicationControllers.browse);
-router.get("/application/:id", applicationControllers.read);
-router.put("/application/:id", applicationControllers.edit);
-router.post("/application", applicationControllers.add);
-router.delete("/application/:id", applicationControllers.destroy);
+router.get("/api/application", applicationControllers.browse);
+router.get("/api/application/:id", applicationControllers.read);
+router.put("/api/application/:id", applicationControllers.edit);
+router.post("/api/application", applicationControllers.add);
+router.delete("/api/application/:id", applicationControllers.destroy);
 
 const companyControllers = require("./controllers/companyControllers");
 
-router.get("/company", companyControllers.browse);
-router.get("/company/:id", companyControllers.read);
-router.put("/company/:id", companyControllers.edit);
-router.post("/company", companyControllers.add);
-router.delete("/company/:id", companyControllers.destroy);
+router.get("/api/company", companyControllers.browse);
+router.get("/api/company/:id", companyControllers.read);
+router.put("/api/company/:id", companyControllers.edit);
+router.post("/api/company/register", companyControllers.add);
+router.delete("/api/company/:id", companyControllers.destroy);
 
 const contractControllers = require("./controllers/contractControllers");
 
-router.get("/contract", contractControllers.browse);
-router.get("/contract/:id", contractControllers.read);
-router.put("/contract/:id", contractControllers.edit);
-router.post("/contract", contractControllers.add);
-router.delete("/contract/:id", contractControllers.destroy);
+router.get("/api/contract", contractControllers.browse);
+router.get("/api/contract/:id", contractControllers.read);
+router.put("/api/contract/:id", contractControllers.edit);
+router.post("/api/contract", contractControllers.add);
+router.delete("/api/contract/:id", contractControllers.destroy);
 
 const favoriteControllers = require("./controllers/favoriteControllers");
 
-router.get("/favorite", favoriteControllers.browse);
-router.get("/favorite/:id", favoriteControllers.read);
-router.post("/favorite", favoriteControllers.add);
-router.delete("/favorite/:id", favoriteControllers.destroy);
+router.get("/api/favorite", favoriteControllers.browse);
+router.get("/api/favorite/:id", favoriteControllers.read);
+router.post("/api/favorite", favoriteControllers.add);
+router.delete("/api/favorite/:id", favoriteControllers.destroy);
 
 const offerControllers = require("./controllers/offerControllers");
 
-router.get("/offer", offerControllers.browse);
-router.get("/offer/:id", offerControllers.read);
-router.put("/offer/:id", offerControllers.edit);
-router.post("/offer", offerControllers.add);
-router.delete("/offer/:id", offerControllers.destroy);
+router.get("/api/offer", offerControllers.browse);
+router.get("/api/offer/:id", offerControllers.read);
+router.put("/api/offer/:id", offerControllers.edit);
+router.post("/api/offer", offerControllers.add);
+router.delete("/api/offer/:id", offerControllers.destroy);
 
 const statusControllers = require("./controllers/statusControllers");
 
-router.get("/status", statusControllers.browse);
-router.get("/status/:id", statusControllers.read);
-router.put("/status/:id", statusControllers.edit);
-router.post("/status", statusControllers.add);
-router.delete("/status/:id", statusControllers.destroy);
+router.get("/api/status", statusControllers.browse);
+router.get("/api/status/:id", statusControllers.read);
+router.put("/api/status/:id", statusControllers.edit);
+router.post("/api/status", statusControllers.add);
+router.delete("/api/status/:id", statusControllers.destroy);
 
 const technoControllers = require("./controllers/technoControllers");
 
-router.get("/techno", technoControllers.browse);
-router.get("/techno/:id", technoControllers.read);
-router.put("/techno/:id", technoControllers.edit);
-router.post("/techno", technoControllers.add);
-router.delete("/techno/:id", technoControllers.destroy);
+router.get("/api/techno", technoControllers.browse);
+router.get("/api/techno/:id", technoControllers.read);
+router.put("/api/techno/:id", technoControllers.edit);
+router.post("/api/techno", technoControllers.add);
+router.delete("/api/techno/:id", technoControllers.destroy);
 
 const userControllers = require("./controllers/userControllers");
 
-router.get("/user", userControllers.browse);
-router.get("/user/:id", userControllers.read);
-router.put("/user/:id", userControllers.edit);
-router.post("/user", userControllers.add);
-router.delete("/user/:id", userControllers.destroy);
+router.get("/api/user", userControllers.browse);
+router.get("/api/user/:id", userControllers.read);
+router.put("/api/user/:id", userControllers.edit);
+router.post("/api/user/register", hashPassword, userControllers.add);
+router.delete("/api/user/:id", userControllers.destroy);
 
 module.exports = router;

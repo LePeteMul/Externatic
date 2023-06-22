@@ -58,7 +58,7 @@ const add = (req, res) => {
   models.favorite
     .insert(favorite)
     .then(([result]) => {
-      res.location(`/favorite/${result.insertId}`).sendStatus(201);
+      res.location(`/api/favorite/${result.insertId}`).sendStatus(201);
     })
     .catch((err) => {
       console.error(err);
