@@ -17,19 +17,23 @@ function CompanyCreation() {
           <InputText
             label="Nom de la société"
             inputMessage={"Entrez l'information"}
+            type="text"
           />
           <InputLogo label="Logo de la société" />
           <InputText
             label="Adresse mail de contact"
             inputMessage={"Entrez l'information"}
+            type="email"
           />
           <InputText
             label="Téléphone de contact"
             inputMessage={"Entrez l'information"}
+            type="tel"
           />
           <InputText
             label="Mot de passe provisoire"
             inputMessage={"Entrez l'information"}
+            type="password"
           />
         </div>
         <div className="CompanyCreationEnd">

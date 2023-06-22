@@ -23,10 +23,18 @@ function AdminProfile() {
               { value: "choix3", name: "Je suis non binaire" },
             ]}
           />
-          <InputText label="Nom" inputMessage="DURAND" />
-          <InputText label="Prénom" inputMessage="Franck" />
-          <InputText label="Email" inputMessage="f.durand@externatic.fr" />
-          <InputText label="Téléphone" inputMessage="06 99 99 99 99" />
+          <InputText label="Nom" inputMessage="DURAND" type="text" />
+          <InputText label="Prénom" inputMessage="Franck" type="text" />
+          <InputText
+            label="Email"
+            inputMessage="f.durand@externatic.fr"
+            type="email"
+          />
+          <InputText
+            label="Téléphone"
+            inputMessage="06 99 99 99 99"
+            type="tel"
+          />
         </div>
         <div className="AdminProfileEnd">
           <NavLink to="/admin/dashboard">

@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const SearchCityContext = createContext();
 
 export function SearchCityContextProvider({ children }) {
-  const [searchCity, setSearchCity] = useState("France entière");
+  const [searchCity, setSearchCity] = useState("");
 
   const SearchCityContextProviderValue = useMemo(
     () => ({ searchCity, setSearchCity }),

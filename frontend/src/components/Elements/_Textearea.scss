@@ -11,16 +11,26 @@
     border-radius: 12px;
   }
 
-  .textField {
+  textarea {
     border: none;
     outline: none;
     background-color: $buttonColorLight;
     margin-top: 3%;
-    color: $textColorInput;
     width: 100%;
     border-radius: 12px;
     font-size: 16px;
     font-family: $fontFamily;
     padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+
+  .selected {
+    color: $textColorDark;
+  }
+
+  .notselected {
+    color: $textColorInput;
   }
 }

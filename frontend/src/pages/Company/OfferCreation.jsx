@@ -44,11 +44,19 @@ function OfferCreation() {
                   { value: "Stage", name: "Stage" },
                 ]}
               />
-              <InputText label="Salaire annuel brut min" inputMessage="" />
-              <InputText label="Salaire annuel brut max" inputMessage="" />
+              <InputText
+                label="Salaire annuel brut minimum (euros)"
+                inputMessage="30 000"
+                type="text"
+              />
+              <InputText
+                label="Salaire annuel brut maximum (euros)"
+                inputMessage="35 000"
+                type="text"
+              />
               <Textearea
                 label="Missions du poste"
-                inputMessage="Yes"
+                inputMessage="Description"
                 rows={3}
               />
 
@@ -72,9 +80,17 @@ function OfferCreation() {
                 ]}
               />
 
-              <Textearea label="Soft Skills" inputMessage="Yes" rows={9} />
+              <Textearea
+                label="Soft Skills"
+                inputMessage="Description"
+                rows={9}
+              />
 
-              <Textearea label="Hard Skills" inputMessage="Yes" rows={9} />
+              <Textearea
+                label="Hard Skills"
+                inputMessage="Description"
+                rows={9}
+              />
 
               <div className="offerEnd">
                 <BlackButton
