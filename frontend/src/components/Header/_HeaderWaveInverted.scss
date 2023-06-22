@@ -30,10 +30,15 @@
     margin-top: 40px;
 
     .InputImage {
+      margin-top: 40px;
       width: 150px;
       height: 150px;
       z-index: 12;
       object-fit: cover;
+
+      .imageSize {
+        border: solid $primaryColor;
+      }
     }
 
     .titleHeader {

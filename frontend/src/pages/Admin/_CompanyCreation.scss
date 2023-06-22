@@ -30,13 +30,20 @@
         font-weight: $regular;
       }
 
-      .InputImage {
+      .InputLogo {
         .custom-label {
           display: flex;
           flex-direction: row;
           justify-content: space-between;
           align-items: center;
           margin-top: 5%;
+
+          .labelInput {
+            min-width: 50%;
+          }
+          .imageHeight {
+            max-width: 50%;
+          }
         }
 
         input {
@@ -46,7 +53,6 @@
         }
       }
     }
-
     .CompanyCreationEnd {
       padding-top: 10%;
     }

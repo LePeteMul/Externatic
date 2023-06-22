@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import SearchContractContext from "../../../contexts/SearchContractContext/SearchContractContext";
 
 function ContractInput() {
@@ -6,10 +6,7 @@ function ContractInput() {
     SearchContractContext
   );
 
-  const [classSelect, setClassSelect] = useState("notselected");
-
   const handleSelect = (event) => {
-    setClassSelect("selected");
     setSearchContract(event.target.value);
   };
 
@@ -20,11 +17,7 @@ function ContractInput() {
   ];
 
   return (
-    <select
-      className={classSelect}
-      onChange={handleSelect}
-      value={searchContract}
-    >
+    <select onChange={handleSelect} value={searchContract}>
       <option className="notselected" value="">
         Selectionner un contrat
       </option>

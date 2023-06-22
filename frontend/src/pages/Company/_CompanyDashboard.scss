@@ -1,11 +1,10 @@
 .CompanyDashboard {
-  // .vagueCompany {
-  //   background-image: url("./../../assets/images/Dashboard/vague.svg");
-  //   background-size: cover;
-  //   background-repeat: no-repeat;
-  //   background-position: center;
-  //   padding: 105px;
-  // }
+  .vagueCompany {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 105px;
+  }
 
   .container-top {
     display: flex;
@@ -42,11 +41,7 @@
     justify-content: center;
     align-items: center;
     font-size: 32px;
+    color: $textColorLight;
     padding-top: 25px;
-  }
-
-  .pp-import {
-    height: 150px;
-    border: 2px solid rgba(7, 7, 7, 0.12);
   }
 }
