@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import waveWhite from "../../assets/images/Dashboard/vague.svg";
 import logo from "../../assets/images/Header/logoExternatic.svg";
-import BurgerMenuWave from "./BurgerMenuWave";
+import BurgerMenuBasic from "./BurgerMenuBasic";
 import ProfilePicture from "../Elements/ProfilePicture";
 import InputImage from "../Elements/InputImage";
 
@@ -14,7 +14,7 @@ function HeaderWaveInverted({ open, handleOpen, title }) {
       <div className="HeaderWaveInverted">
         <div className="TopHeader">
           {" "}
-          <BurgerMenuWave
+          <BurgerMenuBasic
             className="BurgerMenu"
             open={open}
             handleOpen={handleOpen}

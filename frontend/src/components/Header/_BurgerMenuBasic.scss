@@ -5,7 +5,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: calc(0.5rem + 1.5vw);
+  font-size: calc(0.8rem + 1.7dvw);
+  z-index: 13;
 
   .BurgerContainer {
     padding-left: 2dvw;
@@ -19,12 +20,10 @@
     position: fixed;
     width: 100%;
     height: 80dvh;
-    z-index: 1;
     background-color: $primaryColor;
   }
   .menuClosed {
     left: -100%;
-    z-index: 2;
   }
   .menuOpened {
     top: 10dvh;

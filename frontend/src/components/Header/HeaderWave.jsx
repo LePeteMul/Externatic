@@ -12,7 +12,9 @@ function HeaderWave() {
       <div className="HeaderWave">
         <div className="TopHeader">
           {" "}
-          <BurgerMenuWave />
+          <div className="BurgerMenuContainer">
+            <BurgerMenuWave />{" "}
+          </div>
           <NavLink to="/">
             <img className="Logo" src={logo} alt="Le Logo" />
           </NavLink>

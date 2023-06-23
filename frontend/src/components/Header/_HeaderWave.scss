@@ -16,13 +16,14 @@
       left: 50%;
       transform: translateX(-50%);
       height: 16vh;
-      z-index: 3;
+      z-index: 1;
       background-color: transparent;
     }
   }
 
   .Wave {
     flex: 1;
+    // z-index:-1;
     position: absolute;
     height: 10dvh;
     margin-top: 10dvh;
