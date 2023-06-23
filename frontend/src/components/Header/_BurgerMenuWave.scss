@@ -5,7 +5,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: calc(0.5rem + 1.5vw);
+  font-size: calc(0.8rem + 1.7dvw);
+  z-index: 13;
 
   .BurgerContainer {
     padding-left: 2dvw;
@@ -26,6 +27,8 @@
   }
   .menuOpened {
     top: 20dvh;
+    padding-top: 5dvh;
+    height: 80dvh;
   }
 
   .menuItem {
