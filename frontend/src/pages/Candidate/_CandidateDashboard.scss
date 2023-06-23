@@ -30,11 +30,11 @@
     margin-bottom: 20px;
   }
 
-  @media (max-width: 480px) {
-    .boxInside > * {
-      flex-basis: 100%;
-    }
-  }
+  // @media (max-width: 480px) {
+  //   .boxInside > * {
+  //     flex-basis: 100%;
+  //   }
+  // }
 
   .titleHeader {
     display: flex;
