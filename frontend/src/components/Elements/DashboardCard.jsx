@@ -2,11 +2,7 @@ import React from "react";
 // eslint-disable-next-line import/no-duplicates
 import PropTypes from "prop-types";
 
-function DashboardCard({ title, description, link }) {
-  const handleClick = () => {
-    window.location.href = link;
-  };
-
+function DashboardCard({ title, description }) {
   const getBackgroundClass = (FinalTitle) => {
     switch (FinalTitle) {
       // ADMIN SECTION
@@ -54,13 +50,7 @@ function DashboardCard({ title, description, link }) {
 
   return (
     <div className="container">
-      <div
-        className={`card ${backgroundClass}`}
-        onClick={handleClick}
-        onKeyDown={handleClick}
-        role="button"
-        tabIndex={0}
-      >
+      <div className={`card ${backgroundClass}`} role="button" tabIndex={0}>
         <p className="title">{title}</p>
         <p className="text">{description}</p>
       </div>
@@ -71,7 +61,6 @@ function DashboardCard({ title, description, link }) {
 DashboardCard.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
 };
 
 export default DashboardCard;
