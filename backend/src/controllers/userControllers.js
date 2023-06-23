@@ -86,10 +86,32 @@ const destroy = (req, res) => {
     });
 };
 
+const getUserByEmailWithPasswordAndPassToNext = (req, res, next) => {
+  const { email } = req.body;
+
+  models.user
+
+    .findByMail(email)
+    .then(([user]) => {
+      if (user[0] != null) {
+        req.user = user[0];
+        console.info("user identified by email");
+        next();
+      } else {
+        res.status(500).send("Tas pas reussi userController get user by mail");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send(" error retrieving data from database ");
+    });
+};
+
 module.exports = {
   browse,
   read,
   edit,
   add,
   destroy,
+  getUserByEmailWithPasswordAndPassToNext,
 };

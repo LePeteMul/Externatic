@@ -43,7 +43,7 @@ CREATE TABLE user (
   phone VARCHAR(450),
   city VARCHAR(250),
   cv TEXT,
-  admin BOOLEAN NOT NULL DEFAULT 0,
+  admin  TINYINT DEFAULT 0,
   password VARCHAR(250) NOT NULL,
   profil_picture VARCHAR(250),
   contact_mode VARCHAR(250),
