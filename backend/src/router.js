@@ -64,7 +64,8 @@ router.delete("/api/techno/:id", technoControllers.destroy);
 const userControllers = require("./controllers/userControllers");
 
 router.get("/api/user", userControllers.browse);
-router.get("/api/user/:id", userControllers.read);
+router.get("/api/user/candidats", userControllers.getCandidate);
+router.get("/api/user/:id", userControllers.getById);
 router.put("/api/user/:id", userControllers.edit);
 router.post("/api/user/register", hashPassword, userControllers.add);
 router.delete("/api/user/:id", userControllers.destroy);

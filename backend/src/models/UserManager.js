@@ -38,6 +38,23 @@ class UserManager extends AbstractManager {
         throw err;
       });
   }
+
+  findAllCandidate() {
+    return this.database
+      .query(
+        `select id, lastname, firstname, email, profil_picture from  ${this.table} where admin = 0`
+      )
+      .catch((err) => {
+        throw err;
+      });
+  }
+
+  findByid(id) {
+    return this.database.query(
+      `select id, gender, lastname, firstname, email, phone, city, cv, admin, profil_picture from  ${this.table} where id = ?`,
+      [id]
+    );
+  }
 }
 
 module.exports = UserManager;
