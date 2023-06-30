@@ -107,6 +107,34 @@ const getUserByEmailWithPasswordAndPassToNext = (req, res, next) => {
     });
 };
 
+const getCandidate = (req, res) => {
+  models.user
+    .findAllCandidate()
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+const getById = (req, res) => {
+  models.user
+    .findByid(req.params.id)
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.sendStatus(404);
+      } else {
+        res.send(rows[0]);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
@@ -114,4 +142,6 @@ module.exports = {
   add,
   destroy,
   getUserByEmailWithPasswordAndPassToNext,
+  getCandidate,
+  getById,
 };
