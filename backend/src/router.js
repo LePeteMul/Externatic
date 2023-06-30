@@ -2,6 +2,9 @@ const express = require("express");
 
 const router = express.Router();
 const { hashPassword } = require("./services/auth");
+const { verifyPassword } = require("./services/auth");
+
+const { verifyToken } = require("./services/auth");
 
 const applicationControllers = require("./controllers/applicationControllers");
 
@@ -61,9 +64,17 @@ router.delete("/api/techno/:id", technoControllers.destroy);
 const userControllers = require("./controllers/userControllers");
 
 router.get("/api/user", userControllers.browse);
-router.get("/api/user/:id", userControllers.read);
+router.get("/api/user/candidats", userControllers.getCandidate);
+router.get("/api/user/:id", userControllers.getById);
 router.put("/api/user/:id", userControllers.edit);
 router.post("/api/user/register", hashPassword, userControllers.add);
 router.delete("/api/user/:id", userControllers.destroy);
+
+router.post(
+  "/api/user/login",
+  userControllers.getUserByEmailWithPasswordAndPassToNext,
+  verifyPassword,
+  verifyToken
+);
 
 module.exports = router;
