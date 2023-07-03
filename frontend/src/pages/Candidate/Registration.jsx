@@ -19,8 +19,8 @@ function Registration() {
           <h1>M'inscrire </h1>
         </div>
         <div className="registrationDetails">
-          <InputText label="Nom" inputMessage="DUPONT" />
-          <InputText label="Prénom" inputMessage="Bob" />
+          <InputText label="Nom" inputMessage="DUPONT" type="text" />
+          <InputText label="Prénom" inputMessage="Bob" type="text" />
           <InputText
             label="Adresse mail :"
             inputMessage="bob@gmail.com"

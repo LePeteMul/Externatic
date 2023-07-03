@@ -1,0 +1,22 @@
+.inputText {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  margin-top: 5%;
+  color: white;
+  font-family: $fontFamily;
+
+  input {
+    border: none;
+    outline: none;
+    background-color: $buttonColorLight;
+    margin-top: 3%;
+    color: $textColorDark;
+    width: 100%;
+    height: 48px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-family: $fontFamily;
+    padding-left: 12px;
+  }
+}
