@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-function InputText({ label, inputMessage, type, image, image2, image3 }) {
+function InputText({ label, inputMessage, type, image, image2, image3, set }) {
   const [entry, setEntry] = useState("");
 
   const handleChangeInput = (event) => {
     setEntry(event.target.value);
+    set(event.target.value);
   };
 
   return (
@@ -32,6 +33,7 @@ InputText.propTypes = {
   image: PropTypes.string.isRequired,
   image2: PropTypes.string.isRequired,
   image3: PropTypes.string.isRequired,
+  set: PropTypes.string.isRequired,
 };
 
 export default InputText;

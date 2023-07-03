@@ -63,7 +63,7 @@ const verifyToken = (req, res, next) => {
 
     req.payload = payload;
 
-    console.info("Got It");
+    console.info("Got It user");
     next();
   } catch (err) {
     console.error(err);

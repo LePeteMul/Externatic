@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import HeaderWave from "../../components/Header/HeaderWave";
 import InputText from "../../components/Elements/InputText";
@@ -8,6 +8,32 @@ import profil from "../../assets/icons/userIcon2.png";
 import lock from "../../assets/icons/lock.png";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handlePostRequest = () => {
+    const url = "http://localhost:8080/api/user/login";
+    const requestData = {
+      email: { email },
+      password: { password },
+    };
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.info("Response:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
   return (
     <div className="connexion">
       <HeaderWave />
@@ -17,12 +43,24 @@ function Login() {
         </div>
 
         <div className="inputs">
-          <InputText inputMessage="Identifiant" image2={profil} />
-          <InputText inputMessage="Mot de passe" image3={lock} />
+          <InputText
+            inputMessage="Identifiant"
+            set={setEmail}
+            image2={profil}
+          />
+
+          <InputText
+            inputMessage="Mot de passe"
+            set={setPassword}
+            image3={lock}
+          />
         </div>
 
         <div className="btn_Connexion">
-          <BlackButton buttonName="Connexion" />
+          <BlackButton
+            buttonName="Connexion"
+            buttonFunction={handlePostRequest}
+          />
         </div>
 
         <div className="forget_psw">

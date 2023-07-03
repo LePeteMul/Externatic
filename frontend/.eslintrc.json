@@ -17,6 +17,7 @@
   },
   "plugins": ["react", "import"],
   "rules": {
+    "no-shadow": "off",
     "no-console": "off",
     "no-restricted-syntax": [
       "error",
@@ -33,6 +34,9 @@
       {
         "assert": "either"
       }
-    ]
+    ],
+    "camelcase": "off",
+    "no-unused-vars": "off",
+    "react/forbid-prop-types": "off"
   }
 }

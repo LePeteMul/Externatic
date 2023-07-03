@@ -83,9 +83,9 @@ CREATE TABLE offer(
   min_salary INT NOT NULL,
   max_salary INT NOT NULL,
   description TEXT NOT NULL,
-  prerequisites TEXT NOT NULL,
-  city_job VARCHAR(350) NOT NULL,
-  department VARCHAR(350) NOT NULL,
+  prerequisites TEXT ,
+  city_job VARCHAR(350) ,
+  department VARCHAR(350),
   PRIMARY KEY (id),
   FOREIGN KEY (company_id) REFERENCES company(id),
   FOREIGN KEY (contract_id) REFERENCES contract(id) 

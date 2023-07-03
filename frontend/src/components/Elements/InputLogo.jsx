@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import uploadIcon from "../../assets/icons/upload.png";
 
-function InputLogo({ label }) {
+function InputLogo({ label, set }) {
   const [file, setFile] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -10,6 +10,7 @@ function InputLogo({ label }) {
     const selectedFile = event.target.files[0];
     const fileSizeInBytes = selectedFile.size;
     const maxSizeInBytes = 1 * 1024 * 1024; // 5 MB
+    set(event.target.value);
 
     if (fileSizeInBytes > maxSizeInBytes) {
       setErrorMessage("Taille maximale dépassée (5 Mo)");
@@ -59,6 +60,7 @@ function InputLogo({ label }) {
 
 InputLogo.propTypes = {
   label: PropTypes.string.isRequired,
+  set: PropTypes.string.isRequired,
 };
 
 export default InputLogo;

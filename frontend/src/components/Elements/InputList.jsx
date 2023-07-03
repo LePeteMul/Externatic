@@ -19,10 +19,10 @@ function InputList({ label, inputMessage, data }) {
           return (
             <option
               className="selected"
-              value={element.value}
-              key={element.value}
+              value={element.contract_type || "Nantes"}
+              key={element.contract_type || "Nantes"}
             >
-              {element.name}
+              {element.contract_type || "Nantes"}
             </option>
           );
         })}
@@ -34,7 +34,7 @@ function InputList({ label, inputMessage, data }) {
 InputList.propTypes = {
   label: PropTypes.string.isRequired,
   inputMessage: PropTypes.string.isRequired,
-  data: PropTypes.string.isRequired,
+  data: PropTypes.array.isRequired,
 };
 
 export default InputList;
