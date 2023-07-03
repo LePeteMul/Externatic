@@ -77,4 +77,8 @@ router.post(
   verifyToken
 );
 
+const mailControllers = require("./controllers/mailControllers");
+
+router.post("/api/registration", mailControllers.sendContactMail);
+
 module.exports = router;
