@@ -10,7 +10,6 @@ const applicationControllers = require("./controllers/applicationControllers");
 
 router.get("/api/application", applicationControllers.browse);
 router.get("/api/application/:id", applicationControllers.read);
-
 router.put("/api/application/:id", applicationControllers.edit);
 router.post("/api/application", applicationControllers.add);
 router.delete("/api/application/:id", applicationControllers.destroy);
@@ -83,6 +82,6 @@ router.post(
 
 const mailControllers = require("./controllers/mailControllers");
 
-router.post("/api/registration", mailControllers.sendContactMail);
+router.post("/api/email", mailControllers.sendContactMail);
 
 module.exports = router;
