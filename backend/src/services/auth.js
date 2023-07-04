@@ -50,7 +50,7 @@ const verifyToken = (req, res, next) => {
     const authorizationHeader = req.get("Authorization");
 
     if (!authorizationHeader) {
-      throw new Error("Authorization header is missing kikokiko");
+      throw new Error("Authorization header is missing");
     }
 
     const [type, token] = authorizationHeader.split(" ");

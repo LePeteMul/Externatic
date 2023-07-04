@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import BlackButton from "../../components/Elements/BlackButton";
@@ -8,7 +8,37 @@ import JobOfferContext from "../../contexts/JobOfferContext/JobOfferContext";
 
 function JobDetails() {
   const { jobOffer } = useContext(JobOfferContext);
-  const { userConnected } = useContext(UserConnexionContext);
+  const { userConnected, userId } = useContext(UserConnexionContext);
+
+  const [data, setData] = useState({
+    candidate_id: userId /* id du user connecte enregistre dans le contexte */,
+    offer_id:
+      "" /* Modifier "" par la variable de l offer id sur laquelle la candidature est faite */,
+    company_id:
+      "" /* Modifier "" par la variable de company id sur laquelle la candidature est faite */,
+  });
+
+  const applicationClick = (e) => {
+    e.preventDefault();
+
+    const url = "http://localhost:8080/api/application";
+    const requestData = { ...data };
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestData),
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        console.info("Response:", res);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
 
   return (
     <div className="JobDetails">
@@ -70,7 +100,10 @@ function JobDetails() {
         {userConnected && (
           <div className="ConnectButtons">
             <NavLink to="/candidate/applicationconfirmation">
-              <BlackButton buttonName="Candidater" />
+              <BlackButton
+                buttonName="Candidater"
+                buttonFunction={applicationClick}
+              />
             </NavLink>
             <div className="Heart">
               <img src={HeartButton} alt="FavoriteButton" />
