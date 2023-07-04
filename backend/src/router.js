@@ -68,12 +68,6 @@ router.get("/api/user/candidats", userControllers.getCandidate);
 router.get("/api/user/:id", userControllers.getById);
 router.put("/api/user/:id", userControllers.edit);
 router.post("/api/user/register", hashPassword, userControllers.add);
-router.post(
-  "/api/user/login",
-  userControllers.log,
-  verifyPassword,
-  verifyToken
-);
 router.delete("/api/user/:id", userControllers.destroy);
 
 // Route to get application by offer id
