@@ -28,10 +28,17 @@ function InputText({ label, inputMessage, type, image, image2, image3 }) {
 InputText.propTypes = {
   label: PropTypes.string.isRequired,
   inputMessage: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  image2: PropTypes.string.isRequired,
-  image3: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  image: PropTypes.string,
+  image2: PropTypes.string,
+  image3: PropTypes.string,
+};
+
+InputText.defaultProps = {
+  type: "text",
+  image: "",
+  image2: "",
+  image3: "",
 };
 
 export default InputText;
