@@ -5,10 +5,11 @@ const UserConnexionContext = createContext();
 
 export function UserConnexionContextProvider({ children }) {
   const [userConnected, setUserConnected] = useState(true);
+  const [userId, setUserId] = useState(0);
 
   const UserConnexionContextProviderValue = useMemo(
-    () => ({ userConnected, setUserConnected }),
-    [userConnected, setUserConnected]
+    () => ({ userConnected, setUserConnected, userId, setUserId }),
+    [userConnected, setUserConnected, userId, setUserId]
   );
 
   return (

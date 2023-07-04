@@ -102,7 +102,7 @@ function RegistrationCopy() {
             />
             <InputTexte
               label="Confirmer le mot de passe :"
-              placeholder="****"
+              placeholder="*******************"
               name="password"
               type="password"
               handleChange={handleChange}
@@ -114,7 +114,7 @@ function RegistrationCopy() {
             buttonFunction={handleSubmit}
           />
         </form>
-        {isSent && (
+        {isCreated && (
           <div className="conf_registration">
             Un email de confirmation vous a été envoyé. Consultez votre boite
             mail et suivez les instructions pour confirmer votre inscription.
