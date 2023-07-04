@@ -33,6 +33,7 @@
       {
         "assert": "either"
       }
-    ]
+    ],
+    "no-unused-vars": "warn"
   }
 }
