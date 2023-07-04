@@ -31,14 +31,12 @@ function RegistrationCopy() {
     const requestData = { ...formData };
 
     fetch(url, {
-
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(requestData),
     })
-
       .then((response) => response.json())
       .then((data) => {
         console.info("Response:", data);
@@ -47,7 +45,6 @@ function RegistrationCopy() {
       .catch((error) => {
         console.error("Error:", error);
         // Handle any errors that occurred during the POST request
-
       });
   };
   return (
@@ -90,10 +87,8 @@ function RegistrationCopy() {
             />
             <InputTexte
               label="Confirmer le mot de passe :"
-
               placeholder="****"
               name="password"
-
               type="password"
               handleChange={handleChange}
             />
