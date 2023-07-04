@@ -7,12 +7,8 @@ class ApplicationManager extends AbstractManager {
 
   insert(application) {
     return this.database.query(
-      `insert into ${this.table} (candidate_id, application_id, status_id) values (?, ?, ?)`,
-      [
-        application.candidate_id,
-        application.application_id,
-        application.status_id,
-      ]
+      `insert into ${this.table} (candidate_id, offer_id, company_id, status_id) values (?, ?, ?, 1)`,
+      [application.candidate_id, application.offer_id, application.company_id]
     );
   }
 

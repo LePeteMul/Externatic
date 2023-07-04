@@ -20,32 +20,47 @@ function RegistrationCopy() {
     }));
   };
 
+  const [isCreated, setIsCreated] = useState(false);
   const [isSent, setIsSent] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.info(formData);
-
-    const url = "http://localhost:8080/api/user/register";
     const requestData = { ...formData };
+    const requestEmail = { email: formData.email };
 
-    fetch(url, {
+    fetch("http://localhost:8080/api/user/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(requestData),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.info("Response:", data);
+      .then((response) => {
+        setIsCreated(!isCreated);
+        console.info(response);
         // Perform any necessary actions after successful POST request
       })
       .catch((error) => {
         console.error("Error:", error);
         // Handle any errors that occurred during the POST request
       });
+
+    if (isCreated) {
+      fetch("http://localhost:8080/api/email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestEmail),
+      })
+        .then((response) => {
+          setIsSent(!isSent);
+          console.info(response);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    }
   };
   return (
     <div className="registration">
