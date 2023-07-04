@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import DashboardCard from "../../components/Elements/DashboardCard";
 import HeaderWaveInverted from "../../components/Header/HeaderWaveInverted";
 
@@ -9,26 +10,18 @@ function CandidateDashboard() {
 
       <div className="boxWithoutHeader">
         <div className="boxInside">
-          <DashboardCard
-            description="Cliquer ici pour voir votre profil"
-            title="Mon profil"
-            link="/candidate/profile"
-          />
-          <DashboardCard
-            description="Cliquer ici pour voir votre profil"
-            title="Favoris"
-            link="/candidate/favorite"
-          />
-          <DashboardCard
-            description="Cliquer ici pour voir votre profil"
-            title="Ma recherche"
-            link="/results"
-          />
-          <DashboardCard
-            description="Cliquer ici pour voir votre profil"
-            title="Mes candidatures"
-            link="/candidate/job-application"
-          />
+          <NavLink to="/candidate/profile">
+            <DashboardCard description="" title="Mon profil" />
+          </NavLink>
+          <NavLink to="/candidate/favorite">
+            <DashboardCard description="" title="Favoris" />
+          </NavLink>
+          <NavLink to="/results">
+            <DashboardCard description="" title="Ma recherche" />
+          </NavLink>
+          <NavLink to="/candidate/job-application">
+            <DashboardCard description="" title="Mes candidatures" />
+          </NavLink>
         </div>
       </div>
     </div>

@@ -15,7 +15,6 @@ function InputTexte({
     <div className="inputText">
       <label htmlFor={name}>{label}</label>
       <input
-        className="InputText"
         type={type}
         placeholder={placeholder}
         name={name}

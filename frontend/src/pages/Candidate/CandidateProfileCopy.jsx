@@ -15,8 +15,10 @@ function CandidateProfileCopy() {
     email: "",
     phone: "",
     city: "",
-    language: "",
+    // language: "",
     cv: "",
+    password: "****",
+    admin: 0,
   });
 
   const handleChange = (e) => {
@@ -35,7 +37,26 @@ function CandidateProfileCopy() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.info(formData);
+
+    const url = "http://localhost:8080/api/user/7";
+    const requestData = { ...formData };
+
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.info("Response:", data);
+        // Perform any necessary actions after successful POST request
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        // Handle any errors that occurred during the POST request
+      });
   };
 
   const handleDeletion = () => {

@@ -7,14 +7,15 @@ import InputTexte from "../../components/Elements/InputTexte";
 
 function OfferCreationCopy() {
   const [formData, setFormData] = useState({
-    poste: "",
-    contrat: "",
-    salaire_nim: "",
-    salaire_max: "",
+    company_id: 1,
+    job: "",
+    contract_id: "",
+    min_salary: "",
+    max_salary: "",
     description: "",
-    city: "",
-    softskills: "",
-    hardskills: "",
+    city_job: "",
+    // softskills: "",
+    // hardskills: "",
   });
 
   const handleChange = (e) => {
@@ -25,14 +26,27 @@ function OfferCreationCopy() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.info(formData);
+
+    const url = "http://localhost:8080/api/offer";
+    const requestData = { ...formData };
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.info("Response:", data);
+        // Perform any necessary actions after successful POST request
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        // Handle any errors that occurred during the POST request
+      });
   };
-
-  // const [posted, setPosted] = useState(false);
-
-  // const handlePosted = () => {
-  //   setPosted(true);
-  // };
 
   return (
     <div className="offer_creation_copy">
@@ -47,7 +61,7 @@ function OfferCreationCopy() {
             <div className="offerinputs">
               <InputListe
                 label="Poste"
-                name="poste"
+                name="job"
                 placeholder="Selectionner un métier"
                 handleChange={handleChange}
                 data={[
@@ -59,25 +73,25 @@ function OfferCreationCopy() {
 
               <InputListe
                 label="Type de contrat"
-                name="contrat"
+                name="contract_id"
                 placeholder="Selectionner un contrat"
                 handleChange={handleChange}
                 data={[
-                  { value: "CDI", name: "CDI" },
+                  { value: "1", name: "1" },
                   { value: "CDD", name: "CDD" },
                   { value: "Stage", name: "Stage" },
                 ]}
               />
               <InputTexte
                 label="Salaire annuel brut minimum (euros)"
-                name="salaire_min"
+                name="min_salary"
                 placeholder="30 000"
                 handleChange={handleChange}
                 type="text"
               />
               <InputTexte
                 label="Salaire annuel brut maximum (euros)"
-                name="salaire_max"
+                name="max_salary"
                 placeholder="35 000"
                 handleChange={handleChange}
                 type="text"
@@ -94,7 +108,7 @@ function OfferCreationCopy() {
               <InputListe
                 label="Localisation"
                 placeholder="Selectionner la ville"
-                name="city"
+                name="city_job"
                 handleChange={handleChange}
                 data={[
                   { value: "Nantes", name: "Nantes" },

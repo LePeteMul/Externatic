@@ -2,11 +2,15 @@ const express = require("express");
 
 const router = express.Router();
 const { hashPassword } = require("./services/auth");
+const { verifyPassword } = require("./services/auth");
+
+const { verifyToken } = require("./services/auth");
 
 const applicationControllers = require("./controllers/applicationControllers");
 
 router.get("/api/application", applicationControllers.browse);
 router.get("/api/application/:id", applicationControllers.read);
+
 router.put("/api/application/:id", applicationControllers.edit);
 router.post("/api/application", applicationControllers.add);
 router.delete("/api/application/:id", applicationControllers.destroy);
@@ -61,9 +65,24 @@ router.delete("/api/techno/:id", technoControllers.destroy);
 const userControllers = require("./controllers/userControllers");
 
 router.get("/api/user", userControllers.browse);
-router.get("/api/user/:id", userControllers.read);
+router.get("/api/user/candidats", userControllers.getCandidate);
+router.get("/api/user/:id", userControllers.getById);
 router.put("/api/user/:id", userControllers.edit);
 router.post("/api/user/register", hashPassword, userControllers.add);
 router.delete("/api/user/:id", userControllers.destroy);
+
+// Route to get application by offer id
+router.get("/api/application/byOfferId/:id", userControllers.getAppliByOfferId);
+
+router.post(
+  "/api/user/login",
+  userControllers.getUserByEmailWithPasswordAndPassToNext,
+  verifyPassword,
+  verifyToken
+);
+
+const mailControllers = require("./controllers/mailControllers");
+
+router.post("/api/registration", mailControllers.sendContactMail);
 
 module.exports = router;

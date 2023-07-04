@@ -6,10 +6,13 @@ import BlackButton from "../../components/Elements/BlackButton";
 
 function CompanyCreationCopy() {
   const [formData, setFormData] = useState({
-    name: "",
+    // Logo & presentation are not required fields in the DB
+    company_name: "",
     email: "",
-    phone: "",
     password: "",
+    phone: "",
+    logo: null,
+    presentation: null,
   });
 
   const handleChange = (e) => {
@@ -18,9 +21,28 @@ function CompanyCreationCopy() {
       [e.target.name]: e.target.value,
     }));
   };
+
+  // Submission and triggering the post datas to the DB
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.info(formData);
+
+    const url = "http://localhost:8080/api/company/register";
+    const requestData = { ...formData };
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.info("Response:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
   return (
     <div className="CompanyCreation">
@@ -33,7 +55,7 @@ function CompanyCreationCopy() {
           <div className="CompanyCreationInformations">
             <InputTexte
               label="Nom de la société"
-              name="name"
+              name="company_name"
               placeholder="nom de la société"
               type="text"
               handleChange={handleChange}
