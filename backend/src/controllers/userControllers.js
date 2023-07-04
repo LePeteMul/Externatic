@@ -152,26 +152,6 @@ const getAppliByOfferId = (req, res) => {
     });
 };
 
-const log = (req, res, next) => {
-  const { email } = req.body;
-  const { password } = req.body;
-
-  models.user
-    .login(email, password)
-    .then(([users]) => {
-      if (users[0] !== null) {
-        req.user = users[0];
-        next();
-      } else {
-        res.sendStatus(401);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send("Internal server error");
-    });
-};
-
 module.exports = {
   browse,
   read,
@@ -182,5 +162,4 @@ module.exports = {
   getCandidate,
   getById,
   getAppliByOfferId,
-  log,
 };
