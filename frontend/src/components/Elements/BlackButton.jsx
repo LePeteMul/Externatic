@@ -13,7 +13,7 @@ function BlackButton({ buttonName, buttonFunction }) {
 
 BlackButton.propTypes = {
   buttonName: PropTypes.string.isRequired,
-  buttonFunction: PropTypes.string.isRequired,
+  buttonFunction: PropTypes.func.isRequired,
 };
 
 export default BlackButton;
