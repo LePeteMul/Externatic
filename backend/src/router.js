@@ -10,6 +10,7 @@ const applicationControllers = require("./controllers/applicationControllers");
 
 router.get("/api/application", applicationControllers.browse);
 router.get("/api/application/:id", applicationControllers.read);
+
 router.put("/api/application/:id", applicationControllers.edit);
 router.post("/api/application", applicationControllers.add);
 router.delete("/api/application/:id", applicationControllers.destroy);
@@ -69,6 +70,9 @@ router.get("/api/user/:id", userControllers.getById);
 router.put("/api/user/:id", userControllers.edit);
 router.post("/api/user/register", hashPassword, userControllers.add);
 router.delete("/api/user/:id", userControllers.destroy);
+
+// Route to get application by offer id
+router.get("/api/application/byOfferId/:id", userControllers.getAppliByOfferId);
 
 router.post(
   "/api/user/login",
