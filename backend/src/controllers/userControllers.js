@@ -135,6 +135,23 @@ const getById = (req, res) => {
     });
 };
 
+// Getting application by offer id
+const getAppliByOfferId = (req, res) => {
+  models.user
+    .findApplicationByOffer(req.params.id)
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.sendStatus(404);
+      } else {
+        res.send(rows[0]);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
@@ -144,4 +161,5 @@ module.exports = {
   getUserByEmailWithPasswordAndPassToNext,
   getCandidate,
   getById,
+  getAppliByOfferId,
 };

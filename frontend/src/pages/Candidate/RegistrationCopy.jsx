@@ -6,11 +6,11 @@ import BlackButton from "../../components/Elements/BlackButton";
 
 function RegistrationCopy() {
   const [formData, setFormData] = useState({
+    // Validation password is missing
     lastname: "",
     firstname: "",
     email: "",
     password: "",
-    validation_password: "",
   });
 
   const handleChange = (e) => {
@@ -24,21 +24,30 @@ function RegistrationCopy() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const requestData = { email: formData.email };
 
-    fetch("http://localhost:8080/api/registration", {
+    console.info(formData);
+
+    const url = "http://localhost:8080/api/user/register";
+    const requestData = { ...formData };
+
+    fetch(url, {
+
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(requestData),
     })
+
+      .then((response) => response.json())
       .then((data) => {
         console.info("Response:", data);
-        setIsSent(true);
+        // Perform any necessary actions after successful POST request
       })
       .catch((error) => {
         console.error("Error:", error);
+        // Handle any errors that occurred during the POST request
+
       });
   };
   return (
@@ -81,8 +90,10 @@ function RegistrationCopy() {
             />
             <InputTexte
               label="Confirmer le mot de passe :"
-              placeholder="*******************"
-              name="validation_password"
+
+              placeholder="****"
+              name="password"
+
               type="password"
               handleChange={handleChange}
             />
