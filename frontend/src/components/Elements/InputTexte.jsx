@@ -6,7 +6,6 @@ function InputTexte({ type, name, placeholder, handleChange, label }) {
     <div className="inputText">
       <label>{label}</label>
       <input
-        className="InputText"
         type={type}
         placeholder={placeholder}
         name={name}
