@@ -90,4 +90,6 @@ const mailControllers = require("./controllers/mailControllers");
 
 router.post("/api/email", mailControllers.sendContactMail);
 
+// Route to get all the offers with details
+router.get("/api/offerDetails", companyControllers.OffersList);
 module.exports = router;
