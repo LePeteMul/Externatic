@@ -1,32 +1,29 @@
--- SQLBook: Code
-
--- CREATE TABLE item (
---   id int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
---   title varchar(255) NOT NULL
--- ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- INSERT INTO item (title) VALUES ('Stuff'), ('Doodads');
-
--- Katia verif
-
-
 DROP TABLE IF EXISTS user_techno;
+
 DROP TABLE IF EXISTS offer_techno;
+
 DROP TABLE IF EXISTS favorite;
+
 DROP TABLE IF EXISTS application;
+
 DROP TABLE IF EXISTS offer;
+
 DROP TABLE IF EXISTS techno;
+
 DROP TABLE IF EXISTS status;
+
 DROP TABLE IF EXISTS contract;
+
 DROP TABLE IF EXISTS company;
+
 DROP TABLE IF EXISTS user;
 
-
-
 DROP DATABASE IF EXISTS externatic;
+
 CREATE DATABASE externatic;
 
 USE externatic;
+
 
 CREATE TABLE contract(
   id INT NOT NULL AUTO_INCREMENT,
@@ -157,37 +154,88 @@ INSERT INTO offer (company_id, job,`date`, remote, contract_id, min_salary, max_
 Outils interactifs pour les visio : tableau-blanc, sondage intéractifs, etc…
 Animations in-app et outils pédagogiques pour les patients
 Fonctionnalités autour du suivi des objets connectés remis aux patients
-Tableau de bord avec des alertes pour les professionnels","Symfony & React","Nantes", " la Loire-Atlantique"),
-(3, "Lead Tech Java en DSI – H/F","2023-06-20 16:30:45", "remote",3, 10000,12000,"Vous intégrez une équipe AGILE, en tant que développeur JAVA (F/H/X). Vos missions consistent à : 
+Tableau de bord avec des alertes pour les professionnels",
+        "Symfony & React",
+        "Nantes",
+        " la Loire-Atlantique"
+    ), (
+        3,
+        "Lead Tech Java en DSI – H/F",
+        "2023-06-20 16:30:45",
+        "remote",
+        3,
+        10000,
+        12000,
+        "Vous intégrez une équipe AGILE, en tant que développeur JAVA (F/H/X). Vos missions consistent à : 
 
 Comprendre les besoins clients dans le but de définir les solutions les plus adaptées,
 Participer aux cérémonies avec les équipes PO, Scrum, MOAs, Métiers,
-Partager les bonnes pratiques de développement : qualité de code et de tests, industrialisation"," JAVA, Springboot, JS (Angular et Vue)","Nantes", " la Loire-Atlantique"),
-(4, "Développeur Back end Java H/F @Nantes gare","2023-06-21 11:30:45", "remote",2, 37000,42000,"En lien avec le directeur technique, les chefs de projets et vos collègues développeur :
+Partager les bonnes pratiques de développement : qualité de code et de tests, industrialisation",
+        " JAVA, Springboot, JS (Angular et Vue)",
+        "Nantes",
+        " la Loire-Atlantique"
+    ), (
+        4,
+        "Développeur Back end Java H/F @Nantes gare",
+        "2023-06-21 11:30:45",
+        "remote",
+        2,
+        37000,
+        42000,
+        "En lien avec le directeur technique, les chefs de projets et vos collègues développeur :
 
 Analyse technique des besoins
 Architecture, conception et développement d’applications web essentiellement (plus ponctuellement il est possible d'intervenir sur des projets mobile / AR / VR / etc.)
 Tests (unitaires et fonctionnels)
-Veille technologique","Esprit d'équipe","Java", " la Loire-Atlantique"),
-(4, "Responsable de projets SI H/F","2023-06-21 10:30:45", "remote",4, 35000,40000," En tant que Responsable de Projets SI Outre-mer vous aurez en charge le pilotage des projets et le management des ressources internes MOE.
+Veille technologique",
+        "Esprit d'équipe",
+        "Java",
+        " la Loire-Atlantique"
+    ), (
+        4,
+        "Responsable de projets SI H/F",
+        "2023-06-21 10:30:45",
+        "remote",
+        4,
+        35000,
+        40000,
+        " En tant que Responsable de Projets SI Outre-mer vous aurez en charge le pilotage des projets et le management des ressources internes MOE.
 
 En tant que Responsable de projets SI Outre-mer vous aurez pour missions :
 
 Responsable de l'équipe MOE, AMOA du périmètre SI Outre Mer (Antilles Guyane et Pacifique, Nouvelle Calédonie),
 Conduite du projet (Planning / Coûts / Délais - ~ 4m€ de budget),
-Organisation, communication, animation, management, pilotage, recrutement et suivi des prestataires","Min 3ans d'expériences","DevOps", " la Loire-Atlantique");
+Organisation, communication, animation, management, pilotage, recrutement et suivi des prestataires",
+        "Min 3ans d'expériences",
+        "DevOps",
+        " la Loire-Atlantique"
+    );
 
-INSERT INTO techno (techno_name) VALUES ("Java"), ("C#"), ("PHP"), ("Python"), ("React");
+INSERT INTO
+    techno (techno_name)
+VALUES ("Java"), ("C#"), ("PHP"), ("Python"), ("React");
 
-INSERT INTO user_techno(user_id, techno_id) VALUES (1,1), (1,5),(2,3), (3,4), (4,1);
+INSERT INTO
+    user_techno(user_id, techno_id)
+VALUES (1, 1), (1, 5), (2, 3), (3, 4), (4, 1);
 
-INSERT INTO offer_techno(techno_id, offer_id) VALUES (4,1) ,(2,2), (5,2), (1,4);
+INSERT INTO
+    offer_techno(techno_id, offer_id)
+VALUES (4, 1), (2, 2), (5, 2), (1, 4);
 
-INSERT INTO favorite(candidate_id, offer_id) VALUES (1,2), (2,1), (2,3), (4,2);
+INSERT INTO
+    favorite(candidate_id, offer_id)
+VALUES (1, 2), (2, 1), (2, 3), (4, 2);
 
-INSERT INTO status(status_name) VALUES ("En cours de traitement"), ("Entretien planifié"),("Accepté"),("Refusé");
+INSERT INTO
+    status(status_name)
+VALUES ("En cours de traitement"), ("Entretien planifié"), ("Accepté"), ("Refusé");
 
-INSERT INTO application(candidate_id, offer_id,status_id, company_id) VALUES (1,1,1,3), (1,1,3,4), (2,2,2,1),(3,1,1,2 ),(3,5,1,3 ), (3,2,1,4), (3,3,1,1),(3,4,1,3), (4,4,1,4), (5,1,3,1), (5,4,2,1) ;
-
-
-
+INSERT INTO
+    application(
+        candidate_id,
+        offer_id,
+        status_id,
+        company_id
+    )
+VALUES (1, 1, 1, 3), (1, 1, 3, 4), (2, 2, 2, 1), (3, 1, 1, 2), (3, 5, 1, 3), (3, 2, 1, 4), (3, 3, 1, 1), (3, 4, 1, 3), (4, 4, 1, 4), (5, 1, 3, 1), (5, 4, 2, 1);

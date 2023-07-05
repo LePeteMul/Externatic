@@ -1,5 +1,4 @@
 import React from "react";
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { Routes, Route } from "react-router-dom";
 import HomePage from "../pages/HomePage/HomePage";
 import AdminDashboard from "../pages/Admin/AdminDashboard";
@@ -11,10 +10,13 @@ import JobSearch from "../pages/JobSearch/JobSearch";
 import Results from "../pages/JobSearch/Results";
 import Registration from "../pages/Candidate/Registration";
 
+import ProtectedforCandidate from "./ProtectedforCandidate";
 import CandidateProfile from "../pages/Candidate/CandidateProfile";
 import OfferCreation from "../pages/Company/OfferCreation";
 import CandidateJobApplications from "../pages/Candidate/CandidateJobApplications";
 import FavoriteOffers from "../pages/Candidate/FavoriteOffers";
+
+import ProtectedforCompany from "./ProtectedforCompany";
 import CompanyFirstLogin from "../pages/Company/CompanyFirstLogin";
 import CompanyPresentation from "../pages/Company/CompanyPresentation";
 import Application from "../pages/Company/Application";
@@ -24,6 +26,7 @@ import OffersListCompany from "../pages/Company/OffersListCompany";
 
 import ApplicationConfirmation from "../pages/JobSearch/ApplicationConfirmation";
 
+import ProtectedforAdmin from "./ProtectedforAdmin";
 import OffersList from "../pages/Admin/OffersList";
 import CandidateList from "../pages/Admin/CandidateList";
 import CompanyList from "../pages/Admin/CompanyList";
@@ -52,20 +55,70 @@ function Router() {
         <Route path="/" element={<HomePage />} />
 
         {/* Admin section */}
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
-        <Route path="/admin/profile" element={<AdminProfile />} />
-        <Route path="/admin/companycreation" element={<CompanyCreation />} />
+        <Route
+          path="/admin/dashboard"
+          element={
+            <ProtectedforAdmin>
+              <AdminDashboard />
+            </ProtectedforAdmin>
+          }
+        />
+        <Route
+          path="/admin/profile"
+          element={
+            <ProtectedforAdmin>
+              <AdminProfile />
+            </ProtectedforAdmin>
+          }
+        />
+        <Route
+          path="/admin/companycreation"
+          element={
+            <ProtectedforAdmin>
+              <CompanyCreation />
+            </ProtectedforAdmin>
+          }
+        />
         <Route
           path="/admin/creationconfirmation"
-          element={<ConfirmationCreation />}
+          element={
+            <ProtectedforAdmin>
+              <ConfirmationCreation />
+            </ProtectedforAdmin>
+          }
         />
         <Route
           path="/admin/deletionconfirmation"
-          element={<ConfirmationDeletion />}
+          element={
+            <ProtectedforAdmin>
+              <ConfirmationDeletion />
+            </ProtectedforAdmin>
+          }
         />
-        <Route path="/admin/offerlist" element={<OffersList />} />
-        <Route path="/admin/candidatelist" element={<CandidateList />} />
-        <Route path="/admin/companylist" element={<CompanyList />} />
+        <Route
+          path="/admin/offerlist"
+          element={
+            <ProtectedforAdmin>
+              <OffersList />
+            </ProtectedforAdmin>
+          }
+        />
+        <Route
+          path="/admin/candidatelist"
+          element={
+            <ProtectedforAdmin>
+              <CandidateList />
+            </ProtectedforAdmin>
+          }
+        />
+        <Route
+          path="/admin/companylist"
+          element={
+            <ProtectedforAdmin>
+              <CompanyList />
+            </ProtectedforAdmin>
+          }
+        />
 
         {/* Global section */}
         <Route path="/login" element={<Login />} />
@@ -80,25 +133,61 @@ function Router() {
         {/* Candidate section */}
         <Route
           path="/candidate/applicationconfirmation"
-          element={<ApplicationConfirmation />}
+          element={
+            <ProtectedforCandidate>
+              <ApplicationConfirmation />
+            </ProtectedforCandidate>
+          }
         />
         <Route path="/candidate/registration" element={<Registration />} />
-        <Route path="/candidate/profile" element={<CandidateProfile />} />
+        <Route
+          path="/candidate/profile"
+          element={
+            <ProtectedforCandidate>
+              <CandidateProfile />
+            </ProtectedforCandidate>
+          }
+        />
         <Route
           path="/candidate/job-application"
-          element={<CandidateJobApplications />}
+          element={
+            <ProtectedforCandidate>
+              <CandidateJobApplications />
+            </ProtectedforCandidate>
+          }
         />
-
-        <Route path="/candidate/favorite" element={<FavoriteOffers />} />
-        <Route path="/company/firstlogin" element={<CompanyFirstLogin />} />
-        <Route path="/company/presentation" element={<CompanyPresentation />} />
-        <Route path="/candidate/application" element={<Application />} />
         <Route
-          path="/company/profilecandidate"
-          element={<ProfileCandidate />}
+          path="/candidate/favorite"
+          element={
+            <ProtectedforCandidate>
+              <FavoriteOffers />
+            </ProtectedforCandidate>
+          }
         />
-        <Route path="/candidate/favorite" element={<FavoriteOffers />} />
-        <Route path="/candidate/dashboard" element={<CandidateDashboard />} />
+        <Route
+          path="/candidate/application"
+          element={
+            <ProtectedforCandidate>
+              <Application />
+            </ProtectedforCandidate>
+          }
+        />
+        <Route
+          path="/candidate/favorite"
+          element={
+            <ProtectedforCandidate>
+              <FavoriteOffers />
+            </ProtectedforCandidate>
+          }
+        />
+        <Route
+          path="/candidate/dashboard"
+          element={
+            <ProtectedforCandidate>
+              <CandidateDashboard />
+            </ProtectedforCandidate>
+          }
+        />
 
         {/* Company section */}
         <Route path="/company/dashboard" element={<CompanyDashboard />} />
@@ -108,6 +197,12 @@ function Router() {
         <Route path="/company/offers" element={<OffersListCompany />} />
         <Route path="/company/application" element={<Application />} />
         <Route path="/company/profile" element={<CompanyProfile />} />
+        <Route
+          path="/company/profilecandidate"
+          element={<ProfileCandidate />}
+        />
+        <Route path="/company/firstlogin" element={<CompanyFirstLogin />} />
+        <Route path="/company/presentation" element={<CompanyPresentation />} />
         <Route
           path="/company/profilecandidate"
           element={<ProfileCandidate />}
