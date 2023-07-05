@@ -41,6 +41,8 @@ router.delete("/api/favorite/:id", favoriteControllers.destroy);
 const offerControllers = require("./controllers/offerControllers");
 
 router.get("/api/offer", offerControllers.browse);
+router.get("/api/offerByCriteria", offerControllers.getOfferByCriteria);
+router.get("/api/offer/jobList", offerControllers.getJobList);
 router.get("/api/offer/:id", offerControllers.read);
 router.put("/api/offer/:id", offerControllers.edit);
 router.post("/api/offer", offerControllers.add);

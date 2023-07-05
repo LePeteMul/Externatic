@@ -12,7 +12,7 @@ function CityInput() {
     <input
       className="selected"
       type="text"
-      value={searchCity}
+      value={searchCity === "all" ? "" : searchCity}
       placeholder="France entière"
       onChange={handleChangeInput}
     />
