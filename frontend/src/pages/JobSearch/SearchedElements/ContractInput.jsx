@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import SearchContractContext from "../../../contexts/SearchContractContext/SearchContractContext";
 
 function ContractInput() {
@@ -10,11 +10,14 @@ function ContractInput() {
     setSearchContract(event.target.value);
   };
 
-  const contractList = [
-    { value: "CDI", name: "CDI" },
-    { value: "CDD", name: "CDD" },
-    { value: "Stage", name: "Stage" },
-  ];
+  const [contractList, setContractList] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/api/contract")
+      .then((response) => response.json())
+      .then((data) => setContractList(data))
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
     <select onChange={handleSelect} value={searchContract}>
@@ -25,10 +28,10 @@ function ContractInput() {
         return (
           <option
             className="selected"
-            value={element.value}
-            key={element.value}
+            value={element.contract_type}
+            key={element.id}
           >
-            {element.name}
+            {element.contract_type}
           </option>
         );
       })}
