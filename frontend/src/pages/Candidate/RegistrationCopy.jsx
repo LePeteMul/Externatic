@@ -1,16 +1,18 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import InputTexte from "../../components/Elements/InputTexte";
 import eye from "../../assets/icons/eye.png";
 import BlackButton from "../../components/Elements/BlackButton";
+import Popup from "../../components/Elements/Popup";
 
 function RegistrationCopy() {
   const [formData, setFormData] = useState({
-    // Validation password is missing
     lastname: "",
     firstname: "",
     email: "",
     password: "",
+    validation_password: "",
   });
 
   const handleChange = (e) => {
@@ -22,6 +24,12 @@ function RegistrationCopy() {
 
   const [isCreated, setIsCreated] = useState(false);
   const [isSent, setIsSent] = useState(false);
+  const navigate = useNavigate();
+
+  const handlePopupClose = () => {
+    setIsSent(false);
+    navigate("/login2");
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -62,6 +70,7 @@ function RegistrationCopy() {
         });
     }
   };
+
   return (
     <div className="registration">
       <HeaderBasic />
@@ -102,8 +111,10 @@ function RegistrationCopy() {
             />
             <InputTexte
               label="Confirmer le mot de passe :"
+
               placeholder="*******************"
               name="password"
+
               type="password"
               handleChange={handleChange}
             />
@@ -114,11 +125,15 @@ function RegistrationCopy() {
             buttonFunction={handleSubmit}
           />
         </form>
-        {isCreated && (
-          <div className="conf_registration">
-            Un email de confirmation vous a été envoyé. Consultez votre boite
-            mail et suivez les instructions pour confirmer votre inscription.
-          </div>
+
+        {isSent && (
+          <Popup
+            title="Enregistrer"
+            message="Un email de confirmation vous a été envoyé. Consultez votre boite mail et suivez les instructions pour confirmer votre inscription."
+            onClose={handlePopupClose}
+            buttonname="Se connecter"
+          />
+
         )}
       </div>
     </div>
