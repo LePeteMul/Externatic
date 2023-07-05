@@ -22,24 +22,11 @@
       .InputText {
         font-size: 20px;
         font-weight: $regular;
+
+        .boutton {
+          color: red;
+        }
       }
-    }
-
-    .btn_registration {
-      padding-top: 20%;
-
-      .BlackButton {
-        width: 100%;
-      }
-    }
-
-    .conf_registration {
-      width: 100%;
-      margin-top: 5%;
-      text-align: center;
-      align-items: center;
-      justify-content: center;
-      color: $textColorLight;
     }
   }
 }

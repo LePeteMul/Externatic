@@ -38,16 +38,6 @@ import LegalInformations from "../pages/LegalInformations/LegalInformations";
 import Contact from "../pages/Contact/Contact";
 import Logout from "../pages/Login/Logout";
 
-// route copy
-import CompanyFirstLoginCopy from "../pages/Company/CompanyFirstLoginCopy";
-import LoginCopy from "../pages/Login/LoginCopy";
-import CompanyProfileCopy from "../pages/Company/CompanyProfileCopy";
-import RegistrationCopy from "../pages/Candidate/RegistrationCopy";
-import CandidateProfileCopy from "../pages/Candidate/CandidateProfileCopy";
-import OfferCreationCopy from "../pages/Company/OfferCreationCopy";
-import AdminProfileCopy from "../pages/Admin/AdminProfileCopy";
-import CompanyCreationCopy from "../pages/Admin/CompanyCreationCopy";
-
 function Router() {
   return (
     <div>
@@ -207,24 +197,6 @@ function Router() {
           path="/company/profilecandidate"
           element={<ProfileCandidate />}
         />
-
-        {/* copy */}
-
-        <Route path="/company/profile2" element={<CompanyProfileCopy />} />
-        <Route path="/admin/profile2" element={<AdminProfileCopy />} />
-        <Route
-          path="/admin/companycreation2"
-          element={<CompanyCreationCopy />}
-        />
-        <Route path="/login2" element={<LoginCopy />} />
-        <Route
-          path="/company/firstlogin2"
-          element={<CompanyFirstLoginCopy />}
-        />
-
-        <Route path="/candidate/registration2" element={<RegistrationCopy />} />
-        <Route path="/candidate/profile2" element={<CandidateProfileCopy />} />
-        <Route path="/company/offercreation2" element={<OfferCreationCopy />} />
       </Routes>
     </div>
   );
