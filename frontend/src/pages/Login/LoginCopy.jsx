@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import HeaderWave from "../../components/Header/HeaderWave";
@@ -10,23 +10,12 @@ import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnex
 // import lock from "../../assets/icons/lock.png";
 
 function LoginCopy() {
-  const { setUserConnected, setUserId, setIsAdmin } =
-    useContext(UserConnexionContext);
-
   const token = localStorage.getItem("token");
 
-  const navigate = useNavigate();
+  const { setUserConnected, setUserId, userId, setIsAdmin } =
+    useContext(UserConnexionContext);
 
-  useEffect(() => {
-    if (token) {
-      const user = jwtDecode(token);
-      setUserConnected(true);
-      setUserId(user.sub);
-      if (user.admin === 1) {
-        setIsAdmin(true);
-      }
-    }
-  }, []);
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -57,15 +46,20 @@ function LoginCopy() {
       .then((data) => {
         localStorage.setItem("token", data);
         const user = jwtDecode(data);
+        console.info(user.sub, user.admin);
         if (user.admin === 1) {
           setIsAdmin(true);
           setUserConnected(true);
+          setUserId(user.sub);
           navigate("/admin/dashboard");
+          console.info(userId, "admin");
         }
         if (user.admin === 0) {
+          setIsAdmin(false);
           setUserConnected(true);
           setUserId(user.sub);
           navigate("/candidate/dashboard");
+          console.info(userId, "candidate");
         }
       })
       .catch((err) => {
