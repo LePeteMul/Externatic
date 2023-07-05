@@ -43,7 +43,7 @@ CREATE TABLE user (
   phone VARCHAR(450),
   city VARCHAR(250),
   cv TEXT,
-  admin  TINYINT DEFAULT 0,
+  admin  TINYINT,
   password VARCHAR(250) NOT NULL,
   profil_picture VARCHAR(250),
   contact_mode VARCHAR(250),
@@ -138,12 +138,16 @@ CREATE TABLE user_techno(
 INSERT INTO contract (contract_type) VALUES ("CDI"), ("CDD"), ("Alternance"), ("Interim");
 
 
-INSERT INTO user (gender,lastname,firstname,email,phone,city,cv,admin,password,profil_picture, contact_mode,pref_job,job_city, pref_contract)VALUES ("Female","Harley", "Guillaume", "q.harley@gmail.com", "06 62 19 98", "Nantes","queen.cv", 0, "****", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdqUGJHg5RA-YchvuWW8TPgbvoSC2K2SiAPQ&usqp=CAU","email", "Dévloppeuse front-end","Nantes", 1),
+INSERT INTO user (gender,lastname,firstname,email,phone,city,cv,admin,password,profil_picture, contact_mode,pref_job,job_city, pref_contract)VALUES 
+
+("Female","Harley", "Guillaume", "q.harley@gmail.com", "06 62 19 98", "Nantes","queen.cv", 0, "****", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdqUGJHg5RA-YchvuWW8TPgbvoSC2K2SiAPQ&usqp=CAU","email", "Dévloppeuse front-end","Nantes", 1),
  ("Male","Dupont", "Eddy", "p.dupont@gmail.com", "06 82 99 98", "Bordeaux","pierre.cv", 0, "****", "https://img.freepik.com/photos-gratuite/portrait-homme-blanc-isole_53876-40306.jpg?q=10&h=200","email", "Dévloppeuse back-end","Bordeaux", 2),
  ("Male","Martini", "Luciano", "l.martini@gmail.com", "06 82 10 91", "Nantes","luciano.cv", 0, "****", "https://images.pexels.com/photos/5378700/pexels-photo-5378700.jpeg?cs=srgb&dl=pexels-cottonbro-studio-5378700.jpg&fm=jpg","email", "Dévloppeuse back-end","Nantes", 1),
  ("Female","Leclerc", "Amandine", "a.leclerc@gmail.com", "06 82 23 88", "Nantes","amandine.cv", 0, "****", "https://media.https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHx8&w=1000&q=80","email", "Lead Tech Java","Nantes", 4),
   ("Female","Chabert", "Marie", "m.chabert@gmail.com", "06 22 22 28", "Nantes","marie.cv", 0, "****", "https://www.frejoux-photographe.fr/wp-content/gallery/portrait-pro-corporate/Photographe-portrait-entreprise-pro-Corporate-toulon-Celine.jpg","email", "Dévloppeuse back-end","Nantes", 1);
 
+INSERT INTO user ( lastname, firstname, email, phone, city, admin, password)
+VALUES ('Admin', 'Admin', 'admin@externatic.fr', '06 62 18 34 73', 'Nantes', 1, '****');
 
 
 INSERT INTO company (company_name, email, password, phone, logo, presentation) VALUES ("Nickel", "recrutement@nickel.fr", "****", "01 76 49 00 00 ", "https://upload.wikimedia.org/wikipedia/fr/thumb/2/2b/Nickel-logo.svg/1200px-Nickel-logo.svg.png","service bancaire alternatif français ouvert à toute personne physique à partir de douze ans ou plus, sans condition de revenus et sans possibilité de découvert ni de crédit"),

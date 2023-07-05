@@ -82,10 +82,31 @@ const destroy = (req, res) => {
     });
 };
 
+const editStatus = (req, res) => {
+  const application = req.body;
+
+  application.id = parseInt(req.params.applicationId, 10);
+
+  models.application
+    .updateStatusOfApplication(application)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
   edit,
   add,
   destroy,
+  editStatus,
 };
