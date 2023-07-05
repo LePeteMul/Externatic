@@ -4,7 +4,8 @@ const router = express.Router();
 const { hashPassword } = require("./services/auth");
 const { verifyPassword } = require("./services/auth");
 
-const { verifyToken } = require("./services/auth");
+/* const { verifyToken } = require("./services/auth"); */
+/* A ajouter sur les routes concernées */
 
 const applicationControllers = require("./controllers/applicationControllers");
 
@@ -76,8 +77,7 @@ router.get("/api/application/byOfferId/:id", userControllers.getAppliByOfferId);
 router.post(
   "/api/user/login",
   userControllers.getUserByEmailWithPasswordAndPassToNext,
-  verifyPassword,
-  verifyToken
+  verifyPassword
 );
 
 // Route to update the status for the application
