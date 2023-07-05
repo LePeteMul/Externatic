@@ -80,6 +80,12 @@ router.post(
   verifyPassword
 );
 
+// Route to update the status for the application
+router.put(
+  "/api/application/:applicationId/status",
+  applicationControllers.editStatus
+);
+
 const mailControllers = require("./controllers/mailControllers");
 
 router.post("/api/email", mailControllers.sendContactMail);

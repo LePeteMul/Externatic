@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-function InputList({ label, inputMessage, data }) {
+function InputList({ label, inputMessage, data, set }) {
   const [classSelect, setClassSelect] = useState("notselected");
 
-  const handleSelect = () => {
+  const handleSelect = (e) => {
     setClassSelect("selected");
+    set(e);
   };
 
   return (
@@ -35,6 +36,7 @@ InputList.propTypes = {
   label: PropTypes.string.isRequired,
   inputMessage: PropTypes.string.isRequired,
   data: PropTypes.string.isRequired,
+  set: PropTypes.string.isRequired,
 };
 
 export default InputList;
