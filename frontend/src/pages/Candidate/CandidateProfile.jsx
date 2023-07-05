@@ -10,6 +10,7 @@ import InputCv from "../../components/Elements/InputCv";
 function CandidateProfile() {
   const handleValidation = () => {
     if (
+      // eslint-disable-next-line no-alert
       window.confirm("Êtes-vous sûr de vouloir valider vos modifications ?")
     ) {
       window.location.href = "/Candidate/dashboard";
@@ -17,6 +18,7 @@ function CandidateProfile() {
   };
 
   const handleDeletion = () => {
+    // eslint-disable-next-line no-alert
     if (window.confirm("Êtes-vous sûr de vouloir supprimer vos données ?")) {
       window.location.href = "/";
     }
