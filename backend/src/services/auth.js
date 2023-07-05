@@ -33,7 +33,7 @@ const verifyPassword = async (req, res, next) => {
   const isVerified = await argon2.verify(hashedPassword, password);
 
   if (isVerified) {
-    const payload = { sub: req.user.id };
+    const payload = { sub: req.user.id, admin: req.user.admin };
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
       expiresIn: "1h",
     });
@@ -50,7 +50,7 @@ const verifyToken = (req, res, next) => {
     const authorizationHeader = req.get("Authorization");
 
     if (!authorizationHeader) {
-      throw new Error("Authorization header is missing kikokiko");
+      throw new Error("Authorization header is missing");
     }
 
     const [type, token] = authorizationHeader.split(" ");

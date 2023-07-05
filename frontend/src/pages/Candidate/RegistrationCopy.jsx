@@ -111,8 +111,10 @@ function RegistrationCopy() {
             />
             <InputTexte
               label="Confirmer le mot de passe :"
-              placeholder="****"
-              name="validation_password"
+
+              placeholder="*******************"
+              name="password"
+
               type="password"
               handleChange={handleChange}
             />
@@ -123,13 +125,15 @@ function RegistrationCopy() {
             buttonFunction={handleSubmit}
           />
         </form>
+
         {isSent && (
           <Popup
-            title="Bien joué"
-            message="Super, tu es inscrit !"
+            title="Enregistrer"
+            message="Un email de confirmation vous a été envoyé. Consultez votre boite mail et suivez les instructions pour confirmer votre inscription."
             onClose={handlePopupClose}
             buttonname="Se connecter"
           />
+
         )}
       </div>
     </div>

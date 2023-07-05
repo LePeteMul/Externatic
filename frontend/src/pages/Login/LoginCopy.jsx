@@ -1,15 +1,35 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 import HeaderWave from "../../components/Header/HeaderWave";
 import InputTexte from "../../components/Elements/InputTexte";
 import BlackButton from "../../components/Elements/BlackButton";
 import WhiteButton from "../../components/Elements/WhiteButton";
+import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
 // import profil from "../../assets/icons/userIcon2.png";
 // import lock from "../../assets/icons/lock.png";
 
 function LoginCopy() {
+  const { setUserConnected, setUserId, setIsAdmin } =
+    useContext(UserConnexionContext);
+
+  const token = localStorage.getItem("token");
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (token) {
+      const user = jwtDecode(token);
+      setUserConnected(true);
+      setUserId(user.sub);
+      if (user.admin === 1) {
+        setIsAdmin(true);
+      }
+    }
+  }, []);
+
   const [formData, setFormData] = useState({
-    identifiant: "",
+    email: "",
     password: "",
   });
 
@@ -19,9 +39,38 @@ function LoginCopy() {
       [e.target.name]: e.target.value,
     }));
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.info(formData);
+    const url = "http://localhost:8080/api/user/login";
+    const requestData = { ...formData };
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(requestData),
+    })
+      .then((response) => response.text())
+      .then((data) => {
+        localStorage.setItem("token", data);
+        const user = jwtDecode(data);
+        if (user.admin === 1) {
+          setIsAdmin(true);
+          setUserConnected(true);
+          navigate("/admin/dashboard");
+        }
+        if (user.admin === 0) {
+          setUserConnected(true);
+          setUserId(user.sub);
+          navigate("/candidate/dashboard");
+        }
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+      });
   };
 
   return (
@@ -35,17 +84,17 @@ function LoginCopy() {
           <div className="inputs">
             <InputTexte
               label="Identifiant"
-              name="identifiant"
-              type="text"
+              name="email"
+              type="email"
               placeholder="Identifiant"
-              onChange={handleChange}
+              handleChange={handleChange}
             />
             <InputTexte
               label="Mot de passe"
               name="password"
               type="password"
-              éplaceholder="Mot de passe"
-              onChange={handleChange}
+              placeholder="Mot de passe"
+              handleChange={handleChange}
             />
           </div>
 
@@ -67,5 +116,5 @@ function LoginCopy() {
     </div>
   );
 }
-// just a test
+
 export default LoginCopy;

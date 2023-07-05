@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
 import burger from "../../assets/icons/burgerMenu.png";
 
 function BurgerMenuWave() {
@@ -21,6 +22,14 @@ function BurgerMenuWave() {
     };
   }, [open]);
 
+  const { setUserConnected, setUserId } = useContext(UserConnexionContext);
+
+  const handleDisconnect = () => {
+    setUserConnected(false);
+    setUserId(null);
+    localStorage.removeItem("token");
+  };
+
   return (
     <div className="BurgerMenuWave">
       <button className="BurgerContainer" type="button" onClick={handleClick}>
@@ -34,7 +43,7 @@ function BurgerMenuWave() {
         <Link to="/legalinformations">
           <li className="menuItem">Mentions légales</li>{" "}
         </Link>
-        <Link to="/logout">
+        <Link to="/logout" onClick={handleDisconnect}>
           <li className="menuItem">Se déconnecter</li>
         </Link>
       </ul>
