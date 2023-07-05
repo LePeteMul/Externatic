@@ -111,10 +111,8 @@ function RegistrationCopy() {
             />
             <InputTexte
               label="Confirmer le mot de passe :"
-
               placeholder="*******************"
               name="password"
-
               type="password"
               handleChange={handleChange}
             />
@@ -133,7 +131,6 @@ function RegistrationCopy() {
             onClose={handlePopupClose}
             buttonname="Se connecter"
           />
-
         )}
       </div>
     </div>

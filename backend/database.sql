@@ -43,7 +43,7 @@ CREATE TABLE user (
   phone VARCHAR(450),
   city VARCHAR(250),
   cv TEXT,
-  admin  TINYINT DEFAULT 0,
+  admin  TINYINT ,
   password VARCHAR(250) NOT NULL,
   profil_picture VARCHAR(250),
   contact_mode VARCHAR(250),
@@ -144,7 +144,8 @@ INSERT INTO user (gender,lastname,firstname,email,phone,city,cv,admin,password,p
  ("Female","Leclerc", "Amandine", "a.leclerc@gmail.com", "06 82 23 88", "Nantes","amandine.cv", 0, "****", "https://media.https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHx8&w=1000&q=80","email", "Lead Tech Java","Nantes", 4),
   ("Female","Chabert", "Marie", "m.chabert@gmail.com", "06 22 22 28", "Nantes","marie.cv", 0, "****", "https://www.frejoux-photographe.fr/wp-content/gallery/portrait-pro-corporate/Photographe-portrait-entreprise-pro-Corporate-toulon-Celine.jpg","email", "Dévloppeuse back-end","Nantes", 1);
 
-
+INSERT INTO user ( lastname, firstname, email, phone, city, admin, password)
+VALUES ('Admin', 'Admin', 'admin@externatic.fr', '06 62 18 34 73', 'Nantes', 1, '**');
 
 INSERT INTO company (company_name, email, password, phone, logo, presentation) VALUES ("Nickel", "recrutement@nickel.fr", "****", "01 76 49 00 00 ", "https://upload.wikimedia.org/wikipedia/fr/thumb/2/2b/Nickel-logo.svg/1200px-Nickel-logo.svg.png","service bancaire alternatif français ouvert à toute personne physique à partir de douze ans ou plus, sans condition de revenus et sans possibilité de découvert ni de crédit"),
 ("allovoisins", "recrutement@allovoisins.fr", "****", "01 26 49 00 00 ", "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Allo_voisins_icon.png/800px-Allo_voisins_icon.png","AlloVoisins est la marketplace de référence dédiée aux prestations de services et à la location de matériel , rassemblant une communauté de plus de 4 millions de membres, dont 300 000 professionnels (auto-entrepreneurs et petites entreprises)"),
