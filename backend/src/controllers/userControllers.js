@@ -98,7 +98,7 @@ const getUserByEmailWithPasswordAndPassToNext = (req, res, next) => {
         console.info("user identified by email");
         next();
       } else {
-        res.status(500).send("Tas pas reussi userController get user by mail");
+        console.info("Tas pas reussi userController get user by mail");
       }
     })
     .catch((err) => {

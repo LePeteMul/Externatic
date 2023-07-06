@@ -99,6 +99,7 @@ const mailControllers = require("./controllers/mailControllers");
 router.post("/api/email", mailControllers.sendContactMail);
 
 router.post("/api/email/contact", mailControllers.sendContactMessageMail);
+router.post("/api/email/resetpassword", mailControllers.sendPasswordResetMail);
 
 // Route to get all the offers with details
 router.get("/api/offerDetails", companyControllers.OffersList);
