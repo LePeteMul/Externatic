@@ -28,7 +28,7 @@ function Registration() {
 
   const handlePopupClose = () => {
     setIsSent(false);
-    navigate("/login2");
+    navigate("/login");
   };
 
   const handleSubmit = (e) => {
