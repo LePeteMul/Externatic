@@ -1,33 +1,82 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
-import InputList from "../../components/Elements/InputList";
+import InputListe from "../../components/Elements/InputListe";
 import Textearea from "../../components/Elements/Textearea";
 import BlackButton from "../../components/Elements/BlackButton";
-import WhiteButton from "../../components/Elements/WhiteButton";
-import InputText from "../../components/Elements/InputText";
+import InputTexte from "../../components/Elements/InputTexte";
+import Popup from "../../components/Elements/Popup";
 
 function OfferCreation() {
-  const [posted, setPosted] = useState(false);
+  const navigate = useNavigate();
+  const [showPopup1, setShowPopup1] = useState(false);
+  const handlePopup1Open = () => {
+    setShowPopup1(true);
+  };
 
-  const handlePosted = () => {
-    setPosted(true);
+  const handlePopup1Close = () => {
+    setShowPopup1(false);
+    navigate("/company/dashboard"); // Rediriger vers le dashboard
+  };
+
+  const [formData, setFormData] = useState({
+    company_id: 1,
+    job: "",
+    contract_id: "",
+    min_salary: "",
+    max_salary: "",
+    description: "",
+    city_job: "",
+    // softskills: "",
+    // hardskills: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData((previousValue) => ({
+      ...previousValue,
+      [e.target.name]: e.target.value,
+    }));
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const url = "http://localhost:8080/api/offer";
+    const requestData = { ...formData };
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.info("Response:", data);
+        // Perform any necessary actions after successful POST request
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        // Handle any errors that occurred during the POST request
+      });
   };
 
   return (
     <div className="offer_creation">
       <HeaderBasic />
       <div className="boxWithoutHeader">
-        {!posted && (
-          <div>
-            <div className="page_title">
-              <h1>Nouvelle offre</h1>
-            </div>
-
+        {/* {!posted && ( */}
+        <div>
+          <div className="page_title">
+            <h1>Nouvelle offre</h1>
+          </div>
+          <form onSubmit={handleSubmit} className="input">
             <div className="offerinputs">
-              <InputList
+              <InputListe
                 label="Poste"
-                inputMessage="Selectionner un métier"
+                name="job"
+                placeholder="Selectionner un métier"
+                handleChange={handleChange}
                 data={[
                   { value: "metier1", name: "Metier n°1" },
                   { value: "metier2", name: "Metier n°2" },
@@ -35,34 +84,45 @@ function OfferCreation() {
                 ]}
               />
 
-              <InputList
+              <InputListe
                 label="Type de contrat"
-                inputMessage="Selectionner un contrat"
+                name="contract_id"
+                placeholder="Selectionner un contrat"
+                handleChange={handleChange}
                 data={[
-                  { value: "CDI", name: "CDI" },
+                  { value: "1", name: "1" },
                   { value: "CDD", name: "CDD" },
                   { value: "Stage", name: "Stage" },
                 ]}
               />
-              <InputText
+              <InputTexte
                 label="Salaire annuel brut minimum (euros)"
-                inputMessage="30 000"
+                name="min_salary"
+                placeholder="30 000"
+                handleChange={handleChange}
                 type="text"
               />
-              <InputText
+              <InputTexte
                 label="Salaire annuel brut maximum (euros)"
-                inputMessage="35 000"
+                name="max_salary"
+                placeholder="35 000"
+                handleChange={handleChange}
                 type="text"
               />
               <Textearea
                 label="Missions du poste"
-                inputMessage="Description"
+                name="description"
+                placeholder="Description"
+                handleChange={handleChange}
                 rows={3}
+                type="text"
               />
 
-              <InputList
+              <InputListe
                 label="Localisation"
-                inputMessage="Selectionner la ville"
+                placeholder="Selectionner la ville"
+                name="city_job"
+                handleChange={handleChange}
                 data={[
                   { value: "Nantes", name: "Nantes" },
                   { value: "Paris", name: "Paris" },
@@ -70,9 +130,11 @@ function OfferCreation() {
                 ]}
               />
 
-              <InputList
+              <InputListe
                 label="Télétravail"
-                inputMessage="Selectionner un mode de télétravail"
+                placeholder="Selectionner un mode de télétravail"
+                name="teletravail"
+                handleChange={handleChange}
                 data={[
                   { value: "Total", name: "Total" },
                   { value: "Partiel", name: "Partiel" },
@@ -82,25 +144,47 @@ function OfferCreation() {
 
               <Textearea
                 label="Soft Skills"
-                inputMessage="Description"
+                name="softskills"
+                handleChange={handleChange}
+                placeholder="Description"
                 rows={9}
+                type="text"
               />
 
               <Textearea
                 label="Hard Skills"
-                inputMessage="Description"
+                name="hardskills"
+                handleChange={handleChange}
+                placeholder="Description"
                 rows={9}
+                type="text"
               />
 
               <div className="offerEnd">
                 <BlackButton
                   buttonName="Ajouter cette offre"
-                  buttonFunction={handlePosted}
+                  buttonFunction={(event) => {
+                    event.preventDefault();
+                    handlePopup1Open();
+                    handleSubmit();
+                  }}
+                  // buttonFunction={handlePosted}
                 />
+                {showPopup1 && (
+                  <Popup
+                    title="L'offre d'emploi a bien été publiée"
+                    message=""
+                    open={showPopup1}
+                    onClose={handlePopup1Close}
+                    buttonname="Retour au Dashboard"
+                  />
+                )}
               </div>
             </div>
-          </div>
-        )}
+          </form>
+        </div>
+
+        {/* )}
 
         {posted && (
           <div>
@@ -108,12 +192,10 @@ function OfferCreation() {
               <h2>L'offre d'emploi a bien été publiée</h2>
             </div>
             <div className="confOfferCreation">
-              <NavLink to="/company/dashboard">
-                <WhiteButton buttonName="Retour à mon espace" />
-              </NavLink>
+                <WhiteButton buttonName="Retour à mon espace"buttonFunction={handleSubmit} />
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );

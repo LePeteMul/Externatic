@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import loupe from "../../assets/icons/loupe.png";
-import InputList from "../../components/Elements/InputList";
+import InputListe from "../../components/Elements/InputListe";
 import BlackButton from "../../components/Elements/BlackButton";
 
 function Application() {
@@ -97,7 +97,7 @@ function Application() {
             </div>
           </NavLink>
           <div className="status">
-            <InputList
+            <InputListe
               inputMessage="Selectionner un statut"
               data={[
                 { value: 1, name: 1 },

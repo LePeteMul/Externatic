@@ -1,6 +1,6 @@
 import React from "react";
 import HeaderBasic from "../../components/Header/HeaderBasic";
-import InputText from "../../components/Elements/InputText";
+import InputTexte from "../../components/Elements/InputTexte";
 import BlackButton from "../../components/Elements/BlackButton";
 import LargeTextInput from "../../components/Elements/LargeTextInput";
 
@@ -12,8 +12,8 @@ function Contact() {
         <div className="contactPageTitle">
           <h1>Nous contacter</h1>
         </div>
-        <InputText label="Votre nom :" />
-        <InputText label="Votre adresse mail :" />
+        <InputTexte label="Votre nom :" />
+        <InputTexte label="Votre adresse mail :" />
         <LargeTextInput label="Votre message :" />
         <br />
         <br />

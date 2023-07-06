@@ -1,14 +1,74 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
-import InputText from "../../components/Elements/InputText";
-import BlackButton from "../../components/Elements/BlackButton";
+import InputTexte from "../../components/Elements/InputTexte";
 import eye from "../../assets/icons/eye.png";
+import BlackButton from "../../components/Elements/BlackButton";
+import Popup from "../../components/Elements/Popup";
 
 function Registration() {
-  const [confirmation, setConfirmation] = useState(false);
+  const [formData, setFormData] = useState({
+    lastname: "",
+    firstname: "",
+    email: "",
+    password: "",
+    validation_password: "",
+  });
 
-  const handleConfirmation = () => {
-    setConfirmation(true);
+  const handleChange = (e) => {
+    setFormData((previousValue) => ({
+      ...previousValue,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const [isCreated, setIsCreated] = useState(false);
+  const [isSent, setIsSent] = useState(false);
+  const navigate = useNavigate();
+
+  const handlePopupClose = () => {
+    setIsSent(false);
+    navigate("/login2");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const requestData = { ...formData };
+    const requestEmail = { email: formData.email };
+
+    fetch("http://localhost:8080/api/user/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestData),
+    })
+      .then((response) => {
+        setIsCreated(!isCreated);
+        console.info(response);
+        // Perform any necessary actions after successful POST request
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        // Handle any errors that occurred during the POST request
+      });
+
+    if (isCreated) {
+      fetch("http://localhost:8080/api/email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestEmail),
+      })
+        .then((response) => {
+          setIsSent(!isSent);
+          console.info(response);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    }
   };
 
   return (
@@ -18,40 +78,59 @@ function Registration() {
         <div className="registrationTitle">
           <h1>M'inscrire </h1>
         </div>
-        <div className="registrationDetails">
-          <InputText label="Nom" inputMessage="DUPONT" type="text" />
-          <InputText label="Prénom" inputMessage="Bob" type="text" />
-          <InputText
-            label="Adresse mail :"
-            inputMessage="bob@gmail.com"
-            type="email"
-          />
-          <InputText
-            label="Mot de passe"
-            inputMessage=""
-            image={eye}
-            type="password"
-          />
-          <InputText
-            label="Confirmer le mot de passe :"
-            inputMessage=""
-            image={eye}
-            type="password"
-          />
-        </div>
-        <div className="btn_registration">
+        <form onSubmit={handleSubmit} className="input">
+          <div className="registrationDetails">
+            <InputTexte
+              label="Nom"
+              name="lastname"
+              placeholder="DUPONT"
+              type="text"
+              handleChange={handleChange}
+            />
+            <InputTexte
+              label="Prénom"
+              name="firstname"
+              placeholder="Bob"
+              type="text"
+              handleChange={handleChange}
+            />
+            <InputTexte
+              label="Adresse mail :"
+              name="email"
+              placeholder="bob@gmail.com"
+              type="email"
+              handleChange={handleChange}
+            />
+            <InputTexte
+              label="Mot de passe"
+              placeholder="*******************"
+              name="password"
+              image={eye}
+              type="password"
+              handleChange={handleChange}
+            />
+            <InputTexte
+              label="Confirmer le mot de passe :"
+              placeholder="*******************"
+              name="password"
+              type="password"
+              handleChange={handleChange}
+            />
+          </div>
+
           <BlackButton
             buttonName="Je m'inscris"
-            buttonFunction={handleConfirmation}
+            buttonFunction={handleSubmit}
           />
-        </div>
+        </form>
 
-        {confirmation && (
-          <div className="conf_registration">
-            Un email de confirmation vous a été envoyé à XYZ@gmail.com Consultez
-            votre boite mail et suivez les instructions pour confirmer votre
-            inscription
-          </div>
+        {isSent && (
+          <Popup
+            title="Enregistrer"
+            message="Un email de confirmation vous a été envoyé. Consultez votre boite mail et suivez les instructions pour confirmer votre inscription."
+            onClose={handlePopupClose}
+            buttonname="Se connecter"
+          />
         )}
       </div>
     </div>
