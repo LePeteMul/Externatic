@@ -1,10 +1,24 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import BlackButton from "../../components/Elements/BlackButton";
 import InputListe from "../../components/Elements/InputListe";
 import InputTexte from "../../components/Elements/InputTexte";
+import Popup from "../../components/Elements/Popup";
 
 function AdminProfile() {
+  const navigate = useNavigate();
+  const [showPopup1, setShowPopup1] = useState(false);
+
+  const handlePopup1Open = () => {
+    setShowPopup1(true);
+  };
+
+  const handlePopup1Close = () => {
+    setShowPopup1(false);
+    navigate("/admin/dashboard"); // Rediriger vers la première page différente
+  };
+
   const [formData, setFormData] = useState({
     gender: "",
     lastname: "",
@@ -100,8 +114,21 @@ function AdminProfile() {
           <div className="AdminProfileEnd">
             <BlackButton
               buttonName="Valider les modifications"
-              buttonFunction={handleSubmit}
+              buttonFunction={(event) => {
+                event.preventDefault();
+                handlePopup1Open();
+                handleSubmit();
+              }}
             />
+            {showPopup1 && (
+              <Popup
+                title="Données modifiées"
+                message=""
+                open={showPopup1}
+                onClose={handlePopup1Close}
+                buttonname="Retour au Dashboard"
+              />
+            )}
           </div>
         </form>
       </div>

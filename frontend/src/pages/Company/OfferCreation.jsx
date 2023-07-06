@@ -1,11 +1,24 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import InputListe from "../../components/Elements/InputListe";
 import Textearea from "../../components/Elements/Textearea";
 import BlackButton from "../../components/Elements/BlackButton";
 import InputTexte from "../../components/Elements/InputTexte";
+import Popup from "../../components/Elements/Popup";
 
 function OfferCreation() {
+  const navigate = useNavigate();
+  const [showPopup1, setShowPopup1] = useState(false);
+  const handlePopup1Open = () => {
+    setShowPopup1(true);
+  };
+
+  const handlePopup1Close = () => {
+    setShowPopup1(false);
+    navigate("/company/dashboard"); // Rediriger vers le dashboard
+  };
+
   const [formData, setFormData] = useState({
     company_id: 1,
     job: "",
@@ -150,9 +163,22 @@ function OfferCreation() {
               <div className="offerEnd">
                 <BlackButton
                   buttonName="Ajouter cette offre"
-                  buttonFunction={handleSubmit}
+                  buttonFunction={(event) => {
+                    event.preventDefault();
+                    handlePopup1Open();
+                    handleSubmit();
+                  }}
                   // buttonFunction={handlePosted}
                 />
+                {showPopup1 && (
+                  <Popup
+                    title="L'offre d'emploi a bien été publiée"
+                    message=""
+                    open={showPopup1}
+                    onClose={handlePopup1Close}
+                    buttonname="Retour au Dashboard"
+                  />
+                )}
               </div>
             </div>
           </form>
