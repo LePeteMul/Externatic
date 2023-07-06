@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import SearchCityContext from "../../../contexts/SearchCityContext/SearchCityContext";
+import JobOfferContext from "../../../contexts/JobOfferContext/JobOfferContext";
 
 function CityInput() {
-  const { searchCity, setSearchCity } = useContext(SearchCityContext);
+  const { searchCity, setSearchCity } = useContext(JobOfferContext);
 
   const handleChangeInput = (event) => {
     setSearchCity(event.target.value);
@@ -12,7 +12,7 @@ function CityInput() {
     <input
       className="selected"
       type="text"
-      value={searchCity === "all" ? "" : searchCity}
+      value={searchCity}
       placeholder="France entière"
       onChange={handleChangeInput}
     />

@@ -7,10 +7,10 @@ import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnex
 import JobOfferContext from "../../contexts/JobOfferContext/JobOfferContext";
 
 function JobDetails() {
-  const { jobOffer } = useContext(JobOfferContext);
+  const { jobOffer, offerId } = useContext(JobOfferContext);
   const { userConnected, userId } = useContext(UserConnexionContext);
 
-  const [data, setData] = useState({
+  const [data] = useState({
     candidate_id: userId /* id du user connecte enregistre dans le contexte */,
     offer_id:
       "" /* Modifier "" par la variable de l offer id sur laquelle la candidature est faite */,
@@ -40,7 +40,7 @@ function JobDetails() {
       });
   };
 
-  console.info(userConnected, userId);
+  console.info(jobOffer);
 
   return (
     <div className="JobDetails">
@@ -55,15 +55,15 @@ function JobDetails() {
           <div className="OfferLogo">
             <img
               className="logo"
-              src={jobOffer[0].logo}
-              alt={jobOffer[0].companyName}
+              src={jobOffer[offerId].logo}
+              alt={jobOffer[offerId].company_name}
             />
           </div>
-          <h1>{jobOffer[0].job}</h1>
+          <h1>{jobOffer[offerId].job}</h1>
           <h2>
-            {jobOffer[0].contractType} | {jobOffer[0].jobCity}
+            {jobOffer[offerId].contract_type} | {jobOffer[offerId].city_job}
           </h2>
-          <p>Publiée le {jobOffer[0].date}</p>
+          <p>Publiée le {jobOffer[offerId].date}</p>
         </div>
         <br />
         <hr className="Line" />
@@ -71,28 +71,29 @@ function JobDetails() {
         <div className="CompanyDescription">
           <h3>L'entreprise et l'équipe</h3>
           <br />
-          <p>{jobOffer[0].companyDescription}</p>
+          <p>{jobOffer[offerId].presentation}</p>
         </div>
         <br />
         <div className="OfferMissions">
           <h3>Les missions</h3>
           <br />
-          <p>{jobOffer[0].jobDescription}</p>
+          <p>{jobOffer[offerId].description}</p>
         </div>
         <br />
         <div className="OfferTechno">
           <h3>Environnement technique :</h3>
           <br />
-          <p>{jobOffer[0].offerTechno}</p>
+          <p>{jobOffer[offerId].techno_name}</p>
         </div>
         <br />
         <div className="OfferConditions">
           <h3>Conditions de travail</h3>
           <br />
-          <p>{jobOffer[0].prerequisites}</p>
-          <p>Télétravail : {jobOffer[0].remote}</p>
+          <p>{jobOffer[offerId].prerequisites}</p>
+          <p>Télétravail : {jobOffer[offerId].remote}</p>
           <p>
-            Salaire : de {jobOffer[0].min_income} € à {jobOffer[0].max_income} €
+            Salaire : de {jobOffer[offerId].min_salary} € à{" "}
+            {jobOffer[offerId].max_salary} €
           </p>
         </div>
         <br />

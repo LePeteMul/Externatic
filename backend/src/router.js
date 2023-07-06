@@ -22,6 +22,12 @@ router.get("/api/company/:id", companyControllers.read);
 router.put("/api/company/:id", companyControllers.edit);
 router.post("/api/company/register", companyControllers.add);
 router.delete("/api/company/:id", companyControllers.destroy);
+router.put("/api/picture/company/edit", companyControllers.changePicture);
+router.put("/api/pass/company/edit", companyControllers.changePassword);
+router.put(
+  "/api/presentation/company/edit",
+  companyControllers.changePresentation
+);
 
 const contractControllers = require("./controllers/contractControllers");
 
@@ -92,8 +98,11 @@ const mailControllers = require("./controllers/mailControllers");
 
 router.post("/api/email", mailControllers.sendContactMail);
 
+router.post("/api/email/contact", mailControllers.sendContactMessageMail);
+
 // Route to get all the offers with details
 router.get("/api/offerDetails", companyControllers.OffersList);
 
 router.get("/api/offersByCompany/:id", offerControllers.findOffersByCompany);
+
 module.exports = router;

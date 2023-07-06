@@ -10,6 +10,7 @@ function InputTexte({
   image,
   image2,
   image3,
+  value,
 }) {
   return (
     <div className="inputText">
@@ -19,6 +20,7 @@ function InputTexte({
         placeholder={placeholder}
         name={name}
         onChange={handleChange}
+        value={value}
       />
       {image && <img className="eye" src={image} alt="IconEye" />}
       {image2 && <img className="profil" src={image2} alt="IconProfil" />}
@@ -36,6 +38,7 @@ InputTexte.propTypes = {
   image: PropTypes.string,
   image2: PropTypes.string,
   image3: PropTypes.string,
+  value: PropTypes.string.isRequired,
 };
 
 InputTexte.defaultProps = {

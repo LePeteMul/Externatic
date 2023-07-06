@@ -3,9 +3,23 @@ import PropTypes from "prop-types";
 import loupe from "../../assets/icons/loupe.png";
 import croix from "../../assets/icons/cross.png";
 
-function JobCard({ logo, companyName, job, contractType, jobCity, date }) {
+function JobCard({
+  logo,
+  companyName,
+  job,
+  contractType,
+  jobCity,
+  date,
+  onClick,
+}) {
   return (
-    <div className="jobCard">
+    <div
+      className="jobCard"
+      onClick={onClick}
+      onKeyDown={onClick}
+      role="button"
+      tabIndex={0}
+    >
       <div className="company_logo">
         <img className="logo" src={logo} alt={companyName} />
       </div>
@@ -36,6 +50,7 @@ JobCard.propTypes = {
   contractType: PropTypes.string.isRequired,
   jobCity: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default JobCard;
