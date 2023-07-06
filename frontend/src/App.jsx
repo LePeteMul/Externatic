@@ -22,7 +22,9 @@ function App() {
         setIsAdmin(false);
         setUserConnected(false);
         setUserId(null);
+
         navigate("/login");
+
       } else {
         console.info(now, "token valide");
         if (user.admin === 1) {

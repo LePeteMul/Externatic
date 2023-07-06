@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const SearchJobContext = createContext();
 
 export function SearchJobContextProvider({ children }) {
-  const [searchJob, setSearchJob] = useState("");
+  const [searchJob, setSearchJob] = useState("all");
 
   const SearchJobContextProviderValue = useMemo(
     () => ({ searchJob, setSearchJob }),

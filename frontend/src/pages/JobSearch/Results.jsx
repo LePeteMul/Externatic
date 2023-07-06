@@ -17,9 +17,8 @@ function Results() {
     setFilterVisibility(!filterVisibility);
   };
 
-  const resultsNumber = 56;
-
   const { jobOffer } = useContext(JobOfferContext);
+  const resultsNumber = jobOffer.length;
 
   return (
     <div className="Results">
