@@ -6,8 +6,8 @@ import HeaderWaveInverted from "../../components/Header/HeaderWaveInverted";
 
 function AdminDashboard() {
   const { userId } = useContext(UserConnexionContext);
-
   const [admin, setAdmin] = useState([]);
+
   console.warn("admin avant le fetch = ", admin);
   console.warn(`setadmin ${setAdmin}`);
 
