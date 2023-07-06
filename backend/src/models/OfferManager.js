@@ -56,63 +56,59 @@ class OfferManager extends AbstractManager {
 
     let params = [];
 
-    if (
-      search.job !== "all" &&
-      search.contract !== "all" &&
-      search.city !== "all"
-    ) {
+    if (search.job !== "" && search.contract !== "" && search.city !== "") {
       query += `
         WHERE offer.job = ? 
         AND offer.contract_id = ? 
         AND offer.city_job = ?`;
       params = [search.job, search.contract, search.city];
     } else if (
-      search.job !== "all" &&
-      search.contract !== "all" &&
-      search.city === "all"
+      search.job !== "" &&
+      search.contract !== "" &&
+      search.city === ""
     ) {
       query += `
         WHERE offer.job = ? 
         AND offer.contract_id = ?`;
       params = [search.job, search.contract];
     } else if (
-      search.job !== "all" &&
-      search.contract === "all" &&
-      search.city === "all"
+      search.job !== "" &&
+      search.contract === "" &&
+      search.city === ""
     ) {
       query += `
         WHERE offer.job = ?`;
       params = [search.job];
     } else if (
-      search.job !== "all" &&
-      search.contract === "all" &&
-      search.city !== "all"
+      search.job !== "" &&
+      search.contract === "" &&
+      search.city !== ""
     ) {
       query += `
         WHERE offer.job = ? 
         AND offer.city_job = ?`;
       params = [search.job, search.city];
     } else if (
-      search.job === "all" &&
-      search.contract !== "all" &&
-      search.city === "all"
+      search.job === "" &&
+      search.contract !== "" &&
+      search.city === ""
     ) {
       query += `
         WHERE offer.contract_id = ?`;
       params = [search.contract];
     } else if (
-      search.job === "all" &&
-      search.contract !== "all" &&
-      search.city !== "all"
+      search.job === "" &&
+      search.contract !== "" &&
+      search.city !== ""
     ) {
       query += `
         WHERE offer.contract_id = ? 
         AND offer.city_job = ?`;
       params = [search.contract, search.city];
     } else if (
-      search.job === "all" &&
-      search.contract === "all" &&
-      search.city !== "all"
+      search.job === "" &&
+      search.contract === "" &&
+      search.city !== ""
     ) {
       query += `
         WHERE offer.city_job = ?`;

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
-import SearchJobContext from "../../../contexts/SearchJobContext/SearchJobContext";
+import JobOfferContext from "../../../contexts/JobOfferContext/JobOfferContext";
 
 function JobInput() {
-  const { searchJob, setSearchJob } = useContext(SearchJobContext);
+  const { searchJob, setSearchJob } = useContext(JobOfferContext);
 
   const handleSelect = (event) => {
     setSearchJob(event.target.value);
