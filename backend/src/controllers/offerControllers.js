@@ -108,6 +108,23 @@ const getJobList = (req, res) => {
     });
 };
 
+const findOffersByCompany = (req, res) => {
+  const companyId = req.params.id;
+  models.offer
+    .OffersListCompany(companyId)
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.sendStatus(404);
+      } else {
+        res.send(rows[0]);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
@@ -116,4 +133,5 @@ module.exports = {
   destroy,
   getOfferByCriteria,
   getJobList,
+  findOffersByCompany,
 };

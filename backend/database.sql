@@ -85,7 +85,7 @@ CREATE TABLE offer(
   city_job VARCHAR(350) NOT NULL,
   department VARCHAR(350) NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (company_id) REFERENCES company(id),
+  FOREIGN KEY (company_id) REFERENCES company(id) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (contract_id) REFERENCES contract(id) 
 );
 
@@ -96,9 +96,9 @@ CREATE TABLE application(
   status_id INT NOT NULL,
   company_id INT NOT NULL,
   FOREIGN KEY(candidate_id) REFERENCES user(id),
-  FOREIGN KEY (offer_id) REFERENCES offer(id),
+  FOREIGN KEY (offer_id) REFERENCES offer(id) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (status_id) REFERENCES status(id),
-  FOREIGN KEY (company_id) REFERENCES company(id),
+  FOREIGN KEY (company_id) REFERENCES company(id) ON DELETE CASCADE ON UPDATE CASCADE,
   PRIMARY KEY (id)
 );
 
@@ -106,8 +106,8 @@ CREATE TABLE application(
 CREATE TABLE favorite(
   candidate_id INT NOT NULL,
   offer_id INT NOT NULL,
-  FOREIGN KEY (candidate_id) REFERENCES user(id),
-  FOREIGN KEY (offer_id) REFERENCES offer(id),
+  FOREIGN KEY (candidate_id) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (offer_id) REFERENCES offer(id) ON DELETE CASCADE ON UPDATE CASCADE,
   PRIMARY KEY (candidate_id, offer_id)
 );
 
@@ -121,7 +121,7 @@ CREATE TABLE offer_techno(
   techno_id INT NOT NULL,
   offer_id INT NOT NULL,
   FOREIGN KEY (techno_id) REFERENCES techno(id),
-  FOREIGN KEY (offer_id) REFERENCES offer(id),
+  FOREIGN KEY (offer_id) REFERENCES offer(id) ON DELETE CASCADE ON UPDATE CASCADE,
   PRIMARY KEY (techno_id, offer_id)
 );
 

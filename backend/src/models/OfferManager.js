@@ -123,6 +123,16 @@ class OfferManager extends AbstractManager {
       `select job from  ${this.table} ORDER BY job ASC`
     );
   }
+
+  OffersListCompany() {
+    return this.database.query(
+      `select ${this.table}.job, company.company_name ,${this.table}.id , ${this.table}.date, ${this.table}.city_job, contract.contract_type, company.logo
+      from ${this.table}
+      INNER JOIN company ON ${this.table}.id = company.id
+      INNER JOIN contract ON ${this.table}.id = contract.id;
+      `
+    );
+  }
 }
 
 module.exports = OfferManager;

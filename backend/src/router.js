@@ -103,4 +103,6 @@ router.post("/api/email/contact", mailControllers.sendContactMessageMail);
 // Route to get all the offers with details
 router.get("/api/offerDetails", companyControllers.OffersList);
 
+router.get("/api/offersByCompany/:id", offerControllers.findOffersByCompany);
+
 module.exports = router;
