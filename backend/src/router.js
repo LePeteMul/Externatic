@@ -22,6 +22,12 @@ router.get("/api/company/:id", companyControllers.read);
 router.put("/api/company/:id", companyControllers.edit);
 router.post("/api/company/register", companyControllers.add);
 router.delete("/api/company/:id", companyControllers.destroy);
+router.put("/api/picture/company/edit", companyControllers.changePicture);
+router.put("/api/pass/company/edit", companyControllers.changePassword);
+router.put(
+  "/api/presentation/company/edit",
+  companyControllers.changePresentation
+);
 
 const contractControllers = require("./controllers/contractControllers");
 
