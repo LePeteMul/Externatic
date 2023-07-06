@@ -33,6 +33,27 @@ class CompanyManager extends AbstractManager {
     );
   }
 
+  updateProfilePic(logo, id) {
+    return this.database.query(`update company set logo = ? where id = ?`, [
+      logo,
+      id,
+    ]);
+  }
+
+  updatePassword(password, id) {
+    return this.database.query(`update company set password = ? where id = ?`, [
+      password,
+      id,
+    ]);
+  }
+
+  updatePresentation(presentation, id) {
+    return this.database.query(
+      `update company set presentation = ? where id = ?`,
+      [presentation, id]
+    );
+  }
+
   findAllOffersWithDetails() {
     return this.database.query(
       `

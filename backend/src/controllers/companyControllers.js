@@ -50,6 +50,63 @@ const edit = (req, res) => {
     });
 };
 
+const changePicture = (req, res) => {
+  const { profilepic, id } = req.body;
+  console.error(req.body);
+
+  models.company
+    .updateProfilePic(profilepic, id)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+const changePassword = (req, res) => {
+  const { password, id } = req.body;
+  console.error(req.body);
+
+  models.company
+    .updatePassword(password, id)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+const changePresentation = (req, res) => {
+  const { presentation, id } = req.body;
+  console.error(req.body);
+
+  models.company
+    .updatePresentation(presentation, id)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const add = (req, res) => {
   const company = req.body;
 
@@ -101,4 +158,7 @@ module.exports = {
   add,
   destroy,
   OffersList,
+  changePicture,
+  changePassword,
+  changePresentation,
 };
