@@ -12,6 +12,13 @@ import JobOfferContext from "../../contexts/JobOfferContext/JobOfferContext";
 function Results() {
   const navigate = useNavigate();
 
+  function formatDate(dateSql) {
+    const dateObj = new Date(dateSql);
+    const options = { day: "2-digit", month: "2-digit", year: "numeric" };
+    const newDate = dateObj.toLocaleDateString("fr-FR", options);
+    return newDate;
+  }
+
   const [resultVisibility, setResultVisibility] = useState(true);
   const [filterVisibility, setFilterVisibility] = useState(false);
   const handleClickFilters = () => {
@@ -58,7 +65,6 @@ function Results() {
         <div className="JobResults">
           {jobOffer.map((job) => {
             return (
-              /* <NavLink to="/jobdetails"> */
               <div>
                 <JobCard
                   logo={job.logo}
@@ -66,13 +72,12 @@ function Results() {
                   job={job.job}
                   contractType={job.contractType}
                   jobCity={job.jobCity}
-                  date={job.date}
+                  date={formatDate(job.date)}
                   key={job.id}
                   id={job.id}
                   onClick={() => handleClick(job.id)}
                 />
               </div>
-              /* </NavLink> */
             );
           })}
         </div>

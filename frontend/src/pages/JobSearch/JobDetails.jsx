@@ -7,6 +7,13 @@ import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnex
 import JobOfferContext from "../../contexts/JobOfferContext/JobOfferContext";
 
 function JobDetails() {
+  function formatDate(dateSql) {
+    const dateObj = new Date(dateSql);
+    const options = { day: "2-digit", month: "2-digit", year: "numeric" };
+    const newDate = dateObj.toLocaleDateString("fr-FR", options);
+    return newDate;
+  }
+
   const { offerId } = useContext(JobOfferContext);
   const { userConnected, userId } = useContext(UserConnexionContext);
 
@@ -104,7 +111,7 @@ function JobDetails() {
           <h2>
             {jobDetails.contract_type} | {jobDetails.city_job}
           </h2>
-          <p>Publiée le {jobDetails.date}</p>
+          <p>Publiée le {formatDate(jobDetails.date)}</p>
         </div>
         <br />
         <hr className="Line" />
