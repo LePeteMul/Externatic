@@ -47,7 +47,7 @@ class OfferManager extends AbstractManager {
 
   findOffer(search) {
     let query = `
-      SELECT offer.id, company.id, company.company_name, offer.job, offer.date, offer.remote, contract.contract_type, offer.min_salary, offer.max_salary, offer.description, offer.prerequisites, offer.city_job, offer.department, company.logo, company.presentation, techno.techno_name
+      SELECT offer.id , company.id as companyid, company.company_name, offer.job, offer.date, offer.remote, contract.contract_type, offer.min_salary, offer.max_salary, offer.description, offer.prerequisites, offer.city_job, offer.department, company.logo, company.presentation, techno.techno_name
       FROM offer
       INNER JOIN offer_techno ON offer.id = offer_techno.offer_id
       INNER JOIN techno ON offer_techno.techno_id = techno.id
@@ -116,6 +116,18 @@ class OfferManager extends AbstractManager {
     }
 
     return this.database.query(query, params);
+  }
+
+  findOfferDetails(id) {
+    return this.database.query(
+      `SELECT offer.id, company.id as companyid, company.company_name, offer.job, offer.date, offer.remote, contract.contract_type, offer.min_salary, offer.max_salary, offer.description, offer.prerequisites, offer.city_job, offer.department, company.logo, company.presentation, techno.techno_name
+    FROM offer
+    INNER JOIN offer_techno ON offer.id = offer_techno.offer_id
+    INNER JOIN techno ON offer_techno.techno_id = techno.id
+    INNER JOIN contract ON offer.contract_id = contract.id
+    INNER JOIN company ON offer.company_id = company.id where offer.id = ?`,
+      [id]
+    );
   }
 
   findJobList() {

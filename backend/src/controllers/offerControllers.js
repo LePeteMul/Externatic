@@ -96,6 +96,22 @@ const getOfferByCriteria = (req, res) => {
     });
 };
 
+const getOfferDetails = (req, res) => {
+  models.offer
+    .findOfferDetails(req.params.id)
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.sendStatus(404);
+      } else {
+        res.send(rows[0]);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const getJobList = (req, res) => {
   models.offer
     .findJobList()
@@ -133,5 +149,6 @@ module.exports = {
   destroy,
   getOfferByCriteria,
   getJobList,
+  getOfferDetails,
   findOffersByCompany,
 };

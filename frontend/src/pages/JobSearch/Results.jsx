@@ -23,7 +23,7 @@ function Results() {
   const resultsNumber = jobOffer.length;
 
   const handleClick = (jobId) => {
-    setOfferId(jobId - 1);
+    setOfferId(jobId);
     navigate("/jobdetails");
   };
 
