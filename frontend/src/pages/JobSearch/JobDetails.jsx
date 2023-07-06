@@ -10,7 +10,7 @@ function JobDetails() {
   const { jobOffer } = useContext(JobOfferContext);
   const { userConnected, userId } = useContext(UserConnexionContext);
 
-  const [data, setData] = useState({
+  const [data] = useState({
     candidate_id: userId /* id du user connecte enregistre dans le contexte */,
     offer_id:
       "" /* Modifier "" par la variable de l offer id sur laquelle la candidature est faite */,
