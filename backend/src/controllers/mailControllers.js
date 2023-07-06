@@ -34,7 +34,7 @@ const sendContactMail = (req, res) => {
 };
 
 const sendContactMessageMail = (req, res) => {
-  const { email } = req.body;
+  const { email, name, message, ipLocal, request, date } = req.body;
 
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_SENDIN,
@@ -255,7 +255,7 @@ const sendContactMessageMail = (req, res) => {
 
                                             <div
                                                 style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:28px;font-weight:bold;line-height:1;text-align:center;color:#555;">
-                                                Bonjour {{name}},
+                                                Bonjour Admins,
                                             </div>
 
                                         </td>
@@ -270,16 +270,15 @@ const sendContactMessageMail = (req, res) => {
                                                 l'expéditeur. Vous pouvez répondre à cette demande en cliquant
                                                 directement sur le bouton ci-dessous.<br>
                                                 <br></br>
-                                                <b>Nom de l'expéditeur:</b> { {name} }<br>
-                                                <b>Email de l'expéditeur:</b> { ${email} }<br>
-                                                <b>Contenu du message:</b><br> {{ password }}<br></br>
+                                                <b>Nom de l'expéditeur:</b> ${name}<br>
+                                                <b>Email de l'expéditeur:</b> ${email}<br>
+                                                <b>Contenu du message:</b><br> ${message}<br></br>
 
 
                                                 <h3> Informations de sécurité </h3>
-                                                <b>Adresse IP du l'expéditeur: </b> { {ip} }<br>
-                                                <b>Adresse IP du serveur: </b> { {server_ip} }<br>
-                                                <b>Requête effectuée: </b> { {request} }<br>
-                                                <b>Heure de la requête: </b> { {time} }<br>
+                                                <b>Adresse IP du l'expéditeur: </b> ${ipLocal}<br>
+                                                <b>Requête effectuée: </b> ${request}<br>
+                                                <b>Heure de la requête: </b> ${date}<br>
                                             </div>
 
                                         </td>

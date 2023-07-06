@@ -8,6 +8,9 @@ function Contact() {
     name: "",
     email: "",
     message: "",
+    ipLocal: "",
+    request: "",
+    date: "",
   });
 
   const handleChange = (e) => {
@@ -19,6 +22,25 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Récupérer la date et l'heure de la requête
+    const date = new Date();
+    setFormData((previousValue) => ({
+      ...previousValue,
+      date: date.toLocaleString(),
+    }));
+
+    // Récupérer la date et l'ip
+    setFormData((table) => ({
+      ...table,
+      ipLocal: window.location.hostname,
+    }));
+
+    // Récupérer le type de requête
+    setFormData((previousValue) => ({
+      ...previousValue,
+      request: "POST",
+    }));
 
     // Envoyer la requête à votre backend
     fetch("http://localhost:8080/api/email/contact", {
