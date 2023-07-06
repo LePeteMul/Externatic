@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
+import CompanyConnexionContext from "../../contexts/CompanyConnexionContext/CompanyConnexionContext";
 import burger from "../../assets/icons/burgerMenu.png";
 
 function BurgerMenuBasic() {
@@ -23,10 +24,15 @@ function BurgerMenuBasic() {
   }, [open]);
 
   const { setUserConnected, setUserId } = useContext(UserConnexionContext);
+  const { setCompanyConnected, setCompanyId } = useContext(
+    CompanyConnexionContext
+  );
 
   const handleDisconnect = () => {
     setUserConnected(false);
     setUserId(null);
+    setCompanyConnected(false);
+    setCompanyId(null);
     localStorage.removeItem("token");
   };
 
