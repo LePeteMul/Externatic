@@ -7,12 +7,11 @@ import CompanyConnexionContext from "./contexts/CompanyConnexionContext/CompanyC
 import Router from "./components/Router";
 
 function App() {
-  const { setUserConnected, setUserId, userId, setIsAdmin } =
+  const { setUserConnected, userConnected, setUserId, userId, setIsAdmin } =
     useContext(UserConnexionContext);
 
-  const { setCompanyConnected, setCompanyId, companyId } = useContext(
-    CompanyConnexionContext
-  );
+  const { setCompanyConnected, companyConnected, setCompanyId, companyId } =
+    useContext(CompanyConnexionContext);
 
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
@@ -27,13 +26,13 @@ function App() {
           console.info(now, "token expiré");
           setCompanyConnected(false);
           setCompanyId(null);
-          navigate("/logincompany");
+          /* navigate("/logincompany"); */
         } else {
           console.info(now, "token expiré");
           setIsAdmin(false);
           setUserConnected(false);
           setUserId(null);
-          navigate("/login");
+          /* navigate("/login"); */
         }
       } else {
         console.info(now, "token valide");
@@ -56,7 +55,7 @@ function App() {
         }
       }
     }
-  }, []);
+  }, [userConnected, companyConnected]);
 
   return (
     <div className="App">
