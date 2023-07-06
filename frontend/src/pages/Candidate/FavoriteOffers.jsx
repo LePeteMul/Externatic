@@ -1,12 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
+import JobOfferContext from "../../contexts/JobOfferContext/JobOfferContext";
 import JobCard from "../../components/Elements/JobCard";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import BlackButton from "../../components/Elements/BlackButton";
 
 function FavoriteOffers() {
+  const navigate = useNavigate();
+
   const { userId } = useContext(UserConnexionContext);
+  const { offerId, setOfferId } = useContext(JobOfferContext);
 
   const [favorites, setFavorites] = useState([]);
 
@@ -18,6 +22,13 @@ function FavoriteOffers() {
       .then((data) => setFavorites(data))
       .catch((err) => console.error(err));
   }, []);
+
+  const handleClick = (id) => {
+    setOfferId(id);
+    navigate("/jobdetails");
+  };
+
+  const handleDelete = () => {};
 
   return (
     <div className="favoriteOffers">
@@ -36,6 +47,9 @@ function FavoriteOffers() {
                 contractType={offer.contract_type}
                 jobCity={offer.city_job}
                 date={offer.date}
+                id={offer.offer_id}
+                onDelete={handleDelete}
+                onClick={() => handleClick(offer.offer_id)}
               />
             );
           })}
