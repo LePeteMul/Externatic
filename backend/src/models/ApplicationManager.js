@@ -18,6 +18,16 @@ class ApplicationManager extends AbstractManager {
       [application.status_id, application.id]
     );
   }
+
+  updateStatusOfApplication(application) {
+    return this.database.query(
+      `UPDATE ${this.table} 
+      SET status_id = ?
+      WHERE ${this.table}.id = ?
+      AND offer_id = ?;`,
+      [application.status, application.id, application.offer_id]
+    );
+  }
 }
 
 module.exports = ApplicationManager;

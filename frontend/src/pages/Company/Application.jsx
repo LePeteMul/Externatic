@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import loupe from "../../assets/icons/loupe.png";
-import InputList from "../../components/Elements/InputList";
+import InputListe from "../../components/Elements/InputListe";
 import BlackButton from "../../components/Elements/BlackButton";
 
 function Application() {
   const [result, setResult] = useState("");
+  const [selectedStatus, setSelectedStatus] = useState("");
 
   // getting application by offer id
   useEffect(() => {
@@ -22,6 +23,44 @@ function Application() {
         console.error("Error:", error);
       });
   }, []);
+
+  // Function to handle status change
+  const handleStatusChange = (e) => {
+    console.info("handleStatusChange called"); // Check if this is displayed in the console
+    setSelectedStatus(e.target.value);
+    updateApplicationStatus(e.target.value);
+  };
+
+  // Function to update application status
+  const updateApplicationStatus = (status) => {
+    const parsedStatus = parseInt(status);
+    const offer_id = parseInt(result.offer_id);
+    const url = `http://localhost:8080/api/application/${result.id}/status`;
+    console.info("Updating application status...");
+    console.info("Application ID:", result.id);
+    console.info("New Status:", parsedStatus);
+    console.info("Offer id:", result.offer_id);
+
+    if (!isNaN(parsedStatus) && !isNaN(result.id) && !isNaN(result.offer_id)) {
+      fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ status: parsedStatus, offer_id }),
+      })
+        .then((response) => {
+          console.info("Response:", response);
+          // Perform any necessary actions after successful status update
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          // Handle any errors that occurred during the status update
+        });
+    } else {
+      console.error("Invalid status or ID values");
+    }
+  };
 
   return (
     <div className="application">
@@ -58,18 +97,24 @@ function Application() {
             </div>
           </NavLink>
           <div className="status">
-            <InputList
+            <InputListe
               inputMessage="Selectionner un statut"
               data={[
-                { value: "Reçu", name: "Reçu" },
-                {
-                  value: "En cours de traitement",
-                  name: "En cours de traitement",
-                },
-                { value: "Entretien planifié", name: "Entretien planifié" },
-                { value: "Accepté", name: "Accepté" },
-                { value: "Refusé", name: "Refusé" },
+                { value: 1, name: 1 },
+                { value: 2, name: 2 },
+                { value: 3, name: 3 },
+
+                // { value: "Reçu", name: "Reçu" },
+                // {
+                //   value: "En cours de traitement",
+                //   name: "En cours de traitement",
+                // },
+                // { value: "Entretien planifié", name: "Entretien planifié" },
+                // { value: "Accepté", name: "Accepté" },
+                // { value: "Refusé", name: "Refusé" },
               ]}
+              value={selectedStatus}
+              set={handleStatusChange}
             />
           </div>
         </div>

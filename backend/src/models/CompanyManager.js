@@ -32,6 +32,17 @@ class CompanyManager extends AbstractManager {
       ]
     );
   }
+
+  findAllOffersWithDetails() {
+    return this.database.query(
+      `
+    SELECT ${this.table}.logo,${this.table}.company_name, offer.date, offer.job, contract.contract_type, offer.city_job 
+    FROM ${this.table}
+    INNER JOIN offer ON offer.id = ${this.table}.id
+    INNER JOIN contract ON offer.id = contract.id;
+    `
+    );
+  }
 }
 
 module.exports = CompanyManager;

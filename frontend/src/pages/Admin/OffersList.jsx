@@ -1,46 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import JobCard from "../../components/Elements/JobCard";
-import logoAllovoisins from "../../assets/images/HomePage/logo-allovoisins.png";
-import logoGroupama from "../../assets/images/HomePage/logo-groupama.jpg";
 import BlackButton from "../../components/Elements/BlackButton";
 
 function OffersList() {
-  const offers = [
-    {
-      companyLogo: logoGroupama,
-      companyName: "Nickel",
-      job: "Chef de projet",
-      contractType: "CDI",
-      jobCity: "Nantes",
-      date: "06/06/2023",
-    },
-    {
-      companyLogo: logoAllovoisins,
-      companyName: "Nickel",
-      job: "Chef de projet",
-      contractType: "CDI",
-      jobCity: "Nantes",
-      date: "06/06/2023",
-    },
-    {
-      companyLogo: logoGroupama,
-      companyName: "Nickel",
-      job: "Chef de projet",
-      contractType: "CDI",
-      jobCity: "Nantes",
-      date: "06/06/2023",
-    },
-    {
-      companyLogo: logoAllovoisins,
-      companyName: "Nickel",
-      job: "Chef de projet",
-      contractType: "CDI",
-      jobCity: "Nantes",
-      date: "06/06/2023",
-    },
-  ];
+  const [result, setResult] = useState([]);
+
+  // find all offers with details
+  useEffect(() => {
+    const url = "http://localhost:8080/api/offerDetails";
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        console.info("Response:", data);
+        setResult(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, []);
 
   return (
     <div className="OffersList">
@@ -51,14 +31,14 @@ function OffersList() {
         </div>
 
         <div className="offer">
-          {offers.map((offer) => {
+          {result.map((offer) => {
             return (
               <JobCard
-                logo={offer.companyLogo}
-                companyName={offer.companyName}
+                logo={offer.logo}
+                companyName={offer.company_name}
                 job={offer.job}
-                contractType={offer.contractType}
-                jobCity={offer.jobCity}
+                contractType={offer.contract_type}
+                jobCity={offer.city_job}
                 date={offer.date}
               />
             );

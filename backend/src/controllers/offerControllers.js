@@ -82,10 +82,38 @@ const destroy = (req, res) => {
     });
 };
 
+const getOfferByCriteria = (req, res) => {
+  const search = req.query;
+
+  models.offer
+    .findOffer(search)
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+const getJobList = (req, res) => {
+  models.offer
+    .findJobList()
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
   edit,
   add,
   destroy,
+  getOfferByCriteria,
+  getJobList,
 };

@@ -4,7 +4,8 @@ const router = express.Router();
 const { hashPassword } = require("./services/auth");
 const { verifyPassword } = require("./services/auth");
 
-const { verifyToken } = require("./services/auth");
+/* const { verifyToken } = require("./services/auth"); */
+/* A ajouter sur les routes concernées */
 
 const applicationControllers = require("./controllers/applicationControllers");
 
@@ -40,6 +41,8 @@ router.delete("/api/favorite/:id", favoriteControllers.destroy);
 const offerControllers = require("./controllers/offerControllers");
 
 router.get("/api/offer", offerControllers.browse);
+router.get("/api/offerByCriteria", offerControllers.getOfferByCriteria);
+router.get("/api/offer/jobList", offerControllers.getJobList);
 router.get("/api/offer/:id", offerControllers.read);
 router.put("/api/offer/:id", offerControllers.edit);
 router.post("/api/offer", offerControllers.add);
@@ -76,8 +79,13 @@ router.get("/api/application/byOfferId/:id", userControllers.getAppliByOfferId);
 router.post(
   "/api/user/login",
   userControllers.getUserByEmailWithPasswordAndPassToNext,
-  verifyPassword,
-  verifyToken
+  verifyPassword
+);
+
+// Route to update the status for the application
+router.put(
+  "/api/application/:applicationId/status",
+  applicationControllers.editStatus
 );
 
 const mailControllers = require("./controllers/mailControllers");
@@ -85,5 +93,8 @@ const mailControllers = require("./controllers/mailControllers");
 router.post("/api/email", mailControllers.sendContactMail);
 
 router.post("/api/email/contact", mailControllers.sendContactMessageMail);
+
+// Route to get all the offers with details
+router.get("/api/offerDetails", companyControllers.OffersList);
 
 module.exports = router;

@@ -40,6 +40,8 @@ function JobDetails() {
       });
   };
 
+  console.info(userConnected, userId);
+
   return (
     <div className="JobDetails">
       <HeaderBasic />

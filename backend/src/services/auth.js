@@ -22,7 +22,7 @@ const hashPassword = (req, res, next) => {
     });
 };
 
-const verifyPassword = async (req, res, next) => {
+const verifyPassword = async (req, res) => {
   const { password } = req.body;
   const { password: hashedPassword } = req.user;
 
@@ -39,8 +39,8 @@ const verifyPassword = async (req, res, next) => {
     });
 
     req.token = token;
-    res.status(200).send(token);
-    return next();
+
+    return res.status(200).send(token);
   }
   return res.status(401).send("verify password, error at step 2");
 };

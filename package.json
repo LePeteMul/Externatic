@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "argon2": "^0.30.3",
-    "fs": "^0.0.1-security",
+    "jwt-decode": "^3.1.2",
     "react-google-recaptcha": "^3.1.0",
     "react-router-dom": "^6.12.0",
     "uuid": "^9.0.0"
