@@ -42,22 +42,23 @@ function ProfileCandidate() {
         </div>
 
         <div className="candidateResume">
-          <InputTexte label="Genre" value={`${user.gender}`} />
-          <InputTexte label="Email:" value={`${user.email}`} />
+          <InputTexte label="Genre" value={`${user.gender}`} disabled />
+          <InputTexte label="Email:" value={`${user.email}`} disabled />
 
-          <InputTexte label="Telephone :" value={`${user.phone}`} />
+          <InputTexte label="Téléphone :" value={`${user.phone}`} disabled />
 
-          <InputTexte label="Ville :" value={`${user.city}`} />
+          <InputTexte label="Ville :" value={`${user.city}`} disabled />
 
           <InputTexte
-            label="Technologies maitrisées :"
+            label="Technologies maîtrisées :"
             value={`${user.language}`}
+            disabled
           />
 
           <InputTexte
             label="Consulter le CV :"
             inputMessage="Consulter le CV"
-            // changer par un bouton
+            // changer par un bouton qui charge le pdf
           />
         </div>
         <div className="profileButton">
