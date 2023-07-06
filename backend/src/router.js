@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 const { hashPassword } = require("./services/auth");
-const { verifyPassword } = require("./services/auth");
+const { verifyPassword, verifyCompanyPassword } = require("./services/auth");
 
 /* const { verifyToken } = require("./services/auth"); */
 /* A ajouter sur les routes concernées */
@@ -20,13 +20,19 @@ const companyControllers = require("./controllers/companyControllers");
 router.get("/api/company", companyControllers.browse);
 router.get("/api/company/:id", companyControllers.read);
 router.put("/api/company/:id", companyControllers.edit);
-router.post("/api/company/register", companyControllers.add);
+router.post("/api/company/register", hashPassword, companyControllers.add);
 router.delete("/api/company/:id", companyControllers.destroy);
 router.put("/api/picture/company/edit", companyControllers.changePicture);
 router.put("/api/pass/company/edit", companyControllers.changePassword);
 router.put(
   "/api/presentation/company/edit",
   companyControllers.changePresentation
+);
+
+router.post(
+  "/api/company/login",
+  companyControllers.getCompanyByEmailWithPasswordAndPassToNext,
+  verifyCompanyPassword
 );
 
 const contractControllers = require("./controllers/contractControllers");

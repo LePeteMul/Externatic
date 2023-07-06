@@ -5,6 +5,7 @@ import AdminDashboard from "../pages/Admin/AdminDashboard";
 import CandidateDashboard from "../pages/Candidate/CandidateDashboard";
 import CompanyDashboard from "../pages/Company/CompanyDashboard";
 import Login from "../pages/Login/Login";
+import LoginCompany from "../pages/Login/LoginCompany";
 import JobDetails from "../pages/JobSearch/JobDetails";
 import JobSearch from "../pages/JobSearch/JobSearch";
 import Results from "../pages/JobSearch/Results";
@@ -112,6 +113,7 @@ function Router() {
 
         {/* Global section */}
         <Route path="/login" element={<Login />} />
+        <Route path="/logincompany" element={<LoginCompany />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/jobsearch" element={<JobSearch />} />
         <Route path="/results" element={<Results />} />
