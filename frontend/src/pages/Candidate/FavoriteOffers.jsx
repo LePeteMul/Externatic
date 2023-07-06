@@ -1,28 +1,23 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
 import JobCard from "../../components/Elements/JobCard";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import BlackButton from "../../components/Elements/BlackButton";
 
 function FavoriteOffers() {
-  const offers = [
-    {
-      companyLogo: "https://www.moneyvox.fr/i/media/05l/005668l5dd.jpg",
-      companyName: "Nickel",
-      job: "Chef de projet",
-      contractType: "CDI",
-      jobCity: "Nantes",
-      date: "06/06/2023",
-    },
-    {
-      companyLogo: "https://www.moneyvox.fr/i/media/05l/005668l5dd.jpg",
-      companyName: "Nickel",
-      job: "Chef de projet",
-      contractType: "CDI",
-      jobCity: "Nantes",
-      date: "06/06/2023",
-    },
-  ];
+  const { userId } = useContext(UserConnexionContext);
+
+  const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+    const url = `http://localhost:8080/api/FavoriteByUser/${userId}`;
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => setFavorites(data))
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
     <div className="favoriteOffers">
@@ -32,14 +27,14 @@ function FavoriteOffers() {
           <h1>Mes favoris</h1>
         </div>
         <div className="cardFavoris">
-          {offers.map((offer) => {
+          {favorites.map((offer) => {
             return (
               <JobCard
-                logo={offer.companyLogo}
+                logo={offer.logo}
                 companyName={offer.companyName}
                 job={offer.job}
-                contractType={offer.contractType}
-                jobCity={offer.jobCity}
+                contractType={offer.contract_type}
+                jobCity={offer.city_job}
                 date={offer.date}
               />
             );
