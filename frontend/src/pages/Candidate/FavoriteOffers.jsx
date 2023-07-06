@@ -7,6 +7,13 @@ import HeaderBasic from "../../components/Header/HeaderBasic";
 import BlackButton from "../../components/Elements/BlackButton";
 
 function FavoriteOffers() {
+  function formatDate(dateSql) {
+    const dateObj = new Date(dateSql);
+    const options = { day: "2-digit", month: "2-digit", year: "numeric" };
+    const newDate = dateObj.toLocaleDateString("fr-FR", options);
+    return newDate;
+  }
+
   const navigate = useNavigate();
 
   const { userId } = useContext(UserConnexionContext);
@@ -46,7 +53,7 @@ function FavoriteOffers() {
                 job={offer.job}
                 contractType={offer.contract_type}
                 jobCity={offer.city_job}
-                date={offer.date}
+                date={formatDate(offer.date)}
                 id={offer.offer_id}
                 onDelete={handleDelete}
                 onClick={() => handleClick(offer.offer_id)}

@@ -49,10 +49,10 @@ class OfferManager extends AbstractManager {
     let query = `
       SELECT offer.id , company.id as companyid, company.company_name, offer.job, offer.date, offer.remote, contract.contract_type, offer.min_salary, offer.max_salary, offer.description, offer.prerequisites, offer.city_job, offer.department, company.logo, company.presentation, techno.techno_name
       FROM offer
-      INNER JOIN offer_techno ON offer.id = offer_techno.offer_id
-      INNER JOIN techno ON offer_techno.techno_id = techno.id
-      INNER JOIN contract ON offer.contract_id = contract.id
-      INNER JOIN company ON offer.company_id = company.id`;
+      LEFT JOIN offer_techno ON offer.id = offer_techno.offer_id
+      LEFT JOIN techno ON offer_techno.techno_id = techno.id
+      LEFT JOIN contract ON offer.contract_id = contract.id
+      LEFT JOIN company ON offer.company_id = company.id`;
 
     let params = [];
 
@@ -60,7 +60,8 @@ class OfferManager extends AbstractManager {
       query += `
         WHERE offer.job = ? 
         AND offer.contract_id = ? 
-        AND offer.city_job = ?`;
+        AND offer.city_job = ?
+        ORDER BY offer.date DESC`;
       params = [search.job, search.contract, search.city];
     } else if (
       search.job !== "" &&
@@ -69,7 +70,8 @@ class OfferManager extends AbstractManager {
     ) {
       query += `
         WHERE offer.job = ? 
-        AND offer.contract_id = ?`;
+        AND offer.contract_id = ?
+        ORDER BY offer.date DESC`;
       params = [search.job, search.contract];
     } else if (
       search.job !== "" &&
@@ -77,7 +79,8 @@ class OfferManager extends AbstractManager {
       search.city === ""
     ) {
       query += `
-        WHERE offer.job = ?`;
+        WHERE offer.job = ?
+        ORDER BY offer.date DESC`;
       params = [search.job];
     } else if (
       search.job !== "" &&
@@ -86,7 +89,8 @@ class OfferManager extends AbstractManager {
     ) {
       query += `
         WHERE offer.job = ? 
-        AND offer.city_job = ?`;
+        AND offer.city_job = ?
+        ORDER BY offer.date DESC`;
       params = [search.job, search.city];
     } else if (
       search.job === "" &&
@@ -94,7 +98,8 @@ class OfferManager extends AbstractManager {
       search.city === ""
     ) {
       query += `
-        WHERE offer.contract_id = ?`;
+        WHERE offer.contract_id = ?
+        ORDER BY offer.date DESC`;
       params = [search.contract];
     } else if (
       search.job === "" &&
@@ -103,7 +108,8 @@ class OfferManager extends AbstractManager {
     ) {
       query += `
         WHERE offer.contract_id = ? 
-        AND offer.city_job = ?`;
+        AND offer.city_job = ?
+        ORDER BY offer.date DESC`;
       params = [search.contract, search.city];
     } else if (
       search.job === "" &&
@@ -111,7 +117,8 @@ class OfferManager extends AbstractManager {
       search.city !== ""
     ) {
       query += `
-        WHERE offer.city_job = ?`;
+        WHERE offer.city_job = ?
+        ORDER BY offer.date DESC`;
       params = [search.city];
     }
 
@@ -122,10 +129,10 @@ class OfferManager extends AbstractManager {
     return this.database.query(
       `SELECT offer.id, company.id as companyid, company.company_name, offer.job, offer.date, offer.remote, contract.contract_type, offer.min_salary, offer.max_salary, offer.description, offer.prerequisites, offer.city_job, offer.department, company.logo, company.presentation, techno.techno_name
     FROM offer
-    INNER JOIN offer_techno ON offer.id = offer_techno.offer_id
-    INNER JOIN techno ON offer_techno.techno_id = techno.id
-    INNER JOIN contract ON offer.contract_id = contract.id
-    INNER JOIN company ON offer.company_id = company.id where offer.id = ?`,
+    LEFT JOIN offer_techno ON offer.id = offer_techno.offer_id
+    LEFT JOIN techno ON offer_techno.techno_id = techno.id
+    LEFT JOIN contract ON offer.contract_id = contract.id
+    LEFT JOIN company ON offer.company_id = company.id where offer.id = ?`,
       [id]
     );
   }
