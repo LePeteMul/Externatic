@@ -18,6 +18,14 @@ class CompanyManager extends AbstractManager {
     );
   }
 
+  findByMail(email) {
+    return this.database
+      .query(`SELECT * FROM ${this.table} WHERE email = ?`, [email])
+      .catch((err) => {
+        throw err;
+      });
+  }
+
   update(company) {
     return this.database.query(
       `update ${this.table} set company_name = ?, email = ?, password = ?, phone = ?, logo = ?, presentation = ? where id = ?`,

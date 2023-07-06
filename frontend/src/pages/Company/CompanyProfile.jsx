@@ -29,8 +29,8 @@ function CompanyProfile() {
       [e.target.name]: e.target.value,
     }));
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     console.info(formData);
   };
   return (
@@ -63,7 +63,7 @@ function CompanyProfile() {
               buttonFunction={(event) => {
                 event.preventDefault();
                 handlePopup1Open();
-                handleSubmit();
+                handleSubmit(event);
               }}
             />
             {showPopup1 && (

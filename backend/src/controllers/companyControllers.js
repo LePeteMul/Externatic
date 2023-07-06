@@ -151,6 +151,29 @@ const OffersList = (req, res) => {
     });
 };
 
+const getCompanyByEmailWithPasswordAndPassToNext = (req, res, next) => {
+  const { email } = req.body;
+
+  models.company
+
+    .findByMail(email)
+    .then(([company]) => {
+      if (company[0] != null) {
+        req.company = company[0];
+        console.info("company identified by email");
+        next();
+      } else {
+        res
+          .status(500)
+          .send("Tas pas reussi userController get company by mail");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send(" error retrieving data from database ");
+    });
+};
+
 module.exports = {
   browse,
   read,
@@ -161,4 +184,5 @@ module.exports = {
   changePicture,
   changePassword,
   changePresentation,
+  getCompanyByEmailWithPasswordAndPassToNext,
 };
