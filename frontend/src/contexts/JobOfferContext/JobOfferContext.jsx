@@ -6,6 +6,7 @@ const JobOfferContext = createContext();
 export function JobOfferContextProvider({ children }) {
   const [searchCity, setSearchCity] = useState("");
   const [searchContract, setSearchContract] = useState("");
+  const [searchContractId, setSearchContractId] = useState("");
   const [searchJob, setSearchJob] = useState("");
 
   const [jobOffer, setJobOffer] = useState([]);
@@ -13,7 +14,7 @@ export function JobOfferContextProvider({ children }) {
   useEffect(() => {
     const queryParams = new URLSearchParams({
       job: searchJob,
-      contract: searchContract,
+      contract: searchContractId,
       city: searchCity,
     }).toString();
     const url = `http://localhost:8080/api/offerByCriteria?${queryParams}`;
@@ -36,6 +37,8 @@ export function JobOfferContextProvider({ children }) {
       setSearchContract,
       searchJob,
       setSearchJob,
+      searchContractId,
+      setSearchContractId,
     }),
     [
       jobOffer,
@@ -46,6 +49,8 @@ export function JobOfferContextProvider({ children }) {
       setSearchContract,
       searchJob,
       setSearchJob,
+      searchContractId,
+      setSearchContractId,
     ]
   );
 

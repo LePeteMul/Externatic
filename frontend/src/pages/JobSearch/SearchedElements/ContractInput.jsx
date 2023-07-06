@@ -2,10 +2,16 @@ import React, { useContext, useEffect, useState } from "react";
 import JobOfferContext from "../../../contexts/JobOfferContext/JobOfferContext";
 
 function ContractInput() {
-  const { searchContract, setSearchContract } = useContext(JobOfferContext);
+  const { searchContract, setSearchContract, setSearchContractId } =
+    useContext(JobOfferContext);
 
   const handleSelect = (event) => {
-    setSearchContract(event.target.value);
+    const selectedValue = event.target.value;
+    const selectedContract = contractList.find(
+      (element) => element.contract_type === selectedValue
+    );
+    setSearchContract(selectedValue);
+    setSearchContractId(selectedContract ? selectedContract.id : "");
   };
 
   const [contractList, setContractList] = useState([]);
