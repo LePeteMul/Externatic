@@ -47,7 +47,7 @@ class OfferManager extends AbstractManager {
 
   findOffer(search) {
     let query = `
-      SELECT offer.id, company.id, offer.job, offer.date, offer.remote, contract.contract_type, offer.min_salary, offer.max_salary, offer.description, offer.prerequisites, offer.city_job, offer.department, company.logo, company.presentation, techno.techno_name
+      SELECT offer.id, company.id, company.company_name, offer.job, offer.date, offer.remote, contract.contract_type, offer.min_salary, offer.max_salary, offer.description, offer.prerequisites, offer.city_job, offer.department, company.logo, company.presentation, techno.techno_name
       FROM offer
       INNER JOIN offer_techno ON offer.id = offer_techno.offer_id
       INNER JOIN techno ON offer_techno.techno_id = techno.id

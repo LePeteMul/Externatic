@@ -8,6 +8,7 @@ export function JobOfferContextProvider({ children }) {
   const [searchContract, setSearchContract] = useState("");
   const [searchContractId, setSearchContractId] = useState("");
   const [searchJob, setSearchJob] = useState("");
+  const [offerId, setOfferId] = useState("");
 
   const [jobOffer, setJobOffer] = useState([]);
 
@@ -39,6 +40,8 @@ export function JobOfferContextProvider({ children }) {
       setSearchJob,
       searchContractId,
       setSearchContractId,
+      offerId,
+      setOfferId,
     }),
     [
       jobOffer,
@@ -51,6 +54,8 @@ export function JobOfferContextProvider({ children }) {
       setSearchJob,
       searchContractId,
       setSearchContractId,
+      offerId,
+      setOfferId,
     ]
   );
 
