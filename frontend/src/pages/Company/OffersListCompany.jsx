@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import JobCard from "../../components/Elements/JobCard";
@@ -6,14 +6,31 @@ import logoGroupama from "../../assets/images/HomePage/logo-groupama.jpg";
 import BlackButton from "../../components/Elements/BlackButton";
 
 function OffersListCompany() {
+  const [result, setResult] = useState("");
+
+  useEffect(() => {
+    const offerId = 1;
+    const url = `http://localhost:8080/api/offersByCompany/${offerId}`;
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        console.info("Response:", data);
+        setResult(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, []);
+
   const offers = [
     {
-      companyLogo: logoGroupama,
-      companyName: "Groupama",
-      job: "Chef de projet",
-      contractType: "CDI",
-      jobCity: "Nantes",
-      date: "06/06/2023",
+      companyLogo: result.logo,
+      companyName: result.company_name,
+      job: result.job,
+      contractType: result.contract_type,
+      jobCity: result.city_job,
+      date: result.date,
     },
     {
       companyLogo: logoGroupama,

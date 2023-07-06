@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import InputTexte from "../../components/Elements/InputTexte";
@@ -8,8 +8,39 @@ import InputListe from "../../components/Elements/InputListe";
 import LanguageList from "../../components/Elements/LanguageList";
 import InputCv from "../../components/Elements/InputCv";
 import Popup from "../../components/Elements/Popup";
+import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
 
 function CandidateProfile() {
+  const { userId } = useContext(UserConnexionContext);
+  const [user, setUser] = useState({});
+  console.warn("Dans UserProfile, userID : ", user.id);
+
+  useEffect(() => {
+    fetch(`http://localhost:8080/api/user/${userId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setUser(data);
+        setFormData({
+          ...formData,
+          gender: data.gender,
+          lastname: data.lastname,
+          firstname: data.firstname,
+          email: data.email,
+          phone: data.phone,
+          city: data.city,
+          // language: "",
+          cv: data.cv,
+          // password: "****",
+          admin: data.admin,
+        });
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
+  console.warn("user dans le admin profile = ", user);
+  console.warn("is admin ? ", user.admin);
+  console.warn("lastname = ", user.lastname);
+
   const navigate = useNavigate();
   const [showPopup1, setShowPopup1] = useState(false);
   const [showPopup2, setShowPopup2] = useState(false);
@@ -33,16 +64,16 @@ function CandidateProfile() {
   };
 
   const [formData, setFormData] = useState({
-    gender: "",
-    lastname: "",
-    firstname: "",
-    email: "",
-    phone: "",
-    city: "",
+    gender: user.gender,
+    lastname: user.lastname,
+    firstname: user.firstname,
+    email: user.email,
+    phone: user.phone,
+    city: user.city,
     // language: "",
-    cv: "",
-    password: "****",
-    admin: 0,
+    cv: user.cv,
+    // password: "****",
+    admin: user.admin,
   });
 
   const handleChange = (e) => {
@@ -62,7 +93,7 @@ function CandidateProfile() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const url = "http://localhost:8080/api/user/7";
+    const url = `http://localhost:8080/api/user/${userId}`;
     const requestData = { ...formData };
 
     fetch(url, {
@@ -85,14 +116,16 @@ function CandidateProfile() {
 
   const handleDeletion = () => {
     setFormData({
-      gender: "",
-      lastname: "",
-      firstname: "",
-      email: "",
-      phone: "",
-      city: "",
-      language: "",
-      cv: "",
+      gender: user.gender,
+      lastname: user.lastname,
+      firstname: user.firstname,
+      email: user.email,
+      phone: user.phone,
+      city: user.city,
+      // language: "",
+      cv: user.cv,
+      // password: "****",
+      admin: user.admin,
     });
   };
   return (
@@ -113,6 +146,7 @@ function CandidateProfile() {
               { value: "genre 2", name: "Je suis un homme" },
               { value: "genre 3", name: "je suis non binaire" },
             ]}
+            value={formData.gender}
           />
           <InputTexte
             label="Nom"
@@ -120,6 +154,7 @@ function CandidateProfile() {
             placeholder="Dupont"
             type="text"
             handleChange={handleChange}
+            value={formData.lastname}
           />
           <InputTexte
             label="Prénom"
@@ -127,6 +162,7 @@ function CandidateProfile() {
             placeholder="Marie"
             type="text"
             handleChange={handleChange}
+            value={formData.firstname}
           />
           <InputTexte
             label="Email"
@@ -134,6 +170,7 @@ function CandidateProfile() {
             placeholder="m.dupont@gmail.com"
             type="email"
             handleChange={handleChange}
+            value={formData.email}
           />
           <InputTexte
             label="Téléphone"
@@ -141,6 +178,7 @@ function CandidateProfile() {
             placeholder="06 06 06 06 06"
             type="tel"
             handleChange={handleChange}
+            value={formData.phone}
           />
           <InputTexte
             label="Ville"
@@ -148,6 +186,7 @@ function CandidateProfile() {
             placeholder="Paris"
             type="text"
             handleChange={handleChange}
+            value={formData.city}
           />
           <InputCv label="CV" accept=".pdf" handleChange={handleFileChange} />
           <LanguageList

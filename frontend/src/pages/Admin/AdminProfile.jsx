@@ -1,12 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import BlackButton from "../../components/Elements/BlackButton";
 import InputListe from "../../components/Elements/InputListe";
 import InputTexte from "../../components/Elements/InputTexte";
 import Popup from "../../components/Elements/Popup";
+import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
 
 function AdminProfile() {
+  const { userId } = useContext(UserConnexionContext);
+  const [admin, setAdmin] = useState({});
+  console.warn("Dans AdminProfile, userID : ", admin.id);
+
+  useEffect(() => {
+    fetch(`http://localhost:8080/api/user/${userId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setAdmin(data);
+        setFormData({
+          ...formData,
+          gender: data.gender,
+          lastname: data.lastname,
+          firstname: data.firstname,
+          email: data.email,
+          phone: data.phone,
+          // password: "£££",
+        });
+      })
+      .catch((err) => console.error(err));
+  }, []);
+  console.warn("admin dans le admin profile = ", admin);
+  console.warn("is admin ? ", admin.admin);
+  console.warn("lastname = ", admin.lastname);
+
   const navigate = useNavigate();
   const [showPopup1, setShowPopup1] = useState(false);
 
@@ -20,12 +46,12 @@ function AdminProfile() {
   };
 
   const [formData, setFormData] = useState({
-    gender: "",
-    lastname: "",
-    firstname: "",
-    email: "",
-    phone: "",
-    password: "£££",
+    gender: admin.gender,
+    lastname: admin.lastname,
+    firstname: admin.firstname,
+    email: admin.email,
+    phone: admin.phone,
+    // password: "£££",
   });
 
   const handleChange = (e) => {
@@ -38,8 +64,7 @@ function AdminProfile() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.info(formData);
-
-    const url = "http://localhost:8080/api/user/1";
+    const url = `http://localhost:8080/api/user/${userId}`;
     const requestData = { ...formData };
 
     fetch(url, {
@@ -60,6 +85,10 @@ function AdminProfile() {
       });
   };
 
+  if (Object.keys(admin).length === 0) {
+    return null; // or render a loading spinner/placeholder
+  }
+
   return (
     <div className="AdminProfile">
       <HeaderBasic />
@@ -72,13 +101,14 @@ function AdminProfile() {
             <InputListe
               label="Genre"
               name="gender"
-              placeholder="Je suis une femme"
+              placeholder="non spécifié"
               handleChange={handleChange}
               data={[
                 { value: "choix1", name: "Je suis une femme" },
                 { value: "choix2", name: "Je suis un homme" },
-                { value: "choix3", name: "Je suis non binaire" },
+                { value: "choix3", name: "ne souhaite pas spécifier" },
               ]}
+              value={formData.gender}
             />
             <InputTexte
               label="Nom"
@@ -86,6 +116,7 @@ function AdminProfile() {
               placeholder="DURAND"
               handleChange={handleChange}
               type="text"
+              value={formData.lastname}
             />
 
             <InputTexte
@@ -94,6 +125,7 @@ function AdminProfile() {
               placeholder="Franck"
               handleChange={handleChange}
               type="text"
+              value={formData.firstname}
             />
 
             <InputTexte
@@ -102,6 +134,7 @@ function AdminProfile() {
               placeholder="f.durand@externatic.fr"
               handleChange={handleChange}
               type="email"
+              value={formData.email}
             />
             <InputTexte
               label="Téléphone"
@@ -109,6 +142,7 @@ function AdminProfile() {
               placeholder="06 99 99 99 99"
               handleChange={handleChange}
               type="tel"
+              value={formData.phone}
             />
           </div>
           <div className="AdminProfileEnd">
