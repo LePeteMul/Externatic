@@ -2,15 +2,14 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import JobCard from "../../components/Elements/JobCard";
-import logoGroupama from "../../assets/images/HomePage/logo-groupama.jpg";
 import BlackButton from "../../components/Elements/BlackButton";
 
 function OffersListCompany() {
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState([]);
 
   useEffect(() => {
-    const offerId = 1;
-    const url = `http://localhost:8080/api/offersByCompany/${offerId}`;
+    const id = 1;
+    const url = `http://localhost:8080/api/offerDetails/${id}`;
 
     fetch(url)
       .then((response) => response.json())
@@ -23,41 +22,6 @@ function OffersListCompany() {
       });
   }, []);
 
-  const offers = [
-    {
-      companyLogo: result.logo,
-      companyName: result.company_name,
-      job: result.job,
-      contractType: result.contract_type,
-      jobCity: result.city_job,
-      date: result.date,
-    },
-    {
-      companyLogo: logoGroupama,
-      companyName: "Groupama",
-      job: "Chef de projet",
-      contractType: "CDI",
-      jobCity: "Nantes",
-      date: "06/06/2023",
-    },
-    {
-      companyLogo: logoGroupama,
-      companyName: "Groupama",
-      job: "Chef de projet",
-      contractType: "CDI",
-      jobCity: "Nantes",
-      date: "06/06/2023",
-    },
-    {
-      companyLogo: logoGroupama,
-      companyName: "Groupama",
-      job: "Chef de projet",
-      contractType: "CDI",
-      jobCity: "Nantes",
-      date: "06/06/2023",
-    },
-  ];
-
   return (
     <div className="OffersListCompany">
       <HeaderBasic />
@@ -67,15 +31,15 @@ function OffersListCompany() {
         </div>
 
         <div className="offer">
-          {offers.map((offer) => {
+          {result.map((offer) => {
             return (
               <NavLink to="/company/application">
                 <JobCard
-                  logo={offer.companyLogo}
-                  companyName={offer.companyName}
+                  logo={offer.logo}
+                  companyName={offer.company_name}
                   job={offer.job}
-                  contractType={offer.contractType}
-                  jobCity={offer.jobCity}
+                  contractType={offer.contract_type}
+                  jobCity={offer.city_job}
                   date={offer.date}
                 />
               </NavLink>
