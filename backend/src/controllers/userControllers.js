@@ -107,6 +107,26 @@ const getUserByEmailWithPasswordAndPassToNext = (req, res, next) => {
     });
 };
 
+const getUserByEmail = (req, res) => {
+  const { email } = req.body;
+
+  models.user
+
+    .findByMail(email)
+    .then(([user]) => {
+      if (user[0] != null) {
+        req.user = user[0];
+        res.status(200).send(user[0]);
+      } else {
+        res.status(404).send("null");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send(" error retrieving data from database ");
+    });
+};
+
 const getCandidate = (req, res) => {
   models.user
     .findAllCandidate()
@@ -162,4 +182,5 @@ module.exports = {
   getCandidate,
   getById,
   getAppliByOfferId,
+  getUserByEmail,
 };
