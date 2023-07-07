@@ -11,6 +11,10 @@ const applicationControllers = require("./controllers/applicationControllers");
 
 router.get("/api/application", applicationControllers.browse);
 router.get("/api/application/:id", applicationControllers.read);
+router.get(
+  "/api/applicationByUser/:id",
+  applicationControllers.getapplicationByUser
+);
 router.put("/api/application/:id", applicationControllers.edit);
 router.post("/api/application", applicationControllers.add);
 router.delete("/api/application/:id", applicationControllers.destroy);

@@ -9,6 +9,7 @@ function JobCard({
   contractType,
   jobCity,
   date,
+
   onClick,
   onDelete,
 }) {
