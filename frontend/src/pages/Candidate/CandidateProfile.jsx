@@ -115,19 +115,31 @@ function CandidateProfile() {
   };
 
   const handleDeletion = () => {
-    setFormData({
-      gender: user.gender,
-      lastname: user.lastname,
-      firstname: user.firstname,
-      email: user.email,
-      phone: user.phone,
-      city: user.city,
-      // language: "",
-      cv: user.cv,
-      // password: "****",
-      admin: user.admin,
-    });
+    fetch(`http://localhost:8080/api/user/${userId}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (response.status === 204) {
+          setFormData({
+            gender: user.gender,
+            lastname: user.lastname,
+            firstname: user.firstname,
+            email: user.email,
+            phone: user.phone,
+            city: user.city,
+            // language: "",
+            cv: user.cv,
+            // password: "****",
+            admin: user.admin,
+          });
+          handlePopup2Open();
+        } else {
+          console.error("Failed to delete the candidate.");
+        }
+      })
+      .catch((err) => console.error(err));
   };
+
   return (
     <div className="CandidateProfile">
       <HeaderBasic />
