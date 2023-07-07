@@ -17,7 +17,6 @@ import OfferCreation from "../pages/Company/OfferCreation";
 import CandidateJobApplications from "../pages/Candidate/CandidateJobApplications";
 import FavoriteOffers from "../pages/Candidate/FavoriteOffers";
 
-import ProtectedforCompany from "./ProtectedforCompany";
 import CompanyFirstLogin from "../pages/Company/CompanyFirstLogin";
 import CompanyPresentation from "../pages/Company/CompanyPresentation";
 import Application from "../pages/Company/Application";
@@ -38,6 +37,7 @@ import ConfirmationDeletion from "../pages/Admin/ConfirmationDeletion";
 import LegalInformations from "../pages/LegalInformations/LegalInformations";
 import Contact from "../pages/Contact/Contact";
 import Logout from "../pages/Login/Logout";
+import ForgottenPassword from "../pages/Login/ForgottenPassword";
 
 function Router() {
   return (
@@ -121,6 +121,7 @@ function Router() {
         <Route path="/jobdetails" element={<JobDetails />} />
         <Route path="/legalinformations" element={<LegalInformations />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/resetpassword" element={<ForgottenPassword />} />
 
         {/* Candidate section */}
         <Route

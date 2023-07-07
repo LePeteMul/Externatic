@@ -98,7 +98,27 @@ const getUserByEmailWithPasswordAndPassToNext = (req, res, next) => {
         console.info("user identified by email");
         next();
       } else {
-        res.status(500).send("Tas pas reussi userController get user by mail");
+        console.info("Tas pas reussi userController get user by mail");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send(" error retrieving data from database ");
+    });
+};
+
+const getUserByEmail = (req, res) => {
+  const { email } = req.body;
+
+  models.user
+    .findByMail(email)
+    .then(([user]) => {
+      if (user[0] != null) {
+        req.user = user[0];
+        console.info(user);
+        res.status(200).send(user[0]);
+      } else {
+        res.status(404).send("null");
       }
     })
     .catch((err) => {
@@ -193,6 +213,7 @@ module.exports = {
   getCandidate,
   getById,
   getAppliByOfferId,
+  getUserByEmail,
   editPreference,
   getPreference,
 };
