@@ -6,10 +6,11 @@ import BlackButton from "../../components/Elements/BlackButton";
 import WhiteButton from "../../components/Elements/WhiteButton";
 
 function ForgottenPassword() {
+  const date = new Date();
   const [formData, setFormData] = useState({
     email: "",
-    ipLocal: "",
-    date: "",
+    ipLocal: window.location.hostname,
+    date: date.toLocaleString(),
   });
 
   const handleChange = (e) => {
@@ -23,17 +24,12 @@ function ForgottenPassword() {
     e.preventDefault();
 
     // Récupérer la date et l'heure de la requête
-    const date = new Date();
-    setFormData((previousValue) => ({
-      ...previousValue,
-      date: date.toLocaleString(),
-    }));
 
     // Récupérer la date et l'ip
-    setFormData((table) => ({
-      ...table,
-      ipLocal: window.location.hostname,
-    }));
+    // setFormData((table) => ({
+    //   ...table,
+    //   ipLocal: ,
+    // }));
 
     // Envoyer la requête à votre backend
     fetch("http://localhost:8080/api/email/resetpassword", {

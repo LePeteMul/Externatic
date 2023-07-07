@@ -4,13 +4,14 @@ import InputTexte from "../../components/Elements/InputTexte";
 import BlackButton from "../../components/Elements/BlackButton";
 
 function Contact() {
+  const date = new Date();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
-    ipLocal: "",
-    request: "",
-    date: "",
+    ipLocal: window.location.hostname,
+    request: "POST",
+    date: date.toLocaleString(),
   });
 
   const handleChange = (e) => {
@@ -22,25 +23,6 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Récupérer la date et l'heure de la requête
-    const date = new Date();
-    setFormData((previousValue) => ({
-      ...previousValue,
-      date: date.toLocaleString(),
-    }));
-
-    // Récupérer la date et l'ip
-    setFormData((table) => ({
-      ...table,
-      ipLocal: window.location.hostname,
-    }));
-
-    // Récupérer le type de requête
-    setFormData((previousValue) => ({
-      ...previousValue,
-      request: "POST",
-    }));
 
     // Envoyer la requête à votre backend
     fetch("http://localhost:8080/api/email/contact", {

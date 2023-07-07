@@ -1,34 +1,14 @@
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 
-async function getUser(email) {
-  fetch(`http://localhost:8080/api/email/user/${email}`)
-    .then((response) => {
-      if (response !== 200) {
-        throw new Error(`Erreur HTTP : ${response.status}`);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      // Utilisez les données récupérées ici
-      return data;
-    })
-    .catch((error) => {
-      // Gérez les erreurs ici
-      console.error("Une erreur s'est produite :", error);
-    });
-}
-
 const sendContactMail = (req, res) => {
   const { email } = req.body;
 
   const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_SENDIN,
-    port: process.env.SMTP_PORT_SENDIN,
-    secure: true,
+    host: "smtp.gmail.com",
     auth: {
-      user: process.env.SMTP_SENDIN_USER,
-      pass: process.env.SMTP_SENDIN_PASSWORD,
+      user: "externatic.contact@gmail.com",
+      pass: "thnieviudglzlxfe",
     },
   });
 
@@ -52,15 +32,13 @@ const sendContactMail = (req, res) => {
 };
 
 const sendContactMessageMail = (req, res) => {
-  const { email, message, ipLocal, request, date } = req.body;
+  const { email, message, ipLocal, request, date, name } = req.body;
 
   const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_SENDIN,
-    port: process.env.SMTP_PORT_SENDIN,
-    secure: true,
+    host: "smtp.gmail.com",
     auth: {
-      user: process.env.SMTP_SENDIN_USER,
-      pass: process.env.SMTP_SENDIN_PASSWORD,
+      user: "externatic.contact@gmail.com",
+      pass: "thnieviudglzlxfe",
     },
   });
 
@@ -288,7 +266,7 @@ const sendContactMessageMail = (req, res) => {
                                                 l'expéditeur. Vous pouvez répondre à cette demande en cliquant
                                                 directement sur le bouton ci-dessous.<br>
                                                 <br></br>
-                                                <b>Nom de l'expéditeur:</b> $}<br>
+                                                <b>Nom de l'expéditeur:</b> ${name}<br>
                                                 <b>Email de l'expéditeur:</b> ${email}<br>
                                                 <b>Contenu du message:</b><br> ${message}<br></br>
 
@@ -472,8 +450,6 @@ const sendPasswordResetMail = (req, res) => {
       pass: "thnieviudglzlxfe",
     },
   });
-
-  const user = getUser(email);
 
   // const user avec un fetch pour récupérer les infos de l'utilisateur
 
@@ -687,7 +663,7 @@ const sendPasswordResetMail = (req, res) => {
 
                                             <div
                                                 style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:28px;font-weight:bold;line-height:1;text-align:center;color:#555;">
-                                                Bonjour ${user.name},
+                                                Bonjour,
                                             </div>
 
                                         </td>

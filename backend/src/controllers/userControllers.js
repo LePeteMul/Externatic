@@ -111,11 +111,11 @@ const getUserByEmail = (req, res) => {
   const { email } = req.body;
 
   models.user
-
     .findByMail(email)
     .then(([user]) => {
       if (user[0] != null) {
         req.user = user[0];
+        console.info(user);
         res.status(200).send(user[0]);
       } else {
         res.status(404).send("null");
