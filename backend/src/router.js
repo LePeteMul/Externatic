@@ -117,7 +117,7 @@ router.post("/api/email/resetpassword", mailControllers.sendPasswordResetMail);
 router.get("/api/email/user/:mail", userControllers.getUserByEmail);
 
 // Route to get all the offers with details
-router.get("/api/offerDetails/:id", companyControllers.OffersList);
+router.get("/api/offerDetailss/:id", companyControllers.offersListcompany);
 
 // router.get("/api/offersByCompany/:id", offerControllers.findOffersByCompany);
 

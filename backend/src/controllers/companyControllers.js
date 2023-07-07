@@ -151,7 +151,9 @@ const destroy = (req, res) => {
 //     });
 // };
 
-const OffersList = (req, res) => {
+const offersListcompany = (req, res) => {
+  console.info("ici");
+
   models.company
     .findAllOffersWithDetails(req.params.id)
     .then(([rows]) => {
@@ -192,7 +194,7 @@ module.exports = {
   edit,
   add,
   destroy,
-  OffersList,
+  offersListcompany,
   changePicture,
   changePassword,
   changePresentation,
