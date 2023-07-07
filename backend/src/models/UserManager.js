@@ -70,6 +70,20 @@ class UserManager extends AbstractManager {
       [id]
     );
   }
+
+  updatePreference(user) {
+    return this.database.query(
+      `update ${this.table} set pref_job = ?, job_city = ?, pref_contract = ? where id = ?`,
+      [user.pref_job, user.job_city, user.pref_contract, user.id]
+    );
+  }
+
+  findPreference(id) {
+    return this.database.query(
+      `select pref_job, job_city, pref_contract from  ${this.table} where id = ?`,
+      [id]
+    );
+  }
 }
 
 module.exports = UserManager;
