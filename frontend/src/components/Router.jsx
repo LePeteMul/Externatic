@@ -182,22 +182,69 @@ function Router() {
         />
 
         {/* Company section */}
-        <Route path="/company/dashboard" element={<CompanyDashboard />} />
-        <Route path="/company/offercreation" element={<OfferCreation />} />
-        <Route path="/company/firstlogin" element={<CompanyFirstLogin />} />
-        <Route path="/company/presentation" element={<CompanyPresentation />} />
-        <Route path="/company/offers" element={<OffersListCompany />} />
-        <Route path="/company/application" element={<Application />} />
-        <Route path="/company/profile" element={<CompanyProfile />} />
         <Route
-          path="/company/profilecandidate"
-          element={<ProfileCandidate />}
+          path="/company/dashboard"
+          element={
+            <ProtectedforCompany>
+              <CompanyDashboard />
+            </ProtectedforCompany>
+          }
         />
-        <Route path="/company/firstlogin" element={<CompanyFirstLogin />} />
-        <Route path="/company/presentation" element={<CompanyPresentation />} />
+        <Route
+          path="/company/offercreation"
+          element={
+            <ProtectedforCompany>
+              <OfferCreation />
+            </ProtectedforCompany>
+          }
+        />
+        <Route
+          path="/company/firstlogin"
+          element={
+            <ProtectedforCompany>
+              <CompanyFirstLogin />
+            </ProtectedforCompany>
+          }
+        />
+        <Route
+          path="/company/presentation"
+          element={
+            <ProtectedforCompany>
+              <CompanyPresentation />
+            </ProtectedforCompany>
+          }
+        />
+        <Route
+          path="/company/offers"
+          element={
+            <ProtectedforCompany>
+              <OffersListCompany />
+            </ProtectedforCompany>
+          }
+        />
+        <Route
+          path="/company/application"
+          element={
+            <ProtectedforCompany>
+              <Application />
+            </ProtectedforCompany>
+          }
+        />
+        <Route
+          path="/company/profile"
+          element={
+            <ProtectedforCompany>
+              <CompanyProfile />
+            </ProtectedforCompany>
+          }
+        />
         <Route
           path="/company/profilecandidate"
-          element={<ProfileCandidate />}
+          element={
+            <ProtectedforCompany>
+              <ProfileCandidate />
+            </ProtectedforCompany>
+          }
         />
       </Routes>
     </div>

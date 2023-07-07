@@ -1,12 +1,14 @@
 import "./App.scss";
 import React, { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import UserConnexionContext from "./contexts/UserConnexionContext/UserConnexionContext";
 import CompanyConnexionContext from "./contexts/CompanyConnexionContext/CompanyConnexionContext";
 import Router from "./components/Router";
 
 function App() {
+  const location = useLocation();
+
   const { setUserConnected, userConnected, setUserId, userId, setIsAdmin } =
     useContext(UserConnexionContext);
 
@@ -26,36 +28,37 @@ function App() {
           console.info(now, "token expiré");
           setCompanyConnected(false);
           setCompanyId(null);
+          console.info("company deconnecte");
           /* navigate("/logincompany"); */
         } else {
           console.info(now, "token expiré");
           setIsAdmin(false);
           setUserConnected(false);
           setUserId(null);
+          console.info("candidat ou admin deconnecte");
           /* navigate("/login"); */
         }
       } else {
-        console.info(now, "token valide");
         if (user.admin === 1) {
           setIsAdmin(true);
           setUserConnected(true);
           setUserId(user.sub);
-          console.info("admin");
+          console.info("admin avec token valide. id =", userId);
         }
         if (user.admin === 0) {
           setIsAdmin(false);
           setUserConnected(true);
           setUserId(user.sub);
-          console.info(userId, "candidate");
+          console.info("candidate. id =", userId);
         }
         if (user.company === true) {
           setCompanyConnected(true);
           setCompanyId(user.sub);
-          console.info(companyId, "company");
+          console.info("company. id =", companyId);
         }
       }
     }
-  }, [userConnected, companyConnected]);
+  }, [location]);
 
   return (
     <div className="App">

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
+import CompanyConnexionContext from "../../contexts/CompanyConnexionContext/CompanyConnexionContext";
 import burger from "../../assets/icons/burgerMenu.png";
 
 function BurgerMenuWave() {
@@ -22,12 +23,23 @@ function BurgerMenuWave() {
     };
   }, [open]);
 
-  const { setUserConnected, setUserId } = useContext(UserConnexionContext);
+  const { setUserConnected, setUserId, userId, userConnected } =
+    useContext(UserConnexionContext);
+  const { setCompanyConnected, setCompanyId, companyId, companyConnected } =
+    useContext(CompanyConnexionContext);
 
   const handleDisconnect = () => {
-    setUserConnected(false);
-    setUserId(null);
     localStorage.removeItem("token");
+    if (userConnected) {
+      setUserConnected(false);
+      setUserId(null);
+      console.info("connecte :", userConnected, ". Id:", userId);
+    }
+    if (companyConnected) {
+      setCompanyConnected(false);
+      setCompanyId(null);
+      console.info("connecte :", companyConnected, ". Id:", companyId);
+    }
   };
 
   return (
