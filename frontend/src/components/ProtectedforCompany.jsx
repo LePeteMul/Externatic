@@ -1,18 +1,18 @@
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import UserConnexionContext from "../contexts/UserConnexionContext/UserConnexionContext";
+import CompanyConnexionContext from "../contexts/CompanyConnexionContext/CompanyConnexionContext";
 
 function ProtectedforCompany({ children }) {
   const navigate = useNavigate();
 
-  const { userConnected, isCompany } = useContext(UserConnexionContext);
+  const { companyConnected } = useContext(CompanyConnexionContext);
 
   useEffect(() => {
-    if (!userConnected || !isCompany) {
+    if (!companyConnected) {
       navigate("/");
     }
-  }, [userConnected, isCompany]);
+  }, [companyConnected]);
 
   return children;
 }

@@ -23,17 +23,23 @@ function BurgerMenuBasic() {
     };
   }, [open]);
 
-  const { setUserConnected, setUserId } = useContext(UserConnexionContext);
-  const { setCompanyConnected, setCompanyId } = useContext(
-    CompanyConnexionContext
-  );
+  const { setUserConnected, setUserId, userId, userConnected } =
+    useContext(UserConnexionContext);
+  const { setCompanyConnected, setCompanyId, companyId, companyConnected } =
+    useContext(CompanyConnexionContext);
 
   const handleDisconnect = () => {
-    setUserConnected(false);
-    setUserId(null);
-    setCompanyConnected(false);
-    setCompanyId(null);
     localStorage.removeItem("token");
+    if (userConnected) {
+      setUserConnected(false);
+      setUserId(null);
+      console.info("connecte :", userConnected, ". Id:", userId);
+    }
+    if (companyConnected) {
+      setCompanyConnected(false);
+      setCompanyId(null);
+      console.info("connecte :", companyConnected, ". Id:", companyId);
+    }
   };
 
   return (
