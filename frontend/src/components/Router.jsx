@@ -17,6 +17,7 @@ import OfferCreation from "../pages/Company/OfferCreation";
 import CandidateJobApplications from "../pages/Candidate/CandidateJobApplications";
 import FavoriteOffers from "../pages/Candidate/FavoriteOffers";
 
+import ProtectedforCompany from "./ProtectedforCompany";
 import CompanyFirstLogin from "../pages/Company/CompanyFirstLogin";
 import CompanyPresentation from "../pages/Company/CompanyPresentation";
 import Application from "../pages/Company/Application";
