@@ -283,7 +283,7 @@ VALUES (
         "Groupama",
         "recrutement@groupama.fr",
         "****",
-        " 02 40 05 17 27",
+        "02 40 05 17 27",
         "https://presse.groupama.com/download-image/62432ca1728ee72abb6d0f78",
         "Groupama est une compagnie d'assurance française qui propose une large gamme de services d'assurance et financiers"
     ), (
