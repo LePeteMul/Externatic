@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import JobOfferContext from "../../../contexts/JobOfferContext/JobOfferContext";
+import UserConnexionContext from "../../../contexts/UserConnexionContext/UserConnexionContext";
 
 function JobInput() {
   const { searchJob, setSearchJob } = useContext(JobOfferContext);
+  const { userConnected } = useContext(UserConnexionContext);
 
   const handleSelect = (event) => {
     setSearchJob(event.target.value);

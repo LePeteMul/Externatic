@@ -45,6 +45,29 @@ const verifyPassword = async (req, res) => {
   return res.status(401).send("verify password, error at step 2");
 };
 
+const verifyCompanyPassword = async (req, res) => {
+  const { password } = req.body;
+  const { password: hashedPassword } = req.company;
+
+  if (!hashedPassword || !password) {
+    return res.status(400).send("Invalid request at step 1 of verifyPassword");
+  }
+
+  const isVerified = await argon2.verify(hashedPassword, password);
+
+  if (isVerified) {
+    const payload = { sub: req.company.id, company: true };
+    const token = jwt.sign(payload, process.env.JWT_SECRET, {
+      expiresIn: "1h",
+    });
+
+    req.token = token;
+
+    return res.status(200).send(token);
+  }
+  return res.status(401).send("verify password, error at step 2");
+};
+
 const verifyToken = (req, res, next) => {
   try {
     const authorizationHeader = req.get("Authorization");
@@ -81,5 +104,6 @@ const verifyToken = (req, res, next) => {
 module.exports = {
   hashPassword,
   verifyPassword,
+  verifyCompanyPassword,
   verifyToken,
 };

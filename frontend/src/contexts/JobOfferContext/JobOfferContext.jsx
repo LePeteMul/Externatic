@@ -20,8 +20,6 @@ export function JobOfferContextProvider({ children }) {
     }).toString();
     const url = `http://localhost:8080/api/offerByCriteria?${queryParams}`;
 
-    console.info(url);
-
     fetch(url)
       .then((response) => response.json())
       .then((data) => setJobOffer(data))

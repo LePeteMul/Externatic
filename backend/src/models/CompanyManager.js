@@ -18,6 +18,14 @@ class CompanyManager extends AbstractManager {
     );
   }
 
+  findByMail(email) {
+    return this.database
+      .query(`SELECT * FROM ${this.table} WHERE email = ?`, [email])
+      .catch((err) => {
+        throw err;
+      });
+  }
+
   update(company) {
     return this.database.query(
       `update ${this.table} set company_name = ?, email = ?, password = ?, phone = ?, logo = ?, presentation = ? where id = ?`,
@@ -54,14 +62,16 @@ class CompanyManager extends AbstractManager {
     );
   }
 
-  findAllOffersWithDetails() {
+  findAllOffersWithDetails(id) {
     return this.database.query(
       `
-    SELECT ${this.table}.logo,${this.table}.company_name, offer.date, offer.job, contract.contract_type, offer.city_job 
-    FROM ${this.table}
-    INNER JOIN offer ON offer.id = ${this.table}.id
-    INNER JOIN contract ON offer.id = contract.id;
-    `
+      SELECT ${this.table}.company_name,${this.table}.logo, offer.date, offer.job, contract.contract_type, offer.city_job 
+      FROM ${this.table}
+      INNER JOIN offer ON offer.id = ${this.table}.id
+      INNER JOIN contract ON offer.id = contract.id
+      WHERE ${this.table}.id = ?;
+      `,
+      [id]
     );
   }
 }

@@ -1,13 +1,31 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import InputTexte from "../../components/Elements/InputTexte";
 import BlackButton from "../../components/Elements/BlackButton";
 import Popup from "../../components/Elements/Popup";
+import CompanyConnexionContext from "../../contexts/CompanyConnexionContext/CompanyConnexionContext";
 
 function CompanyProfile() {
   const navigate = useNavigate();
   const [showPopup1, setShowPopup1] = useState(false);
+  const { companyId } = useContext(CompanyConnexionContext);
+  const [company, setCompany] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:8080/api/company/${companyId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setCompany(data);
+        setFormData({
+          ...formData,
+          email: data.email,
+          phone: data.phone,
+        });
+      })
+      .catch((err) => console.error(err));
+  }, []);
+  console.warn(company);
 
   const handlePopup1Open = () => {
     setShowPopup1(true);
@@ -29,10 +47,31 @@ function CompanyProfile() {
       [e.target.name]: e.target.value,
     }));
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.info(formData);
+
+    const url = `http://localhost:8080/api/company/${companyId}`;
+    const requestData = { ...formData };
+
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.info("Response:", data);
+        // Perform any necessary actions after successful POST request
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        // Handle any errors that occurred during the POST request
+      });
   };
+
   return (
     <div className="CompanyProfile">
       <HeaderBasic />
@@ -48,6 +87,7 @@ function CompanyProfile() {
               placeholder="bob@groupama.fr"
               type="email"
               handleChange={handleChange}
+              value={formData.email}
             />
             <InputTexte
               label="Téléphone"
@@ -55,6 +95,7 @@ function CompanyProfile() {
               placeholder="06 99 99 99 99"
               type="tel"
               handleChange={handleChange}
+              value={formData.phone}
             />
           </div>
           <div className="CompanyProfileEnd">
@@ -63,7 +104,7 @@ function CompanyProfile() {
               buttonFunction={(event) => {
                 event.preventDefault();
                 handlePopup1Open();
-                handleSubmit();
+                handleSubmit(event);
               }}
             />
             {showPopup1 && (

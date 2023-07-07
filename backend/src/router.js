@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 const { hashPassword } = require("./services/auth");
-const { verifyPassword } = require("./services/auth");
+const { verifyPassword, verifyCompanyPassword } = require("./services/auth");
 
 /* const { verifyToken } = require("./services/auth"); */
 /* A ajouter sur les routes concernées */
@@ -11,6 +11,10 @@ const applicationControllers = require("./controllers/applicationControllers");
 
 router.get("/api/application", applicationControllers.browse);
 router.get("/api/application/:id", applicationControllers.read);
+router.get(
+  "/api/applicationByUser/:id",
+  applicationControllers.getapplicationByUser
+);
 router.put("/api/application/:id", applicationControllers.edit);
 router.post("/api/application", applicationControllers.add);
 router.delete("/api/application/:id", applicationControllers.destroy);
@@ -20,13 +24,19 @@ const companyControllers = require("./controllers/companyControllers");
 router.get("/api/company", companyControllers.browse);
 router.get("/api/company/:id", companyControllers.read);
 router.put("/api/company/:id", companyControllers.edit);
-router.post("/api/company/register", companyControllers.add);
+router.post("/api/company/register", hashPassword, companyControllers.add);
 router.delete("/api/company/:id", companyControllers.destroy);
 router.put("/api/picture/company/edit", companyControllers.changePicture);
 router.put("/api/pass/company/edit", companyControllers.changePassword);
 router.put(
   "/api/presentation/company/edit",
   companyControllers.changePresentation
+);
+
+router.post(
+  "/api/company/login",
+  companyControllers.getCompanyByEmailWithPasswordAndPassToNext,
+  verifyCompanyPassword
 );
 
 const contractControllers = require("./controllers/contractControllers");
@@ -41,6 +51,7 @@ const favoriteControllers = require("./controllers/favoriteControllers");
 
 router.get("/api/favorite", favoriteControllers.browse);
 router.get("/api/favorite/:id", favoriteControllers.read);
+router.get("/api/FavoriteByUser/:id", favoriteControllers.getFavoriteByUser);
 router.post("/api/favorite", favoriteControllers.add);
 router.delete("/api/favorite/:id", favoriteControllers.destroy);
 
@@ -50,6 +61,7 @@ router.get("/api/offer", offerControllers.browse);
 router.get("/api/offerByCriteria", offerControllers.getOfferByCriteria);
 router.get("/api/offer/jobList", offerControllers.getJobList);
 router.get("/api/offer/:id", offerControllers.read);
+router.get("/api/offerDetails/:id", offerControllers.getOfferDetails);
 router.put("/api/offer/:id", offerControllers.edit);
 router.post("/api/offer", offerControllers.add);
 router.delete("/api/offer/:id", offerControllers.destroy);
@@ -75,7 +87,9 @@ const userControllers = require("./controllers/userControllers");
 router.get("/api/user", userControllers.browse);
 router.get("/api/user/candidats", userControllers.getCandidate);
 router.get("/api/user/:id", userControllers.getById);
+router.get("/api/user/preference/:id", userControllers.getPreference);
 router.put("/api/user/:id", userControllers.edit);
+router.put("/api/user/preference/:id", userControllers.editPreference);
 router.post("/api/user/register", hashPassword, userControllers.add);
 router.delete("/api/user/:id", userControllers.destroy);
 
@@ -103,6 +117,8 @@ router.post("/api/email/resetpassword", mailControllers.sendPasswordResetMail);
 router.get("/api/email/user/:mail", userControllers.getUserByEmail);
 
 // Route to get all the offers with details
-router.get("/api/offerDetails", companyControllers.OffersList);
+router.get("/api/offerDetails/:id", companyControllers.OffersList);
+
+// router.get("/api/offersByCompany/:id", offerControllers.findOffersByCompany);
 
 module.exports = router;

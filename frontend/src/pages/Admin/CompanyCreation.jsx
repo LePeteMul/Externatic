@@ -37,8 +37,8 @@ function CompanyCreation() {
   };
 
   // Submission and triggering the post datas to the DB
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
     const url = "http://localhost:8080/api/company/register";
     const requestData = { ...formData };
@@ -103,7 +103,7 @@ function CompanyCreation() {
               buttonFunction={(event) => {
                 event.preventDefault();
                 handlePopup1Open();
-                handleSubmit();
+                handleSubmit(event);
               }}
             />
             {showPopup1 && (
