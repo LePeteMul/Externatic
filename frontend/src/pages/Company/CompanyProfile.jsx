@@ -21,7 +21,7 @@ function CompanyProfile() {
           ...formData,
           company_name: data.company_name,
           email: data.email,
-          password: "",
+          password: data.password,
           phone: data.phone,
         });
       })
