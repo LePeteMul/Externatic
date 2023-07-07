@@ -19,7 +19,9 @@ function CompanyProfile() {
         setCompany(data);
         setFormData({
           ...formData,
+          company_name: data.company_name,
           email: data.email,
+          password: "",
           phone: data.phone,
         });
       })
@@ -37,8 +39,8 @@ function CompanyProfile() {
   };
 
   const [formData, setFormData] = useState({
-    email: "",
-    phone: "",
+    email: company.email,
+    phone: company.phone,
   });
 
   const handleChange = (e) => {
