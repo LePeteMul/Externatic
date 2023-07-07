@@ -101,6 +101,17 @@ const editStatus = (req, res) => {
       res.sendStatus(500);
     });
 };
+const getapplicationByUser = (req, res) => {
+  models.application
+    .findApplicationByUser(req.params.id)
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
 
 module.exports = {
   browse,
@@ -109,4 +120,5 @@ module.exports = {
   add,
   destroy,
   editStatus,
+  getapplicationByUser,
 };
