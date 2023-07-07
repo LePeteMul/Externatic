@@ -8,8 +8,8 @@ function OffersListCompany() {
   const [result, setResult] = useState([]);
 
   useEffect(() => {
-    const id = 1;
-    const url = `http://localhost:8080/api/offerDetails/${id}`;
+    const id = 4;
+    const url = `http://localhost:8080/api/offerDetailss/${id}`;
 
     fetch(url)
       .then((response) => response.json())
@@ -31,20 +31,18 @@ function OffersListCompany() {
         </div>
 
         <div className="offer">
-          {result.map((offer) => {
-            return (
-              <NavLink to="/company/application">
-                <JobCard
-                  logo={offer.logo}
-                  companyName={offer.company_name}
-                  job={offer.job}
-                  contractType={offer.contract_type}
-                  jobCity={offer.city_job}
-                  date={offer.date}
-                />
-              </NavLink>
-            );
-          })}
+          {result.map((offer) => (
+            <NavLink to="/company/application" key={offer.id}>
+              <JobCard
+                logo={offer.logo}
+                companyName={offer.company_name}
+                job={offer.job}
+                contractType={offer.contract_type}
+                jobCity={offer.city_job}
+                date={offer.date}
+              />
+            </NavLink>
+          ))}
         </div>
         <div className="returnButton">
           <NavLink to="/company/dashboard">
