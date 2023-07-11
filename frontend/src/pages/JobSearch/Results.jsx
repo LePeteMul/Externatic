@@ -7,9 +7,12 @@ import SearchFilters from "./SearchFilters";
 import BlackButton from "../../components/Elements/BlackButton";
 import JobCard from "../../components/Elements/JobCard";
 import HeaderBasic from "../../components/Header/HeaderBasic";
+import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
 import JobOfferContext from "../../contexts/JobOfferContext/JobOfferContext";
 
 function Results() {
+  const { userConnected, isAdmin } = useContext(JobOfferContext);
+
   const navigate = useNavigate();
 
   function formatDate(dateSql) {
@@ -71,7 +74,7 @@ function Results() {
                   companyName={job.companyName}
                   job={job.job}
                   contractType={job.contractType}
-                  jobCity={job.jobCity}
+                  jobCity={job.city_job}
                   date={formatDate(job.date)}
                   key={job.id}
                   id={job.id}
