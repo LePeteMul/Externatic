@@ -18,7 +18,7 @@ function CandidateDashboard() {
 
   return (
     <div className="CandidateDashboard test">
-      <HeaderWaveInverted title={`Bienvenue, ${user.firstname}`} />
+      <HeaderWaveInverted title={`Bienvenue ${user.firstname}`} />
 
       <div className="boxWithoutHeader">
         <div className="boxInside">

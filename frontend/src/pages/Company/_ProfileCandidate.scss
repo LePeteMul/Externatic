@@ -26,4 +26,15 @@
       width: 100%;
     }
   }
+
+  @media screen and (min-width: 801px) {
+    padding-left: 20%;
+    padding-right: 20%;
+
+    .profileButton {
+      .BlackButton {
+        padding-top: 0;
+      }
+    }
+  }
 }

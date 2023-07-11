@@ -40,9 +40,10 @@
     margin-bottom: 20px;
   }
 
-  // @media (max-width: 480px) {
-  //   .boxInside > * {
-  //     flex-basis: 100%;
-  //   }
-  // }
+  @media screen and (min-width: 801px) {
+    .boxWithoutHeader {
+      padding-left: 20%;
+      padding-right: 20%;
+    }
+  }
 }
