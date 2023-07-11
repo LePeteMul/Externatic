@@ -15,7 +15,7 @@ function JobDetails() {
   }
 
   const { offerId } = useContext(JobOfferContext);
-  const { userConnected, userId } = useContext(UserConnexionContext);
+  const { userConnected, userId, isAdmin } = useContext(UserConnexionContext);
 
   const [jobDetails, setJobDetails] = useState([]);
 
@@ -147,7 +147,7 @@ function JobDetails() {
         <br />
         <br />
         <br />
-        {userConnected && (
+        {userConnected && !isAdmin && (
           <div className="ConnectButtons">
             <NavLink to="/candidate/applicationconfirmation">
               <BlackButton
