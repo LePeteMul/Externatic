@@ -49,7 +49,9 @@ $dashboardCandidature: url("./assets/images/Dashboard/mes-candidatures.png");
 @import "./components/Elements/CandidateCard.scss";
 @import "./components/Elements/CompanyCard.scss";
 @import "./components/Elements/DashboardCard.scss";
+@import "./components/Elements/InputListe.scss";
 @import "./components/Elements/InputList.scss";
+@import "./components/Elements/InputTexte.scss";
 @import "./components/Elements/InputText.scss";
 @import "./components/Elements/LargeTextInput.scss";
 @import "./components/Elements/InputImage.scss";
@@ -99,14 +101,4 @@ $dashboardCandidature: url("./assets/images/Dashboard/mes-candidatures.png");
 @import "./pages/Contact/Contact.scss";
 @import "./pages/LegalInformations/LegalInformations.scss";
 @import "./components/Elements/InputCv";
-
-///import pour les copy
-@import "./pages/Company/CompanyProfileCopy";
-@import "./pages/Candidate/RegistrationCopy";
-@import "./pages/Candidate/CandidateProfileCopy";
-@import "./pages/Company/OfferCreationCopy";
-@import "./pages/Admin/AdminProfileCopy";
-@import "./pages/Admin/CompanyCreationCopy";
-
-@import "./components/Elements/InputListe";
-@import "./components/Elements/InputTexte";
+@import ".//components/Elements/Popup";

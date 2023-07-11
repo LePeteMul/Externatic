@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
+import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
 import DashboardCard from "../../components/Elements/DashboardCard";
 import HeaderWaveInverted from "../../components/Header/HeaderWaveInverted";
 
 function AdminDashboard() {
+  const { userId } = useContext(UserConnexionContext);
+  const [admin, setAdmin] = useState([]);
+
+  console.warn("admin avant le fetch = ", admin);
+  console.warn(`setadmin ${setAdmin}`);
+
+  useEffect(() => {
+    fetch(`http://localhost:8080/api/user/${userId}`)
+      .then((response) => response.json())
+      .then((data) => setAdmin(data))
+      .catch((err) => console.error(err));
+  }, []);
+
+  console.warn("admin = ", admin);
+
   return (
     <div className="AdminDashboard">
-      <HeaderWaveInverted title="Bienvenue" />
+      <HeaderWaveInverted title={`Bienvenue, ${admin.firstname}`} />
 
       <div className="boxWithoutHeader">
         <div className="boxInside">

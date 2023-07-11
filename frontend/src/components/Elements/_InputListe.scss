@@ -6,6 +6,7 @@
   font-size: 20px;
   color: $textColorLight;
   margin-top: 5%;
+
   select {
     border: none;
     outline: none;
@@ -18,5 +19,12 @@
     font-size: 16px;
     font-family: $fontFamily;
     padding-left: 12px;
+  }
+  .selected {
+    color: $textColorDark;
+  }
+
+  .notselected {
+    color: $textColorInput;
   }
 }

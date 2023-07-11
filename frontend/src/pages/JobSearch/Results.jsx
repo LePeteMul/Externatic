@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import CityInput from "./SearchedElements/CityInput";
 import ContractInput from "./SearchedElements/ContractInput";
 import JobInput from "./SearchedElements/JobInput";
@@ -10,6 +10,15 @@ import HeaderBasic from "../../components/Header/HeaderBasic";
 import JobOfferContext from "../../contexts/JobOfferContext/JobOfferContext";
 
 function Results() {
+  const navigate = useNavigate();
+
+  function formatDate(dateSql) {
+    const dateObj = new Date(dateSql);
+    const options = { day: "2-digit", month: "2-digit", year: "numeric" };
+    const newDate = dateObj.toLocaleDateString("fr-FR", options);
+    return newDate;
+  }
+
   const [resultVisibility, setResultVisibility] = useState(true);
   const [filterVisibility, setFilterVisibility] = useState(false);
   const handleClickFilters = () => {
@@ -17,9 +26,13 @@ function Results() {
     setFilterVisibility(!filterVisibility);
   };
 
-  const resultsNumber = 56;
+  const { jobOffer, setOfferId } = useContext(JobOfferContext);
+  const resultsNumber = jobOffer.length;
 
-  const { jobOffer } = useContext(JobOfferContext);
+  const handleClick = (jobId) => {
+    setOfferId(jobId);
+    navigate("/jobdetails");
+  };
 
   return (
     <div className="Results">
@@ -52,20 +65,19 @@ function Results() {
         <div className="JobResults">
           {jobOffer.map((job) => {
             return (
-              <NavLink to="/jobdetails">
-                <div>
-                  <JobCard
-                    logo={job.logo}
-                    companyName={job.companyName}
-                    job={job.job}
-                    contractType={job.contractType}
-                    jobCity={job.jobCity}
-                    date={job.date}
-                    key={job.id}
-                    id={job.id}
-                  />
-                </div>
-              </NavLink>
+              <div>
+                <JobCard
+                  logo={job.logo}
+                  companyName={job.companyName}
+                  job={job.job}
+                  contractType={job.contractType}
+                  jobCity={job.jobCity}
+                  date={formatDate(job.date)}
+                  key={job.id}
+                  id={job.id}
+                  onClick={() => handleClick(job.id)}
+                />
+              </div>
             );
           })}
         </div>

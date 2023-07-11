@@ -1,25 +1,143 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
-import InputText from "../../components/Elements/InputText";
+import InputTexte from "../../components/Elements/InputTexte";
 import BlackButton from "../../components/Elements/BlackButton";
 import RedButton from "../../components/Elements/RedButton";
-import InputList from "../../components/Elements/InputList";
+import InputListe from "../../components/Elements/InputListe";
 import LanguageList from "../../components/Elements/LanguageList";
 import InputCv from "../../components/Elements/InputCv";
+import Popup from "../../components/Elements/Popup";
+import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
 
 function CandidateProfile() {
-  const handleValidation = () => {
-    if (
-      window.confirm("Êtes-vous sûr de vouloir valider vos modifications ?")
-    ) {
-      window.location.href = "/Candidate/dashboard";
-    }
+  const { userId } = useContext(UserConnexionContext);
+  const [user, setUser] = useState({});
+  console.warn("Dans UserProfile, userID : ", user.id);
+
+  useEffect(() => {
+    fetch(`http://localhost:8080/api/user/${userId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setUser(data);
+        setFormData({
+          ...formData,
+          gender: data.gender,
+          lastname: data.lastname,
+          firstname: data.firstname,
+          email: data.email,
+          phone: data.phone,
+          city: data.city,
+          // language: "",
+          cv: data.cv,
+          // password: "****",
+          admin: data.admin,
+        });
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
+  console.warn("user dans le admin profile = ", user);
+  console.warn("is admin ? ", user.admin);
+  console.warn("lastname = ", user.lastname);
+
+  const navigate = useNavigate();
+  const [showPopup1, setShowPopup1] = useState(false);
+  const [showPopup2, setShowPopup2] = useState(false);
+
+  const handlePopup1Open = () => {
+    setShowPopup1(true);
+  };
+
+  const handlePopup1Close = () => {
+    setShowPopup1(false);
+    navigate("/candidate/dashboard"); // Rediriger vers la première page différente
+  };
+
+  const handlePopup2Open = () => {
+    setShowPopup2(true);
+  };
+
+  const handlePopup2Close = () => {
+    setShowPopup2(false);
+    navigate("/"); // Rediriger vers la deuxième page différente
+  };
+
+  const [formData, setFormData] = useState({
+    gender: user.gender,
+    lastname: user.lastname,
+    firstname: user.firstname,
+    email: user.email,
+    phone: user.phone,
+    city: user.city,
+    // language: "",
+    cv: user.cv,
+    // password: "****",
+    admin: user.admin,
+  });
+
+  const handleChange = (e) => {
+    setFormData((previousValue) => ({
+      ...previousValue,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleFileChange = (file) => {
+    setFormData((previousValue) => ({
+      ...previousValue,
+      cv: file,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const url = `http://localhost:8080/api/user/${userId}`;
+    const requestData = { ...formData };
+
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.info("Response:", data);
+        // Perform any necessary actions after successful POST request
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        // Handle any errors that occurred during the POST request
+      });
   };
 
   const handleDeletion = () => {
-    if (window.confirm("Êtes-vous sûr de vouloir supprimer vos données ?")) {
-      window.location.href = "/";
-    }
+    fetch(`http://localhost:8080/api/user/${userId}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (response.status === 204) {
+          setFormData({
+            gender: user.gender,
+            lastname: user.lastname,
+            firstname: user.firstname,
+            email: user.email,
+            phone: user.phone,
+            city: user.city,
+            // language: "",
+            cv: user.cv,
+            // password: "****",
+            admin: user.admin,
+          });
+          handlePopup2Open();
+        } else {
+          console.error("Failed to delete the candidate.");
+        }
+      })
+      .catch((err) => console.error(err));
   };
 
   return (
@@ -29,47 +147,97 @@ function CandidateProfile() {
         <div className="candidateProfileTitle">
           <h1>Mon profil</h1>
         </div>
-        <div className="input">
-          <InputList
+        <form onSubmit={handleSubmit} className="input">
+          <InputListe
             label="Genre"
-            inputMessage="Selectionner votre genre"
+            name="gender"
+            placeholder="Selectionner votre genre"
+            handleChange={handleChange}
             data={[
               { value: "genre1", name: "Je suis une femme" },
               { value: "genre 2", name: "Je suis un homme" },
               { value: "genre 3", name: "je suis non binaire" },
             ]}
+            value={formData.gender}
           />
-          <InputText label="Nom" inputMessage="Dupont" type="text" />
-          <InputText label="Prénom" inputMessage="Marie" type="text" />
-          <InputText
+          <InputTexte
+            label="Nom"
+            name="lastname"
+            placeholder="Dupont"
+            type="text"
+            handleChange={handleChange}
+            value={formData.lastname}
+          />
+          <InputTexte
+            label="Prénom"
+            name="firstname"
+            placeholder="Marie"
+            type="text"
+            handleChange={handleChange}
+            value={formData.firstname}
+          />
+          <InputTexte
             label="Email"
-            inputMessage="m.dupont@gmail.com"
+            name="email"
+            placeholder="m.dupont@gmail.com"
             type="email"
+            handleChange={handleChange}
+            value={formData.email}
           />
-          <InputText
+          <InputTexte
             label="Téléphone"
-            inputMessage="06 06 06 06 06"
+            name="phone"
+            placeholder="06 06 06 06 06"
             type="tel"
+            handleChange={handleChange}
+            value={formData.phone}
           />
-          <InputText label="Ville" inputMessage="Paris" type="text" />
-        </div>
-
-        <div className="input">
-          <InputCv label="CV" accept=".pdf" />
-        </div>
-
-        <LanguageList />
-
-        <div className="validationSuppression">
+          <InputTexte
+            label="Ville"
+            name="city"
+            placeholder="Paris"
+            type="text"
+            handleChange={handleChange}
+            value={formData.city}
+          />
+          <InputCv label="CV" accept=".pdf" handleChange={handleFileChange} />
+          <LanguageList
+            name="language"
+            handleChange={handleChange}
+            selectedLanguages={formData.language}
+          />
           <BlackButton
             buttonName="Valider mes modifications"
-            buttonFunction={handleValidation}
+            buttonFunction={handlePopup1Open}
           />
+
+          {showPopup1 && (
+            <Popup
+              title="Données modifiées"
+              message="Super, tes données ont été modifiées !"
+              open={showPopup1}
+              onClose={handlePopup1Close}
+              buttonname="Retour au Dashboard"
+            />
+          )}
           <RedButton
             buttonName="Supprimer mes données"
-            buttonFunction={handleDeletion}
+            buttonFunction={(event) => {
+              event.preventDefault();
+              handlePopup2Open();
+              handleDeletion();
+            }}
           />
-        </div>
+
+          {showPopup2 && (
+            <Popup
+              title="Données supprimées"
+              open={showPopup2}
+              onClose={handlePopup2Close}
+              buttonname={"Retour a l'acceuil"}
+            />
+          )}
+        </form>
       </div>
     </div>
   );

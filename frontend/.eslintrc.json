@@ -33,6 +33,11 @@
       {
         "assert": "either"
       }
-    ]
+    ],
+    "no-unused-vars": "warn",
+    "no-use-before-define": "off",
+    "radix": "off",
+    "camelcase": "off",
+    "no-restricted-globals": "off"
   }
 }

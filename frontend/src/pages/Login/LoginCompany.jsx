@@ -1,17 +1,17 @@
 import React, { useContext, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import HeaderWave from "../../components/Header/HeaderWave";
 import InputTexte from "../../components/Elements/InputTexte";
 import BlackButton from "../../components/Elements/BlackButton";
-import WhiteButton from "../../components/Elements/WhiteButton";
-import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
+import CompanyConnexionContext from "../../contexts/CompanyConnexionContext/CompanyConnexionContext";
 
-function Login() {
+function LoginCompany() {
   const token = localStorage.getItem("token");
 
-  const { setUserConnected, setUserId, userId, setIsAdmin } =
-    useContext(UserConnexionContext);
+  const { setCompanyConnected, setCompanyId, companyId } = useContext(
+    CompanyConnexionContext
+  );
 
   const navigate = useNavigate();
 
@@ -29,7 +29,7 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const url = "http://localhost:8080/api/user/login";
+    const url = "http://localhost:8080/api/company/login";
     const requestData = { ...formData };
 
     fetch(url, {
@@ -43,21 +43,9 @@ function Login() {
       .then((data) => {
         localStorage.setItem("token", data);
         const user = jwtDecode(data);
-        console.info(user.sub, user.admin);
-        if (user.admin === 1) {
-          setIsAdmin(true);
-          setUserConnected(true);
-          setUserId(user.sub);
-          navigate("/admin/dashboard");
-          console.info(userId, "admin");
-        }
-        if (user.admin === 0) {
-          setIsAdmin(false);
-          setUserConnected(true);
-          setUserId(user.sub);
-          navigate("/candidate/dashboard");
-          console.info(userId, "candidate");
-        }
+        setCompanyConnected(true);
+        setCompanyId(user.sub);
+        navigate("/company/dashboard");
       })
       .catch((err) => {
         console.error("Error:", err);
@@ -69,7 +57,8 @@ function Login() {
       <HeaderWave />
       <div className="boxWithoutHeader">
         <div className="page_title">
-          <h1>Connexion </h1>
+          <h1>Connexion</h1>
+          <h1>Entreprise</h1>
         </div>
         <form onSubmit={handleSubmit} className="input">
           <div className="inputs">
@@ -96,16 +85,9 @@ function Login() {
         <div className="forget_psw">
           <h4 className="forget_psw_text">J'ai oublié mon mot de passe</h4>
         </div>
-
-        <div className="card_signing">
-          <h3 className="no_Count">Pas encore de compte ?</h3>
-          <NavLink to="/candidate/registration">
-            <WhiteButton buttonName="M'inscrire" />
-          </NavLink>
-        </div>
       </div>
     </div>
   );
 }
 
-export default Login;
+export default LoginCompany;

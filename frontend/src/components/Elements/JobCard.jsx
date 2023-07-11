@@ -1,11 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
-import loupe from "../../assets/icons/loupe.png";
 import croix from "../../assets/icons/cross.png";
 
-function JobCard({ logo, companyName, job, contractType, jobCity, date }) {
+function JobCard({
+  logo,
+  companyName,
+  job,
+  contractType,
+  jobCity,
+  date,
+
+  onClick,
+  onDelete,
+}) {
   return (
-    <div className="jobCard">
+    <div
+      className="jobCard"
+      onClick={onClick}
+      onKeyDown={onClick}
+      role="button"
+      tabIndex={0}
+    >
       <div className="company_logo">
         <img className="logo" src={logo} alt={companyName} />
       </div>
@@ -17,12 +32,9 @@ function JobCard({ logo, companyName, job, contractType, jobCity, date }) {
         <h3 className="publication"> offre publiée le {date}</h3>
       </div>
       <div className="navigation">
-        <button type="button" className="jobCardButtons">
+        <button type="button" className="jobCardButtons" onClick={onDelete}>
           {" "}
           <img src={croix} alt="croix" />
-        </button>
-        <button type="button" className="jobCardButtons">
-          <img src={loupe} alt="loupe" />
         </button>
       </div>
     </div>
@@ -36,6 +48,8 @@ JobCard.propTypes = {
   contractType: PropTypes.string.isRequired,
   jobCity: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default JobCard;

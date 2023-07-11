@@ -1,18 +1,23 @@
-import React, { useContext } from "react";
-import SearchJobContext from "../../../contexts/SearchJobContext/SearchJobContext";
+import React, { useContext, useEffect, useState } from "react";
+import JobOfferContext from "../../../contexts/JobOfferContext/JobOfferContext";
+import UserConnexionContext from "../../../contexts/UserConnexionContext/UserConnexionContext";
 
 function JobInput() {
-  const { searchJob, setSearchJob } = useContext(SearchJobContext);
+  const { searchJob, setSearchJob } = useContext(JobOfferContext);
+  const { userConnected } = useContext(UserConnexionContext);
 
   const handleSelect = (event) => {
     setSearchJob(event.target.value);
   };
 
-  const jobList = [
-    { value: "metier1", name: "Developpeur Web" },
-    { value: "metier2", name: "Data Analyst" },
-    { value: "metier3", name: "UX Designer" },
-  ];
+  const [jobList, setJobList] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/api/offer/jobList")
+      .then((response) => response.json())
+      .then((data) => setJobList(data))
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
     <select onChange={handleSelect} value={searchJob}>
@@ -21,12 +26,8 @@ function JobInput() {
       </option>
       {jobList.map((element) => {
         return (
-          <option
-            className="selected"
-            value={element.value}
-            key={element.value}
-          >
-            {element.name}
+          <option className="selected" value={element.job} key={element.job}>
+            {element.job}
           </option>
         );
       })}

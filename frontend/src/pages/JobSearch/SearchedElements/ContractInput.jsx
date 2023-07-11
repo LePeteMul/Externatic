@@ -1,20 +1,28 @@
-import React, { useContext } from "react";
-import SearchContractContext from "../../../contexts/SearchContractContext/SearchContractContext";
+import React, { useContext, useEffect, useState } from "react";
+import JobOfferContext from "../../../contexts/JobOfferContext/JobOfferContext";
 
 function ContractInput() {
-  const { searchContract, setSearchContract } = useContext(
-    SearchContractContext
-  );
+  const { searchContract, setSearchContract, setSearchContractId } =
+    useContext(JobOfferContext);
 
   const handleSelect = (event) => {
-    setSearchContract(event.target.value);
+    const selectedValue = event.target.value;
+    const selectedContract = contractList.find(
+      (element) => element.contract_type === selectedValue
+    );
+    setSearchContract(selectedValue);
+    setSearchContractId(selectedContract ? selectedContract.id : "");
   };
 
-  const contractList = [
-    { value: "CDI", name: "CDI" },
-    { value: "CDD", name: "CDD" },
-    { value: "Stage", name: "Stage" },
-  ];
+  const [contractList, setContractList] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/api/contract")
+      .then((response) => response.json())
+      .then((data) => setContractList(data))
+      .catch((err) => console.error(err));
+  }, []);
+  // ainsi, le contract list est utilisé pour le map
 
   return (
     <select onChange={handleSelect} value={searchContract}>
@@ -25,10 +33,10 @@ function ContractInput() {
         return (
           <option
             className="selected"
-            value={element.value}
-            key={element.value}
+            value={element.contract_type}
+            key={element.id}
           >
-            {element.name}
+            {element.contract_type}
           </option>
         );
       })}

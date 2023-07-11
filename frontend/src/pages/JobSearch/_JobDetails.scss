@@ -19,9 +19,12 @@
       height: 25dvh;
       .OfferLogo {
         height: 65%;
+        display: flex;
+        justify-content: center;
         img {
-          height: 100%;
-          width: auto;
+          height: auto;
+          max-height: 100%;
+          max-width: 100%;
         }
       }
 
@@ -91,7 +94,7 @@
 
     .ConnectButtons {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       position: fixed;
       bottom: 1%;
       width: 100%;
@@ -102,8 +105,12 @@
 
       .Heart {
         display: flex;
-        justify-content: center;
-        width: 25%;
+        align-self: flex-end;
+        width: 15%;
+        img {
+          width: 80%;
+          height: auto;
+        }
       }
     }
   }

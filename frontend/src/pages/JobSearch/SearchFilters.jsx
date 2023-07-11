@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Slider } from "@material-ui/core";
 import PropTypes from "prop-types";
 import BlackButton from "../../components/Elements/BlackButton";
-import InputList from "../../components/Elements/InputList";
+import InputListe from "../../components/Elements/InputListe";
 
 function SearchFilters({ handleClickFilters }) {
   const [mensualSalary, setMensualSalary] = useState(1700);
@@ -18,7 +18,7 @@ function SearchFilters({ handleClickFilters }) {
         <h1>Mes filtres</h1>
       </div>
       <div className="SearchFiltersSelection">
-        <InputList
+        <InputListe
           label="Mon rythme de travail idéal"
           inputMessage="Selectionner le mode de télétravail"
           data={[
@@ -27,7 +27,7 @@ function SearchFilters({ handleClickFilters }) {
             { value: "occasionnel", name: "Occasionnel" },
           ]}
         />
-        <InputList
+        <InputListe
           label="Mes technos"
           inputMessage="Selectionner les technologies maitrisées"
           data={[
