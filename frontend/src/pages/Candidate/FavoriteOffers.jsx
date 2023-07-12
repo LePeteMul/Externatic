@@ -29,7 +29,19 @@ function FavoriteOffers() {
     navigate("/jobdetails");
   };
 
-  const handleDelete = () => {};
+  const handleDelete = (id) => {
+    setOfferId(id);
+
+    fetch(`http://localhost:8080/api/favorite/${userId}/${offerId}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (response.status === 204) {
+          navigate("/candidate/favorite");
+        }
+      })
+      .catch((err) => console.error(err));
+  };
 
   return (
     <div className="favoriteOffers">
@@ -49,7 +61,7 @@ function FavoriteOffers() {
                 jobCity={offer.city_job}
                 date={formatDate(offer.date)}
                 id={offer.offer_id}
-                onDelete={handleDelete}
+                onDelete={() => handleDelete(offer.offer_id)}
                 onClick={() => handleClick(offer.offer_id)}
               />
             );
