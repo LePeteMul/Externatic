@@ -82,9 +82,19 @@ function OfferCreation() {
                 placeholder="Selectionner un métier"
                 handleChange={handleChange}
                 data={[
-                  { value: "metier1", name: "Metier n°1" },
-                  { value: "metier2", name: "Metier n°2" },
-                  { value: "metier3", name: "Metier n°3" },
+                  {
+                    value:
+                      "Administrateur systèmes et réseaux Linux / sud loire H/F",
+                    name: "Administrateur systèmes et réseaux Linux / sud loire H/F",
+                  },
+                  {
+                    value: "Chef de projet WMS/ progiciel H/F",
+                    name: "Chef de projet WMS/ progiciel H/F",
+                  },
+                  {
+                    value: "Développeur React H/F @solutions agricoles",
+                    name: "Développeur React H/F @solutions agricoles",
+                  },
                 ]}
               />
 
