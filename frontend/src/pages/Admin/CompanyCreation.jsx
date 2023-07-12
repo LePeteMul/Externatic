@@ -25,7 +25,7 @@ function CompanyCreation() {
     email: "",
     password: "",
     phone: "",
-    logo: null,
+    logo: "",
     presentation: null,
   });
 

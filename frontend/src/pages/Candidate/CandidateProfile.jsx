@@ -148,18 +148,6 @@ function CandidateProfile() {
           <h1>Mon profil</h1>
         </div>
         <form onSubmit={handleSubmit} className="input">
-          <InputListe
-            label="Genre"
-            name="gender"
-            placeholder="Selectionner votre genre"
-            handleChange={handleChange}
-            data={[
-              { value: "genre1", name: "Je suis une femme" },
-              { value: "genre 2", name: "Je suis un homme" },
-              { value: "genre 3", name: "je suis non binaire" },
-            ]}
-            value={formData.gender}
-          />
           <InputTexte
             label="Nom"
             name="lastname"
