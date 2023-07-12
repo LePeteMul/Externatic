@@ -31,6 +31,7 @@ class UserManager extends AbstractManager {
     );
   }
 
+
   updateById(user) {
     return this.database.query(
       `update ${this.table} set gender = ?, lastname = ?, firstname = ?, email = ?, phone = ?, city = ?, cv = ? where id = ?`,
@@ -45,6 +46,13 @@ class UserManager extends AbstractManager {
         user.id,
       ]
     );
+  }
+  
+  updatePassword(email, password) {
+    return this.database.query(
+      `update ${this.table} set password = ? where email = ?`,
+      [password, email]
+      );
   }
 
   findByMail(email) {
