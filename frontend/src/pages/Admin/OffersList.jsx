@@ -1,12 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext, useState, useEffect } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import JobOfferContext from "../../contexts/JobOfferContext/JobOfferContext";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import JobCard from "../../components/Elements/JobCard";
 import BlackButton from "../../components/Elements/BlackButton";
 import { formatDate } from "../../services/formatDate";
 
 function OffersList() {
+  const navigate = useNavigate();
+
   const [result, setResult] = useState([]);
+
+  const { offerId, setOfferId } = useContext(JobOfferContext);
 
   // find all offers with details
   useEffect(() => {
@@ -22,6 +27,25 @@ function OffersList() {
         console.error("Error:", error);
       });
   }, []);
+
+  const handleClick = (id) => {
+    setOfferId(id);
+    navigate("/jobdetails");
+  };
+
+  const handleDelete = (id) => {
+    setOfferId(id);
+
+    fetch(`http://localhost:8080/api/offer/${offerId}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (response.status === 204) {
+          navigate("/admin/offerlist");
+        }
+      })
+      .catch((err) => console.error(err));
+  };
 
   return (
     <div className="OffersList">
@@ -41,6 +65,9 @@ function OffersList() {
                 contractType={offer.contract_type}
                 jobCity={offer.city_job}
                 date={formatDate(offer.date)}
+                id={offer.id}
+                onDelete={() => handleDelete(offer.id)}
+                onClick={() => handleClick(offer.id)}
               />
             );
           })}
