@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import InputListe from "../../components/Elements/InputListe";
@@ -6,10 +6,12 @@ import Textearea from "../../components/Elements/Textearea";
 import BlackButton from "../../components/Elements/BlackButton";
 import InputTexte from "../../components/Elements/InputTexte";
 import Popup from "../../components/Elements/Popup";
+import CompanyConnexionContext from "../../contexts/CompanyConnexionContext/CompanyConnexionContext";
 
 function OfferCreation() {
   const navigate = useNavigate();
   const [showPopup1, setShowPopup1] = useState(false);
+  const { companyId } = useContext(CompanyConnexionContext);
   const handlePopup1Open = () => {
     setShowPopup1(true);
   };
@@ -20,13 +22,15 @@ function OfferCreation() {
   };
 
   const [formData, setFormData] = useState({
-    company_id: 1,
+    company_id: companyId,
     job: "",
     contract_id: "",
     min_salary: "",
     max_salary: "",
     description: "",
     city_job: "",
+    prerequisites: "Min 3ans d'expériences",
+    department: "",
     // softskills: "",
     // hardskills: "",
   });
@@ -37,8 +41,8 @@ function OfferCreation() {
       [e.target.name]: e.target.value,
     }));
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
     const url = "http://localhost:8080/api/offer";
     const requestData = { ...formData };
@@ -90,9 +94,10 @@ function OfferCreation() {
                 placeholder="Selectionner un contrat"
                 handleChange={handleChange}
                 data={[
-                  { value: "1", name: "1" },
-                  { value: "CDD", name: "CDD" },
-                  { value: "Stage", name: "Stage" },
+                  { value: "1", name: "CDI" },
+                  { value: "2", name: "CDD" },
+                  { value: "3", name: "Alternance" },
+                  { value: "4", name: "Interim" },
                 ]}
               />
               <InputTexte
@@ -166,7 +171,7 @@ function OfferCreation() {
                   buttonFunction={(event) => {
                     event.preventDefault();
                     handlePopup1Open();
-                    handleSubmit();
+                    handleSubmit(event);
                   }}
                   // buttonFunction={handlePosted}
                 />
