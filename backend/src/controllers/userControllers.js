@@ -120,7 +120,7 @@ const getUserByEmailWithPasswordAndPassToNext = (req, res, next) => {
         console.info("user identified by email");
         next();
       } else {
-        console.info("Tas pas reussi userController get user by mail");
+        res.status(401).send("Adresse mail incorrecte");
       }
     })
     .catch((err) => {
@@ -213,9 +213,9 @@ const editPassword = (req, res) => {
     });
 };
 
-const editPreference = (req, res) => {
+/* const editPreference = (req, res) => {
   const user = req.body;
-  user.id = parseInt(req.params.id, 10);
+  id = parseInt(req.params.id, 10);
 
   models.user
     .updatePreference(user)
@@ -242,7 +242,7 @@ const getPreference = (req, res) => {
       console.error(err);
       res.sendStatus(500);
     });
-};
+}; */
 
 module.exports = {
   browse,
@@ -257,6 +257,4 @@ module.exports = {
   getAppliByOfferId,
   getUserByEmail,
   editPassword,
-  editPreference,
-  getPreference,
 };
