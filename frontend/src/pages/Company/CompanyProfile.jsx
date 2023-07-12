@@ -28,6 +28,7 @@ function CompanyProfile() {
       .catch((err) => console.error(err));
   }, []);
   console.warn(company);
+  console.warn("password = ", company.password);
 
   const handlePopup1Open = () => {
     setShowPopup1(true);

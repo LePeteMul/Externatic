@@ -39,6 +39,7 @@ import LegalInformations from "../pages/LegalInformations/LegalInformations";
 import Contact from "../pages/Contact/Contact";
 import Logout from "../pages/Login/Logout";
 import ForgottenPassword from "../pages/Login/ForgottenPassword";
+import ResetPassword from "../pages/Login/ResetPassword";
 
 function Router() {
   return (
@@ -108,6 +109,7 @@ function Router() {
           element={
             <ProtectedforAdmin>
               <CompanyList />
+              {/* //{" "} */}
             </ProtectedforAdmin>
           }
         />
@@ -123,6 +125,7 @@ function Router() {
         <Route path="/legalinformations" element={<LegalInformations />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/resetpassword" element={<ForgottenPassword />} />
+        <Route path="/forgottenpassword" element={<ResetPassword />} />
 
         {/* Candidate section */}
         <Route
@@ -228,7 +231,7 @@ function Router() {
           path="/company/application"
           element={
             <ProtectedforCompany>
-              <Application />
+            <Application />
             </ProtectedforCompany>
           }
         />

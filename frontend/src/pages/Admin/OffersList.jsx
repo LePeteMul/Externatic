@@ -10,7 +10,7 @@ function OffersList() {
 
   // find all offers with details
   useEffect(() => {
-    const url = "http://localhost:8080/api/offerDetails";
+    const url = "http://localhost:8080/api/offer";
 
     fetch(url)
       .then((response) => response.json())
