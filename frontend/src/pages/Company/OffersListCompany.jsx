@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import JobCard from "../../components/Elements/JobCard";
 import BlackButton from "../../components/Elements/BlackButton";
+import CompanyConnexionContext from "../../contexts/CompanyConnexionContext/CompanyConnexionContext";
 
 function OffersListCompany() {
   const [result, setResult] = useState([]);
+  const { companyId } = useContext(CompanyConnexionContext);
 
   useEffect(() => {
-    const id = 4;
-    const url = `http://localhost:8080/api/offerDetailss/${id}`;
+    const url = `http://localhost:8080/api/offerDetailss/${companyId}`;
 
     fetch(url)
       .then((response) => response.json())

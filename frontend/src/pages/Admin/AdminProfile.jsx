@@ -98,18 +98,6 @@ function AdminProfile() {
         </div>
         <form onSubmit={handleSubmit} className="input">
           <div className="AdminProfileInformations">
-            <InputListe
-              label="Genre"
-              name="gender"
-              placeholder="non spécifié"
-              handleChange={handleChange}
-              data={[
-                { value: "choix1", name: "Je suis une femme" },
-                { value: "choix2", name: "Je suis un homme" },
-                { value: "choix3", name: "ne souhaite pas spécifier" },
-              ]}
-              value={formData.gender}
-            />
             <InputTexte
               label="Nom"
               name="lastname"
@@ -135,14 +123,6 @@ function AdminProfile() {
               handleChange={handleChange}
               type="email"
               value={formData.email}
-            />
-            <InputTexte
-              label="Téléphone"
-              name="phone"
-              placeholder="06 99 99 99 99"
-              handleChange={handleChange}
-              type="tel"
-              value={formData.phone}
             />
           </div>
           <div className="AdminProfileEnd">

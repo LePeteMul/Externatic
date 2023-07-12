@@ -25,6 +25,7 @@ const hashPassword = (req, res, next) => {
 const verifyPassword = async (req, res) => {
   const { password } = req.body;
   const { password: hashedPassword } = req.user;
+  // D'où vient le req.user car j'ai pas spécifier la table?
 
   if (!hashedPassword || !password) {
     return res.status(400).send("Invalid request at step 1 of verifyPassword");
