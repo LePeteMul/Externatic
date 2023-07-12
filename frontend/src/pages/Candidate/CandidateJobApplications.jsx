@@ -5,6 +5,7 @@ import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnex
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import JobCard from "../../components/Elements/JobCard";
 import BlackButton from "../../components/Elements/BlackButton";
+import { formatDate } from "../../services/formatDate";
 
 function CandidateJobApplications() {
   const navigate = useNavigate();
@@ -71,7 +72,7 @@ function CandidateJobApplications() {
                 job={offer.job}
                 contractType={offer.contractType}
                 jobCity={offer.jobCity}
-                date={offer.date}
+                date={formatDate(offer.date)}
                 status={offer.status}
                 onClick={() => handleClick(offer.offer_id)}
                 onDelete={handleDelete}

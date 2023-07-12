@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import JobCard from "../../components/Elements/JobCard";
 import BlackButton from "../../components/Elements/BlackButton";
+import { formatDate } from "../../services/formatDate";
 
 function OffersList() {
   const [result, setResult] = useState([]);
@@ -39,7 +40,7 @@ function OffersList() {
                 job={offer.job}
                 contractType={offer.contract_type}
                 jobCity={offer.city_job}
-                date={offer.date}
+                date={formatDate(offer.date)}
               />
             );
           })}

@@ -5,15 +5,9 @@ import JobOfferContext from "../../contexts/JobOfferContext/JobOfferContext";
 import JobCard from "../../components/Elements/JobCard";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import BlackButton from "../../components/Elements/BlackButton";
+import { formatDate } from "../../services/formatDate";
 
 function FavoriteOffers() {
-  function formatDate(dateSql) {
-    const dateObj = new Date(dateSql);
-    const options = { day: "2-digit", month: "2-digit", year: "numeric" };
-    const newDate = dateObj.toLocaleDateString("fr-FR", options);
-    return newDate;
-  }
-
   const navigate = useNavigate();
 
   const { userId } = useContext(UserConnexionContext);
