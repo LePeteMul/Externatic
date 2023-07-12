@@ -224,16 +224,15 @@ function Router() {
           element={
             <ProtectedforCompany>
               <OffersListCompany />
-              {/* //{" "} */}
             </ProtectedforCompany>
           }
         />
         <Route
           path="/company/application"
           element={
-            // <ProtectedforCompany>
+            <ProtectedforCompany>
             <Application />
-            // </ProtectedforCompany>
+            </ProtectedforCompany>
           }
         />
         <Route

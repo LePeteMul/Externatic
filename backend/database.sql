@@ -284,7 +284,7 @@ VALUES (
         "recrutement@groupama.fr",
         "****",
         "02 40 05 17 27",
-        "https://presse.groupama.com/download-image/62432ca1728ee72abb6d0f78",
+        "https://www.1min30.com/wp-content/uploads/2018/05/Couleur-logo-Groupama.jpg",
         "Groupama est une compagnie d'assurance française qui propose une large gamme de services d'assurance et financiers"
     ), (
         "Decathlon",
@@ -368,11 +368,11 @@ Architecture, conception et développement d’applications web essentiellement 
 Tests (unitaires et fonctionnels)
 Veille technologique",
         "Esprit d'équipe",
-        "Java",
+        "Angers",
         " la Loire-Atlantique"
     ), (
         4,
-        "Responsable de projets SI H/F",
+        "Responsable de projets SI",
         "2023-06-21 10:30:45",
         "remote",
         4,
@@ -386,7 +386,7 @@ Responsable de l'équipe MOE, AMOA du périmètre SI Outre Mer (Antilles Guyane 
 Conduite du projet (Planning / Coûts / Délais - ~ 4m€ de budget),
 Organisation, communication, animation, management, pilotage, recrutement et suivi des prestataires",
         "Min 3ans d'expériences",
-        "DevOps",
+        "Angers",
         " la Loire-Atlantique"
     );
 

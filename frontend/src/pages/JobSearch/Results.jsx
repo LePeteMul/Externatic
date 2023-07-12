@@ -7,20 +7,11 @@ import SearchFilters from "./SearchFilters";
 import BlackButton from "../../components/Elements/BlackButton";
 import JobCard from "../../components/Elements/JobCard";
 import HeaderBasic from "../../components/Header/HeaderBasic";
-import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
 import JobOfferContext from "../../contexts/JobOfferContext/JobOfferContext";
+import { formatDate } from "../../services/formatDate";
 
 function Results() {
-  const { userConnected, isAdmin } = useContext(JobOfferContext);
-
   const navigate = useNavigate();
-
-  function formatDate(dateSql) {
-    const dateObj = new Date(dateSql);
-    const options = { day: "2-digit", month: "2-digit", year: "numeric" };
-    const newDate = dateObj.toLocaleDateString("fr-FR", options);
-    return newDate;
-  }
 
   const [resultVisibility, setResultVisibility] = useState(true);
   const [filterVisibility, setFilterVisibility] = useState(false);
@@ -62,7 +53,7 @@ function Results() {
             buttonFunction={handleClickFilters}
           />
           <h2>
-            {resultsNumber} <span>résulats</span>
+            {resultsNumber} <span>résultats</span>
           </h2>
         </div>
         <div className="JobResults">

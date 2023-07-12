@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import JobCard from "../../components/Elements/JobCard";
 import BlackButton from "../../components/Elements/BlackButton";
+import { formatDate } from "../../services/formatDate";
 import CompanyConnexionContext from "../../contexts/CompanyConnexionContext/CompanyConnexionContext";
 
 function OffersListCompany() {
@@ -40,7 +41,7 @@ function OffersListCompany() {
                 job={offer.job}
                 contractType={offer.contract_type}
                 jobCity={offer.city_job}
-                date={offer.date}
+                date={formatDate(offer.date)}
               />
             </NavLink>
           ))}

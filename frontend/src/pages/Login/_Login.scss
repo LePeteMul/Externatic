@@ -61,4 +61,19 @@
       margin-bottom: 10px;
     }
   }
+
+  @media screen and (min-width: 801px) {
+    .boxWithoutHeader {
+      padding-left: 20%;
+      padding-right: 20%;
+
+      .page_title {
+        padding-top: 10%;
+      }
+
+      .BlackButton {
+        padding-top: 0;
+      }
+    }
+  }
 }
