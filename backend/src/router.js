@@ -50,10 +50,16 @@ router.delete("/api/contract/:id", contractControllers.destroy);
 const favoriteControllers = require("./controllers/favoriteControllers");
 
 router.get("/api/favorite", favoriteControllers.browse);
-router.get("/api/favorite/:id", favoriteControllers.read);
+router.get(
+  "/api/favorite/:param1/:param2",
+  favoriteControllers.getByUserAndOffer
+);
 router.get("/api/FavoriteByUser/:id", favoriteControllers.getFavoriteByUser);
 router.post("/api/favorite", favoriteControllers.add);
-router.delete("/api/favorite/:id", favoriteControllers.destroy);
+router.delete(
+  "/api/favorite/:param1/:param2",
+  favoriteControllers.cancelByUserAndOffer
+);
 
 const offerControllers = require("./controllers/offerControllers");
 

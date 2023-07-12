@@ -22,6 +22,20 @@ class FavoriteManager extends AbstractManager {
       [id]
     );
   }
+
+  findByUserAndOffer(candidateId, offerId) {
+    return this.database.query(
+      `select * from  ${this.table} where candidate_id = ? AND offer_id = ?`,
+      [candidateId, offerId]
+    );
+  }
+
+  deleteByUserAndOffer(candidateId, offerId) {
+    return this.database.query(
+      `delete from ${this.table} where candidate_id = ? AND offer_id = ?`,
+      [candidateId, offerId]
+    );
+  }
 }
 
 module.exports = FavoriteManager;

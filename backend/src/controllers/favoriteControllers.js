@@ -94,6 +94,44 @@ const getFavoriteByUser = (req, res) => {
     });
 };
 
+const getByUserAndOffer = (req, res) => {
+  const candidateId = req.params.param1;
+  const offerId = req.params.param2;
+
+  models.favorite
+    .findByUserAndOffer(candidateId, offerId)
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.sendStatus(404);
+      } else {
+        res.send(rows[0]);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+const cancelByUserAndOffer = (req, res) => {
+  const candidateId = req.params.param1;
+  const offerId = req.params.param2;
+
+  models.favorite
+    .deleteByUserAndOffer(candidateId, offerId)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
@@ -101,4 +139,6 @@ module.exports = {
   add,
   destroy,
   getFavoriteByUser,
+  getByUserAndOffer,
+  cancelByUserAndOffer,
 };
