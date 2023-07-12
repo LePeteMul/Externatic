@@ -22,4 +22,15 @@
       padding-top: 10%;
     }
   }
+
+  @media screen and (min-width: 801px) {
+    .boxWithoutHeader {
+      padding-left: 20%;
+      padding-right: 20%;
+
+      .BlackButton {
+        padding-top: 10%;
+      }
+    }
+  }
 }

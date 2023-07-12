@@ -41,4 +41,29 @@
       }
     }
   }
+
+  @media screen and (min-width: 650px) and (max-width: 800px) {
+    .boxWithoutHeader {
+      padding: 8%;
+
+      .returnButton {
+        .BlackButton {
+          padding-top: 0;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 801px) {
+    .boxWithoutHeader {
+      padding-left: 20%;
+      padding-right: 20%;
+
+      .returnButton {
+        .BlackButton {
+          padding-top: 0;
+        }
+      }
+    }
+  }
 }
