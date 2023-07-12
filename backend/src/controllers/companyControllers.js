@@ -139,9 +139,23 @@ const destroy = (req, res) => {
     });
 };
 
-const OffersList = (req, res) => {
+// const OffersList = (req, res) => {
+//   models.company
+//     .findAllOffersWithDetails(req.params.id)
+//     .then(([rows]) => {
+//       res.send(rows);
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//       res.sendStatus(500);
+//     });
+// };
+
+const offersListcompany = (req, res) => {
+  console.info("ici");
+
   models.company
-    .findAllOffersWithDetails()
+    .findAllOffersWithDetails(req.params.id)
     .then(([rows]) => {
       res.send(rows);
     })
@@ -151,14 +165,38 @@ const OffersList = (req, res) => {
     });
 };
 
+const getCompanyByEmailWithPasswordAndPassToNext = (req, res, next) => {
+  const { email } = req.body;
+
+  models.company
+
+    .findByMail(email)
+    .then(([company]) => {
+      if (company[0] != null) {
+        req.company = company[0];
+        console.info("company identified by email");
+        next();
+      } else {
+        res
+          .status(500)
+          .send("Tas pas reussi userController get company by mail");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send(" error retrieving data from database ");
+    });
+};
+
 module.exports = {
   browse,
   read,
   edit,
   add,
   destroy,
-  OffersList,
+  offersListcompany,
   changePicture,
   changePassword,
   changePresentation,
+  getCompanyByEmailWithPasswordAndPassToNext,
 };

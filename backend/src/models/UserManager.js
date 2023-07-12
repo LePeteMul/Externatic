@@ -31,11 +31,28 @@ class UserManager extends AbstractManager {
     );
   }
 
+
+  updateById(user) {
+    return this.database.query(
+      `update ${this.table} set gender = ?, lastname = ?, firstname = ?, email = ?, phone = ?, city = ?, cv = ? where id = ?`,
+      [
+        user.gender,
+        user.lastname,
+        user.firstname,
+        user.email,
+        user.phone,
+        user.city,
+        user.cv,
+        user.id,
+      ]
+    );
+  }
+  
   updatePassword(email, password) {
     return this.database.query(
       `update ${this.table} set password = ? where email = ?`,
       [password, email]
-    );
+      );
   }
 
   findByMail(email) {
@@ -74,6 +91,20 @@ class UserManager extends AbstractManager {
     INNER JOIN company ON offer.company_id = company.id
     INNER JOIN status ON application.status_id = status.id
     where offer.id = ?`,
+      [id]
+    );
+  }
+
+  updatePreference(user) {
+    return this.database.query(
+      `update ${this.table} set pref_job = ?, job_city = ?, pref_contract = ? where id = ?`,
+      [user.pref_job, user.job_city, user.pref_contract, user.id]
+    );
+  }
+
+  findPreference(id) {
+    return this.database.query(
+      `select pref_job, job_city, pref_contract from  ${this.table} where id = ?`,
       [id]
     );
   }

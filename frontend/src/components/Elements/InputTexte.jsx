@@ -11,7 +11,12 @@ function InputTexte({
   image2,
   image3,
   value,
+  disabled,
 }) {
+  const inputStyle = {
+    cursor: disabled ? "not-allowed" : "none",
+  };
+
   return (
     <div className="inputText">
       <label htmlFor={name}>{label}</label>
@@ -21,6 +26,8 @@ function InputTexte({
         name={name}
         onChange={handleChange}
         value={value}
+        style={inputStyle}
+        disabled={disabled}
       />
       {image && <img className="eye" src={image} alt="IconEye" />}
       {image2 && <img className="profil" src={image2} alt="IconProfil" />}
@@ -39,6 +46,7 @@ InputTexte.propTypes = {
   image2: PropTypes.string,
   image3: PropTypes.string,
   value: PropTypes.string.isRequired,
+  disabled: PropTypes.bool,
 };
 
 InputTexte.defaultProps = {
@@ -47,6 +55,7 @@ InputTexte.defaultProps = {
   image: "",
   image2: "",
   image3: "",
+  disabled: false,
 };
 
 export default InputTexte;

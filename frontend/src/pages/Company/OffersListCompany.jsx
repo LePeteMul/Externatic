@@ -1,45 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import JobCard from "../../components/Elements/JobCard";
-import logoGroupama from "../../assets/images/HomePage/logo-groupama.jpg";
 import BlackButton from "../../components/Elements/BlackButton";
 
 function OffersListCompany() {
-  const offers = [
-    {
-      companyLogo: logoGroupama,
-      companyName: "Groupama",
-      job: "Chef de projet",
-      contractType: "CDI",
-      jobCity: "Nantes",
-      date: "06/06/2023",
-    },
-    {
-      companyLogo: logoGroupama,
-      companyName: "Groupama",
-      job: "Chef de projet",
-      contractType: "CDI",
-      jobCity: "Nantes",
-      date: "06/06/2023",
-    },
-    {
-      companyLogo: logoGroupama,
-      companyName: "Groupama",
-      job: "Chef de projet",
-      contractType: "CDI",
-      jobCity: "Nantes",
-      date: "06/06/2023",
-    },
-    {
-      companyLogo: logoGroupama,
-      companyName: "Groupama",
-      job: "Chef de projet",
-      contractType: "CDI",
-      jobCity: "Nantes",
-      date: "06/06/2023",
-    },
-  ];
+  const [result, setResult] = useState([]);
+
+  useEffect(() => {
+    const id = 4;
+    const url = `http://localhost:8080/api/offerDetailss/${id}`;
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        console.info("Response:", data);
+        setResult(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, []);
 
   return (
     <div className="OffersListCompany">
@@ -50,20 +31,18 @@ function OffersListCompany() {
         </div>
 
         <div className="offer">
-          {offers.map((offer) => {
-            return (
-              <NavLink to="/company/application">
-                <JobCard
-                  logo={offer.companyLogo}
-                  companyName={offer.companyName}
-                  job={offer.job}
-                  contractType={offer.contractType}
-                  jobCity={offer.jobCity}
-                  date={offer.date}
-                />
-              </NavLink>
-            );
-          })}
+          {result.map((offer) => (
+            <NavLink to="/company/application" key={offer.id}>
+              <JobCard
+                logo={offer.logo}
+                companyName={offer.company_name}
+                job={offer.job}
+                contractType={offer.contract_type}
+                jobCity={offer.city_job}
+                date={offer.date}
+              />
+            </NavLink>
+          ))}
         </div>
         <div className="returnButton">
           <NavLink to="/company/dashboard">

@@ -19,9 +19,12 @@
       height: 25dvh;
       .OfferLogo {
         height: 65%;
+        display: flex;
+        justify-content: center;
         img {
-          height: 100%;
-          width: auto;
+          height: auto;
+          max-height: 100%;
+          max-width: 100%;
         }
       }
 

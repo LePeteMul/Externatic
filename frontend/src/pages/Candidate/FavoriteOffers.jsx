@@ -1,28 +1,41 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
+import JobOfferContext from "../../contexts/JobOfferContext/JobOfferContext";
 import JobCard from "../../components/Elements/JobCard";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import BlackButton from "../../components/Elements/BlackButton";
 
 function FavoriteOffers() {
-  const offers = [
-    {
-      companyLogo: "https://www.moneyvox.fr/i/media/05l/005668l5dd.jpg",
-      companyName: "Nickel",
-      job: "Chef de projet",
-      contractType: "CDI",
-      jobCity: "Nantes",
-      date: "06/06/2023",
-    },
-    {
-      companyLogo: "https://www.moneyvox.fr/i/media/05l/005668l5dd.jpg",
-      companyName: "Nickel",
-      job: "Chef de projet",
-      contractType: "CDI",
-      jobCity: "Nantes",
-      date: "06/06/2023",
-    },
-  ];
+  function formatDate(dateSql) {
+    const dateObj = new Date(dateSql);
+    const options = { day: "2-digit", month: "2-digit", year: "numeric" };
+    const newDate = dateObj.toLocaleDateString("fr-FR", options);
+    return newDate;
+  }
+
+  const navigate = useNavigate();
+
+  const { userId } = useContext(UserConnexionContext);
+  const { offerId, setOfferId } = useContext(JobOfferContext);
+
+  const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+    const url = `http://localhost:8080/api/FavoriteByUser/${userId}`;
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => setFavorites(data))
+      .catch((err) => console.error(err));
+  }, []);
+
+  const handleClick = (id) => {
+    setOfferId(id);
+    navigate("/jobdetails");
+  };
+
+  const handleDelete = () => {};
 
   return (
     <div className="favoriteOffers">
@@ -32,15 +45,18 @@ function FavoriteOffers() {
           <h1>Mes favoris</h1>
         </div>
         <div className="cardFavoris">
-          {offers.map((offer) => {
+          {favorites.map((offer) => {
             return (
               <JobCard
-                logo={offer.companyLogo}
+                logo={offer.logo}
                 companyName={offer.companyName}
                 job={offer.job}
-                contractType={offer.contractType}
-                jobCity={offer.jobCity}
-                date={offer.date}
+                contractType={offer.contract_type}
+                jobCity={offer.city_job}
+                date={formatDate(offer.date)}
+                id={offer.offer_id}
+                onDelete={handleDelete}
+                onClick={() => handleClick(offer.offer_id)}
               />
             );
           })}

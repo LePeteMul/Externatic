@@ -31,6 +31,12 @@
     align-items: center;
     justify-content: center;
   }
+
+  @media screen and (min-width: 801px) {
+    .popup-content {
+      padding: 20%;
+    }
+  }
 }
 
 /* Autres styles pour le contenu du popup */

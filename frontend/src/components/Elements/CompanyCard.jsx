@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import loupe from "../../assets/icons/loupe.png";
 import croix from "../../assets/icons/cross.png";
 
-function CompanyCard({ logo, name, email }) {
+function CompanyCard({ logo, name, email, onDelete }) {
   return (
     <div className="companyCard">
       <div className="content">
@@ -16,7 +16,11 @@ function CompanyCard({ logo, name, email }) {
         </div>
 
         <div className="navigation">
-          <button type="button" className="companyCardButtons">
+          <button
+            type="button"
+            className="companyCardButtons"
+            onClick={onDelete}
+          >
             {" "}
             <img src={croix} alt="croix" />
           </button>
@@ -33,6 +37,7 @@ CompanyCard.propTypes = {
   logo: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default CompanyCard;

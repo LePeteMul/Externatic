@@ -3,7 +3,18 @@ import PropTypes from "prop-types";
 import loupe from "../../assets/icons/loupe.png";
 import croix from "../../assets/icons/cross.png";
 
-function CandidateCard({ profilpicture, lastname, firstname, email }) {
+function CandidateCard({
+  id,
+  profilpicture,
+  lastname,
+  firstname,
+  email,
+  onDelete,
+}) {
+  const handleDelete = () => {
+    onDelete(id);
+  };
+
   return (
     <div className="candidateCard">
       <div className="content">
@@ -22,8 +33,11 @@ function CandidateCard({ profilpicture, lastname, firstname, email }) {
         </div>
 
         <div className="navigation">
-          <button type="button" className="candidateCardButtons">
-            {" "}
+          <button
+            type="button"
+            className="candidateCardButtons"
+            onClick={handleDelete}
+          >
             <img src={croix} alt="croix" />
           </button>
           <button type="button" className="candidateCardButtons">
@@ -36,10 +50,12 @@ function CandidateCard({ profilpicture, lastname, firstname, email }) {
 }
 
 CandidateCard.propTypes = {
+  id: PropTypes.number.isRequired,
   profilpicture: PropTypes.string.isRequired,
   lastname: PropTypes.string.isRequired,
   firstname: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default CandidateCard;

@@ -22,13 +22,11 @@ function Registration() {
     }));
   };
 
-  const [isCreated, setIsCreated] = useState(false);
   const [isSent, setIsSent] = useState(false);
   const navigate = useNavigate();
 
   const handlePopupClose = () => {
-    setIsSent(false);
-    navigate("/login2");
+    navigate("/login");
   };
 
   const handleSubmit = (e) => {
@@ -44,31 +42,24 @@ function Registration() {
       body: JSON.stringify(requestData),
     })
       .then((response) => {
-        setIsCreated(!isCreated);
-        console.info(response);
-        // Perform any necessary actions after successful POST request
+        fetch("http://localhost:8080/api/email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(requestEmail),
+        })
+          .then((res) => {
+            setIsSent(!isSent);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
       })
       .catch((error) => {
         console.error("Error:", error);
         // Handle any errors that occurred during the POST request
       });
-
-    if (isCreated) {
-      fetch("http://localhost:8080/api/email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(requestEmail),
-      })
-        .then((response) => {
-          setIsSent(!isSent);
-          console.info(response);
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
-    }
   };
 
   return (

@@ -28,10 +28,8 @@ function CandidateProfile() {
           email: data.email,
           phone: data.phone,
           city: data.city,
-          // language: "",
           cv: data.cv,
-          // password: "****",
-          admin: data.admin,
+          // language: "",
         });
       })
       .catch((err) => console.error(err));
@@ -40,6 +38,7 @@ function CandidateProfile() {
   console.warn("user dans le admin profile = ", user);
   console.warn("is admin ? ", user.admin);
   console.warn("lastname = ", user.lastname);
+  console.warn("password = ", user.password);
 
   const navigate = useNavigate();
   const [showPopup1, setShowPopup1] = useState(false);
@@ -70,10 +69,8 @@ function CandidateProfile() {
     email: user.email,
     phone: user.phone,
     city: user.city,
-    // language: "",
     cv: user.cv,
-    // password: "****",
-    admin: user.admin,
+    // language: "",
   });
 
   const handleChange = (e) => {
@@ -115,19 +112,31 @@ function CandidateProfile() {
   };
 
   const handleDeletion = () => {
-    setFormData({
-      gender: user.gender,
-      lastname: user.lastname,
-      firstname: user.firstname,
-      email: user.email,
-      phone: user.phone,
-      city: user.city,
-      // language: "",
-      cv: user.cv,
-      // password: "****",
-      admin: user.admin,
-    });
+    fetch(`http://localhost:8080/api/user/${userId}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (response.status === 204) {
+          setFormData({
+            gender: user.gender,
+            lastname: user.lastname,
+            firstname: user.firstname,
+            email: user.email,
+            phone: user.phone,
+            city: user.city,
+            // language: "",
+            cv: user.cv,
+            password: user.password,
+            admin: user.admin,
+          });
+          handlePopup2Open();
+        } else {
+          console.error("Failed to delete the candidate.");
+        }
+      })
+      .catch((err) => console.error(err));
   };
+
   return (
     <div className="CandidateProfile">
       <HeaderBasic />
@@ -196,7 +205,11 @@ function CandidateProfile() {
           />
           <BlackButton
             buttonName="Valider mes modifications"
-            buttonFunction={handlePopup1Open}
+            buttonFunction={(event) => {
+              event.preventDefault();
+              handlePopup1Open();
+              handleSubmit(event);
+            }}
           />
 
           {showPopup1 && (
@@ -222,7 +235,7 @@ function CandidateProfile() {
               title="Données supprimées"
               open={showPopup2}
               onClose={handlePopup2Close}
-              buttonname={"Retour a l'acceuil"}
+              buttonname={"Retour a l'accueil"}
             />
           )}
         </form>

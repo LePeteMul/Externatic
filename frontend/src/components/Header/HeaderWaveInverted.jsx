@@ -1,6 +1,8 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
+import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
+import CompanyConnexionContext from "../../contexts/CompanyConnexionContext/CompanyConnexionContext";
 import waveWhite from "../../assets/images/Dashboard/vague.svg";
 import logo from "../../assets/images/Header/logoExternatic.svg";
 import BurgerMenuBasic from "./BurgerMenuBasic";
@@ -8,6 +10,26 @@ import ProfilePicture from "../Elements/ProfilePicture";
 import InputImage from "../Elements/InputImage";
 
 function HeaderWaveInverted({ open, handleOpen, title }) {
+  const { userConnected, isAdmin } = useContext(UserConnexionContext);
+  const { companyConnected } = useContext(CompanyConnexionContext);
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (companyConnected) {
+      navigate("/company/dashboard");
+    }
+    if (userConnected && isAdmin) {
+      navigate("/admin/dashboard");
+    }
+    if (userConnected && !isAdmin) {
+      navigate("/candidate/dashboard");
+    }
+    if (!companyConnected && !userConnected) {
+      navigate("/login");
+    }
+  };
+
   return (
     <>
       {" "}
@@ -22,7 +44,9 @@ function HeaderWaveInverted({ open, handleOpen, title }) {
           <NavLink to="/">
             <img className="Logo" src={logo} alt="Le Logo" />
           </NavLink>
-          <ProfilePicture />
+          <button type="button" onClick={handleClick}>
+            <ProfilePicture />
+          </button>
         </div>
 
         <div className="pp-import">
