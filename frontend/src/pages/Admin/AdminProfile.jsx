@@ -24,6 +24,8 @@ function AdminProfile() {
           firstname: data.firstname,
           email: data.email,
           phone: data.phone,
+          city: data.city,
+          cv: data.cv,
           // password: "£££",
         });
       })
@@ -51,6 +53,8 @@ function AdminProfile() {
     firstname: admin.firstname,
     email: admin.email,
     phone: admin.phone,
+    city: admin.city,
+    cv: admin.cv,
     // password: "£££",
   });
 
@@ -63,7 +67,7 @@ function AdminProfile() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.info(formData);
+    console.info("formData = ", formData);
     const url = `http://localhost:8080/api/user/${userId}`;
     const requestData = { ...formData };
 
@@ -131,7 +135,7 @@ function AdminProfile() {
               buttonFunction={(event) => {
                 event.preventDefault();
                 handlePopup1Open();
-                handleSubmit();
+                handleSubmit(event);
               }}
             />
             {showPopup1 && (
