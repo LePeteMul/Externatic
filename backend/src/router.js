@@ -76,6 +76,7 @@ router.get("/api/user", userControllers.browse);
 router.get("/api/user/candidats", userControllers.getCandidate);
 router.get("/api/user/:id", userControllers.getById);
 router.put("/api/user/:id", userControllers.edit);
+router.put("/api/user/edition/resetpassword", userControllers.editPassword);
 router.post("/api/user/register", hashPassword, userControllers.add);
 router.delete("/api/user/:id", userControllers.destroy);
 

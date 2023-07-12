@@ -172,6 +172,25 @@ const getAppliByOfferId = (req, res) => {
     });
 };
 
+const editPassword = (req, res) => {
+  const { email, password } = req.body;
+  console.info(email, password);
+
+  models.user
+    .updatePassword(email, password)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
@@ -183,4 +202,5 @@ module.exports = {
   getById,
   getAppliByOfferId,
   getUserByEmail,
+  editPassword,
 };

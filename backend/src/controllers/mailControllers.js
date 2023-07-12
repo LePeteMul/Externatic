@@ -703,7 +703,7 @@ const sendPasswordResetMail = (req, res) => {
                                                             style="background:#a42056;color:#ffffff;font-family:'Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:normal;line-height:120%;Margin:0;text-decoration:none;text-transform:none;">
                                                             Réinitialiser votre mot de passe
                                                         </p> -->
-                                                        <a href="https://www.example.com"
+                                                        <a href="http://localhost:3000/forgottenpassword"
                                                             style="background:#a42056;color:#ffffff;font-family:'Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;display:inline-block;padding:10px 20px;border-radius:4px;">Réinitialiser
                                                             votre mot de passe</a>
                                                     </td>
@@ -724,7 +724,7 @@ const sendPasswordResetMail = (req, res) => {
                                                 </p>
                                                 <br>
                                                 <br>Si jamais le contenu du mail ne s'affiche pas correctement, veuillez
-                                                cliquer sur le lien suivant: <a href="{{ https://externatic.Fr }}">lien
+                                                cliquer sur le lien suivant: <a href="http://localhost:3000/forgottenpassword">lien
                                                     de redirection.</a>
                                                 <br>
                                                 <br><br>Bien cordialement,<br><br> Groupe Externatic<br>1 Rue Racine,

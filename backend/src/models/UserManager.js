@@ -31,6 +31,13 @@ class UserManager extends AbstractManager {
     );
   }
 
+  updatePassword(email, password) {
+    return this.database.query(
+      `update ${this.table} set password = ? where email = ?`,
+      [password, email]
+    );
+  }
+
   findByMail(email) {
     return this.database
       .query(`SELECT * FROM ${this.table} WHERE email = ?`, [email])
