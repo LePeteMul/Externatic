@@ -88,7 +88,7 @@ router.get("/api/user", userControllers.browse);
 router.get("/api/user/candidats", userControllers.getCandidate);
 router.get("/api/user/:id", userControllers.getById);
 router.get("/api/user/preference/:id", userControllers.getPreference);
-router.put("/api/user/:id", userControllers.edit);
+router.put("/api/user/:id", userControllers.editById);
 router.put("/api/user/preference/:id", userControllers.editPreference);
 router.post("/api/user/register", hashPassword, userControllers.add);
 router.delete("/api/user/:id", userControllers.destroy);
