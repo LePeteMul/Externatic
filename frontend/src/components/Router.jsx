@@ -231,7 +231,7 @@ function Router() {
           path="/company/application"
           element={
             <ProtectedforCompany>
-            <Application />
+              <Application />
             </ProtectedforCompany>
           }
         />

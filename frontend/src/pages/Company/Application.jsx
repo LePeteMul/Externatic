@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import loupe from "../../assets/icons/loupe.png";
 import InputListe from "../../components/Elements/InputListe";
 import BlackButton from "../../components/Elements/BlackButton";
+import JobOfferContext from "../../contexts/JobOfferContext/JobOfferContext";
 
 function Application() {
   const [result, setResult] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("");
-
+  const { offerId } = useContext(JobOfferContext);
   // getting application by offer id
   useEffect(() => {
-    const url = "http://localhost:8080/api/application/byOfferId/2";
+    const url = `http://localhost:8080/api/application/byOfferId/${offerId}`;
 
     fetch(url)
       .then((response) => response.json())
