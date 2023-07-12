@@ -5,15 +5,22 @@ import HeaderWave from "../../components/Header/HeaderWave";
 import InputTexte from "../../components/Elements/InputTexte";
 import BlackButton from "../../components/Elements/BlackButton";
 import WhiteButton from "../../components/Elements/WhiteButton";
+import Popup from "../../components/Elements/Popup";
 import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
 
 function Login() {
   const token = localStorage.getItem("token");
 
+  const [error, setError] = useState(null);
+
   const { setUserConnected, setUserId, userId, setIsAdmin } =
     useContext(UserConnexionContext);
 
   const navigate = useNavigate();
+
+  const handlePopupClose = () => {
+    setError(null);
+  };
 
   const [formData, setFormData] = useState({
     email: "",
@@ -41,22 +48,30 @@ function Login() {
     })
       .then((response) => response.text())
       .then((data) => {
-        localStorage.setItem("token", data);
-        const user = jwtDecode(data);
-        console.info(user.sub, user.admin);
-        if (user.admin === 1) {
-          setIsAdmin(true);
-          setUserConnected(true);
-          setUserId(user.sub);
-          navigate("/admin/dashboard");
-          console.info(userId, "admin");
-        }
-        if (user.admin === 0) {
-          setIsAdmin(false);
-          setUserConnected(true);
-          setUserId(user.sub);
-          navigate("/candidate/dashboard");
-          console.info(userId, "candidate");
+        if (
+          data === "Mot de passe incorrect" ||
+          data === "Adresse mail incorrecte"
+        ) {
+          setError(data);
+        } else {
+          setError(null);
+          localStorage.setItem("token", data);
+          const user = jwtDecode(data);
+          console.info(user.sub, user.admin);
+          if (user.admin === 1) {
+            setIsAdmin(true);
+            setUserConnected(true);
+            setUserId(user.sub);
+            navigate("/admin/dashboard");
+            console.info(userId, "admin");
+          }
+          if (user.admin === 0) {
+            setIsAdmin(false);
+            setUserConnected(true);
+            setUserId(user.sub);
+            navigate("/candidate/dashboard");
+            console.info(userId, "candidate");
+          }
         }
       })
       .catch((err) => {
@@ -103,6 +118,14 @@ function Login() {
             <WhiteButton buttonName="M'inscrire" />
           </NavLink>
         </div>
+        {error && (
+          <Popup
+            title="Erreur"
+            message={error}
+            onClose={handlePopupClose}
+            buttonname="Retour"
+          />
+        )}
       </div>
     </div>
   );

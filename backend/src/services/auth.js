@@ -25,25 +25,30 @@ const hashPassword = (req, res, next) => {
 const verifyPassword = async (req, res) => {
   const { password } = req.body;
   const { password: hashedPassword } = req.user;
-  // D'où vient le req.user car j'ai pas spécifier la table?
 
   if (!hashedPassword || !password) {
     return res.status(400).send("Invalid request at step 1 of verifyPassword");
   }
 
-  const isVerified = await argon2.verify(hashedPassword, password);
+  try {
+    const isVerified = await argon2.verify(hashedPassword, password);
 
-  if (isVerified) {
-    const payload = { sub: req.user.id, admin: req.user.admin };
-    const token = jwt.sign(payload, process.env.JWT_SECRET, {
-      expiresIn: "1h",
-    });
+    if (isVerified) {
+      const payload = { sub: req.user.id, admin: req.user.admin };
+      const token = jwt.sign(payload, process.env.JWT_SECRET, {
+        expiresIn: "1h",
+      });
 
-    req.token = token;
+      req.token = token;
 
-    return res.status(200).send(token);
+      return res.status(200).send(token);
+    }
+
+    return res.status(401).send("Mot de passe incorrect");
+  } catch (error) {
+    console.error("Error verifying password:", error);
+    return res.status(500).send("Internal Server Error");
   }
-  return res.status(401).send("verify password, error at step 2");
 };
 
 const verifyCompanyPassword = async (req, res) => {
@@ -54,19 +59,24 @@ const verifyCompanyPassword = async (req, res) => {
     return res.status(400).send("Invalid request at step 1 of verifyPassword");
   }
 
-  const isVerified = await argon2.verify(hashedPassword, password);
+  try {
+    const isVerified = await argon2.verify(hashedPassword, password);
 
-  if (isVerified) {
-    const payload = { sub: req.company.id, company: true };
-    const token = jwt.sign(payload, process.env.JWT_SECRET, {
-      expiresIn: "1h",
-    });
+    if (isVerified) {
+      const payload = { sub: req.company.id, company: true };
+      const token = jwt.sign(payload, process.env.JWT_SECRET, {
+        expiresIn: "1h",
+      });
 
-    req.token = token;
+      req.token = token;
 
-    return res.status(200).send(token);
+      return res.status(200).send(token);
+    }
+    return res.status(401).send("Incorrect password");
+  } catch (error) {
+    console.error("Error verifying password:", error);
+    return res.status(500).send("Internal Server Error");
   }
-  return res.status(401).send("verify password, error at step 2");
 };
 
 const verifyToken = (req, res, next) => {
