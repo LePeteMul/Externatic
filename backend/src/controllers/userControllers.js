@@ -50,6 +50,28 @@ const edit = (req, res) => {
     });
 };
 
+const editById = (req, res) => {
+  const user = req.body;
+
+  // TODO validations (length, format...)
+
+  user.id = parseInt(req.params.id, 10);
+
+  models.user
+    .updateById(user)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const add = (req, res) => {
   const user = req.body;
 
@@ -207,6 +229,7 @@ module.exports = {
   browse,
   read,
   edit,
+  editById,
   add,
   destroy,
   getUserByEmailWithPasswordAndPassToNext,
