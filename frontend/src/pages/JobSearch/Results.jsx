@@ -12,16 +12,24 @@ import { formatDate } from "../../services/formatDate";
 
 function Results() {
   const navigate = useNavigate();
+  const {
+    jobOffer,
+    setOfferId,
+    selectedRemote,
+    selectedTechno,
+    mensualSalary,
+  } = useContext(JobOfferContext);
+  const annualSalary = mensualSalary * 12;
+
+  let resultsNumber = jobOffer.length;
 
   const [resultVisibility, setResultVisibility] = useState(true);
   const [filterVisibility, setFilterVisibility] = useState(false);
   const handleClickFilters = () => {
     setResultVisibility(!resultVisibility);
     setFilterVisibility(!filterVisibility);
+    resultsNumber = jobOffer.length;
   };
-
-  const { jobOffer, setOfferId } = useContext(JobOfferContext);
-  const resultsNumber = jobOffer.length;
 
   const handleClick = (jobId) => {
     setOfferId(jobId);
@@ -53,27 +61,43 @@ function Results() {
             buttonFunction={handleClickFilters}
           />
           <h2>
-            {resultsNumber} <span>résultats</span>
+            {resultsNumber === 0 ? (
+              <span>Aucun résultat</span>
+            ) : (
+              <>
+                {resultsNumber}{" "}
+                <span>résultat{resultsNumber > 1 ? "s" : ""}</span>
+              </>
+            )}
           </h2>
         </div>
         <div className="JobResults">
-          {jobOffer.map((job) => {
-            return (
-              <div>
-                <JobCard
-                  logo={job.logo}
-                  companyName={job.companyName}
-                  job={job.job}
-                  contractType={job.contractType}
-                  jobCity={job.city_job}
-                  date={formatDate(job.date)}
-                  key={job.id}
-                  id={job.id}
-                  onClick={() => handleClick(job.id)}
-                />
-              </div>
-            );
-          })}
+          {jobOffer
+            .filter(
+              (job) => selectedRemote === "" || job.remote === selectedRemote
+            )
+            .filter(
+              (job) =>
+                selectedTechno === "" || job.techno_name === selectedTechno
+            )
+            .filter((job) => annualSalary <= job.min_salary)
+            .map((job) => {
+              return (
+                <div>
+                  <JobCard
+                    logo={job.logo}
+                    companyName={job.companyName}
+                    job={job.job}
+                    contractType={job.contractType}
+                    jobCity={job.city_job}
+                    date={formatDate(job.date)}
+                    key={job.id}
+                    id={job.id}
+                    onClick={() => handleClick(job.id)}
+                  />
+                </div>
+              );
+            })}
         </div>
       </div>
       <div

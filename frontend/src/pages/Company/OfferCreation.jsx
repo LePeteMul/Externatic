@@ -151,9 +151,9 @@ function OfferCreation() {
                 name="teletravail"
                 handleChange={handleChange}
                 data={[
-                  { value: "Total", name: "Total" },
-                  { value: "Partiel", name: "Partiel" },
-                  { value: "Pas disponible", name: "Pas disponible" },
+                  { value: "total", name: "total" },
+                  { value: "partiel", name: "partiel" },
+                  { value: "occasionnel", name: "occasionnel" },
                 ]}
               />
 
