@@ -101,21 +101,13 @@ function Application() {
             <InputListe
               inputMessage="Selectionner un statut"
               data={[
-                { value: 1, name: 1 },
-                { value: 2, name: 2 },
-                { value: 3, name: 3 },
-
-                // { value: "Reçu", name: "Reçu" },
-                // {
-                //   value: "En cours de traitement",
-                //   name: "En cours de traitement",
-                // },
-                // { value: "Entretien planifié", name: "Entretien planifié" },
-                // { value: "Accepté", name: "Accepté" },
-                // { value: "Refusé", name: "Refusé" },
+                { value: 1, name: "En cours de traitement" },
+                { value: 2, name: "Entretien planifié" },
+                { value: 3, name: "Accepté" },
+                { value: 4, name: "Refusé" },
               ]}
               value={selectedStatus}
-              set={handleStatusChange}
+              handleChange={handleStatusChange}
             />
           </div>
         </div>
