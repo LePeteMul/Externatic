@@ -24,6 +24,8 @@ function AdminProfile() {
           firstname: data.firstname,
           email: data.email,
           phone: data.phone,
+          city: data.city,
+          cv: data.cv,
           // password: "£££",
         });
       })
@@ -51,6 +53,8 @@ function AdminProfile() {
     firstname: admin.firstname,
     email: admin.email,
     phone: admin.phone,
+    city: admin.city,
+    cv: admin.cv,
     // password: "£££",
   });
 
@@ -63,7 +67,7 @@ function AdminProfile() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.info(formData);
+    console.info("formData = ", formData);
     const url = `http://localhost:8080/api/user/${userId}`;
     const requestData = { ...formData };
 
@@ -98,18 +102,6 @@ function AdminProfile() {
         </div>
         <form onSubmit={handleSubmit} className="input">
           <div className="AdminProfileInformations">
-            <InputListe
-              label="Genre"
-              name="gender"
-              placeholder="non spécifié"
-              handleChange={handleChange}
-              data={[
-                { value: "choix1", name: "Je suis une femme" },
-                { value: "choix2", name: "Je suis un homme" },
-                { value: "choix3", name: "ne souhaite pas spécifier" },
-              ]}
-              value={formData.gender}
-            />
             <InputTexte
               label="Nom"
               name="lastname"
@@ -136,14 +128,6 @@ function AdminProfile() {
               type="email"
               value={formData.email}
             />
-            <InputTexte
-              label="Téléphone"
-              name="phone"
-              placeholder="06 99 99 99 99"
-              handleChange={handleChange}
-              type="tel"
-              value={formData.phone}
-            />
           </div>
           <div className="AdminProfileEnd">
             <BlackButton
@@ -151,7 +135,7 @@ function AdminProfile() {
               buttonFunction={(event) => {
                 event.preventDefault();
                 handlePopup1Open();
-                handleSubmit();
+                handleSubmit(event);
               }}
             />
             {showPopup1 && (

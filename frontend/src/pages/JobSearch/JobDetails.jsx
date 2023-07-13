@@ -5,15 +5,9 @@ import BlackButton from "../../components/Elements/BlackButton";
 import HeartButton from "../../assets/icons/heart.png";
 import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
 import JobOfferContext from "../../contexts/JobOfferContext/JobOfferContext";
+import { formatDate } from "../../services/formatDate";
 
 function JobDetails() {
-  function formatDate(dateSql) {
-    const dateObj = new Date(dateSql);
-    const options = { day: "2-digit", month: "2-digit", year: "numeric" };
-    const newDate = dateObj.toLocaleDateString("fr-FR", options);
-    return newDate;
-  }
-
   const { offerId } = useContext(JobOfferContext);
   const { userConnected, userId, isAdmin } = useContext(UserConnexionContext);
 

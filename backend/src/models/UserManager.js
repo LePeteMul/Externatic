@@ -94,10 +94,10 @@ class UserManager extends AbstractManager {
     );
   }
 
-  updatePreference(user) {
+  /* updatePreference(user, id) {
     return this.database.query(
       `update ${this.table} set pref_job = ?, job_city = ?, pref_contract = ? where id = ?`,
-      [user.pref_job, user.job_city, user.pref_contract, user.id]
+      [user.pref_job, user.job_city, user.pref_contract, id]
     );
   }
 
@@ -106,7 +106,7 @@ class UserManager extends AbstractManager {
       `select pref_job, job_city, pref_contract from  ${this.table} where id = ?`,
       [id]
     );
-  }
+  } */
 }
 
 module.exports = UserManager;

@@ -18,7 +18,7 @@ class OfferManager extends AbstractManager {
         offer.min_salary,
         offer.max_salary,
         offer.description,
-        offer.prerequisistes,
+        offer.prerequisites,
         offer.city_job,
         offer.department,
       ]

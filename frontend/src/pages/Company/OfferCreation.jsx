@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import InputListe from "../../components/Elements/InputListe";
@@ -6,10 +6,12 @@ import Textearea from "../../components/Elements/Textearea";
 import BlackButton from "../../components/Elements/BlackButton";
 import InputTexte from "../../components/Elements/InputTexte";
 import Popup from "../../components/Elements/Popup";
+import CompanyConnexionContext from "../../contexts/CompanyConnexionContext/CompanyConnexionContext";
 
 function OfferCreation() {
   const navigate = useNavigate();
   const [showPopup1, setShowPopup1] = useState(false);
+  const { companyId } = useContext(CompanyConnexionContext);
   const handlePopup1Open = () => {
     setShowPopup1(true);
   };
@@ -20,13 +22,15 @@ function OfferCreation() {
   };
 
   const [formData, setFormData] = useState({
-    company_id: 1,
+    company_id: companyId,
     job: "",
     contract_id: "",
     min_salary: "",
     max_salary: "",
     description: "",
     city_job: "",
+    prerequisites: "Min 3ans d'expériences",
+    department: "",
     // softskills: "",
     // hardskills: "",
   });
@@ -37,8 +41,8 @@ function OfferCreation() {
       [e.target.name]: e.target.value,
     }));
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
     const url = "http://localhost:8080/api/offer";
     const requestData = { ...formData };
@@ -78,9 +82,19 @@ function OfferCreation() {
                 placeholder="Selectionner un métier"
                 handleChange={handleChange}
                 data={[
-                  { value: "metier1", name: "Metier n°1" },
-                  { value: "metier2", name: "Metier n°2" },
-                  { value: "metier3", name: "Metier n°3" },
+                  {
+                    value:
+                      "Administrateur systèmes et réseaux Linux / sud loire H/F",
+                    name: "Administrateur systèmes et réseaux Linux / sud loire H/F",
+                  },
+                  {
+                    value: "Chef de projet WMS/ progiciel H/F",
+                    name: "Chef de projet WMS/ progiciel H/F",
+                  },
+                  {
+                    value: "Développeur React H/F @solutions agricoles",
+                    name: "Développeur React H/F @solutions agricoles",
+                  },
                 ]}
               />
 
@@ -90,22 +104,23 @@ function OfferCreation() {
                 placeholder="Selectionner un contrat"
                 handleChange={handleChange}
                 data={[
-                  { value: "1", name: "1" },
-                  { value: "CDD", name: "CDD" },
-                  { value: "Stage", name: "Stage" },
+                  { value: "1", name: "CDI" },
+                  { value: "2", name: "CDD" },
+                  { value: "3", name: "Alternance" },
+                  { value: "4", name: "Interim" },
                 ]}
               />
               <InputTexte
                 label="Salaire annuel brut minimum (euros)"
                 name="min_salary"
-                placeholder="30 000"
+                placeholder="30000"
                 handleChange={handleChange}
                 type="text"
               />
               <InputTexte
                 label="Salaire annuel brut maximum (euros)"
                 name="max_salary"
-                placeholder="35 000"
+                placeholder="35000"
                 handleChange={handleChange}
                 type="text"
               />
@@ -125,8 +140,8 @@ function OfferCreation() {
                 handleChange={handleChange}
                 data={[
                   { value: "Nantes", name: "Nantes" },
-                  { value: "Paris", name: "Paris" },
-                  { value: "Toulouse", name: "Toulouse" },
+                  { value: "Angers", name: "Angers" },
+                  { value: "Bordeaux", name: "Bordeaux" },
                 ]}
               />
 
@@ -136,9 +151,9 @@ function OfferCreation() {
                 name="teletravail"
                 handleChange={handleChange}
                 data={[
-                  { value: "Total", name: "Total" },
-                  { value: "Partiel", name: "Partiel" },
-                  { value: "Pas disponible", name: "Pas disponible" },
+                  { value: "total", name: "total" },
+                  { value: "partiel", name: "partiel" },
+                  { value: "occasionnel", name: "occasionnel" },
                 ]}
               />
 
@@ -166,7 +181,7 @@ function OfferCreation() {
                   buttonFunction={(event) => {
                     event.preventDefault();
                     handlePopup1Open();
-                    handleSubmit();
+                    handleSubmit(event);
                   }}
                   // buttonFunction={handlePosted}
                 />

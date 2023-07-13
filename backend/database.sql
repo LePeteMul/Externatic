@@ -284,7 +284,7 @@ VALUES (
         "recrutement@groupama.fr",
         "****",
         "02 40 05 17 27",
-        "https://presse.groupama.com/download-image/62432ca1728ee72abb6d0f78",
+        "https://www.1min30.com/wp-content/uploads/2018/05/Couleur-logo-Groupama.jpg",
         "Groupama est une compagnie d'assurance française qui propose une large gamme de services d'assurance et financiers"
     ), (
         "Decathlon",
@@ -313,7 +313,7 @@ VALUES (
         1,
         "Data Analyst Produit",
         "2023-06-20 15:30:45",
-        "remote",
+        "occasionnel",
         2,
         42000,
         45000,
@@ -325,7 +325,7 @@ VALUES (
         2,
         "Développeur fullstack junior",
         "2023-06-20 17:30:45",
-        "remote",
+        "occasionnel",
         1,
         33000,
         40000,
@@ -341,10 +341,10 @@ Tableau de bord avec des alertes pour les professionnels",
         3,
         "Lead Tech Java",
         "2023-06-20 16:30:45",
-        "remote",
+        "partiel",
         3,
-        10000,
-        12000,
+        20000,
+        22000,
         "Vous intégrez une équipe AGILE, en tant que développeur JAVA (F/H/X). Vos missions consistent à : 
 
 Comprendre les besoins clients dans le but de définir les solutions les plus adaptées,
@@ -357,7 +357,7 @@ Partager les bonnes pratiques de développement : qualité de code et de tests, 
         4,
         "Développeur Back end Java",
         "2023-06-21 11:30:45",
-        "remote",
+        "partiel",
         2,
         37000,
         42000,
@@ -368,13 +368,13 @@ Architecture, conception et développement d’applications web essentiellement 
 Tests (unitaires et fonctionnels)
 Veille technologique",
         "Esprit d'équipe",
-        "Java",
+        "Angers",
         " la Loire-Atlantique"
     ), (
         4,
-        "Responsable de projets SI H/F",
+        "Responsable de projets SI",
         "2023-06-21 10:30:45",
-        "remote",
+        "partiel",
         4,
         35000,
         40000,
@@ -386,7 +386,7 @@ Responsable de l'équipe MOE, AMOA du périmètre SI Outre Mer (Antilles Guyane 
 Conduite du projet (Planning / Coûts / Délais - ~ 4m€ de budget),
 Organisation, communication, animation, management, pilotage, recrutement et suivi des prestataires",
         "Min 3ans d'expériences",
-        "DevOps",
+        "Angers",
         " la Loire-Atlantique"
     );
 
@@ -400,7 +400,7 @@ VALUES (1, 1), (1, 5), (2, 3), (3, 4), (4, 1);
 
 INSERT INTO
     offer_techno(techno_id, offer_id)
-VALUES (4, 1), (2, 2), (5, 2), (1, 4);
+VALUES (4, 1), (5, 2), (1, 4);
 
 INSERT INTO
     favorite(candidate_id, offer_id)

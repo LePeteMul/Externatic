@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import loupe from "../../assets/icons/loupe.png";
 import InputListe from "../../components/Elements/InputListe";
 import BlackButton from "../../components/Elements/BlackButton";
+import JobOfferContext from "../../contexts/JobOfferContext/JobOfferContext";
 
 function Application() {
   const [result, setResult] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("");
-
+  const { offerId } = useContext(JobOfferContext);
   // getting application by offer id
   useEffect(() => {
-    const url = "http://localhost:8080/api/application/byOfferId/2";
+    const url = `http://localhost:8080/api/application/byOfferId/${offerId}`;
 
     fetch(url)
       .then((response) => response.json())
@@ -100,21 +101,13 @@ function Application() {
             <InputListe
               inputMessage="Selectionner un statut"
               data={[
-                { value: 1, name: 1 },
-                { value: 2, name: 2 },
-                { value: 3, name: 3 },
-
-                // { value: "Reçu", name: "Reçu" },
-                // {
-                //   value: "En cours de traitement",
-                //   name: "En cours de traitement",
-                // },
-                // { value: "Entretien planifié", name: "Entretien planifié" },
-                // { value: "Accepté", name: "Accepté" },
-                // { value: "Refusé", name: "Refusé" },
+                { value: 1, name: "En cours de traitement" },
+                { value: 2, name: "Entretien planifié" },
+                { value: 3, name: "Accepté" },
+                { value: 4, name: "Refusé" },
               ]}
               value={selectedStatus}
-              set={handleStatusChange}
+              handleChange={handleStatusChange}
             />
           </div>
         </div>
