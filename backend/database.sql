@@ -313,7 +313,7 @@ VALUES (
         1,
         "Data Analyst Produit",
         "2023-06-20 15:30:45",
-        "remote",
+        "occasionnel",
         2,
         42000,
         45000,
@@ -325,7 +325,7 @@ VALUES (
         2,
         "Développeur fullstack junior",
         "2023-06-20 17:30:45",
-        "remote",
+        "occasionnel",
         1,
         33000,
         40000,
@@ -341,10 +341,10 @@ Tableau de bord avec des alertes pour les professionnels",
         3,
         "Lead Tech Java",
         "2023-06-20 16:30:45",
-        "remote",
+        "partiel",
         3,
-        10000,
-        12000,
+        20000,
+        22000,
         "Vous intégrez une équipe AGILE, en tant que développeur JAVA (F/H/X). Vos missions consistent à : 
 
 Comprendre les besoins clients dans le but de définir les solutions les plus adaptées,
@@ -357,7 +357,7 @@ Partager les bonnes pratiques de développement : qualité de code et de tests, 
         4,
         "Développeur Back end Java",
         "2023-06-21 11:30:45",
-        "remote",
+        "partiel",
         2,
         37000,
         42000,
@@ -374,7 +374,7 @@ Veille technologique",
         4,
         "Responsable de projets SI",
         "2023-06-21 10:30:45",
-        "remote",
+        "partiel",
         4,
         35000,
         40000,
@@ -400,7 +400,7 @@ VALUES (1, 1), (1, 5), (2, 3), (3, 4), (4, 1);
 
 INSERT INTO
     offer_techno(techno_id, offer_id)
-VALUES (4, 1), (2, 2), (5, 2), (1, 4);
+VALUES (4, 1), (5, 2), (1, 4);
 
 INSERT INTO
     favorite(candidate_id, offer_id)
