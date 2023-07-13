@@ -97,7 +97,7 @@ CREATE TABLE
         offer_id INT NOT NULL,
         status_id INT NOT NULL,
         company_id INT NOT NULL,
-        FOREIGN KEY(candidate_id) REFERENCES user(id),
+        FOREIGN KEY(candidate_id) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE,
         FOREIGN KEY (offer_id) REFERENCES offer(id) ON DELETE CASCADE ON UPDATE CASCADE,
         FOREIGN KEY (status_id) REFERENCES status(id),
         FOREIGN KEY (company_id) REFERENCES company(id) ON DELETE CASCADE ON UPDATE CASCADE,
