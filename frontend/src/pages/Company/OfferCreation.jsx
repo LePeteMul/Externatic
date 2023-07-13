@@ -113,14 +113,14 @@ function OfferCreation() {
               <InputTexte
                 label="Salaire annuel brut minimum (euros)"
                 name="min_salary"
-                placeholder="30 000"
+                placeholder="30000"
                 handleChange={handleChange}
                 type="text"
               />
               <InputTexte
                 label="Salaire annuel brut maximum (euros)"
                 name="max_salary"
-                placeholder="35 000"
+                placeholder="35000"
                 handleChange={handleChange}
                 type="text"
               />
@@ -140,8 +140,8 @@ function OfferCreation() {
                 handleChange={handleChange}
                 data={[
                   { value: "Nantes", name: "Nantes" },
-                  { value: "Paris", name: "Paris" },
-                  { value: "Toulouse", name: "Toulouse" },
+                  { value: "Angers", name: "Angers" },
+                  { value: "Bordeaux", name: "Bordeaux" },
                 ]}
               />
 
