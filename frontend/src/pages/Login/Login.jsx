@@ -94,7 +94,9 @@ function Login() {
           </div>
         </form>
         <div className="forget_psw">
-          <h4 className="forget_psw_text">J'ai oublié mon mot de passe</h4>
+          <NavLink to="/resetpassword">
+            <h4 className="forget_psw_text">J'ai oublié mon mot de passe</h4>
+          </NavLink>
         </div>
 
         <div className="card_signing">

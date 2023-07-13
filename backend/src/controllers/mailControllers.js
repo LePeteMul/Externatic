@@ -453,6 +453,10 @@ const sendPasswordResetMail = (req, res) => {
 
   // const user avec un fetch pour récupérer les infos de l'utilisateur
 
+  const resetPasswordLink = `http://localhost:3000/forgottenpassword?email=${encodeURIComponent(
+    email
+  )}`;
+
   const mailOptions = {
     from: process.env.SMTP_SENDIN_USER, // c'est l'adresse à partir de laquelle l'email sera envoyé
     to: email, // c'est l'adresse à laquelle l'e-mail sera envoyé
@@ -703,7 +707,7 @@ const sendPasswordResetMail = (req, res) => {
                                                             style="background:#a42056;color:#ffffff;font-family:'Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:normal;line-height:120%;Margin:0;text-decoration:none;text-transform:none;">
                                                             Réinitialiser votre mot de passe
                                                         </p> -->
-                                                        <a href="http://localhost:3000/forgottenpassword"
+                                                        <a href="${resetPasswordLink}"
                                                             style="background:#a42056;color:#ffffff;font-family:'Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;display:inline-block;padding:10px 20px;border-radius:4px;">Réinitialiser
                                                             votre mot de passe</a>
                                                     </td>
@@ -724,7 +728,7 @@ const sendPasswordResetMail = (req, res) => {
                                                 </p>
                                                 <br>
                                                 <br>Si jamais le contenu du mail ne s'affiche pas correctement, veuillez
-                                                cliquer sur le lien suivant: <a href="http://localhost:3000/forgottenpassword">lien
+                                                cliquer sur le lien suivant: <a href="${resetPasswordLink}">lien
                                                     de redirection.</a>
                                                 <br>
                                                 <br><br>Bien cordialement,<br><br> Groupe Externatic<br>1 Rue Racine,
