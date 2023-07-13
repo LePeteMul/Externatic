@@ -70,8 +70,8 @@ function CandidateJobApplications() {
                 logo={offer.logo}
                 companyName={offer.companyName}
                 job={offer.job}
-                contractType={offer.contractType}
-                jobCity={offer.jobCity}
+                contractType={offer.contract_type}
+                jobCity={offer.city_job}
                 date={formatDate(offer.date)}
                 status={offer.status}
                 onClick={() => handleClick(offer.offer_id)}
@@ -88,9 +88,9 @@ function CandidateJobApplications() {
                 logo={offer.companyLogo}
                 companyName={offer.companyName}
                 job={offer.job}
-                contractType={offer.contractType}
-                jobCity={offer.jobCity}
-                date={offer.date}
+                contractType={offer.contract_type}
+                jobCity={offer.city_job}
+                date={formatDate(offer.date)}
                 status={offer.status}
                 onClick={() => handleClick(offer.offer_id)}
                 onDelete={handleDelete}
@@ -106,9 +106,9 @@ function CandidateJobApplications() {
                 logo={offer.companyLogo}
                 companyName={offer.companyName}
                 job={offer.job}
-                contractType={offer.contractType}
-                jobCity={offer.jobCity}
-                date={offer.date}
+                contractType={offer.contract_type}
+                jobCity={offer.city_job}
+                date={formatDate(offer.date)}
                 status={offer.status}
                 onClick={() => handleClick(offer.offer_id)}
                 onDelete={handleDelete}
@@ -124,9 +124,9 @@ function CandidateJobApplications() {
                 logo={offer.companyLogo}
                 companyName={offer.companyName}
                 job={offer.job}
-                contractType={offer.contractType}
-                jobCity={offer.jobCity}
-                date={offer.date}
+                contractType={offer.contract_type}
+                jobCity={offer.city_job}
+                date={formatDate(offer.date)}
                 status={offer.status}
                 onClick={() => handleClick(offer.offer_id)}
                 onDelete={handleDelete}
