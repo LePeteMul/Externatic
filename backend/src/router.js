@@ -100,7 +100,6 @@ router.put(
   hashPassword,
   userControllers.editPassword
 );
-router.get("/api/user/preference/:id", userControllers.getPreference);
 
 /* router.get("/api/user/preference/:id", userControllers.getPreference); */
 /* router.put("/api/user/preference/:id", userControllers.editPreference); */
