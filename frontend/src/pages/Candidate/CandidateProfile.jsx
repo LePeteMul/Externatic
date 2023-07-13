@@ -202,7 +202,7 @@ function CandidateProfile() {
 
           {showPopup1 && (
             <Popup
-              title="Données modifiées"
+              title="Mise à jour effectuée"
               message="Super, tes données ont été modifiées !"
               open={showPopup1}
               onClose={handlePopup1Close}
@@ -220,7 +220,7 @@ function CandidateProfile() {
 
           {showPopup2 && (
             <Popup
-              title="Données supprimées"
+              title="Ton compte a bien été supprimé"
               open={showPopup2}
               onClose={handlePopup2Close}
               buttonname={"Retour a l'accueil"}

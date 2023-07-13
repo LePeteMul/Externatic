@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
 import CompanyConnexionContext from "../../contexts/CompanyConnexionContext/CompanyConnexionContext";
 import burger from "../../assets/icons/burgerMenu.png";
 
 function BurgerMenuBasic() {
+  const navigate = useNavigate();
+
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
@@ -34,11 +36,13 @@ function BurgerMenuBasic() {
       setUserConnected(false);
       setUserId(null);
       console.info("connecte :", userConnected, ". Id:", userId);
+      navigate("/");
     }
     if (companyConnected) {
       setCompanyConnected(false);
       setCompanyId(null);
       console.info("connecte :", companyConnected, ". Id:", companyId);
+      navigate("/");
     }
   };
 
@@ -60,9 +64,14 @@ function BurgerMenuBasic() {
         <Link to="/legalinformations">
           <li className="menuItem">Mentions légales</li>{" "}
         </Link>
-        <Link to="/logout" onClick={handleDisconnect}>
+        <div
+          onClick={handleDisconnect}
+          onKeyDown={handleDisconnect}
+          role="button"
+          tabIndex={0}
+        >
           <li className="menuItem">Se déconnecter</li>
-        </Link>
+        </div>
       </ul>
     </div>
   );
