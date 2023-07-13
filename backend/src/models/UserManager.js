@@ -82,7 +82,12 @@ class UserManager extends AbstractManager {
   // Query to get application by offer id
   findApplicationByOffer(id) {
     return this.database.query(
-      `SELECT  offer.id AS offer_id, application.id, user.firstname,user.lastname,user.profil_picture, user.email, offer.job, contract.contract_type, company.company_name, status.status_name, offer.city_job
+      `SELECT  offer.id AS offer_id,
+      application.id, user.firstname,
+      user.lastname,user.profil_picture, user.email,
+      offer.job, contract.contract_type,
+      company.company_name, status.status_name,
+      status.id as status_id, offer.city_job, user.id as user_id
     from  ${this.table} 
     INNER JOIN application ON user.id = application.candidate_id
     INNER JOIN offer ON application.offer_id = offer.id

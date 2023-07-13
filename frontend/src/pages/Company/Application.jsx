@@ -10,24 +10,26 @@ function Application() {
   const [result, setResult] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("");
   const { offerId } = useContext(JobOfferContext);
-  // getting application by offer id
+
+  // Getting application by offer id
   useEffect(() => {
     const url = `http://localhost:8080/api/application/byOfferId/${offerId}`;
 
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        console.info("Response:", data);
+        console.info("Response (data):", data);
         setResult(data);
+        setSelectedStatus(parseInt(data.status_id));
       })
       .catch((error) => {
         console.error("Error:", error);
       });
-  }, []);
+  }, [offerId]);
 
   // Function to handle status change
   const handleStatusChange = (e) => {
-    console.info("handleStatusChange called"); // Check if this is displayed in the console
+    console.info("handleStatusChange called");
     setSelectedStatus(e.target.value);
     updateApplicationStatus(e.target.value);
   };
@@ -63,6 +65,8 @@ function Application() {
     }
   };
 
+  console.warn("result = ", result);
+  console.warn("result.user_id = ", result.user_id);
   return (
     <div className="application">
       <HeaderBasic />
@@ -72,7 +76,6 @@ function Application() {
         </div>
 
         <div className="application_details">
-          {/* <h2 className="position">Service Delivery Manager</h2> */}
           <h2 className="position">{result.job}</h2>
           <h2 className="date_location">
             31/05/2023 | {result.contract_type} | {result.city_job}
@@ -80,7 +83,7 @@ function Application() {
         </div>
 
         <div className="card_application">
-          <NavLink to="/company/profilecandidate">
+          <NavLink to={`/company/profilecandidate/${result.user_id}`}>
             <div className="card_info">
               <img
                 className="user_pic"
@@ -97,6 +100,25 @@ function Application() {
               <img className="loupe" src={loupe} alt="" />
             </div>
           </NavLink>
+
+          {/* <div>
+            <div className="card_info">
+              <img
+                className="user_pic"
+                src={result.profil_picture}
+                alt=""
+                srcSet=""
+              />
+              <div className="name_email">
+                <h3>
+                  {result.firstname} {result.lastname}
+                </h3>
+                <h3>{result.email}</h3>
+              </div>
+              <img className="loupe" src={loupe} alt="" />
+            </div>
+          </div> */}
+
           <div className="status">
             <InputListe
               inputMessage="Selectionner un statut"
@@ -120,7 +142,5 @@ function Application() {
     </div>
   );
 }
-
-// Have to check for the input List
 
 export default Application;

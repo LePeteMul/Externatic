@@ -56,6 +56,7 @@ function Results() {
             {resultsNumber} <span>résultats</span>
           </h2>
         </div>
+
         <div className="JobResults">
           {jobOffer.map((job) => {
             return (

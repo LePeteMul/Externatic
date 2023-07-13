@@ -244,7 +244,7 @@ function Router() {
           }
         />
         <Route
-          path="/company/profilecandidate"
+          path="/company/profilecandidate/:id"
           element={
             <ProtectedforCompany>
               <ProfileCandidate />
