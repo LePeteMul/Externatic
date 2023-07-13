@@ -112,7 +112,7 @@ function CompanyProfile() {
             />
             {showPopup1 && (
               <Popup
-                title="Données modifiées"
+                title="Mise à jour effectuée"
                 message=""
                 open={showPopup1}
                 onClose={handlePopup1Close}

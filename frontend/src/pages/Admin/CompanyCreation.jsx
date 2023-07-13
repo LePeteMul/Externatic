@@ -74,7 +74,6 @@ function CompanyCreation() {
               type="text"
               handleChange={handleChange}
             />
-            <InputLogo label="Logo de la société" />
             <InputTexte
               label="Adresse mail de contact"
               name="email"
@@ -108,8 +107,8 @@ function CompanyCreation() {
             />
             {showPopup1 && (
               <Popup
-                title="Entreprise ajoutée"
-                message=""
+                title="L'entreprise a bien été crée dans la base de données."
+                message="Un mail de confirmation a été transmis sur l'adresse renseignée."
                 open={showPopup1}
                 onClose={handlePopup1Close}
                 buttonname="Retour au Dashboard"
