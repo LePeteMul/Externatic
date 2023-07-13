@@ -1,14 +1,30 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect, useNavigate } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import queryString from "query-string";
 import HeaderWave from "../../components/Header/HeaderWave";
 import InputTexte from "../../components/Elements/InputTexte";
 import BlackButton from "../../components/Elements/BlackButton";
 import WhiteButton from "../../components/Elements/WhiteButton";
 
+function extraireEmail(badEmail) {
+  const params = new URLSearchParams(badEmail);
+  if (params.has("email")) {
+    const encodedEmail = params.get("email");
+    const decodedEmail = decodeURIComponent(encodedEmail);
+    return decodedEmail;
+  }
+  return "";
+}
+
 function ResetPassword() {
-  const date = new Date();
+  const location = useLocation();
+  const finalEmail = extraireEmail(queryString.parse(location.search));
+
+  // const navigate = useNavigate();
+  // const [showPopup1, setShowPopup1] = useState(false);
+
   const [formData, setFormData] = useState({
-    email: "",
+    email: finalEmail,
     password: "",
   });
 
@@ -20,15 +36,6 @@ function ResetPassword() {
       [e.target.name]: e.target.value,
     }));
   };
-
-  /*
-
-        method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-
-  */
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -65,15 +72,11 @@ function ResetPassword() {
         <div className="page_title">
           <h1>Récupération de mot de passe</h1>
         </div>
+        <div className="subtitle">
+          <h4>Compte: {finalEmail}</h4>
+        </div>
         <form onSubmit={handleSubmit} className="input">
           <div className="inputs">
-            <InputTexte
-              label="Votre adresse email"
-              name="email"
-              type="email"
-              placeholder="bonjour@externatic.fr"
-              handleChange={handleChange}
-            />
             <InputTexte
               label="Nouveau mot de passe"
               name="password"
