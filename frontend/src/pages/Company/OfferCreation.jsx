@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import InputListe from "../../components/Elements/InputListe";
@@ -12,6 +12,8 @@ function OfferCreation() {
   const navigate = useNavigate();
   const [showPopup1, setShowPopup1] = useState(false);
   const { companyId } = useContext(CompanyConnexionContext);
+  const [offerData, setOfferData] = useState([]);
+
   const handlePopup1Open = () => {
     setShowPopup1(true);
   };
@@ -65,6 +67,21 @@ function OfferCreation() {
       });
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/api/offer");
+        const data = await response.json();
+        setOfferData(data);
+      } catch (error) {
+        console.error("Error fetching offer data:", error);
+        // Handle the error appropriately
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="offer_creation">
       <HeaderBasic />
@@ -81,21 +98,10 @@ function OfferCreation() {
                 name="job"
                 placeholder="Selectionner un métier"
                 handleChange={handleChange}
-                data={[
-                  {
-                    value:
-                      "Administrateur systèmes et réseaux Linux / sud loire H/F",
-                    name: "Administrateur systèmes et réseaux Linux / sud loire H/F",
-                  },
-                  {
-                    value: "Chef de projet WMS/ progiciel H/F",
-                    name: "Chef de projet WMS/ progiciel H/F",
-                  },
-                  {
-                    value: "Développeur React H/F @solutions agricoles",
-                    name: "Développeur React H/F @solutions agricoles",
-                  },
-                ]}
+                data={offerData.map((offer) => ({
+                  value: offer.job,
+                  name: offer.job,
+                }))}
               />
 
               <InputListe
