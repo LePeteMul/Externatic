@@ -5,7 +5,7 @@ function InputListe({ label, placeholder, data, handleChange, name }) {
   return (
     <div className="inputListe">
       <label>{label}</label>
-      <select onClick={handleChange} name={name} className="select">
+      <select onInput={handleChange} name={name} className="select">
         <option value=""> {placeholder}</option>
         {data.map((item) => (
           <option key={item.name} value={item.value}>
