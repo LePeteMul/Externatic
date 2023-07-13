@@ -34,9 +34,7 @@ function OffersList() {
   };
 
   const handleDelete = (id) => {
-    setOfferId(id);
-
-    fetch(`http://localhost:8080/api/offer/${offerId}`, {
+    fetch(`http://localhost:8080/api/offer/${id}`, {
       method: "DELETE",
     })
       .then((response) => {

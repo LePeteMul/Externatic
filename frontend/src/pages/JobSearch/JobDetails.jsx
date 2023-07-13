@@ -5,6 +5,7 @@ import BlackButton from "../../components/Elements/BlackButton";
 import HeartButton from "../../assets/icons/heart.png";
 import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
 import JobOfferContext from "../../contexts/JobOfferContext/JobOfferContext";
+import Popup from "../../components/Elements/Popup";
 import { formatDate } from "../../services/formatDate";
 
 function JobDetails() {
@@ -40,6 +41,12 @@ function JobDetails() {
     offer_id: offerId,
   });
 
+  const [hasApply, setHasApply] = useState(false);
+
+  const handlePopupApplyClose = () => {
+    setHasApply(false);
+  };
+
   const applicationClick = (e) => {
     e.preventDefault();
 
@@ -53,13 +60,20 @@ function JobDetails() {
       },
       body: JSON.stringify(requestData),
     })
-      .then((response) => response.text())
-      .then((res) => {
-        console.info("Response:", res);
+      .then((response) => {
+        if (response.status === 201) {
+          setHasApply(true);
+        }
       })
       .catch((error) => {
         console.error("Error:", error);
       });
+  };
+
+  const [hasFavorite, setHasFavorite] = useState(false);
+
+  const handlePopupFavoriteClose = () => {
+    setHasFavorite(false);
   };
 
   const favoriteClick = (e) => {
@@ -75,9 +89,10 @@ function JobDetails() {
       },
       body: JSON.stringify(requestData),
     })
-      .then((response) => response.text())
-      .then((res) => {
-        console.info("Response:", res);
+      .then((response) => {
+        if (response.status === 201) {
+          setHasFavorite(true);
+        }
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -155,6 +170,23 @@ function JobDetails() {
               </button>
             </div>
           </div>
+        )}
+        {hasApply && (
+          <Popup
+            title="Votre candidature a bien été transmise"
+            message="L'entreprise vous rencontactera dans les
+            meilleurs délais"
+            onClose={handlePopupApplyClose}
+            buttonname="Retour à l'offre"
+          />
+        )}
+        {hasFavorite && (
+          <Popup
+            title="Cette offre a bien été ajoutée à vos favoris"
+            message=""
+            onClose={handlePopupFavoriteClose}
+            buttonname="Retour à l'offre"
+          />
         )}
       </div>
     </div>
