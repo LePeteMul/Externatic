@@ -74,6 +74,20 @@ class CompanyManager extends AbstractManager {
       [id]
     );
   }
+
+  updateProfilePicture(company) {
+    return this.database.query(
+      `update ${this.table} , profil_picture = ? where id = ?`,
+      [company.logo, company.id]
+    );
+  }
+
+  addLogo(logo, id) {
+    return this.database.query(
+      `update ${this.table} set  logo = ? where id = ?`,
+      [logo, id]
+    );
+  }
 }
 
 module.exports = CompanyManager;

@@ -84,6 +84,27 @@ class UserManager extends AbstractManager {
       [id]
     );
   }
+
+  updateProfilePicture(user) {
+    return this.database.query(
+      `update ${this.table} , profil_picture = ? where id = ?`,
+      [user.profil_picture, user.id]
+    );
+  }
+
+  addProfilePicture(user) {
+    return this.database.query(
+      `update ${this.table} set  profil_picture = ? where id = ?`,
+      [user.profil_picture, user.id]
+    );
+  }
+
+  addCv(cv, id) {
+    return this.database.query(
+      `update ${this.table} set  cv = ? where id = ?`,
+      [cv, id]
+    );
+  }
 }
 
 module.exports = UserManager;

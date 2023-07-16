@@ -30,9 +30,23 @@
     margin-top: 40px;
 
     .InputImage {
+      display: flex;
+
       margin-top: 40px;
       width: 150px;
       height: 150px;
+      z-index: 12;
+      object-fit: cover;
+
+      .imageSize {
+        border: solid $primaryColor;
+      }
+    }
+
+    .InputLogo {
+      margin-top: 30px;
+      width: 200px;
+      height: 100px;
       z-index: 12;
       object-fit: cover;
 
