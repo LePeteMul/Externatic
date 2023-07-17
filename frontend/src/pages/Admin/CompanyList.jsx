@@ -1,12 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import CompanyCard from "../../components/Elements/CompanyCard";
-import nickel from "../../assets/images/HomePage/logo-nickel.png";
 import BlackButton from "../../components/Elements/BlackButton";
-import CompanyConnexionContext from "../../contexts/CompanyConnexionContext/CompanyConnexionContext";
 
 function CompanyList() {
+  const navigate = useNavigate();
+
   const [result, setResult] = useState([]);
 
   // find all companies List
@@ -34,8 +34,10 @@ function CompanyList() {
         }
       );
 
-      if (response.ok) {
-        console.info("Company deleted successfully");
+      if (response.status === 204) {
+        setResult((prevResult) =>
+          prevResult.filter((results) => results.id !== companyId)
+        );
       } else {
         console.error("Failed to delete company");
       }

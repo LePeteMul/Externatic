@@ -119,7 +119,11 @@ const add = (req, res) => {
     })
     .catch((err) => {
       console.error(err);
-      res.sendStatus(500);
+      if (err.code === "ER_DUP_ENTRY") {
+        res.status(400).send("Email deja utilisé");
+      } else {
+        res.status(500).send("Internal server error");
+      }
     });
 };
 

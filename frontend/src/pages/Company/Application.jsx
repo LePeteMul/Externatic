@@ -71,68 +71,58 @@ function Application() {
     <div className="application">
       <HeaderBasic />
       <div className="boxWithoutHeader">
-        <div className="applicationTitle">
-          <h1>Candidature(s)</h1>
-        </div>
-
-        <div className="application_details">
-          <h2 className="position">{result.job}</h2>
-          <h2 className="date_location">
-            31/05/2023 | {result.contract_type} | {result.city_job}
-          </h2>
-        </div>
-
-        <div className="card_application">
-          <NavLink to={`/company/profilecandidate/${result.user_id}`}>
-            <div className="card_info">
-              <img
-                className="user_pic"
-                src={result.profil_picture}
-                alt=""
-                srcSet=""
-              />
-              <div className="name_email">
-                <h3>
-                  {result.firstname} {result.lastname}
-                </h3>
-                <h3>{result.email}</h3>
-              </div>
-              <img className="loupe" src={loupe} alt="" />
-            </div>
-          </NavLink>
-
-          {/* <div>
-            <div className="card_info">
-              <img
-                className="user_pic"
-                src={result.profil_picture}
-                alt=""
-                srcSet=""
-              />
-              <div className="name_email">
-                <h3>
-                  {result.firstname} {result.lastname}
-                </h3>
-                <h3>{result.email}</h3>
-              </div>
-              <img className="loupe" src={loupe} alt="" />
-            </div>
-          </div> */}
-
-          <div className="status">
-            <InputListe
-              inputMessage="Selectionner un statut"
-              data={[
-                { value: 1, name: "En cours de traitement" },
-                { value: 2, name: "Entretien planifié" },
-                { value: 3, name: "Accepté" },
-                { value: 4, name: "Refusé" },
-              ]}
-              value={selectedStatus}
-              handleChange={handleStatusChange}
-            />
+        {result === "" && (
+          <div className="applicationTitle">
+            <h1>Pas de candidature pour cette offre</h1>
           </div>
-        </div>
+        )}
+        {result && (
+          <div className="applicationTitle">
+            <h1>Candidature(s)</h1>
+          </div>
+        )}
+        {result && (
+          <div className="application_details">
+            <h2 className="position">{result.job}</h2>
+            <h2 className="date_location">
+              31/05/2023 | {result.contract_type} | {result.city_job}
+            </h2>
+          </div>
+        )}
+        {result && (
+          <div className="card_application">
+            <NavLink to={`/company/profilecandidate/${result.user_id}`}>
+              <div className="card_info">
+                <img
+                  className="user_pic"
+                  src={result.profil_picture}
+                  alt=""
+                  srcSet=""
+                />
+                <div className="name_email">
+                  <h3>
+                    {result.firstname} {result.lastname}
+                  </h3>
+                  <h3>{result.email}</h3>
+                </div>
+                <img className="loupe" src={loupe} alt="" />
+              </div>
+            </NavLink>
+            <div className="status">
+              <InputListe
+                inputMessage="Selectionner un statut"
+                data={[
+                  { value: 1, name: "En cours de traitement" },
+                  { value: 2, name: "Entretien planifié" },
+                  { value: 3, name: "Accepté" },
+                  { value: 4, name: "Refusé" },
+                ]}
+                value={selectedStatus}
+                handleChange={handleStatusChange}
+              />
+            </div>
+          </div>
+        )}
         <div className="applicationEnd">
           <NavLink to="/company/dashboard">
             <BlackButton buttonName="Retour à mon espace" />
