@@ -15,7 +15,7 @@ function JobInput() {
       className="selected"
       type="text"
       value={jobLS || searchJob}
-      placeholder="Entrez le métier"
+      placeholder="Entrer le métier"
       onChange={handleChangeInput}
     />
   );
