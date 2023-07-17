@@ -213,37 +213,6 @@ const editPassword = (req, res) => {
     });
 };
 
-/* const editPreference = (req, res) => {
-  const user = req.body;
-  id = parseInt(req.params.id, 10);
-
-  models.user
-    .updatePreference(user)
-    .then(([result]) => {
-      if (result.affectedRows === 0) {
-        res.sendStatus(404);
-      } else {
-        res.sendStatus(204);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-
-const getPreference = (req, res) => {
-  models.user
-    .findPreference(req.params.id)
-    .then(([rows]) => {
-      res.send(rows);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-}; */
-
 module.exports = {
   browse,
   read,

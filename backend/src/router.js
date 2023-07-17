@@ -39,6 +39,12 @@ router.post(
   verifyCompanyPassword
 );
 
+router.put(
+  "/api/company/edition/resetpassword",
+  hashPassword,
+  companyControllers.editPassword
+);
+
 const contractControllers = require("./controllers/contractControllers");
 
 router.get("/api/contract", contractControllers.browse);
@@ -95,16 +101,7 @@ router.get("/api/user/candidats", userControllers.getCandidate);
 router.get("/api/user/:id", userControllers.getById);
 
 router.put("/api/user/:id", userControllers.edit);
-router.put(
-  "/api/user/edition/resetpassword",
-  hashPassword,
-  userControllers.editPassword
-);
-router.get("/api/user/preference/:id", userControllers.getPreference);
-
-/* router.get("/api/user/preference/:id", userControllers.getPreference); */
-/* router.put("/api/user/preference/:id", userControllers.editPreference); */
-
+// router.get("/api/user/preference/:id", userControllers.getPreference);
 router.put("/api/user/:id", userControllers.editById);
 router.post("/api/user/register", hashPassword, userControllers.add);
 router.delete("/api/user/:id", userControllers.destroy);
@@ -130,6 +127,12 @@ router.post("/api/email", mailControllers.sendContactMail);
 
 router.post("/api/email/contact", mailControllers.sendContactMessageMail);
 router.post("/api/email/resetpassword", mailControllers.sendPasswordResetMail);
+
+router.post(
+  "/api/email/company/resetpassword",
+  mailControllers.sendCompanyPasswordResetMail
+);
+
 router.get("/api/email/user/:mail", userControllers.getUserByEmail);
 
 // Route to get all the offers with details

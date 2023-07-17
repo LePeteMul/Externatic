@@ -16,7 +16,7 @@ function CompanyCreation() {
 
   const handlePopup1Close = () => {
     setShowPopup1(false);
-    navigate("/admin/dashboard"); // Rediriger vers la première page différente
+    // navigate("/admin/dashboard"); // Rediriger vers la première page différente
   };
 
   const [formData, setFormData] = useState({
@@ -57,7 +57,29 @@ function CompanyCreation() {
       .catch((error) => {
         console.error("Error:", error);
       });
+
+    fetch("http://localhost:8080/api/company/edition/resetpassword", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => {
+        // Traiter la réponse du serveur
+        if (response.ok) {
+          // La requête a réussi
+          console.info("Message envoyé avec succès");
+        } else {
+          // La requête a échoué
+          console.error("Erreur lors de l'envoi du message");
+        }
+      })
+      .catch((error) => {
+        console.error("Erreur lors de la requête:", error);
+      });
   };
+
   return (
     <div className="CompanyCreation">
       <HeaderBasic />

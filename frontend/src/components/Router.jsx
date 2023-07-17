@@ -24,6 +24,7 @@ import Application from "../pages/Company/Application";
 import ProfileCandidate from "../pages/Company/ProfileCandidate";
 import CompanyProfile from "../pages/Company/CompanyProfile";
 import OffersListCompany from "../pages/Company/OffersListCompany";
+import CompanyResetPassword from "../pages/Company/CompanyResetPassword";
 
 import ApplicationConfirmation from "../pages/JobSearch/ApplicationConfirmation";
 
@@ -40,6 +41,7 @@ import Contact from "../pages/Contact/Contact";
 import Logout from "../pages/Login/Logout";
 import ForgottenPassword from "../pages/Login/ForgottenPassword";
 import ResetPassword from "../pages/Login/ResetPassword";
+import ConfirmationCompanyResetPassword from "../pages/Company/ConfirmationCompanyResetPassword";
 
 function Router() {
   return (
@@ -250,6 +252,14 @@ function Router() {
               <ProfileCandidate />
             </ProtectedforCompany>
           }
+        />
+        <Route
+          path="/company/resetpassword"
+          element={<CompanyResetPassword />}
+        />
+        <Route
+          path="/company/edition/resetpassword"
+          element={<ConfirmationCompanyResetPassword />}
         />
       </Routes>
     </div>
