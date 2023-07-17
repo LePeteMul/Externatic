@@ -45,11 +45,7 @@ CREATE TABLE
         password VARCHAR(250) NOT NULL,
         profil_picture VARCHAR(250),
         contact_mode VARCHAR(250),
-        pref_job VARCHAR(250),
-        job_city VARCHAR(300),
-        pref_contract INT,
         PRIMARY KEY (id),
-        FOREIGN KEY (pref_contract) REFERENCES contract(id)
     );
 
 CREATE TABLE

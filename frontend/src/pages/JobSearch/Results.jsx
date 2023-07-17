@@ -49,13 +49,13 @@ function Results() {
         }`}
       >
         <div className="SearchResume">
-          <div className="InputList">
+          <div className="InputText">
             <JobInput />
           </div>
           <div className="InputList">
             <ContractInput />
           </div>
-          <div className="InputText">
+          <div className="InputList">
             <CityInput />
           </div>
         </div>
