@@ -141,6 +141,18 @@ const findOffersByCompany = (req, res) => {
     });
 };
 
+const getCities = (req, res) => {
+  models.offer
+    .findCities()
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
@@ -151,4 +163,5 @@ module.exports = {
   getJobList,
   getOfferDetails,
   findOffersByCompany,
+  getCities,
 };

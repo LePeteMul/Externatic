@@ -58,7 +58,7 @@ class OfferManager extends AbstractManager {
 
     if (search.job !== "" && search.contract !== "" && search.city !== "") {
       query += `
-        WHERE offer.job = ? 
+        WHERE offer.job LIKE ? 
         AND offer.contract_id = ? 
         AND offer.city_job = ?
         ORDER BY offer.date DESC`;
@@ -69,7 +69,7 @@ class OfferManager extends AbstractManager {
       search.city === ""
     ) {
       query += `
-        WHERE offer.job = ? 
+        WHERE offer.job LIKE ?  
         AND offer.contract_id = ?
         ORDER BY offer.date DESC`;
       params = [search.job, search.contract];
@@ -79,7 +79,7 @@ class OfferManager extends AbstractManager {
       search.city === ""
     ) {
       query += `
-        WHERE offer.job = ?
+        WHERE offer.job LIKE ?
         ORDER BY offer.date DESC`;
       params = [search.job];
     } else if (
@@ -88,7 +88,7 @@ class OfferManager extends AbstractManager {
       search.city !== ""
     ) {
       query += `
-        WHERE offer.job = ? 
+        WHERE offer.job LIKE ? 
         AND offer.city_job = ?
         ORDER BY offer.date DESC`;
       params = [search.job, search.city];
@@ -151,6 +151,10 @@ class OfferManager extends AbstractManager {
       INNER JOIN contract ON ${this.table}.id = contract.id;
       `
     );
+  }
+
+  findCities() {
+    return this.database.query(`select DISTINCT city_job from  ${this.table}`);
   }
 }
 

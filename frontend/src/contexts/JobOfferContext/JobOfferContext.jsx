@@ -19,7 +19,7 @@ export function JobOfferContextProvider({ children }) {
 
   useEffect(() => {
     const queryParams = new URLSearchParams({
-      job: searchJob,
+      job: `${searchJob}%`,
       contract: searchContractId,
       city: searchCity,
     }).toString();

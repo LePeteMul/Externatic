@@ -143,15 +143,18 @@ function JobDetails() {
         </div>
         <br />
         <div className="OfferTechno">
-          <h3>Environnement technique :</h3>
+          <h3>Hard Skills :</h3>
           <br />
           <p>{jobDetails.techno_name}</p>
+          <br />
+          <h3>Soft Skills :</h3>
+          <br />
+          <p>{jobDetails.prerequisites}</p>
         </div>
         <br />
         <div className="OfferConditions">
           <h3>Conditions de travail</h3>
           <br />
-          <p>{jobDetails.prerequisites}</p>
           <p>Télétravail : {jobDetails.remote}</p>
           <p>
             Salaire : de {jobDetails.min_salary} € à {jobDetails.max_salary} €
