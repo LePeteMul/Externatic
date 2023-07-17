@@ -40,6 +40,7 @@ function CompanyProfile() {
   };
 
   const [formData, setFormData] = useState({
+    Nom: company.company_name,
     email: company.email,
     phone: company.phone,
   });
@@ -84,6 +85,15 @@ function CompanyProfile() {
         </div>
         <form onSubmit={handleSubmit} className="input">
           <div className="CompanyProfileInformations">
+            <InputTexte
+              label="Nom"
+              name="company_name"
+              placeholder="NOM ENTREPRISE"
+              type="name"
+              handleChange={handleChange}
+              value={formData.company_name}
+            />
+
             <InputTexte
               label="Email"
               name="email"
