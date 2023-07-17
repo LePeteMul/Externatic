@@ -28,10 +28,8 @@ function CandidateProfile() {
           email: data.email,
           phone: data.phone,
           city: data.city,
-          // language: "",
           cv: data.cv,
-          // password: "****",
-          admin: data.admin,
+          // language: "",
         });
       })
       .catch((err) => console.error(err));
@@ -40,6 +38,7 @@ function CandidateProfile() {
   console.warn("user dans le admin profile = ", user);
   console.warn("is admin ? ", user.admin);
   console.warn("lastname = ", user.lastname);
+  console.warn("password = ", user.password);
 
   const navigate = useNavigate();
   const [showPopup1, setShowPopup1] = useState(false);
@@ -70,10 +69,8 @@ function CandidateProfile() {
     email: user.email,
     phone: user.phone,
     city: user.city,
-    // language: "",
     cv: user.cv,
-    // password: "****",
-    admin: user.admin,
+    // language: "",
   });
 
   const handleChange = (e) => {
@@ -129,7 +126,7 @@ function CandidateProfile() {
             city: user.city,
             // language: "",
             cv: user.cv,
-            // password: "****",
+            password: user.password,
             admin: user.admin,
           });
           handlePopup2Open();
@@ -148,18 +145,6 @@ function CandidateProfile() {
           <h1>Mon profil</h1>
         </div>
         <form onSubmit={handleSubmit} className="input">
-          <InputListe
-            label="Genre"
-            name="gender"
-            placeholder="Selectionner votre genre"
-            handleChange={handleChange}
-            data={[
-              { value: "genre1", name: "Je suis une femme" },
-              { value: "genre 2", name: "Je suis un homme" },
-              { value: "genre 3", name: "je suis non binaire" },
-            ]}
-            value={formData.gender}
-          />
           <InputTexte
             label="Nom"
             name="lastname"
@@ -213,12 +198,16 @@ function CandidateProfile() {
           />
           <BlackButton
             buttonName="Valider mes modifications"
-            buttonFunction={handlePopup1Open}
+            buttonFunction={(event) => {
+              event.preventDefault();
+              handlePopup1Open();
+              handleSubmit(event);
+            }}
           />
 
           {showPopup1 && (
             <Popup
-              title="Données modifiées"
+              title="Mise à jour effectuée"
               message="Super, tes données ont été modifiées !"
               open={showPopup1}
               onClose={handlePopup1Close}
@@ -236,10 +225,10 @@ function CandidateProfile() {
 
           {showPopup2 && (
             <Popup
-              title="Données supprimées"
+              title="Ton compte a bien été supprimé"
               open={showPopup2}
               onClose={handlePopup2Close}
-              buttonname={"Retour a l'acceuil"}
+              buttonname={"Retour a l'accueil"}
             />
           )}
         </form>

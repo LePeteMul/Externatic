@@ -5,7 +5,7 @@
   background-color: white;
   border-radius: 10px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-around;
   align-items: center;
   padding-left: 10px;
   padding-right: 10px;
@@ -21,7 +21,6 @@
     .logo {
       height: 100%;
       width: 100%;
-      border-radius: 7px;
     }
   }
 
@@ -58,6 +57,36 @@
 
     .jobCardButtons {
       background-color: $textColorLight;
+    }
+  }
+
+  @media screen and (min-width: 650px) {
+    .company_logo {
+      width: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .logo {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+      }
+    }
+    .job_details {
+      width: 400px;
+    }
+    .job_title {
+      font-size: 19px;
+    }
+    .contractLocation {
+      font-size: 17px;
+    }
+    .publication {
+      font-size: 15px;
+    }
+
+    .navigation {
+      justify-content: flex-end;
     }
   }
 }

@@ -22,7 +22,7 @@ function AdminDashboard() {
 
   return (
     <div className="AdminDashboard">
-      <HeaderWaveInverted title={`Bienvenue, ${admin.firstname}`} />
+      <HeaderWaveInverted title={`Bienvenue ${admin.firstname}`} />
 
       <div className="boxWithoutHeader">
         <div className="boxInside">

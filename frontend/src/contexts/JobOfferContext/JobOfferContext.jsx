@@ -12,6 +12,11 @@ export function JobOfferContextProvider({ children }) {
 
   const [jobOffer, setJobOffer] = useState([]);
 
+  /* Filtres Front supplémentaires */
+  const [selectedRemote, setSelectedRemote] = useState("");
+  const [selectedTechno, setSelectedTechno] = useState("");
+  const [mensualSalary, setMensualSalary] = useState(1500);
+
   useEffect(() => {
     const queryParams = new URLSearchParams({
       job: searchJob,
@@ -40,6 +45,12 @@ export function JobOfferContextProvider({ children }) {
       setSearchContractId,
       offerId,
       setOfferId,
+      selectedRemote,
+      setSelectedRemote,
+      selectedTechno,
+      setSelectedTechno,
+      mensualSalary,
+      setMensualSalary,
     }),
     [
       jobOffer,
@@ -54,6 +65,12 @@ export function JobOfferContextProvider({ children }) {
       setSearchContractId,
       offerId,
       setOfferId,
+      selectedRemote,
+      setSelectedRemote,
+      selectedTechno,
+      setSelectedTechno,
+      mensualSalary,
+      setMensualSalary,
     ]
   );
 

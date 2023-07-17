@@ -65,10 +65,10 @@ class CompanyManager extends AbstractManager {
   findAllOffersWithDetails(id) {
     return this.database.query(
       `
-      SELECT ${this.table}.company_name,${this.table}.logo, offer.date, offer.job, contract.contract_type, offer.city_job 
+      SELECT ${this.table}.company_name,${this.table}.logo, offer.id as offer_id, offer.date, offer.job, contract.contract_type, offer.city_job 
       FROM ${this.table}
-      INNER JOIN offer ON offer.id = ${this.table}.id
-      INNER JOIN contract ON offer.id = contract.id
+      INNER JOIN offer ON offer.company_id = ${this.table}.id
+      INNER JOIN contract ON offer.contract_id = contract.id
       WHERE ${this.table}.id = ?;
       `,
       [id]

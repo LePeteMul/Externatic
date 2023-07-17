@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import InputListe from "../../components/Elements/InputListe";
@@ -6,10 +6,14 @@ import Textearea from "../../components/Elements/Textearea";
 import BlackButton from "../../components/Elements/BlackButton";
 import InputTexte from "../../components/Elements/InputTexte";
 import Popup from "../../components/Elements/Popup";
+import CompanyConnexionContext from "../../contexts/CompanyConnexionContext/CompanyConnexionContext";
 
 function OfferCreation() {
   const navigate = useNavigate();
   const [showPopup1, setShowPopup1] = useState(false);
+  const { companyId } = useContext(CompanyConnexionContext);
+  const [offerData, setOfferData] = useState([]);
+
   const handlePopup1Open = () => {
     setShowPopup1(true);
   };
@@ -20,13 +24,15 @@ function OfferCreation() {
   };
 
   const [formData, setFormData] = useState({
-    company_id: 1,
+    company_id: companyId,
     job: "",
     contract_id: "",
     min_salary: "",
     max_salary: "",
     description: "",
     city_job: "",
+    prerequisites: "Min 3ans d'expériences",
+    department: "",
     // softskills: "",
     // hardskills: "",
   });
@@ -37,8 +43,8 @@ function OfferCreation() {
       [e.target.name]: e.target.value,
     }));
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
     const url = "http://localhost:8080/api/offer";
     const requestData = { ...formData };
@@ -61,6 +67,21 @@ function OfferCreation() {
       });
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/api/offer");
+        const data = await response.json();
+        setOfferData(data);
+      } catch (error) {
+        console.error("Error fetching offer data:", error);
+        // Handle the error appropriately
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="offer_creation">
       <HeaderBasic />
@@ -77,11 +98,10 @@ function OfferCreation() {
                 name="job"
                 placeholder="Selectionner un métier"
                 handleChange={handleChange}
-                data={[
-                  { value: "metier1", name: "Metier n°1" },
-                  { value: "metier2", name: "Metier n°2" },
-                  { value: "metier3", name: "Metier n°3" },
-                ]}
+                data={offerData.map((offer) => ({
+                  value: offer.job,
+                  name: offer.job,
+                }))}
               />
 
               <InputListe
@@ -90,22 +110,23 @@ function OfferCreation() {
                 placeholder="Selectionner un contrat"
                 handleChange={handleChange}
                 data={[
-                  { value: "1", name: "1" },
-                  { value: "CDD", name: "CDD" },
-                  { value: "Stage", name: "Stage" },
+                  { value: "1", name: "CDI" },
+                  { value: "2", name: "CDD" },
+                  { value: "3", name: "Alternance" },
+                  { value: "4", name: "Interim" },
                 ]}
               />
               <InputTexte
                 label="Salaire annuel brut minimum (euros)"
                 name="min_salary"
-                placeholder="30 000"
+                placeholder="30000"
                 handleChange={handleChange}
                 type="text"
               />
               <InputTexte
                 label="Salaire annuel brut maximum (euros)"
                 name="max_salary"
-                placeholder="35 000"
+                placeholder="35000"
                 handleChange={handleChange}
                 type="text"
               />
@@ -125,8 +146,8 @@ function OfferCreation() {
                 handleChange={handleChange}
                 data={[
                   { value: "Nantes", name: "Nantes" },
-                  { value: "Paris", name: "Paris" },
-                  { value: "Toulouse", name: "Toulouse" },
+                  { value: "Angers", name: "Angers" },
+                  { value: "Bordeaux", name: "Bordeaux" },
                 ]}
               />
 
@@ -136,9 +157,9 @@ function OfferCreation() {
                 name="teletravail"
                 handleChange={handleChange}
                 data={[
-                  { value: "Total", name: "Total" },
-                  { value: "Partiel", name: "Partiel" },
-                  { value: "Pas disponible", name: "Pas disponible" },
+                  { value: "total", name: "total" },
+                  { value: "partiel", name: "partiel" },
+                  { value: "occasionnel", name: "occasionnel" },
                 ]}
               />
 
@@ -166,7 +187,7 @@ function OfferCreation() {
                   buttonFunction={(event) => {
                     event.preventDefault();
                     handlePopup1Open();
-                    handleSubmit();
+                    handleSubmit(event);
                   }}
                   // buttonFunction={handlePosted}
                 />

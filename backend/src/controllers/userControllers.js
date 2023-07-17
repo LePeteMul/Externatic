@@ -50,6 +50,28 @@ const edit = (req, res) => {
     });
 };
 
+const editById = (req, res) => {
+  const user = req.body;
+
+  // TODO validations (length, format...)
+
+  user.id = parseInt(req.params.id, 10);
+
+  models.user
+    .updateById(user)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const add = (req, res) => {
   const user = req.body;
 
@@ -98,7 +120,7 @@ const getUserByEmailWithPasswordAndPassToNext = (req, res, next) => {
         console.info("user identified by email");
         next();
       } else {
-        console.info("Tas pas reussi userController get user by mail");
+        res.status(401).send("Adresse mail incorrecte");
       }
     })
     .catch((err) => {
@@ -172,9 +194,28 @@ const getAppliByOfferId = (req, res) => {
     });
 };
 
-const editPreference = (req, res) => {
+const editPassword = (req, res) => {
+  const { email, password } = req.body;
+  console.info(email, password);
+
+  models.user
+    .updatePassword(email, password)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+/* const editPreference = (req, res) => {
   const user = req.body;
-  user.id = parseInt(req.params.id, 10);
+  id = parseInt(req.params.id, 10);
 
   models.user
     .updatePreference(user)
@@ -201,6 +242,7 @@ const getPreference = (req, res) => {
       console.error(err);
       res.sendStatus(500);
     });
+
 };
 const addProfilePicture = async (req, res) => {
   const url = process.env.BACKEND_URL_IMAGE + req.fname;
@@ -230,10 +272,12 @@ const addCv = async (req, res) => {
     });
 };
 
+
 module.exports = {
   browse,
   read,
   edit,
+  editById,
   add,
   destroy,
   getUserByEmailWithPasswordAndPassToNext,
@@ -241,8 +285,10 @@ module.exports = {
   getById,
   getAppliByOfferId,
   getUserByEmail,
+
   editPreference,
   getPreference,
   addProfilePicture,
   addCv,
+
 };

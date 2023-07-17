@@ -25,20 +25,16 @@ import ProfileCandidate from "../pages/Company/ProfileCandidate";
 import CompanyProfile from "../pages/Company/CompanyProfile";
 import OffersListCompany from "../pages/Company/OffersListCompany";
 
-import ApplicationConfirmation from "../pages/JobSearch/ApplicationConfirmation";
-
 import ProtectedforAdmin from "./ProtectedforAdmin";
 import OffersList from "../pages/Admin/OffersList";
 import CandidateList from "../pages/Admin/CandidateList";
 import CompanyList from "../pages/Admin/CompanyList";
 import AdminProfile from "../pages/Admin/AdminProfile";
 import CompanyCreation from "../pages/Admin/CompanyCreation";
-import ConfirmationCreation from "../pages/Admin/ConfirmationCreation";
-import ConfirmationDeletion from "../pages/Admin/ConfirmationDeletion";
 import LegalInformations from "../pages/LegalInformations/LegalInformations";
 import Contact from "../pages/Contact/Contact";
-import Logout from "../pages/Login/Logout";
 import ForgottenPassword from "../pages/Login/ForgottenPassword";
+import ResetPassword from "../pages/Login/ResetPassword";
 
 function Router() {
   return (
@@ -72,22 +68,6 @@ function Router() {
           }
         />
         <Route
-          path="/admin/creationconfirmation"
-          element={
-            <ProtectedforAdmin>
-              <ConfirmationCreation />
-            </ProtectedforAdmin>
-          }
-        />
-        <Route
-          path="/admin/deletionconfirmation"
-          element={
-            <ProtectedforAdmin>
-              <ConfirmationDeletion />
-            </ProtectedforAdmin>
-          }
-        />
-        <Route
           path="/admin/offerlist"
           element={
             <ProtectedforAdmin>
@@ -108,6 +88,7 @@ function Router() {
           element={
             <ProtectedforAdmin>
               <CompanyList />
+              {/* //{" "} */}
             </ProtectedforAdmin>
           }
         />
@@ -115,7 +96,6 @@ function Router() {
         {/* Global section */}
         <Route path="/login" element={<Login />} />
         <Route path="/logincompany" element={<LoginCompany />} />
-        <Route path="/logout" element={<Logout />} />
         <Route path="/jobsearch" element={<JobSearch />} />
         <Route path="/results" element={<Results />} />
         <Route path="/job/:id" element={<JobDetails />} />
@@ -123,16 +103,9 @@ function Router() {
         <Route path="/legalinformations" element={<LegalInformations />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/resetpassword" element={<ForgottenPassword />} />
+        <Route path="/forgottenpassword" element={<ResetPassword />} />
 
         {/* Candidate section */}
-        <Route
-          path="/candidate/applicationconfirmation"
-          element={
-            <ProtectedforCandidate>
-              <ApplicationConfirmation />
-            </ProtectedforCandidate>
-          }
-        />
         <Route path="/candidate/registration" element={<Registration />} />
         <Route
           path="/candidate/profile"
@@ -219,9 +192,9 @@ function Router() {
         <Route
           path="/company/offers"
           element={
-            // <ProtectedforCompany>
-            <OffersListCompany />
-            // </ProtectedforCompany>
+            <ProtectedforCompany>
+              <OffersListCompany />
+            </ProtectedforCompany>
           }
         />
         <Route
@@ -241,7 +214,7 @@ function Router() {
           }
         />
         <Route
-          path="/company/profilecandidate"
+          path="/company/profilecandidate/:id"
           element={
             <ProtectedforCompany>
               <ProfileCandidate />

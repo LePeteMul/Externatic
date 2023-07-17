@@ -6,6 +6,7 @@ const CompanyConnexionContext = createContext();
 export function CompanyConnexionContextProvider({ children }) {
   const [companyConnected, setCompanyConnected] = useState(false);
   const [companyId, setCompanyId] = useState(null);
+  const [result, setResult] = useState(null);
 
   const CompanyConnexionContextProviderValue = useMemo(
     () => ({
@@ -13,6 +14,8 @@ export function CompanyConnexionContextProvider({ children }) {
       setCompanyConnected,
       companyId,
       setCompanyId,
+      result,
+      setResult,
     }),
     [companyConnected, setCompanyConnected, companyId, setCompanyId]
   );

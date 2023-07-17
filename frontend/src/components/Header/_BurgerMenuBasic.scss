@@ -39,4 +39,11 @@
     font-family: $fontFamily;
     color: $textColorLight;
   }
+
+  @media screen and (min-width: 801px) {
+    font-size: 20px;
+    .menuItem {
+      padding: 2%;
+    }
+  }
 }

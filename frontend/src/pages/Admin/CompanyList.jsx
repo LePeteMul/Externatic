@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import CompanyCard from "../../components/Elements/CompanyCard";
 import nickel from "../../assets/images/HomePage/logo-nickel.png";
 import BlackButton from "../../components/Elements/BlackButton";
+import CompanyConnexionContext from "../../contexts/CompanyConnexionContext/CompanyConnexionContext";
 
 function CompanyList() {
   const [result, setResult] = useState([]);
 
   // find all companies List
   useEffect(() => {
-    const url = "http://localhost:8080/api/company";
+    const url = `http://localhost:8080/api/company`;
 
     fetch(url)
       .then((response) => response.json())

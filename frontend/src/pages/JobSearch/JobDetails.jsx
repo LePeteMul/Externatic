@@ -1,21 +1,15 @@
 import React, { useContext, useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import BlackButton from "../../components/Elements/BlackButton";
 import HeartButton from "../../assets/icons/heart.png";
 import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
 import JobOfferContext from "../../contexts/JobOfferContext/JobOfferContext";
+import Popup from "../../components/Elements/Popup";
+import { formatDate } from "../../services/formatDate";
 
 function JobDetails() {
-  function formatDate(dateSql) {
-    const dateObj = new Date(dateSql);
-    const options = { day: "2-digit", month: "2-digit", year: "numeric" };
-    const newDate = dateObj.toLocaleDateString("fr-FR", options);
-    return newDate;
-  }
-
   const { offerId } = useContext(JobOfferContext);
-  const { userConnected, userId } = useContext(UserConnexionContext);
+  const { userConnected, userId, isAdmin } = useContext(UserConnexionContext);
 
   const [jobDetails, setJobDetails] = useState([]);
 
@@ -46,6 +40,12 @@ function JobDetails() {
     offer_id: offerId,
   });
 
+  const [hasApply, setHasApply] = useState(false);
+
+  const handlePopupApplyClose = () => {
+    setHasApply(false);
+  };
+
   const applicationClick = (e) => {
     e.preventDefault();
 
@@ -59,13 +59,20 @@ function JobDetails() {
       },
       body: JSON.stringify(requestData),
     })
-      .then((response) => response.text())
-      .then((res) => {
-        console.info("Response:", res);
+      .then((response) => {
+        if (response.status === 201) {
+          setHasApply(true);
+        }
       })
       .catch((error) => {
         console.error("Error:", error);
       });
+  };
+
+  const [hasFavorite, setHasFavorite] = useState(false);
+
+  const handlePopupFavoriteClose = () => {
+    setHasFavorite(false);
   };
 
   const favoriteClick = (e) => {
@@ -81,9 +88,10 @@ function JobDetails() {
       },
       body: JSON.stringify(requestData),
     })
-      .then((response) => response.text())
-      .then((res) => {
-        console.info("Response:", res);
+      .then((response) => {
+        if (response.status === 201) {
+          setHasFavorite(true);
+        }
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -147,20 +155,35 @@ function JobDetails() {
         <br />
         <br />
         <br />
-        {userConnected && (
+        {userConnected && !isAdmin && (
           <div className="ConnectButtons">
-            <NavLink to="/candidate/applicationconfirmation">
-              <BlackButton
-                buttonName="Candidater"
-                buttonFunction={applicationClick}
-              />
-            </NavLink>
+            <BlackButton
+              buttonName="Candidater"
+              buttonFunction={applicationClick}
+            />
             <div className="Heart">
               <button type="button" onClick={favoriteClick}>
                 <img src={HeartButton} alt="FavoriteButton" />
               </button>
             </div>
           </div>
+        )}
+        {hasApply && (
+          <Popup
+            title="Votre candidature a bien été transmise"
+            message="L'entreprise vous rencontactera dans les
+            meilleurs délais"
+            onClose={handlePopupApplyClose}
+            buttonname="Retour à l'offre"
+          />
+        )}
+        {hasFavorite && (
+          <Popup
+            title="Cette offre a bien été ajoutée à vos favoris"
+            message=""
+            onClose={handlePopupFavoriteClose}
+            buttonname="Retour à l'offre"
+          />
         )}
       </div>
     </div>

@@ -51,19 +51,42 @@
       .loupe {
         height: 50%;
         width: auto;
+        visibility: hidden;
       }
 
       .status {
-        .notselected {
-          background-color: #d9d9d9;
-        }
-        .selected {
+        .select {
           background-color: #d9d9d9;
         }
       }
     }
     .applicationEnd {
-      padding-top: 20%;
+      padding-top: 10%;
+    }
+  }
+
+  @media screen and (min-width: 650px) and (max-width: 800px) {
+    .boxWithoutHeader {
+      padding: 8%;
+
+      .applicationEnd {
+        .BlackButton {
+          padding-top: 0;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 801px) {
+    .boxWithoutHeader {
+      padding-left: 20%;
+      padding-right: 20%;
+
+      .applicationEnd {
+        .BlackButton {
+          padding-top: 0;
+        }
+      }
     }
   }
 }
