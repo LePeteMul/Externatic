@@ -213,10 +213,10 @@ const editPassword = (req, res) => {
     });
 };
 
-/* const editPreference = (req, res) => {
+const editPreference = (req, res) => {
   const user = req.body;
-  id = parseInt(req.params.id, 10);
-
+  const id = parseInt(req.params.id, 10);
+  user.id = id;
   models.user
     .updatePreference(user)
     .then(([result]) => {
@@ -242,7 +242,6 @@ const getPreference = (req, res) => {
       console.error(err);
       res.sendStatus(500);
     });
-
 };
 const addProfilePicture = async (req, res) => {
   const url = process.env.BACKEND_URL_IMAGE + req.fname;
@@ -272,7 +271,6 @@ const addCv = async (req, res) => {
     });
 };
 
-
 module.exports = {
   browse,
   read,
@@ -290,5 +288,5 @@ module.exports = {
   getPreference,
   addProfilePicture,
   addCv,
-
+  editPassword,
 };

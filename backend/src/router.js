@@ -97,6 +97,7 @@ router.get("/api/user/candidats", userControllers.getCandidate);
 router.get("/api/user/:id", userControllers.getById);
 
 router.put("/api/user/:id", userControllers.edit);
+
 router.put(
   "/api/user/edition/resetpassword",
   hashPassword,
