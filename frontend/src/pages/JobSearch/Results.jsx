@@ -95,6 +95,7 @@ function Results() {
                     key={job.id}
                     id={job.id}
                     onClick={() => handleClick(job.id)}
+                    showButtons={false}
                   />
                 </div>
               );
