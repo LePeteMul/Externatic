@@ -24,6 +24,8 @@ CREATE DATABASE externatic;
 
 USE externatic;
 
+
+
 CREATE TABLE
     contract(
         id INT NOT NULL AUTO_INCREMENT,
@@ -76,7 +78,7 @@ CREATE TABLE
         id INT NOT NULL AUTO_INCREMENT,
         company_id INT NOT NULL,
         job VARCHAR(400) NOT NULL,
-        date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        date TIMESTAMP ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         remote VARCHAR(250),
         contract_id INT NOT NULL,
         min_salary INT NOT NULL,
@@ -89,6 +91,7 @@ CREATE TABLE
         FOREIGN KEY (company_id) REFERENCES company(id) ON DELETE CASCADE ON UPDATE CASCADE,
         FOREIGN KEY (contract_id) REFERENCES contract(id)
     );
+ 
 
 CREATE TABLE
     application(
