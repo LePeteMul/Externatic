@@ -52,12 +52,16 @@ function BurgerMenuWave() {
         <img className="IconBurger" src={burger} alt="Le Burger" />
       </button>
       <ul className={open ? "menuOpened" : "menuClosed"}>
-        <Link to="/login">
-          <li className="menuItem">Se connecter</li>
-        </Link>
-        <Link to="/logincompany">
-          <li className="menuItem">Se connecter en tant qu'entreprise</li>
-        </Link>
+        {!(userConnected || companyConnected) && (
+          <>
+            <Link to="/login">
+              <li className="menuItem">Se connecter</li>
+            </Link>
+            <Link to="/logincompany">
+              <li className="menuItem">Se connecter en tant qu'entreprise</li>
+            </Link>
+          </>
+        )}
         <Link to="/contact">
           <li className="menuItem">Contact</li>
         </Link>
