@@ -21,14 +21,18 @@ function Results() {
   } = useContext(JobOfferContext);
   const annualSalary = mensualSalary * 12;
 
-  let resultsNumber = jobOffer.length;
+  const resultsNumber = jobOffer
+    .filter((job) => selectedRemote === "" || job.remote === selectedRemote)
+    .filter(
+      (job) => selectedTechno === "" || job.techno_name === selectedTechno
+    )
+    .filter((job) => annualSalary <= job.min_salary).length;
 
   const [resultVisibility, setResultVisibility] = useState(true);
   const [filterVisibility, setFilterVisibility] = useState(false);
   const handleClickFilters = () => {
     setResultVisibility(!resultVisibility);
     setFilterVisibility(!filterVisibility);
-    resultsNumber = jobOffer.length;
   };
 
   const handleClick = (jobId) => {
@@ -89,7 +93,7 @@ function Results() {
                     logo={job.logo}
                     companyName={job.companyName}
                     job={job.job}
-                    contractType={job.contractType}
+                    contractType={job.contract_type}
                     jobCity={job.city_job}
                     date={formatDate(job.date)}
                     key={job.id}
