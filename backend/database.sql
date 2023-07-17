@@ -24,6 +24,8 @@ CREATE DATABASE externatic;
 
 USE externatic;
 
+
+
 CREATE TABLE
     contract(
         id INT NOT NULL AUTO_INCREMENT,
@@ -56,7 +58,7 @@ CREATE TABLE
     company(
         id INT NOT NULL AUTO_INCREMENT,
         company_name VARCHAR(300) NOT NULL,
-        email VARCHAR(450) NOT NULL,
+        email VARCHAR(450) NOT NULL UNIQUE,
         password VARCHAR(250) NOT NULL,
         phone VARCHAR(450) NOT NULL,
         logo VARCHAR(300),
@@ -76,7 +78,7 @@ CREATE TABLE
         id INT NOT NULL AUTO_INCREMENT,
         company_id INT NOT NULL,
         job VARCHAR(400) NOT NULL,
-        date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        date TIMESTAMP ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         remote VARCHAR(250),
         contract_id INT NOT NULL,
         min_salary INT NOT NULL,
@@ -89,6 +91,7 @@ CREATE TABLE
         FOREIGN KEY (company_id) REFERENCES company(id) ON DELETE CASCADE ON UPDATE CASCADE,
         FOREIGN KEY (contract_id) REFERENCES contract(id)
     );
+ 
 
 CREATE TABLE
     application(
@@ -101,7 +104,7 @@ CREATE TABLE
         FOREIGN KEY (offer_id) REFERENCES offer(id) ON DELETE CASCADE ON UPDATE CASCADE,
         FOREIGN KEY (status_id) REFERENCES status(id),
         FOREIGN KEY (company_id) REFERENCES company(id) ON DELETE CASCADE ON UPDATE CASCADE,
-        PRIMARY KEY (id)
+        CONSTRAINT uc_candidate_offer UNIQUE (candidate_id, offer_id)
     );
 
 CREATE TABLE

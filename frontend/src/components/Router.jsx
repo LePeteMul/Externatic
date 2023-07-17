@@ -88,7 +88,6 @@ function Router() {
           element={
             <ProtectedforAdmin>
               <CompanyList />
-              {/* //{" "} */}
             </ProtectedforAdmin>
           }
         />
