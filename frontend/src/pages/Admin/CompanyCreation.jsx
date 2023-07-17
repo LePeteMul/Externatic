@@ -9,10 +9,7 @@ import Popup from "../../components/Elements/Popup";
 function CompanyCreation() {
   const navigate = useNavigate();
   const [showPopup1, setShowPopup1] = useState(false);
-
-  const handlePopup1Open = () => {
-    setShowPopup1(true);
-  };
+  const [error, setError] = useState(null);
 
   const handlePopup1Close = () => {
     setShowPopup1(false);
@@ -50,12 +47,19 @@ function CompanyCreation() {
       },
       body: JSON.stringify(requestData),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.status === 400) {
+          setError("Cet email est déjà utilisé");
+        } else {
+          response.json();
+        }
+      })
       .then((data) => {
         console.info("Response:", data);
+        setShowPopup1(true);
       })
-      .catch((error) => {
-        console.error("Error:", error);
+      .catch((err) => {
+        console.error("Error:", err);
       });
   };
   return (
@@ -70,14 +74,14 @@ function CompanyCreation() {
             <InputTexte
               label="Nom de la société"
               name="company_name"
-              placeholder="nom de la société"
+              placeholder="Nom de la société"
               type="text"
               handleChange={handleChange}
             />
             <InputTexte
               label="Adresse mail de contact"
               name="email"
-              placeholder="email"
+              placeholder="Adresse mail de contact"
               type="email"
               handleChange={handleChange}
             />
@@ -101,7 +105,6 @@ function CompanyCreation() {
               buttonName="Valider la création"
               buttonFunction={(event) => {
                 event.preventDefault();
-                handlePopup1Open();
                 handleSubmit(event);
               }}
             />
@@ -110,6 +113,14 @@ function CompanyCreation() {
                 title="L'entreprise a bien été crée dans la base de données."
                 message="Un mail de confirmation a été transmis sur l'adresse renseignée."
                 open={showPopup1}
+                onClose={handlePopup1Close}
+                buttonname="Retour au Dashboard"
+              />
+            )}
+            {error && (
+              <Popup
+                title="Erreur"
+                message={error}
                 onClose={handlePopup1Close}
                 buttonname="Retour au Dashboard"
               />

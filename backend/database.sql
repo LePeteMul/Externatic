@@ -56,7 +56,7 @@ CREATE TABLE
     company(
         id INT NOT NULL AUTO_INCREMENT,
         company_name VARCHAR(300) NOT NULL,
-        email VARCHAR(450) NOT NULL,
+        email VARCHAR(450) NOT NULL UNIQUE,
         password VARCHAR(250) NOT NULL,
         phone VARCHAR(450) NOT NULL,
         logo VARCHAR(300),
@@ -101,7 +101,7 @@ CREATE TABLE
         FOREIGN KEY (offer_id) REFERENCES offer(id) ON DELETE CASCADE ON UPDATE CASCADE,
         FOREIGN KEY (status_id) REFERENCES status(id),
         FOREIGN KEY (company_id) REFERENCES company(id) ON DELETE CASCADE ON UPDATE CASCADE,
-        PRIMARY KEY (id)
+        CONSTRAINT uc_candidate_offer UNIQUE (candidate_id, offer_id)
     );
 
 CREATE TABLE
