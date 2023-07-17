@@ -4,6 +4,7 @@ import JobOfferContext from "../../../contexts/JobOfferContext/JobOfferContext";
 function ContractInput() {
   const { searchContract, setSearchContract, setSearchContractId } =
     useContext(JobOfferContext);
+  const contractLS = localStorage.getItem("contract");
 
   const handleSelect = (event) => {
     const selectedValue = event.target.value;
@@ -12,6 +13,7 @@ function ContractInput() {
     );
     setSearchContract(selectedValue);
     setSearchContractId(selectedContract ? selectedContract.id : "");
+    localStorage.setItem("contract", selectedValue);
   };
 
   const [contractList, setContractList] = useState([]);
@@ -25,7 +27,7 @@ function ContractInput() {
   // ainsi, le contract list est utilisé pour le map
 
   return (
-    <select onChange={handleSelect} value={searchContract}>
+    <select onChange={handleSelect} value={contractLS || searchContract}>
       <option className="notselected" value="">
         Selectionner un contrat
       </option>
