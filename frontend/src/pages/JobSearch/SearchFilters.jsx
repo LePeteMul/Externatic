@@ -64,7 +64,7 @@ function SearchFilters({ handleClickFilters }) {
               step={100}
               onChange={handleSliderChange}
               orientation="horizontal"
-              style={{ color: "white", zIndex: -1 }}
+              style={{ color: "white", zIndex: 0 }}
             />
           </div>
           <div className="AnnualSalary">
