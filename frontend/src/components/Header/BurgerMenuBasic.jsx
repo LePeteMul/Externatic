@@ -54,18 +54,18 @@ function BurgerMenuBasic() {
       <ul className={open ? "menuOpened" : "menuClosed"}>
         {!(userConnected || companyConnected) && (
           <>
-            <Link to="/login">
+            <Link to="/login" onClick={handleClick}>
               <li className="menuItem">Se connecter</li>
             </Link>
-            <Link to="/logincompany">
+            <Link to="/logincompany" onClick={handleClick}>
               <li className="menuItem">Se connecter en tant qu'entreprise</li>
             </Link>
           </>
         )}
-        <Link to="/contact">
+        <Link to="/contact" onClick={handleClick}>
           <li className="menuItem">Contact</li>
         </Link>
-        <Link to="/legalinformations">
+        <Link to="/legalinformations" onClick={handleClick}>
           <li className="menuItem">Mentions légales</li>
         </Link>
         <div

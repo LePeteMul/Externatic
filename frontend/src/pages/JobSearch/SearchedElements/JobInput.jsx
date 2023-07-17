@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import JobOfferContext from "../../../contexts/JobOfferContext/JobOfferContext";
-import UserConnexionContext from "../../../contexts/UserConnexionContext/UserConnexionContext";
 
 function JobInput() {
   const { searchJob, setSearchJob } = useContext(JobOfferContext);
-  const { userConnected } = useContext(UserConnexionContext);
+  const jobLS = localStorage.getItem("job");
 
   const handleSelect = (event) => {
     setSearchJob(event.target.value);
+    localStorage.setItem("job", event.target.value);
   };
 
   const [jobList, setJobList] = useState([]);
@@ -20,7 +20,7 @@ function JobInput() {
   }, []);
 
   return (
-    <select onChange={handleSelect} value={searchJob}>
+    <select onChange={handleSelect} value={jobLS || searchJob}>
       <option className="notselected" value="">
         Selectionner un métier
       </option>
