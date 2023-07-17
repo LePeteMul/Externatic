@@ -3,7 +3,6 @@ import { NavLink, useNavigate } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import JobCard from "../../components/Elements/JobCard";
 import BlackButton from "../../components/Elements/BlackButton";
-import { formatDate } from "../../services/formatDate";
 import CompanyConnexionContext from "../../contexts/CompanyConnexionContext/CompanyConnexionContext";
 import JobOfferContext from "../../contexts/JobOfferContext/JobOfferContext";
 
@@ -45,6 +44,15 @@ function OffersListCompany() {
       .catch((err) => console.error(err));
   };
 
+  const getCurrentDate = () => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+
+    return `${day}/${month}/${year}`;
+  };
+
   return (
     <div className="OffersListCompany">
       <HeaderBasic />
@@ -61,7 +69,7 @@ function OffersListCompany() {
               job={offer.job}
               contractType={offer.contract_type}
               jobCity={offer.city_job}
-              date={formatDate(offer.date)}
+              date={getCurrentDate()}
               id={offer.offer_id}
               onDelete={() => handleDelete(offer.offer_id)}
               onClick={() => handleClick(offer.offer_id)}
