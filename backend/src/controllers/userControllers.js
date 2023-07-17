@@ -245,11 +245,12 @@ const getPreference = (req, res) => {
 };
 const addProfilePicture = async (req, res) => {
   const url = process.env.BACKEND_URL_IMAGE + req.fname;
+  const { id } = req.params;
 
   models.user
-    .addProfilePicture(url, req.params.id)
+    .addProfilePicture(url, id)
     .then(([rows]) => {
-      res.send(rows);
+      return res.status(200).send(rows);
     })
     .catch((err) => {
       console.error(err);

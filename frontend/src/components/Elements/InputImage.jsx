@@ -11,7 +11,7 @@ function InputImage({ label, userId, handleChange, preview = "" }) {
   useEffect(() => {
     setPreviewUrl(preview);
   }, [preview]);
-
+  console.info("info", preview);
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
     setFile(selectedFile);
@@ -58,7 +58,6 @@ function InputImage({ label, userId, handleChange, preview = "" }) {
         .pop()}`;
 
       formData.append("file", file, modifiedFileNameWithExtension);
-
       formData.append("userId", userId);
 
       const response = await fetch(
@@ -71,10 +70,11 @@ function InputImage({ label, userId, handleChange, preview = "" }) {
 
       if (response.ok) {
         // Le fichier a été téléchargé avec succès
-        console.info("Le fichier a été téléchargé avec succès !");
+        console.info("Le fichier a été téléchargé avec succès !", response);
         // Traitez la réponse du backend ici si nécessaire
         const data = await response.json();
-        console.info(data);
+
+        // setUploadedImageUrl(`http://localhost:8080/image_profile_${userId}.jpg`)  test NICO
       } else {
         // Gérez les erreurs de requête ici
         console.error(
@@ -100,14 +100,14 @@ function InputImage({ label, userId, handleChange, preview = "" }) {
             onChange={handleFileChange}
           />
           <div className="imageSize">
-            {previewUrl !== "" ? (
+            {!previewUrl && !file ? (
+              <img src={uploadIcon} className="upload-icon" alt="Upload" />
+            ) : (
               <img
                 src={previewUrl}
                 className="upload-file"
                 alt="Uploaded Profile"
               />
-            ) : (
-              <img src={uploadIcon} className="upload-icon" alt="Upload" />
             )}
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             {file && (

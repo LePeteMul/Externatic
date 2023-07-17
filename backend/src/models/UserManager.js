@@ -114,15 +114,15 @@ class UserManager extends AbstractManager {
 
   updateProfilePicture(user) {
     return this.database.query(
-      `update ${this.table} , profil_picture = ? where id = ?`,
+      `update ${this.table} set profil_picture = ? where id = ?`,
       [user.profil_picture, user.id]
     );
   }
 
-  addProfilePicture(user) {
+  addProfilePicture(url, id) {
     return this.database.query(
-      `update ${this.table} set  profil_picture = ? where id = ?`,
-      [user.profil_picture, user.id]
+      `UPDATE ${this.table} SET profil_picture = ? WHERE id = ?`,
+      [url, id]
     );
   }
 

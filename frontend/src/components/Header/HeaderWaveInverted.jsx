@@ -16,6 +16,8 @@ function HeaderWaveInverted({ open, handleOpen, title, profil_picture }) {
   const [uploadedImageUrl, setUploadedImageUrl] = useState("");
   const [uploadLogoUrl, setUploadLogoUrl] = useState("");
 
+  console.info("C'EST MON IMAGE", uploadedImageUrl);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -78,6 +80,7 @@ function HeaderWaveInverted({ open, handleOpen, title, profil_picture }) {
       .then((response) => response.json())
       .then((data) => {
         const imageUrl1 = data.fileUrl;
+        console.info("C'est mon image de profil", imageUrl1);
         setUploadedImageUrl(imageUrl1);
       })
       .catch((error) => console.error(error));
@@ -106,6 +109,7 @@ function HeaderWaveInverted({ open, handleOpen, title, profil_picture }) {
       })
       .catch((error) => console.error(error));
   };
+
   return (
     <div className="HeaderWaveInverted">
       <div className="TopHeader">

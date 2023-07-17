@@ -4,7 +4,6 @@ import HeaderBasic from "../../components/Header/HeaderBasic";
 import InputTexte from "../../components/Elements/InputTexte";
 import BlackButton from "../../components/Elements/BlackButton";
 import RedButton from "../../components/Elements/RedButton";
-import InputListe from "../../components/Elements/InputListe";
 import LanguageList from "../../components/Elements/LanguageList";
 import InputCv from "../../components/Elements/InputCv";
 import Popup from "../../components/Elements/Popup";
@@ -13,7 +12,7 @@ import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnex
 function CandidateProfile() {
   const { userId } = useContext(UserConnexionContext);
   const [user, setUser] = useState({});
-  console.warn("Dans UserProfile, userID : ", user.id);
+  // console.warn("Dans UserProfile, userID : ", user.id);
 
   useEffect(() => {
     fetch(`http://localhost:8080/api/user/${userId}`)
@@ -35,10 +34,10 @@ function CandidateProfile() {
       .catch((err) => console.error(err));
   }, []);
 
-  console.warn("user dans le admin profile = ", user);
-  console.warn("is admin ? ", user.admin);
-  console.warn("lastname = ", user.lastname);
-  console.warn("password = ", user.password);
+  // console.warn("user dans le admin profile = ", user);
+  // console.warn("is admin ? ", user.admin);
+  // console.warn("lastname = ", user.lastname);
+  // console.warn("password = ", user.password);
 
   const navigate = useNavigate();
   const [showPopup1, setShowPopup1] = useState(false);
@@ -90,7 +89,7 @@ function CandidateProfile() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const url = `http://localhost:8080/api/user/`;
+    const url = `http://localhost:8080/api/user/${userId}`;
     const requestData = { ...formData };
 
     fetch(url, {
@@ -191,6 +190,9 @@ function CandidateProfile() {
             handleChange={handleFileChange}
             userId={userId}
           />
+          <a href={user.cv} target="_blank" rel="noopener noreferrer">
+            Consulter le CV
+          </a>
           <LanguageList
             name="language"
             handleChange={handleChange}
