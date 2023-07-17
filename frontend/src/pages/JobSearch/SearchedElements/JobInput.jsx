@@ -26,7 +26,7 @@ function JobInput() {
       </option>
       {jobList.map((element) => {
         return (
-          <option className="selected" value={element.job} key={element.job}>
+          <option className="selected" value={element.job} key={element.id}>
             {element.job}
           </option>
         );

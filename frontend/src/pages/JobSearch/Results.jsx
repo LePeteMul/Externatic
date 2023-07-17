@@ -71,6 +71,7 @@ function Results() {
             )}
           </h2>
         </div>
+
         <div className="JobResults">
           {jobOffer
             .filter(

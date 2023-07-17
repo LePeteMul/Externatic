@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import BlackButton from "../../components/Elements/BlackButton";
 import HeartButton from "../../assets/icons/heart.png";
@@ -158,12 +157,10 @@ function JobDetails() {
         <br />
         {userConnected && !isAdmin && (
           <div className="ConnectButtons">
-            <NavLink to="/candidate/applicationconfirmation">
-              <BlackButton
-                buttonName="Candidater"
-                buttonFunction={applicationClick}
-              />
-            </NavLink>
+            <BlackButton
+              buttonName="Candidater"
+              buttonFunction={applicationClick}
+            />
             <div className="Heart">
               <button type="button" onClick={favoriteClick}>
                 <img src={HeartButton} alt="FavoriteButton" />

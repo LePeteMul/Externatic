@@ -26,19 +26,14 @@ import CompanyProfile from "../pages/Company/CompanyProfile";
 import OffersListCompany from "../pages/Company/OffersListCompany";
 import CompanyResetPassword from "../pages/Company/CompanyResetPassword";
 
-import ApplicationConfirmation from "../pages/JobSearch/ApplicationConfirmation";
-
 import ProtectedforAdmin from "./ProtectedforAdmin";
 import OffersList from "../pages/Admin/OffersList";
 import CandidateList from "../pages/Admin/CandidateList";
 import CompanyList from "../pages/Admin/CompanyList";
 import AdminProfile from "../pages/Admin/AdminProfile";
 import CompanyCreation from "../pages/Admin/CompanyCreation";
-import ConfirmationCreation from "../pages/Admin/ConfirmationCreation";
-import ConfirmationDeletion from "../pages/Admin/ConfirmationDeletion";
 import LegalInformations from "../pages/LegalInformations/LegalInformations";
 import Contact from "../pages/Contact/Contact";
-import Logout from "../pages/Login/Logout";
 import ForgottenPassword from "../pages/Login/ForgottenPassword";
 import ResetPassword from "../pages/Login/ResetPassword";
 import ConfirmationCompanyResetPassword from "../pages/Company/ConfirmationCompanyResetPassword";
@@ -75,22 +70,6 @@ function Router() {
           }
         />
         <Route
-          path="/admin/creationconfirmation"
-          element={
-            <ProtectedforAdmin>
-              <ConfirmationCreation />
-            </ProtectedforAdmin>
-          }
-        />
-        <Route
-          path="/admin/deletionconfirmation"
-          element={
-            <ProtectedforAdmin>
-              <ConfirmationDeletion />
-            </ProtectedforAdmin>
-          }
-        />
-        <Route
           path="/admin/offerlist"
           element={
             <ProtectedforAdmin>
@@ -119,7 +98,6 @@ function Router() {
         {/* Global section */}
         <Route path="/login" element={<Login />} />
         <Route path="/logincompany" element={<LoginCompany />} />
-        <Route path="/logout" element={<Logout />} />
         <Route path="/jobsearch" element={<JobSearch />} />
         <Route path="/results" element={<Results />} />
         <Route path="/job/:id" element={<JobDetails />} />
@@ -130,14 +108,6 @@ function Router() {
         <Route path="/forgottenpassword" element={<ResetPassword />} />
 
         {/* Candidate section */}
-        <Route
-          path="/candidate/applicationconfirmation"
-          element={
-            <ProtectedforCandidate>
-              <ApplicationConfirmation />
-            </ProtectedforCandidate>
-          }
-        />
         <Route path="/candidate/registration" element={<Registration />} />
         <Route
           path="/candidate/profile"
@@ -246,7 +216,7 @@ function Router() {
           }
         />
         <Route
-          path="/company/profilecandidate"
+          path="/company/profilecandidate/:id"
           element={
             <ProtectedforCompany>
               <ProfileCandidate />
