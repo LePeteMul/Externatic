@@ -104,6 +104,7 @@ function Registration() {
               label="Confirmer le mot de passe :"
               placeholder="*******************"
               name="password"
+              image={eye}
               type="password"
               handleChange={handleChange}
             />
