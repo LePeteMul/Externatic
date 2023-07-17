@@ -75,7 +75,7 @@ function CandidateJobApplications() {
                 date={formatDate(offer.date)}
                 status={offer.status}
                 onClick={() => handleClick(offer.offer_id)}
-                onDelete={handleDelete}
+                showButtons={false}
               />
             ))}
           </div>
