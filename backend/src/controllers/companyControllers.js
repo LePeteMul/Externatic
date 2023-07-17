@@ -187,6 +187,19 @@ const getCompanyByEmailWithPasswordAndPassToNext = (req, res, next) => {
       res.status(500).send(" error retrieving data from database ");
     });
 };
+const addLogo = async (req, res) => {
+  const url = process.env.BACKEND_URL_IMAGE + req.fname;
+
+  models.company
+    .addLogo(url, req.params.id)
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
 
 module.exports = {
   browse,
@@ -199,4 +212,5 @@ module.exports = {
   changePassword,
   changePresentation,
   getCompanyByEmailWithPasswordAndPassToNext,
+  addLogo,
 };

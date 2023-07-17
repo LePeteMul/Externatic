@@ -1,19 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import uploadIcon from "../../assets/icons/upload.png";
 
-function InputImage({ label }) {
+function InputImage({ label, userId, handleChange, preview = "" }) {
   const [file, setFile] = useState(null);
+  const [fileName, setFileName] = useState("");
+  const [previewUrl, setPreviewUrl] = useState(preview);
   const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    setPreviewUrl(preview);
+  }, [preview]);
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
-    const fileSizeInBytes = selectedFile.size;
-    const maxSizeInBytes = 1 * 1024 * 1024; // 5 MB
+    setFile(selectedFile);
+    const modifiedFileName = `image_profile_${userId}`;
+    setFileName(modifiedFileName);
 
+    const fileSizeInBytes = selectedFile.size;
+    const maxSizeInBytes = 5 * 1024 * 1024; // 5 MB
+
+    // Vérification de la taille du fichier
     if (fileSizeInBytes > maxSizeInBytes) {
       setErrorMessage("Taille maximale dépassée (5 Mo)");
       setFile(null);
+      setFileName("");
       return;
     }
 
@@ -25,11 +37,54 @@ function InputImage({ label }) {
         "Format de fichier non autorisé. Les formats acceptés sont PNG et JPEG."
       );
       setFile(null);
+      setFileName("");
       return;
     }
 
-    setFile(URL.createObjectURL(selectedFile));
+    setPreviewUrl(URL.createObjectURL(selectedFile));
     setErrorMessage("");
+  };
+
+  const uploadFile = async () => {
+    try {
+      if (!file) {
+        // Aucun fichier sélectionné
+        return;
+      }
+      // changement du nom du fichier
+      const formData = new FormData();
+      const modifiedFileNameWithExtension = `${fileName}.${file.name
+        .split(".")
+        .pop()}`;
+
+      formData.append("file", file, modifiedFileNameWithExtension);
+
+      formData.append("userId", userId);
+
+      const response = await fetch(
+        `http://localhost:8080/api/user/image/${userId}`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      if (response.ok) {
+        // Le fichier a été téléchargé avec succès
+        console.info("Le fichier a été téléchargé avec succès !");
+        // Traitez la réponse du backend ici si nécessaire
+        const data = await response.json();
+        console.info(data);
+      } else {
+        // Gérez les erreurs de requête ici
+        console.error(
+          "Une erreur s'est produite lors du téléchargement du fichier."
+        );
+      }
+    } catch (error) {
+      // Gérez les erreurs ici
+      console.error(error);
+    }
   };
 
   return (
@@ -41,15 +96,25 @@ function InputImage({ label }) {
             id="fileInput"
             type="file"
             accept=".png, .jpeg, .jpg"
+            className="custom-input"
             onChange={handleFileChange}
           />
           <div className="imageSize">
-            {file ? (
-              <img src={file} className="upload-file" alt="Uploaded Profile" />
+            {previewUrl !== "" ? (
+              <img
+                src={previewUrl}
+                className="upload-file"
+                alt="Uploaded Profile"
+              />
             ) : (
               <img src={uploadIcon} className="upload-icon" alt="Upload" />
             )}
             {errorMessage && <p className="error-message">{errorMessage}</p>}
+            {file && (
+              <button onClick={uploadFile} type="button">
+                Télécharger le fichier
+              </button>
+            )}
           </div>
         </div>
       </label>
@@ -59,6 +124,9 @@ function InputImage({ label }) {
 
 InputImage.propTypes = {
   label: PropTypes.string.isRequired,
+  userId: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  preview: PropTypes.func.isRequired,
 };
 
 export default InputImage;

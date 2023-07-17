@@ -14,7 +14,6 @@ function CompanyDashboard() {
       .then((data) => setCompany(data))
       .catch((err) => console.error(err));
   }, []);
-  console.warn(company);
 
   return (
     <div className="CompanyDashboard">

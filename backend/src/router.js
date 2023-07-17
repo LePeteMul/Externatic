@@ -1,6 +1,8 @@
 const express = require("express");
+const multer = require("multer");
 
 const router = express.Router();
+
 const { hashPassword } = require("./services/auth");
 const { verifyPassword, verifyCompanyPassword } = require("./services/auth");
 
@@ -135,5 +137,54 @@ router.get("/api/email/user/:mail", userControllers.getUserByEmail);
 router.get("/api/offerDetailss/:id", companyControllers.offersListcompany);
 
 // router.get("/api/offersByCompany/:id", offerControllers.findOffersByCompany);
+
+// route de telechargement de fichier seul.
+
+// configuration de multer
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+    cb(null, "image/"); // Le dossier où vous souhaitez enregistrer les fichiers
+  },
+  filename(req, file, cb) {
+    req.fname = file.originalname;
+    cb(null, file.originalname); // Utilisez le nom de fichier d'origine
+  },
+});
+
+const upload = multer({ storage });
+
+router.post(
+  "/api/user/image/:id",
+  upload.single("file"),
+  userControllers.addProfilePicture,
+  (req, res, next) => {
+    next();
+    // récupérer l'id
+    // update la bdd avec l'id et modifier le champ profile_picture
+    // BACKEND_IMAGE_URL+fname
+    // res send (BACKEND_IMAGE_URL+fname)
+    // -> req.fname BACKEND_IMAGE_URL+fname
+    // Le fichier est accessible via req.file
+    // Faites ici le traitement souhaité avec le fichier
+  }
+);
+
+router.post(
+  "/api/user/cv/:id",
+  upload.single("file"),
+  userControllers.addCv,
+  (req, res, next) => {
+    next();
+  }
+);
+
+router.post(
+  "/api/company/image/:id",
+  upload.single("file"),
+  companyControllers.addLogo,
+  (req, res, next) => {
+    next();
+  }
+);
 
 module.exports = router;

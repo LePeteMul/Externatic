@@ -90,7 +90,7 @@ function CandidateProfile() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const url = `http://localhost:8080/api/user/${userId}`;
+    const url = `http://localhost:8080/api/user/`;
     const requestData = { ...formData };
 
     fetch(url, {
@@ -185,7 +185,12 @@ function CandidateProfile() {
             handleChange={handleChange}
             value={formData.city}
           />
-          <InputCv label="CV" accept=".pdf" handleChange={handleFileChange} />
+          <InputCv
+            label="CV"
+            accept=".pdf"
+            handleChange={handleFileChange}
+            userId={userId}
+          />
           <LanguageList
             name="language"
             handleChange={handleChange}

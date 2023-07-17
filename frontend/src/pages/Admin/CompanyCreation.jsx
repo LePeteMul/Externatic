@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import InputTexte from "../../components/Elements/InputTexte";
-import InputLogo from "../../components/Elements/InputLogo";
 import BlackButton from "../../components/Elements/BlackButton";
 import Popup from "../../components/Elements/Popup";
 
@@ -42,7 +41,7 @@ function CompanyCreation() {
 
     const url = "http://localhost:8080/api/company/register";
     const requestData = { ...formData };
-
+    console.info("mauvais");
     fetch(url, {
       method: "POST",
       headers: {

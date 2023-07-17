@@ -242,7 +242,36 @@ const getPreference = (req, res) => {
       console.error(err);
       res.sendStatus(500);
     });
-}; */
+
+};
+const addProfilePicture = async (req, res) => {
+  const url = process.env.BACKEND_URL_IMAGE + req.fname;
+
+  models.user
+    .addProfilePicture(url, req.params.id)
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+const addCv = async (req, res) => {
+  const url = process.env.BACKEND_URL_IMAGE + req.fname;
+
+  models.user
+    .addCv(url, req.params.id)
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 
 module.exports = {
   browse,
@@ -256,5 +285,10 @@ module.exports = {
   getById,
   getAppliByOfferId,
   getUserByEmail,
-  editPassword,
+
+  editPreference,
+  getPreference,
+  addProfilePicture,
+  addCv,
+
 };
