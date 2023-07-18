@@ -24,31 +24,32 @@
     // background-color: darkorchid;
     display: flex;
     align-items: center;
-    margin-left: 95%;
-    height: 48px;
-    margin-left: 95%;
+
+    height: 0px;
+    transform: translateY(-24px);
+    position: relative;
+
     // border: solid;
     // border-radius: 6px;
     // border-color: green;
     // box-sizing: border-box;
-    transform: translateY(-100%);
-    position: relative;
   }
 
   .eyeButton {
+    position: absolute;
+    right: 0;
+
     // border: solid;
     // border-radius: 6px;
     // border-color: black;
     // box-sizing: border-box;
-    position: absolute;
-    right: 0;
-    margin-right: 2%;
   }
 
   .eyeIcon {
     height: 25px;
     width: 35px;
     display: flex;
+
     // margin-left: 100%;
     // margin-right: 10px;
     // margin-top: -37px;
