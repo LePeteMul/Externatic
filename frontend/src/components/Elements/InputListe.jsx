@@ -26,15 +26,16 @@ InputListe.propTypes = {
   label: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   data: PropTypes.arrayOf(
-    PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+    PropTypes.oneOfType([PropTypes.string, PropTypes.string])
   ),
   name: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.number,
 };
 
 InputListe.defaultProps = {
   data: undefined,
+  value: undefined,
 };
 
 export default InputListe;
