@@ -84,7 +84,7 @@ class CompanyManager extends AbstractManager {
 
   addLogo(logo, id) {
     return this.database.query(
-      `update ${this.table} set  logo = ? where id = ?`,
+      `update ${this.table} set logo = ? where id = ?`,
       [logo, id]
     );
   }

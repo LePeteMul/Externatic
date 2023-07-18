@@ -21,6 +21,17 @@
     .validationSuppression {
       padding-top: 10%;
     }
+
+    a {
+      color: white;
+      display: flex;
+      align-items: center;
+      height: 48px;
+      margin-top: 1%;
+      padding-left: 12px;
+      font-family: $fontFamily;
+      padding-left: 12px;
+    }
   }
 
   @media screen and (min-width: 801px) {

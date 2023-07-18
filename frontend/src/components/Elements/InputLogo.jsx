@@ -57,7 +57,6 @@ function InputLogo({ label, companyId, handleChange, preview = "" }) {
         .pop()}`;
 
       formData.append("file", file, modifiedFileNameWithExtension);
-
       formData.append("companyId", companyId);
 
       const response = await fetch(
