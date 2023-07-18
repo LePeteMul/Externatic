@@ -8,7 +8,8 @@ class OfferManager extends AbstractManager {
   insert(offer) {
     return this.database.query(
       `insert into ${this.table} (company_id, job, date, remote, contract_id, min_salary, max_salary,
-        description, prerequisites, city_job, department) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        description, prerequisites, city_job, department) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+        `,
       [
         offer.company_id,
         offer.job,
@@ -21,7 +22,15 @@ class OfferManager extends AbstractManager {
         offer.prerequisites,
         offer.city_job,
         offer.department,
+        offer.tech_name,
       ]
+    );
+  }
+
+  insertTechnoForOffer(offer_id, techno_id) {
+    return this.database.query(
+      "insert into offer_techno (techno_id, offer_id) values (?, ?)",
+      [techno_id, offer_id]
     );
   }
 
