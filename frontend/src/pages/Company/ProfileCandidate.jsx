@@ -42,12 +42,6 @@ function ProfileCandidate() {
 
           <InputTexte label="Ville :" value={`${user.city}`} disabled />
 
-          <InputTexte
-            label="Technologies maîtrisées :"
-            value={`${user.language}`}
-            disabled
-          />
-
           <div className="cv">
             <p>CV :</p>
             <a href={`${user.cv}`} target="_blank" rel="noopener noreferrer">
