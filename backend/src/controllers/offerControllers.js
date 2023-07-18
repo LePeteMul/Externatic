@@ -85,7 +85,7 @@ const add = (req, res) => {
     .then(([result]) => {
       models.offer
         .insertTechnoForOffer(result.insertId, parseInt(tech_name))
-        .then(() => res.status(200).send("bouh"));
+        .then(() => res.sendStatus(200));
     })
     .catch((err) => {
       console.error(err);

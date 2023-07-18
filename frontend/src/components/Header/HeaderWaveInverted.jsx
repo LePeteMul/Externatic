@@ -16,8 +16,6 @@ function HeaderWaveInverted({ open, handleOpen, title, profil_picture }) {
   const [uploadedImageUrl, setUploadedImageUrl] = useState("");
   const [uploadLogoUrl, setUploadLogoUrl] = useState("");
 
-  console.info("C'EST MON IMAGE", uploadedImageUrl);
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -63,10 +61,6 @@ function HeaderWaveInverted({ open, handleOpen, title, profil_picture }) {
   /// changement de la photo de profile
 
   const handleImageChange = (file) => {
-    console.info("Nouvelle image sélectionnée :", file);
-    console.info("Identifiant de l'utilisateur :", userId);
-    console.info("Identifiant de la company :", companyId);
-
     const imageUrl = URL.createObjectURL(file);
     setUploadedImageUrl(imageUrl);
     const formData = new FormData();
@@ -80,7 +74,6 @@ function HeaderWaveInverted({ open, handleOpen, title, profil_picture }) {
       .then((response) => response.json())
       .then((data) => {
         const imageUrl1 = data.fileUrl;
-        console.info("C'est mon image de profil", imageUrl1);
         setUploadedImageUrl(imageUrl1);
       })
       .catch((error) => console.error(error));
@@ -89,9 +82,6 @@ function HeaderWaveInverted({ open, handleOpen, title, profil_picture }) {
   // changement du logo company
 
   const handleCompanyImageChange = (file) => {
-    console.info("Nouveau logo sélectionnée :", file);
-    console.info("Identifiant de la société :", companyId);
-
     const logoUrl = URL.createObjectURL(file);
     setUploadLogoUrl(logoUrl);
     const formData = new FormData();
@@ -151,10 +141,16 @@ function HeaderWaveInverted({ open, handleOpen, title, profil_picture }) {
 }
 
 HeaderWaveInverted.propTypes = {
-  open: PropTypes.bool.isRequired,
-  handleOpen: PropTypes.func.isRequired,
+  open: PropTypes.bool,
+  handleOpen: PropTypes.func,
   title: PropTypes.string.isRequired,
-  profil_picture: PropTypes.string.isRequired,
+  profil_picture: PropTypes.string,
+};
+
+HeaderWaveInverted.defaultProps = {
+  open: undefined,
+  handleOpen: undefined,
+  profil_picture: undefined,
 };
 
 export default HeaderWaveInverted;

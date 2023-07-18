@@ -29,7 +29,6 @@ function Application() {
 
   // Function to handle status change
   const handleStatusChange = (e) => {
-    console.info("handleStatusChange called");
     setSelectedStatus(e.target.value);
     updateApplicationStatus(e.target.value);
   };
@@ -39,10 +38,6 @@ function Application() {
     const parsedStatus = parseInt(status);
     const offer_id = parseInt(result.offer_id);
     const url = `http://localhost:8080/api/application/${result.id}/status`;
-    console.info("Updating application status...");
-    console.info("Application ID:", result.id);
-    console.info("New Status:", parsedStatus);
-    console.info("Offer id:", result.offer_id);
 
     if (!isNaN(parsedStatus) && !isNaN(result.id) && !isNaN(result.offer_id)) {
       fetch(url, {
@@ -53,8 +48,9 @@ function Application() {
         body: JSON.stringify({ status: parsedStatus, offer_id }),
       })
         .then((response) => {
-          console.info("Response:", response);
-          // Perform any necessary actions after successful status update
+          if (response.status !== 204) {
+            console.error(response.statusText);
+          }
         })
         .catch((error) => {
           console.error("Error:", error);
@@ -65,13 +61,11 @@ function Application() {
     }
   };
 
-  console.warn("result = ", result);
-  console.warn("result.user_id = ", result.user_id);
   return (
     <div className="application">
       <HeaderBasic />
       <div className="boxWithoutHeader">
-        {result === "" && (
+        {!result && (
           <div className="applicationTitle">
             <h1>Pas de candidature pour cette offre</h1>
           </div>

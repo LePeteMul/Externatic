@@ -148,7 +148,7 @@ class OfferManager extends AbstractManager {
 
   findJobList() {
     return this.database.query(
-      `select job from  ${this.table} ORDER BY job ASC`
+      `select DISTINCT job from  ${this.table} ORDER BY job ASC`
     );
   }
 

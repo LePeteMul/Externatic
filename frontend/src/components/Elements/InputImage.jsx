@@ -11,7 +11,6 @@ function InputImage({ label, userId, handleChange, preview = "" }) {
   useEffect(() => {
     setPreviewUrl(preview);
   }, [preview]);
-  console.info("info", preview);
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
     setFile(selectedFile);
@@ -70,7 +69,6 @@ function InputImage({ label, userId, handleChange, preview = "" }) {
 
       if (response.ok) {
         // Le fichier a été téléchargé avec succès
-        console.info("Le fichier a été téléchargé avec succès !", response);
         // Traitez la réponse du backend ici si nécessaire
         const data = await response.json();
 
@@ -124,9 +122,9 @@ function InputImage({ label, userId, handleChange, preview = "" }) {
 
 InputImage.propTypes = {
   label: PropTypes.string.isRequired,
-  userId: PropTypes.string.isRequired,
+  userId: PropTypes.number.isRequired,
   handleChange: PropTypes.func.isRequired,
-  preview: PropTypes.func.isRequired,
+  preview: PropTypes.string.isRequired,
 };
 
 export default InputImage;
