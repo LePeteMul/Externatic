@@ -28,7 +28,7 @@ function CandidateProfile() {
           phone: data.phone,
           city: data.city,
           cv: data.cv,
-          // language: "",
+          // language: data.language,
         });
       })
       .catch((err) => console.error(err));
@@ -38,6 +38,7 @@ function CandidateProfile() {
   // console.warn("is admin ? ", user.admin);
   // console.warn("lastname = ", user.lastname);
   // console.warn("password = ", user.password);
+  // console.warn("language = ", user.language);
 
   const navigate = useNavigate();
   const [showPopup1, setShowPopup1] = useState(false);
@@ -193,11 +194,7 @@ function CandidateProfile() {
           <a href={user.cv} target="_blank" rel="noopener noreferrer">
             Consulter le CV
           </a>
-          <LanguageList
-            name="language"
-            handleChange={handleChange}
-            selectedLanguages={formData.language}
-          />
+
           <BlackButton
             buttonName="Valider mes modifications"
             buttonFunction={(event) => {
