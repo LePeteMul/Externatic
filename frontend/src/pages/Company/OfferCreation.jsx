@@ -35,7 +35,7 @@ function OfferCreation() {
     date: new Date().toISOString(),
     prerequisites: "",
     department: "",
-    // hardskills: "",
+    tech_name: "",
   });
 
   const handleChange = (e) => {
@@ -185,14 +185,14 @@ function OfferCreation() {
               <InputListe
                 label="Hard Skills"
                 placeholder="Hard Skills"
-                name="Hard Skills"
+                name="tech_name"
                 handleChange={handleChange}
                 data={[
-                  { value: "Java", name: "Java" },
-                  { value: "C#", name: "C#" },
-                  { value: "PHP", name: "PHP" },
-                  { value: "Python", name: "Python" },
-                  { value: "React", name: "React" },
+                  { value: "1", name: "Java" },
+                  { value: "2", name: "C#" },
+                  { value: "3", name: "PHP" },
+                  { value: "4", name: "Python" },
+                  { value: "5", name: "React" },
                 ]}
               />
 
