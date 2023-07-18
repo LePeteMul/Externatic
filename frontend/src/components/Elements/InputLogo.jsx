@@ -97,14 +97,14 @@ function InputLogo({ label, companyId, handleChange, preview = "" }) {
             onChange={handleFileChange}
           />
           <div className="imageSize">
-            {previewUrl !== "" ? (
+            {!previewUrl && !file ? (
+              <img src={uploadIcon} className="upload-icon" alt="Upload" />
+            ) : (
               <img
                 src={previewUrl}
                 className="upload-file"
                 alt="Uploaded Profile"
               />
-            ) : (
-              <img src={uploadIcon} className="upload-icon" alt="Upload" />
             )}
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             {file && (
