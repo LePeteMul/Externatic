@@ -50,7 +50,7 @@ function ProfileCandidate() {
 
           <div className="cv">
             <p>CV :</p>
-            <a href={user.cv} target="_blank" rel="noopener noreferrer">
+            <a href={`${user.cv}`} target="_blank" rel="noopener noreferrer">
               Le consulter
             </a>
           </div>
