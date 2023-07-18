@@ -39,8 +39,12 @@ CompanyCard.propTypes = {
   logo: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   onDelete: PropTypes.func.isRequired,
+};
+
+CompanyCard.defaultProps = {
+  onClick: undefined,
 };
 
 export default CompanyCard;

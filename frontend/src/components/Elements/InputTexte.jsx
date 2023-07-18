@@ -17,7 +17,6 @@ function InputTexte({
 
   const handleTogglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
-    console.warn("Ouch ! It's a click on the eye !");
   };
 
   const inputStyle = {
@@ -69,7 +68,7 @@ InputTexte.propTypes = {
   image: PropTypes.string,
   image2: PropTypes.string,
   image3: PropTypes.string,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   disabled: PropTypes.bool,
 };
 
@@ -79,6 +78,7 @@ InputTexte.defaultProps = {
   image: "",
   image2: "",
   image3: "",
+  value: undefined,
   disabled: false,
 };
 

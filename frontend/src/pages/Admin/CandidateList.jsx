@@ -11,14 +11,11 @@ function CandidateList() {
   useEffect(() => {
     fetch("http://localhost:8080/api/user/candidats")
       .then((response) => response.json())
-      .then(console.warn("candidates du fetch = ", candidates))
       .then((data) => setCandidates(data))
       .catch((err) => console.error(err));
   }, []);
 
   const handleDeleteCandidate = (id) => {
-    console.warn("candidates du handleDelete ", candidates);
-    console.warn("id du handledelete ", id);
     fetch(`http://localhost:8080/api/user/${id}`, {
       method: "DELETE",
     })
@@ -46,7 +43,6 @@ function CandidateList() {
 
         <div className="candidate">
           {candidates.map((candidate) => {
-            console.warn("Candidate Array:", candidate);
             // Assuming candidateArray contains the necessary data for rendering CandidateCard
             return (
               <CandidateCard

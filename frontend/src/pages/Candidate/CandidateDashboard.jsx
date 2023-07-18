@@ -14,7 +14,6 @@ function CandidateDashboard() {
       .then((data) => setUser(data))
       .catch((err) => console.error(err));
   }, []);
-  console.warn("user = ", user);
 
   return (
     <div className="CandidateDashboard test">

@@ -156,6 +156,16 @@ class OfferManager extends AbstractManager {
   findCities() {
     return this.database.query(`select DISTINCT city_job from  ${this.table}`);
   }
+
+  findAllwithdetails() {
+    return this.database
+      .query(`SELECT offer.id , company.id as companyid, company.company_name, offer.job, offer.date, offer.remote, contract.contract_type, offer.min_salary, offer.max_salary, offer.description, offer.prerequisites, offer.city_job, offer.department, company.logo, company.presentation, techno.techno_name
+  FROM offer
+  LEFT JOIN offer_techno ON offer.id = offer_techno.offer_id
+  LEFT JOIN techno ON offer_techno.techno_id = techno.id
+  LEFT JOIN contract ON offer.contract_id = contract.id
+  LEFT JOIN company ON offer.company_id = company.id`);
+  }
 }
 
 module.exports = OfferManager;
