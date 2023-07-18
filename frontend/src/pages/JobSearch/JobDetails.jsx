@@ -13,6 +13,12 @@ function JobDetails() {
 
   const [jobDetails, setJobDetails] = useState([]);
 
+  const [error, setError] = useState(null);
+
+  const handlePopupClose = () => {
+    setError(false);
+  };
+
   const [application, setApplication] = useState({
     candidate_id: userId,
     offer_id: offerId,
@@ -62,10 +68,10 @@ function JobDetails() {
       .then((response) => {
         if (response.status === 201) {
           setHasApply(true);
-        }
+        } else setError("Votre candidature a déjà été transmise");
       })
-      .catch((error) => {
-        console.error("Error:", error);
+      .catch((err) => {
+        console.error("Error:", err);
       });
   };
 
@@ -91,10 +97,10 @@ function JobDetails() {
       .then((response) => {
         if (response.status === 201) {
           setHasFavorite(true);
-        }
+        } else setError("Offre déjà enregistrée dans vos favoris");
       })
-      .catch((error) => {
-        console.error("Error:", error);
+      .catch((err) => {
+        console.error("Error:", err);
       });
   };
 
@@ -137,15 +143,18 @@ function JobDetails() {
         </div>
         <br />
         <div className="OfferTechno">
-          <h3>Environnement technique :</h3>
+          <h3>Hard Skills :</h3>
           <br />
           <p>{jobDetails.techno_name}</p>
+          <br />
+          <h3>Soft Skills :</h3>
+          <br />
+          <p>{jobDetails.prerequisites}</p>
         </div>
         <br />
         <div className="OfferConditions">
           <h3>Conditions de travail</h3>
           <br />
-          <p>{jobDetails.prerequisites}</p>
           <p>Télétravail : {jobDetails.remote}</p>
           <p>
             Salaire : de {jobDetails.min_salary} € à {jobDetails.max_salary} €
@@ -182,6 +191,14 @@ function JobDetails() {
             title="Cette offre a bien été ajoutée à vos favoris"
             message=""
             onClose={handlePopupFavoriteClose}
+            buttonname="Retour à l'offre"
+          />
+        )}
+        {error && (
+          <Popup
+            title="Erreur"
+            message={error}
+            onClose={handlePopupClose}
             buttonname="Retour à l'offre"
           />
         )}

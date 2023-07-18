@@ -63,6 +63,7 @@ function FavoriteOffers() {
                 id={offer.offer_id}
                 onDelete={() => handleDelete(offer.offer_id)}
                 onClick={() => handleClick(offer.offer_id)}
+                showButtons
               />
             );
           })}

@@ -51,14 +51,41 @@ const edit = (req, res) => {
 };
 
 const add = (req, res) => {
-  const offer = req.body;
+  const {
+    company_id,
+    job,
+    date,
+    remote,
+    contract_id,
+    min_salary,
+    max_salary,
+    description,
+    prerequisites,
+    city_job,
+    department,
+  } = req.body;
+  const { tech_name } = req.body;
 
   // TODO validations (length, format...)
 
   models.offer
-    .insert(offer)
+    .insert({
+      company_id,
+      job,
+      date,
+      remote,
+      contract_id,
+      min_salary,
+      max_salary,
+      description,
+      prerequisites,
+      city_job,
+      department,
+    })
     .then(([result]) => {
-      res.location(`/api/offer/${result.insertId}`).sendStatus(201);
+      models.offer
+        .insertTechnoForOffer(result.insertId, parseInt(tech_name))
+        .then(() => res.status(200).send("bouh"));
     })
     .catch((err) => {
       console.error(err);
@@ -141,6 +168,18 @@ const findOffersByCompany = (req, res) => {
     });
 };
 
+const getCities = (req, res) => {
+  models.offer
+    .findCities()
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
@@ -151,4 +190,5 @@ module.exports = {
   getJobList,
   getOfferDetails,
   findOffersByCompany,
+  getCities,
 };

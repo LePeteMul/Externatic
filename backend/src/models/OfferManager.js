@@ -8,7 +8,8 @@ class OfferManager extends AbstractManager {
   insert(offer) {
     return this.database.query(
       `insert into ${this.table} (company_id, job, date, remote, contract_id, min_salary, max_salary,
-        description, prerequisites, city_job, department) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        description, prerequisites, city_job, department) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+        `,
       [
         offer.company_id,
         offer.job,
@@ -21,7 +22,15 @@ class OfferManager extends AbstractManager {
         offer.prerequisites,
         offer.city_job,
         offer.department,
+        offer.tech_name,
       ]
+    );
+  }
+
+  insertTechnoForOffer(offer_id, techno_id) {
+    return this.database.query(
+      "insert into offer_techno (techno_id, offer_id) values (?, ?)",
+      [techno_id, offer_id]
     );
   }
 
@@ -58,7 +67,7 @@ class OfferManager extends AbstractManager {
 
     if (search.job !== "" && search.contract !== "" && search.city !== "") {
       query += `
-        WHERE offer.job = ? 
+        WHERE offer.job LIKE ? 
         AND offer.contract_id = ? 
         AND offer.city_job = ?
         ORDER BY offer.date DESC`;
@@ -69,7 +78,7 @@ class OfferManager extends AbstractManager {
       search.city === ""
     ) {
       query += `
-        WHERE offer.job = ? 
+        WHERE offer.job LIKE ?  
         AND offer.contract_id = ?
         ORDER BY offer.date DESC`;
       params = [search.job, search.contract];
@@ -79,7 +88,7 @@ class OfferManager extends AbstractManager {
       search.city === ""
     ) {
       query += `
-        WHERE offer.job = ?
+        WHERE offer.job LIKE ?
         ORDER BY offer.date DESC`;
       params = [search.job];
     } else if (
@@ -88,7 +97,7 @@ class OfferManager extends AbstractManager {
       search.city !== ""
     ) {
       query += `
-        WHERE offer.job = ? 
+        WHERE offer.job LIKE ? 
         AND offer.city_job = ?
         ORDER BY offer.date DESC`;
       params = [search.job, search.city];
@@ -151,6 +160,10 @@ class OfferManager extends AbstractManager {
       INNER JOIN contract ON ${this.table}.id = contract.id;
       `
     );
+  }
+
+  findCities() {
+    return this.database.query(`select DISTINCT city_job from  ${this.table}`);
   }
 }
 

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
+import eye from "../../assets/icons/eye.png";
 import HeaderWave from "../../components/Header/HeaderWave";
 import InputTexte from "../../components/Elements/InputTexte";
 import BlackButton from "../../components/Elements/BlackButton";
@@ -72,6 +73,7 @@ function LoginCompany() {
             <InputTexte
               label="Mot de passe"
               name="password"
+              image={eye}
               type="password"
               placeholder="Mot de passe"
               handleChange={handleChange}

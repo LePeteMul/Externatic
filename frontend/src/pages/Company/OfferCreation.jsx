@@ -31,10 +31,11 @@ function OfferCreation() {
     max_salary: "",
     description: "",
     city_job: "",
-    prerequisites: "Min 3ans d'expériences",
+    remote: "",
+    date: new Date().toISOString(),
+    prerequisites: "",
     department: "",
-    // softskills: "",
-    // hardskills: "",
+    tech_name: "",
   });
 
   const handleChange = (e) => {
@@ -43,11 +44,22 @@ function OfferCreation() {
       [e.target.name]: e.target.value,
     }));
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.info(formData.prerequisites);
+
+    const formattedDate = new Date(formData.date)
+      .toISOString()
+      .slice(0, 19)
+      .replace("T", " ");
+
+    const requestData = {
+      ...formData,
+      date: formattedDate,
+    };
 
     const url = "http://localhost:8080/api/offer";
-    const requestData = { ...formData };
 
     fetch(url, {
       method: "POST",
@@ -59,11 +71,9 @@ function OfferCreation() {
       .then((response) => response.json())
       .then((data) => {
         console.info("Response:", data);
-        // Perform any necessary actions after successful POST request
       })
       .catch((error) => {
         console.error("Error:", error);
-        // Handle any errors that occurred during the POST request
       });
   };
 
@@ -75,7 +85,6 @@ function OfferCreation() {
         setOfferData(data);
       } catch (error) {
         console.error("Error fetching offer data:", error);
-        // Handle the error appropriately
       }
     };
 
@@ -130,6 +139,7 @@ function OfferCreation() {
                 handleChange={handleChange}
                 type="text"
               />
+
               <Textearea
                 label="Missions du poste"
                 name="description"
@@ -154,7 +164,7 @@ function OfferCreation() {
               <InputListe
                 label="Télétravail"
                 placeholder="Selectionner un mode de télétravail"
-                name="teletravail"
+                name="remote"
                 handleChange={handleChange}
                 data={[
                   { value: "total", name: "total" },
@@ -164,21 +174,26 @@ function OfferCreation() {
               />
 
               <Textearea
-                label="Soft Skills"
-                name="softskills"
-                handleChange={handleChange}
+                label="SoftSkills"
                 placeholder="Description"
+                name="prerequisites"
+                handleChange={handleChange}
                 rows={9}
                 type="text"
               />
 
-              <Textearea
+              <InputListe
                 label="Hard Skills"
-                name="hardskills"
+                placeholder="Hard Skills"
+                name="tech_name"
                 handleChange={handleChange}
-                placeholder="Description"
-                rows={9}
-                type="text"
+                data={[
+                  { value: "1", name: "Java" },
+                  { value: "2", name: "C#" },
+                  { value: "3", name: "PHP" },
+                  { value: "4", name: "Python" },
+                  { value: "5", name: "React" },
+                ]}
               />
 
               <div className="offerEnd">
@@ -189,7 +204,6 @@ function OfferCreation() {
                     handlePopup1Open();
                     handleSubmit(event);
                   }}
-                  // buttonFunction={handlePosted}
                 />
                 {showPopup1 && (
                   <Popup
@@ -204,19 +218,6 @@ function OfferCreation() {
             </div>
           </form>
         </div>
-
-        {/* )}
-
-        {posted && (
-          <div>
-            <div className="confOfferCreation">
-              <h2>L'offre d'emploi a bien été publiée</h2>
-            </div>
-            <div className="confOfferCreation">
-                <WhiteButton buttonName="Retour à mon espace"buttonFunction={handleSubmit} />
-            </div>
-          </div>
-        )} */}
       </div>
     </div>
   );

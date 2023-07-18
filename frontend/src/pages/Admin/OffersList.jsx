@@ -66,6 +66,7 @@ function OffersList() {
                 id={offer.id}
                 onDelete={() => handleDelete(offer.id)}
                 onClick={() => handleClick(offer.id)}
+                showButtons
               />
             );
           })}

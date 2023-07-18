@@ -12,6 +12,8 @@ function JobCard({
 
   onClick,
   onDelete,
+
+  showButtons,
 }) {
   return (
     <div
@@ -31,12 +33,13 @@ function JobCard({
         </h3>
         <h3 className="publication"> offre publiée le {date}</h3>
       </div>
-      <div className="navigation">
-        <button type="button" className="jobCardButtons" onClick={onDelete}>
-          {" "}
-          <img src={croix} alt="croix" />
-        </button>
-      </div>
+      {showButtons && ( // Conditionally render buttons based on showButtons prop
+        <div className="navigation">
+          <button type="button" className="jobCardButtons" onClick={onDelete}>
+            <img src={croix} alt="croix" />
+          </button>
+        </div>
+      )}
     </div>
   );
 }
@@ -50,6 +53,7 @@ JobCard.propTypes = {
   date: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
+  showButtons: PropTypes.bool.isRequired,
 };
 
 export default JobCard;

@@ -19,7 +19,7 @@ export function JobOfferContextProvider({ children }) {
 
   useEffect(() => {
     const queryParams = new URLSearchParams({
-      job: searchJob,
+      job: `${searchJob}%`,
       contract: searchContractId,
       city: searchCity,
     }).toString();
@@ -27,7 +27,14 @@ export function JobOfferContextProvider({ children }) {
 
     fetch(url)
       .then((response) => response.json())
-      .then((data) => setJobOffer(data))
+      .then((data) => {
+        data.sort((a, b) => {
+          const dateA = new Date(a.date);
+          const dateB = new Date(b.date);
+          return dateB - dateA;
+        });
+        setJobOffer(data);
+      })
       .catch((err) => console.error(err));
   }, [searchCity, searchContract, searchJob]);
 

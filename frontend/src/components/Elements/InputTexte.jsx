@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 function InputTexte({
@@ -13,6 +13,13 @@ function InputTexte({
   value,
   disabled,
 }) {
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+  const handleTogglePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+    console.warn("Ouch ! It's a click on the eye !");
+  };
+
   const inputStyle = {
     cursor: disabled ? "not-allowed" : "none",
   };
@@ -21,7 +28,7 @@ function InputTexte({
     <div className="inputText">
       <label htmlFor={name}>{label}</label>
       <input
-        type={type}
+        type={type === "password" && isPasswordVisible ? "text" : type}
         placeholder={placeholder}
         name={name}
         onChange={handleChange}
@@ -29,7 +36,24 @@ function InputTexte({
         style={inputStyle}
         disabled={disabled}
       />
-      {image && <img className="eye" src={image} alt="IconEye" />}
+      {type === "password" && image && (
+        //   <img
+        //   className="eye"
+        //   src={image}
+        //   alt="IconEye"
+        //   onClick={handleTogglePasswordVisibility}
+        // />
+
+        <div className="eyeButtonSystem">
+          <button
+            type="button"
+            className="eyeButton"
+            onClick={handleTogglePasswordVisibility}
+          >
+            <img className="eyeIcon" src={image} alt="IconEye" />
+          </button>
+        </div>
+      )}
       {image2 && <img className="profil" src={image2} alt="IconProfil" />}
       {image3 && <img className="lock" src={image3} alt="IconLock" />}
     </div>

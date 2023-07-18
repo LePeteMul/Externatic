@@ -23,6 +23,8 @@ function Registration() {
   };
 
   const [isSent, setIsSent] = useState(false);
+  const [error, setError] = useState(null);
+
   const navigate = useNavigate();
 
   const handlePopupClose = () => {
@@ -42,6 +44,9 @@ function Registration() {
       body: JSON.stringify(requestData),
     })
       .then((response) => {
+        if (response.status === 400) {
+          setError("Cet email est déjà utilisé");
+        }
         fetch("http://localhost:8080/api/email", {
           method: "POST",
           headers: {
@@ -52,12 +57,12 @@ function Registration() {
           .then((res) => {
             setIsSent(!isSent);
           })
-          .catch((error) => {
-            console.error("Error:", error);
+          .catch((err) => {
+            console.error("Error:", err);
           });
       })
-      .catch((error) => {
-        console.error("Error:", error);
+      .catch((err) => {
+        console.error("Error:", err);
         // Handle any errors that occurred during the POST request
       });
   };
@@ -104,6 +109,7 @@ function Registration() {
               label="Confirmer le mot de passe :"
               placeholder="*******************"
               name="password"
+              image={eye}
               type="password"
               handleChange={handleChange}
             />
@@ -119,6 +125,14 @@ function Registration() {
           <Popup
             title="Enregistrer"
             message="Un email de confirmation vous a été envoyé. Consultez votre boite mail et suivez les instructions pour confirmer votre inscription."
+            onClose={handlePopupClose}
+            buttonname="Se connecter"
+          />
+        )}
+        {error && (
+          <Popup
+            title="Erreur"
+            message={error}
             onClose={handlePopupClose}
             buttonname="Se connecter"
           />

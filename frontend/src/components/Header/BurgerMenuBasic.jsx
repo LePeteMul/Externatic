@@ -52,17 +52,21 @@ function BurgerMenuBasic() {
         <img className="IconBurger" src={burger} alt="Le Burger" />
       </button>
       <ul className={open ? "menuOpened" : "menuClosed"}>
-        <Link to="/login">
-          <li className="menuItem">Se connecter</li>
-        </Link>
-        <Link to="/logincompany">
-          <li className="menuItem">Se connecter en tant qu'entreprise</li>
-        </Link>
-        <Link to="/contact">
+        {!(userConnected || companyConnected) && (
+          <>
+            <Link to="/login" onClick={handleClick}>
+              <li className="menuItem">Se connecter</li>
+            </Link>
+            <Link to="/logincompany" onClick={handleClick}>
+              <li className="menuItem">Se connecter en tant qu'entreprise</li>
+            </Link>
+          </>
+        )}
+        <Link to="/contact" onClick={handleClick}>
           <li className="menuItem">Contact</li>
         </Link>
-        <Link to="/legalinformations">
-          <li className="menuItem">Mentions légales</li>{" "}
+        <Link to="/legalinformations" onClick={handleClick}>
+          <li className="menuItem">Mentions légales</li>
         </Link>
         <div
           onClick={handleDisconnect}
@@ -76,4 +80,5 @@ function BurgerMenuBasic() {
     </div>
   );
 }
+
 export default BurgerMenuBasic;

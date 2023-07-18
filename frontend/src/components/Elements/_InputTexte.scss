@@ -19,15 +19,48 @@
     font-family: $fontFamily;
     padding-left: 12px;
   }
-  .eye {
+
+  .eyeButtonSystem {
+    // background-color: darkorchid;
+    display: flex;
+    align-items: center;
+
+    height: 0px;
+    transform: translateY(-24px);
+    position: relative;
+
+    // border: solid;
+    // border-radius: 6px;
+    // border-color: green;
+    // box-sizing: border-box;
+  }
+
+  .eyeButton {
+    position: absolute;
+    right: 0;
+
+    // border: solid;
+    // border-radius: 6px;
+    // border-color: black;
+    // box-sizing: border-box;
+  }
+
+  .eyeIcon {
     height: 25px;
     width: 35px;
     display: flex;
-    margin-left: auto;
-    margin-right: 10px;
-    margin-top: -37px;
-    padding-right: 3px;
+
+    // margin-left: 100%;
+    // margin-right: 10px;
+    // margin-top: -37px;
+    // padding-right: 3px;
+    // background-color: orangered;
+    // border: solid;
+    // border-radius: 6px;
+    // border-color: yellow;
+    // box-sizing: border-box;
   }
+
   .profil {
     height: 25px;
     width: 35px;

@@ -24,8 +24,6 @@ CREATE DATABASE externatic;
 
 USE externatic;
 
-
-
 CREATE TABLE
     contract(
         id INT NOT NULL AUTO_INCREMENT,
@@ -47,18 +45,14 @@ CREATE TABLE
         password VARCHAR(250) NOT NULL,
         profil_picture VARCHAR(250),
         contact_mode VARCHAR(250),
-        pref_job VARCHAR(250),
-        job_city VARCHAR(300),
-        pref_contract INT,
         PRIMARY KEY (id),
-        FOREIGN KEY (pref_contract) REFERENCES contract(id)
     );
 
 CREATE TABLE
     company(
         id INT NOT NULL AUTO_INCREMENT,
         company_name VARCHAR(300) NOT NULL,
-        email VARCHAR(450) NOT NULL,
+        email VARCHAR(450) NOT NULL UNIQUE,
         password VARCHAR(250) NOT NULL,
         phone VARCHAR(450) NOT NULL,
         logo VARCHAR(300),
@@ -91,11 +85,10 @@ CREATE TABLE
         FOREIGN KEY (company_id) REFERENCES company(id) ON DELETE CASCADE ON UPDATE CASCADE,
         FOREIGN KEY (contract_id) REFERENCES contract(id)
     );
- 
 
 CREATE TABLE
     application(
-        id INT NOT NULL AUTO_INCREMENT,
+        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         candidate_id INT NOT NULL,
         offer_id INT NOT NULL,
         status_id INT NOT NULL,
@@ -104,7 +97,7 @@ CREATE TABLE
         FOREIGN KEY (offer_id) REFERENCES offer(id) ON DELETE CASCADE ON UPDATE CASCADE,
         FOREIGN KEY (status_id) REFERENCES status(id),
         FOREIGN KEY (company_id) REFERENCES company(id) ON DELETE CASCADE ON UPDATE CASCADE,
-        PRIMARY KEY (id)
+        CONSTRAINT uc_candidate_offer UNIQUE (candidate_id, offer_id)
     );
 
 CREATE TABLE
@@ -326,7 +319,7 @@ VALUES (
         " la Loire-Atlantique"
     ), (
         2,
-        "Développeur fullstack junior",
+        "Développeur Fullstack",
         "2023-06-20 17:30:45",
         "occasionnel",
         1,
@@ -337,15 +330,15 @@ Outils interactifs pour les visio : tableau-blanc, sondage intéractifs, etc…
 Animations in-app et outils pédagogiques pour les patients
 Fonctionnalités autour du suivi des objets connectés remis aux patients
 Tableau de bord avec des alertes pour les professionnels",
-        "Symfony & React",
+        "Travailler sur une solution qui aide les collaborateurs opérationnels au quotidien ",
         "Nantes",
         " la Loire-Atlantique"
     ), (
         3,
-        "Lead Tech Java",
+        "Lead Tech",
         "2023-06-20 16:30:45",
         "partiel",
-        3,
+        1,
         20000,
         22000,
         "Vous intégrez une équipe AGILE, en tant que développeur JAVA (F/H/X). Vos missions consistent à : 
@@ -353,12 +346,12 @@ Tableau de bord avec des alertes pour les professionnels",
 Comprendre les besoins clients dans le but de définir les solutions les plus adaptées,
 Participer aux cérémonies avec les équipes PO, Scrum, MOAs, Métiers,
 Partager les bonnes pratiques de développement : qualité de code et de tests, industrialisation",
-        " JAVA, Springboot, JS (Angular et Vue)",
+        "Un poste sur mesure avec la possibilité de se positionner vers un poste axé architecte ou lead",
         "Nantes",
         " la Loire-Atlantique"
     ), (
         4,
-        "Développeur Back end Java",
+        "Développeur Front end",
         "2023-06-21 11:30:45",
         "partiel",
         2,
@@ -378,7 +371,7 @@ Veille technologique",
         "Responsable de projets SI",
         "2023-06-21 10:30:45",
         "partiel",
-        4,
+        3,
         35000,
         40000,
         " En tant que Responsable de Projets SI Outre-mer vous aurez en charge le pilotage des projets et le management des ressources internes MOE.
@@ -388,7 +381,60 @@ En tant que Responsable de projets SI Outre-mer vous aurez pour missions :
 Responsable de l'équipe MOE, AMOA du périmètre SI Outre Mer (Antilles Guyane et Pacifique, Nouvelle Calédonie),
 Conduite du projet (Planning / Coûts / Délais - ~ 4m€ de budget),
 Organisation, communication, animation, management, pilotage, recrutement et suivi des prestataires",
-        "Min 3ans d'expériences",
+        "Minimum 3 ans d'expérience exigée",
+        "Angers",
+        " la Loire-Atlantique"
+    ), (
+        1,
+        "Chef de Projet Data",
+        "2023-07-17 15:30:45",
+        "partiel",
+        1,
+        38000,
+        43000,
+        "Dans le cadre d'une création de poste, vous accompagner la transformation digitale de l'entreprise au travers de l'organisation et le pilotage de la Data.
+En collaboration avec les équipes techniques, vous participez à l'architecture et à la construction du schéma de management de la Data/Marketing, que vous deployez auprès des équipes internes.
+En ce sens, les missions s'articuleront autour de plusieurs volets : Gestion de Projet Amont,
+Sourcing de données,  Gestion de la données et Gestion de Projet Aval.",
+        "Capacité d'animer des équipes en mode projet, capacité d'analyse et force de proposition",
+        "Nantes",
+        " la Loire-Atlantique"
+    ), (
+        2,
+        "Développeur Back end",
+        "2023-07-13 17:30:45",
+        "occasionnel",
+        1,
+        38000,
+        40000,
+        "Sous la direction des cheffes de projet et en collaboration avec l’équipe de développement, vous participez aux phases de conception technique, du développement et de la maintenance des sites internet des clients. Dans le cadre de vos missions, vous participez aux phases de conceptions techniques, formalisez les spécifications techniques détaillées, développez les applications web client, dans le respect du cahier des charges et des délais, anticipez les risques techniques,
+êtes force de proposition sur les évolutions de composants et de l’architecture concernant les applications.",
+        "Première expérience dans le développement de sites web appréciée ",
+        "Nantes",
+        " la Loire-Atlantique"
+    ), (
+        3,
+        "Responsable Support IT",
+        "2023-07-10 16:30:45",
+        "partiel",
+        1,
+        45000,
+        50000,
+        "Sous la responsabilité du Responsable des Infrastructures, vous êtes garant du traitement des incidents ou demandes dans les délais impartis, ainsi que de la qualité de service apportée aux 2000 utilisateurs de l'entreprise, dans un environnement groupe et multisite. Dans le cadre de vos missions, vous participez à la gestion des incidents et demandes dans outil ITSM et à leurs résolutions, vous accompagnez et animez l’équipe dans le suivi, la planification des activités et veiller à leur montée en compétences. ",
+        "Expérience managériale requise, aisance relationnelle",
+        "Nantes",
+        " la Loire-Atlantique"
+    ), (
+        4,
+        "Architecte technique",
+        "2023-07-17 10:30:45",
+        "partiel",
+        1,
+        45000,
+        52000,
+        " Dans le cadre d'une création de poste, vous êtes responsable du maintien des frameworks et des librairies propriétaires, ainsi que de la réalisation des conceptions les plus complexes.
+Dans le cadre de vos missions, vous animez et supervisez techniquement les travaux autour des librairies et frameworks propriétaires, rédigez la documentation technique, assurer une veille permanente sur les évolutions technologiques  ",
+        "Expertise approfondie dans les technologies et les architectures logicielles",
         "Angers",
         " la Loire-Atlantique"
     );
@@ -403,7 +449,7 @@ VALUES (1, 1), (1, 5), (2, 3), (3, 4), (4, 1);
 
 INSERT INTO
     offer_techno(techno_id, offer_id)
-VALUES (4, 1), (5, 2), (1, 4);
+VALUES (4, 1), (5, 2), (1, 3), (2, 4), (4, 5), (5, 6), (1, 7), (2, 8), (3, 9);
 
 INSERT INTO
     favorite(candidate_id, offer_id)
@@ -420,4 +466,4 @@ INSERT INTO
         status_id,
         company_id
     )
-VALUES (1, 1, 1, 3), (1, 1, 3, 4), (2, 2, 2, 1), (3, 1, 1, 2), (3, 5, 1, 3), (3, 2, 1, 4), (3, 3, 1, 1), (3, 4, 1, 3), (4, 4, 1, 4), (5, 1, 3, 1), (5, 4, 2, 1);
+VALUES (1, 1, 1, 1), (2, 2, 2, 2), (3, 2, 1, 2), (3, 3, 1, 3), (3, 4, 1, 4), (4, 4, 1, 4), (5, 1, 3, 1), (5, 4, 2, 4);
