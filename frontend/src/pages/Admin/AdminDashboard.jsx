@@ -8,17 +8,12 @@ function AdminDashboard() {
   const { userId } = useContext(UserConnexionContext);
   const [admin, setAdmin] = useState([]);
 
-  console.warn("admin avant le fetch = ", admin);
-  console.warn(`setadmin ${setAdmin}`);
-
   useEffect(() => {
     fetch(`http://localhost:8080/api/user/${userId}`)
       .then((response) => response.json())
       .then((data) => setAdmin(data))
       .catch((err) => console.error(err));
   }, []);
-
-  console.warn("admin = ", admin);
 
   return (
     <div className="AdminDashboard">

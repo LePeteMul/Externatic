@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import BlackButton from "../../components/Elements/BlackButton";
-import InputListe from "../../components/Elements/InputListe";
 import InputTexte from "../../components/Elements/InputTexte";
 import Popup from "../../components/Elements/Popup";
 import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
@@ -10,7 +9,6 @@ import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnex
 function AdminProfile() {
   const { userId } = useContext(UserConnexionContext);
   const [admin, setAdmin] = useState({});
-  console.warn("Dans AdminProfile, userID : ", admin.id);
 
   useEffect(() => {
     fetch(`http://localhost:8080/api/user/${userId}`)
@@ -19,21 +17,13 @@ function AdminProfile() {
         setAdmin(data);
         setFormData({
           ...formData,
-          gender: data.gender,
           lastname: data.lastname,
           firstname: data.firstname,
           email: data.email,
-          phone: data.phone,
-          city: data.city,
-          cv: data.cv,
-          // password: "£££",
         });
       })
       .catch((err) => console.error(err));
   }, []);
-  console.warn("admin dans le admin profile = ", admin);
-  console.warn("is admin ? ", admin.admin);
-  console.warn("lastname = ", admin.lastname);
 
   const navigate = useNavigate();
   const [showPopup1, setShowPopup1] = useState(false);
@@ -48,14 +38,9 @@ function AdminProfile() {
   };
 
   const [formData, setFormData] = useState({
-    gender: admin.gender,
     lastname: admin.lastname,
     firstname: admin.firstname,
     email: admin.email,
-    phone: admin.phone,
-    city: admin.city,
-    cv: admin.cv,
-    // password: "£££",
   });
 
   const handleChange = (e) => {
@@ -67,7 +52,6 @@ function AdminProfile() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.info("formData = ", formData);
     const url = `http://localhost:8080/api/user/${userId}`;
     const requestData = { ...formData };
 
@@ -78,10 +62,10 @@ function AdminProfile() {
       },
       body: JSON.stringify(requestData),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.info("Response:", data);
-        // Perform any necessary actions after successful POST request
+      .then((response) => {
+        if (response.status !== 204) {
+          console.error(response.statusText);
+        }
       })
       .catch((error) => {
         console.error("Error:", error);

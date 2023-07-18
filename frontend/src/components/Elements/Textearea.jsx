@@ -7,7 +7,7 @@ function Textearea({ label, inputMessage, rows, type, handleChange, name }) {
   const handleChangeInput = (event) => {
     setEntry(event.target.value);
   };
-  console.info(entry);
+
   return (
     <div className="TextArea">
       <label htmlFor="label">{label} </label>
@@ -23,12 +23,20 @@ function Textearea({ label, inputMessage, rows, type, handleChange, name }) {
 }
 
 Textearea.propTypes = {
-  label: PropTypes.string.isRequired,
-  inputMessage: PropTypes.string.isRequired,
+  label: PropTypes.string,
+  inputMessage: PropTypes.string,
   rows: PropTypes.number.isRequired,
-  type: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  handleChange: PropTypes.func,
+  name: PropTypes.string,
+};
+
+Textearea.defaultProps = {
+  label: undefined,
+  inputMessage: undefined,
+  type: undefined,
+  handleChange: undefined,
+  name: undefined,
 };
 
 export default Textearea;

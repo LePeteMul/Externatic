@@ -25,9 +25,16 @@ function InputListe({ label, placeholder, data, handleChange, name, value }) {
 InputListe.propTypes = {
   label: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
-  data: PropTypes.string.isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+  ),
   name: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   value: PropTypes.number.isRequired,
 };
+
+InputListe.defaultProps = {
+  data: undefined,
+};
+
 export default InputListe;

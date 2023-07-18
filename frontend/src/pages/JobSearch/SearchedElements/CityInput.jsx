@@ -29,7 +29,7 @@ function CityInput() {
           <option
             className="selected"
             value={element.city_job}
-            key={element.id}
+            key={element.city_job}
           >
             {element.city_job}
           </option>

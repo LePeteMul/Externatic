@@ -38,7 +38,6 @@ function CompanyCreation() {
 
     const url = "http://localhost:8080/api/company/register";
     const requestData = { ...formData };
-    console.info("mauvais");
     fetch(url, {
       method: "POST",
       headers: {
@@ -50,12 +49,8 @@ function CompanyCreation() {
         if (response.status === 400) {
           setError("Cet email est déjà utilisé");
         } else {
-          response.json();
+          setShowPopup1(true);
         }
-      })
-      .then((data) => {
-        console.info("Response:", data);
-        setShowPopup1(true);
       })
       .catch((err) => {
         console.error("Error:", err);

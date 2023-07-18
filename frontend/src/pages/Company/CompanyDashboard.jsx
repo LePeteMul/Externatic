@@ -18,7 +18,6 @@ function CompanyDashboard() {
   return (
     <div className="CompanyDashboard">
       <HeaderWaveInverted title={`Bienvenue ${company.company_name}`} />
-      {/* <HeaderWaveInverted title="Bienvenue, placeholder" /> */}
       <div className="boxWithoutHeader">
         <div className="boxInside">
           <NavLink to="/company/profile">

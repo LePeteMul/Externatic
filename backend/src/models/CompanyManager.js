@@ -5,6 +5,19 @@ class CompanyManager extends AbstractManager {
     super({ table: "company" });
   }
 
+  findByIdWithoutPassword(id) {
+    return this.database.query(
+      `select id, company_name, email, phone, logo, presentation  from  ${this.table} where id = ?`,
+      [id]
+    );
+  }
+
+  findAllWithoutPassword() {
+    return this.database.query(
+      `select id, company_name, email, phone, logo, presentation from  ${this.table}`
+    );
+  }
+
   insert(company) {
     return this.database.query(
       `insert into ${this.table} (company_name, email,password, phone, logo) values (?, ?, ?, ?, ?)`,
@@ -28,11 +41,10 @@ class CompanyManager extends AbstractManager {
 
   update(company) {
     return this.database.query(
-      `update ${this.table} set company_name = ?, email = ?, password = ?, phone = ?, logo = ?, presentation = ? where id = ?`,
+      `update ${this.table} set company_name = ?, email = ?, phone = ?, logo = ?, presentation = ? where id = ?`,
       [
         company.company_name,
         company.email,
-        company.password,
         company.phone,
         company.logo,
         company.presentation,

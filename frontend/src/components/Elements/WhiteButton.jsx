@@ -17,7 +17,7 @@ WhiteButton.propTypes = {
 };
 
 WhiteButton.defaultProps = {
-  buttonFunction: console.info("Fonction"),
+  buttonFunction: undefined,
 };
 
 export default WhiteButton;
