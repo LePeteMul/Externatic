@@ -129,10 +129,15 @@ router.put(
 
 const mailControllers = require("./controllers/mailControllers");
 
-router.post("/api/email", mailControllers.sendContactMail);
+router.post("/api/email", mailControllers.sendUserAccountCreation);
+router.post("/api/email/company", mailControllers.sendCompanyAccountCreation);
 
 router.post("/api/email/contact", mailControllers.sendContactMessageMail);
 router.post("/api/email/resetpassword", mailControllers.sendPasswordResetMail);
+router.post(
+  "/api/email/resetpasswordCompany",
+  mailControllers.sendPasswordResetCompany
+);
 router.get("/api/email/user/:mail", userControllers.getUserByEmail);
 
 // Route to get all the offers with details

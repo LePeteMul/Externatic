@@ -35,6 +35,8 @@ import LegalInformations from "../pages/LegalInformations/LegalInformations";
 import Contact from "../pages/Contact/Contact";
 import ForgottenPassword from "../pages/Login/ForgottenPassword";
 import ResetPassword from "../pages/Login/ResetPassword";
+import CompanyForgottenPassword from "../pages/Login/CompanyForgottenPassword";
+import CompanyResetPassword from "../pages/Login/CompanyResetPassword";
 
 function Router() {
   return (
@@ -103,6 +105,22 @@ function Router() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/resetpassword" element={<ForgottenPassword />} />
         <Route path="/forgottenpassword" element={<ResetPassword />} />
+        <Route
+          path="/company/resetpassword"
+          element={<CompanyForgottenPassword />}
+        />
+        <Route
+          path="/company/forgottenpassword"
+          element={<CompanyResetPassword />}
+        />
+        <Route
+          path="/company/resetpassword"
+          element={<CompanyForgottenPassword />}
+        />
+        <Route
+          path="/company/forgottenpassword"
+          element={<CompanyResetPassword />}
+        />
 
         {/* Candidate section */}
         <Route path="/candidate/registration" element={<Registration />} />

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import eye from "../../assets/icons/eye.png";
 import HeaderWave from "../../components/Header/HeaderWave";
@@ -85,7 +85,9 @@ function LoginCompany() {
           </div>
         </form>
         <div className="forget_psw">
-          <h4 className="forget_psw_text">J'ai oublié mon mot de passe</h4>
+          <NavLink to="/company/resetpassword">
+            <h4 className="forget_psw_text">J'ai oublié mon mot de passe</h4>
+          </NavLink>
         </div>
       </div>
     </div>

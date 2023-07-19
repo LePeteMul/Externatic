@@ -60,6 +60,31 @@ function CompanyCreation() {
       .catch((err) => {
         console.error("Error:", err);
       });
+
+    const MailUrl = "http://localhost:8080/api/email/company";
+    const MailRequestData = { ...formData };
+    console.info("mauvais");
+    fetch(MailUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(MailRequestData),
+    })
+      .then((response) => {
+        if (response.status === 400) {
+          setError("Cet email est déjà utilisé");
+        } else {
+          response.json();
+        }
+      })
+      .then((data) => {
+        console.info("Email:", data);
+        setShowPopup1(true);
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+      });
   };
   return (
     <div className="CompanyCreation">
