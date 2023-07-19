@@ -1,37 +1,20 @@
 import React, { useState } from "react";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import queryString from "query-string";
+import { NavLink, useNavigate } from "react-router-dom";
 import HeaderWave from "../../components/Header/HeaderWave";
 import InputTexte from "../../components/Elements/InputTexte";
 import BlackButton from "../../components/Elements/BlackButton";
 import WhiteButton from "../../components/Elements/WhiteButton";
 
-function extraireEmail(badEmail) {
-  const params = new URLSearchParams(badEmail);
-  if (params.has("email")) {
-    const encodedEmail = params.get("email");
-    const decodedEmail = decodeURIComponent(encodedEmail);
-    return decodedEmail;
-  }
-  return "";
-}
-
-function ResetPassword() {
-  const location = useLocation();
+function CompanyForgottenPassword() {
+  const date = new Date();
   const navigate = useNavigate();
-  const finalEmail = extraireEmail(queryString.parse(location.search));
-
-  // const navigate = useNavigate();
-  // const [showPopup1, setShowPopup1] = useState(false);
-
   const [formData, setFormData] = useState({
-    email: finalEmail,
-    password: "",
+    email: "",
+    ipLocal: window.location.hostname,
+    date: date.toLocaleString(),
   });
 
   const handleChange = (e) => {
-    console.info(e.target.value);
-
     setFormData((previousValue) => ({
       ...previousValue,
       [e.target.name]: e.target.value,
@@ -41,10 +24,16 @@ function ResetPassword() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.info(formData);
+    // Récupérer la date et l'heure de la requête
 
-    fetch("http://localhost:8080/api/user/edition/resetpassword", {
-      method: "PUT",
+    // Récupérer la date et l'ip
+    // setFormData((table) => ({
+    //   ...table,
+    //   ipLocal: ,
+    // }));
+
+    fetch("http://localhost:8080/api/email/resetpasswordCompany", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
@@ -52,8 +41,8 @@ function ResetPassword() {
     })
       .then((response) => {
         if (response.ok) {
-          console.info("Message envoyé avec succès");
           toggleModal();
+          console.info("Message envoyé avec succès");
         } else {
           console.error("Erreur lors de l'envoi du message");
         }
@@ -80,30 +69,27 @@ function ResetPassword() {
         <div className="page_title">
           <h1>Récupération de mot de passe</h1>
         </div>
-        <div className="subtitle">
-          <h4>Compte: {finalEmail}</h4>
-        </div>
         <form onSubmit={handleSubmit} className="input">
           <div className="inputs">
             <InputTexte
-              label="Nouveau mot de passe"
-              name="password"
-              type="password"
-              placeholder="Votre nouveau mot de passe"
+              label="Votre adresse email"
+              name="email"
+              type="email"
+              placeholder="john.doe@gmail.com"
               handleChange={handleChange}
             />
           </div>
 
           <div className="btn_Connexion">
             <BlackButton
-              buttonName="Changer de mot de passe"
+              buttonName="Recevoir l'email de confirmation"
               buttonFunction={handleSubmit}
             />
           </div>
         </form>
 
         <div className="card_signing">
-          <NavLink to="/login">
+          <NavLink to="/logincompany">
             <WhiteButton buttonName="Revenir à la page de connexion" />
           </NavLink>
         </div>
@@ -114,11 +100,11 @@ function ResetPassword() {
           <div className="modal">
             {/* <img src="/chemin/vers/le/logo.png" alt="Logo" /> */}
 
-            <h2>✨ Votre mot de passe a été modifié !</h2>
+            <h2>📨 Email de confirmation envoyé !</h2>
 
             <p>
-              Vous pouvez désormais vous connecter avec votre nouveau mot de
-              passe.
+              Vous y trouverez un lien de confirmation de création de compte. Le
+              lien est valable durant 24h.
             </p>
 
             <div className="modal-button">
@@ -139,4 +125,4 @@ function ResetPassword() {
   );
 }
 
-export default ResetPassword;
+export default CompanyForgottenPassword;

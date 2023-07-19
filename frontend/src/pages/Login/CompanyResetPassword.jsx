@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import queryString from "query-string";
 import HeaderWave from "../../components/Header/HeaderWave";
@@ -16,7 +16,7 @@ function extraireEmail(badEmail) {
   return "";
 }
 
-function ResetPassword() {
+function CompanyResetPassword() {
   const location = useLocation();
   const navigate = useNavigate();
   const finalEmail = extraireEmail(queryString.parse(location.search));
@@ -43,7 +43,7 @@ function ResetPassword() {
 
     console.info(formData);
 
-    fetch("http://localhost:8080/api/user/edition/resetpassword", {
+    fetch("http://localhost:8080//api/pass/company/edit", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -103,7 +103,7 @@ function ResetPassword() {
         </form>
 
         <div className="card_signing">
-          <NavLink to="/login">
+          <NavLink to="/logincompany">
             <WhiteButton buttonName="Revenir à la page de connexion" />
           </NavLink>
         </div>
@@ -139,4 +139,4 @@ function ResetPassword() {
   );
 }
 
-export default ResetPassword;
+export default CompanyResetPassword;
