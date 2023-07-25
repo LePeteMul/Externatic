@@ -9,25 +9,15 @@ import CompanyConnexionContext from "../../contexts/CompanyConnexionContext/Comp
 
 function CompanyPresentation() {
   const navigate = useNavigate();
-  const [company, setCompany] = useState({
-    presentation: "",
-  });
+
   const { companyId } = useContext(CompanyConnexionContext);
   const [showPopup1, setShowPopup1] = useState(false);
+
+  const [company, setCompany] = useState([]);
 
   const handlePopup1Open = () => {
     setShowPopup1(true);
   };
-
-  const [formData, setFormData] = useState({
-    presentation: "",
-  });
-
-  console.warn("company dans CompanyPresentation.jsx = ", company);
-  console.warn(
-    "company.presentation dans CompanyPresentation.jsx = ",
-    company.presentation
-  );
 
   useEffect(() => {
     fetch(`http://localhost:8080/api/company/${companyId}`)
@@ -42,6 +32,17 @@ function CompanyPresentation() {
       .catch((err) => console.error(err));
   }, [companyId]);
 
+  const [formData, setFormData] = useState({
+    presentation: company.presentation,
+  });
+
+  const handleChange = (e) => {
+    setFormData((previousValue) => ({
+      ...previousValue,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
   const handlePopup1Close = () => {
     setShowPopup1(false);
     navigate("/company/dashboard");
@@ -49,17 +50,11 @@ function CompanyPresentation() {
   const handleReturnDashboardClick = () => {
     navigate("/company/dashboard");
   };
-  const handleTextAreaChange = (value) => {
-    setFormData({ ...formData, presentation: value });
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.warn("coucou c'est HandleSubmit");
-    console.warn("id = ", companyId);
     const url = `http://localhost:8080/api/presentation/company/edit/${companyId}`;
     const requestData = { ...formData };
-    console.warn("formdata = ", formData);
 
     fetch(url, {
       method: "PUT",
@@ -75,7 +70,6 @@ function CompanyPresentation() {
       })
       .catch((error) => {
         console.error("Error:", error);
-        // Handle any errors that occurred during the POST request
       });
   };
 
@@ -88,10 +82,11 @@ function CompanyPresentation() {
         </div>
         <div className="textAreaContainer">
           <Textearea
+            name="presentation"
             className="textPres"
             rows={16}
-            value={formData.presentation} // Use company.presentation directly
-            handleChange={handleTextAreaChange}
+            handleChange={handleChange}
+            value={formData.presentation}
           />
         </div>
         <div className="actionbuttons">
