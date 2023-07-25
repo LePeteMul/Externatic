@@ -56,20 +56,17 @@ function Login() {
           setError(null);
           localStorage.setItem("token", data);
           const user = jwtDecode(data);
-          console.info(user.sub, user.admin);
           if (user.admin === 1) {
             setIsAdmin(true);
             setUserConnected(true);
             setUserId(user.sub);
             navigate("/admin/dashboard");
-            console.info(userId, "admin");
           }
           if (user.admin === 0) {
             setIsAdmin(false);
             setUserConnected(true);
             setUserId(user.sub);
             navigate("/candidate/dashboard");
-            console.info(userId, "candidate");
           }
         }
       })

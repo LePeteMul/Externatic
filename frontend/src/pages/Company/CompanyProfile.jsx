@@ -21,14 +21,11 @@ function CompanyProfile() {
           ...formData,
           company_name: data.company_name,
           email: data.email,
-          password: data.password,
           phone: data.phone,
         });
       })
       .catch((err) => console.error(err));
   }, []);
-  console.warn(company);
-  console.warn("password = ", company.password);
 
   const handlePopup1Open = () => {
     setShowPopup1(true);
@@ -65,10 +62,10 @@ function CompanyProfile() {
       },
       body: JSON.stringify(requestData),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.info("Response:", data);
-        // Perform any necessary actions after successful POST request
+      .then((response) => {
+        if (response.status !== 204) {
+          console.error(response.statusText);
+        }
       })
       .catch((error) => {
         console.error("Error:", error);

@@ -12,7 +12,7 @@ import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnex
 function CandidateProfile() {
   const { userId } = useContext(UserConnexionContext);
   const [user, setUser] = useState({});
-  console.warn("Dans UserProfile, userID : ", user.id);
+  // console.warn("Dans UserProfile, userID : ", user.id);
 
   useEffect(() => {
     fetch(`http://localhost:8080/api/user/${userId}`)
@@ -28,16 +28,17 @@ function CandidateProfile() {
           phone: data.phone,
           city: data.city,
           cv: data.cv,
-          // language: "",
+          // language: data.language,
         });
       })
       .catch((err) => console.error(err));
   }, []);
 
-  console.warn("user dans le admin profile = ", user);
-  console.warn("is admin ? ", user.admin);
-  console.warn("lastname = ", user.lastname);
-  console.warn("password = ", user.password);
+  // console.warn("user dans le admin profile = ", user);
+  // console.warn("is admin ? ", user.admin);
+  // console.warn("lastname = ", user.lastname);
+  // console.warn("password = ", user.password);
+  // console.warn("language = ", user.language);
 
   const navigate = useNavigate();
   const [showPopup1, setShowPopup1] = useState(false);
@@ -89,7 +90,7 @@ function CandidateProfile() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const url = `http://localhost:8080/api/user/`;
+    const url = `http://localhost:8080/api/user/${userId}`;
     const requestData = { ...formData };
 
     fetch(url, {
@@ -190,11 +191,10 @@ function CandidateProfile() {
             handleChange={handleFileChange}
             userId={userId}
           />
-          <LanguageList
-            name="language"
-            handleChange={handleChange}
-            selectedLanguages={formData.language}
-          />
+          <a href={user.cv} target="_blank" rel="noopener noreferrer">
+            Consulter le CV
+          </a>
+
           <BlackButton
             buttonName="Valider mes modifications"
             buttonFunction={(event) => {

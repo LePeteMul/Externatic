@@ -20,7 +20,6 @@ function OffersList() {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        console.info("Response:", data);
         setResult(data);
       })
       .catch((error) => {

@@ -27,7 +27,7 @@ function ProfileCandidate() {
       <HeaderBasic />
       <div className="profile_candidate">
         <div className="picture">
-          <img src={userIcon} alt="" />
+          <img src={user.profil_picture} alt="" />
         </div>
 
         <div className="name">
@@ -35,24 +35,18 @@ function ProfileCandidate() {
         </div>
 
         <div className="candidateResume">
-          <InputTexte label="Genre" value={`${user.gender}`} disabled />
           <InputTexte label="Email:" value={`${user.email}`} disabled />
 
           <InputTexte label="Téléphone :" value={`${user.phone}`} disabled />
 
           <InputTexte label="Ville :" value={`${user.city}`} disabled />
 
-          <InputTexte
-            label="Technologies maîtrisées :"
-            value={`${user.language}`}
-            disabled
-          />
-
-          <InputTexte
-            label="Consulter le CV :"
-            inputMessage="Consulter le CV"
-            // changer par un bouton qui charge le pdf
-          />
+          <div className="cv">
+            <p>CV :</p>
+            <a href={`${user.cv}`} target="_blank" rel="noopener noreferrer">
+              Le consulter
+            </a>
+          </div>
         </div>
         <div className="profileButton">
           <NavLink to="/company/application">

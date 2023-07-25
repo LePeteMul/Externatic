@@ -20,7 +20,6 @@ function OffersListCompany() {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        console.info("Response:", data);
         setResult(data);
       })
       .catch((error) => {
@@ -63,6 +62,7 @@ function OffersListCompany() {
               jobCity={offer.city_job}
               date={formatDate(offer.date)}
               id={offer.offer_id}
+              key={offer.offer_id}
               onDelete={() => handleDelete(offer.offer_id)}
               onClick={() => handleClick(offer.offer_id)}
               showButtons

@@ -47,7 +47,6 @@ function OfferCreation() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.info(formData.prerequisites);
 
     const formattedDate = new Date(formData.date)
       .toISOString()
@@ -68,9 +67,10 @@ function OfferCreation() {
       },
       body: JSON.stringify(requestData),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.info("Response:", data);
+      .then((response) => {
+        if (response.status !== 200) {
+          console.error(response.statusText);
+        }
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -80,7 +80,7 @@ function OfferCreation() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/offer");
+        const response = await fetch("http://localhost:8080/api/offer/jobList");
         const data = await response.json();
         setOfferData(data);
       } catch (error) {

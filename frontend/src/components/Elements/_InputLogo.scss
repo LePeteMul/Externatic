@@ -1,88 +1,47 @@
 .InputLogo {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  height: 100%;
-
-  img {
-    width: 40px;
-  }
-
-  label {
-    height: 100%;
-    font-family: $fontFamily;
-    color: $textColorLight;
-    font-size: 20px;
-  }
-
   input {
     display: none;
     border: none;
     outline: none;
-    background-color: $buttonColorLight;
-    color: $textColorInput;
     width: 100%;
     border-radius: 12px;
-    font-size: 20px;
-    font-family: $fontFamily;
   }
-
   .selected-file {
     display: flex;
     align-items: center;
-    color: $textColorDark;
   }
-
   .error-message {
     display: flex;
     align-items: center;
   }
 
-  .selected {
-    color: $textColorDark;
-  }
-
-  .notselected {
-    color: $textColorInput;
-  }
-
   .input-wrapper {
     display: flex;
-
-    img {
-      background-position: left;
-      display: flex;
-    }
   }
-
   .imageHeigth {
     height: 100%;
   }
-
   .imageSize {
     height: 100%;
+    object-fit: cover;
     display: flex;
     align-items: center;
+    border-radius: 12px;
+    background-color: $buttonColorLight;
+    justify-content: center;
     flex-direction: column;
   }
-
   .upload-icon {
-    border: none;
-    outline: none;
-    background-color: $buttonColorLight;
-    color: $textColorInput;
-    width: 100%;
-    height: 48px;
-    border-radius: 12px;
-    font-size: 20px;
-    font-family: $fontFamily;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
   }
-
   .upload-file {
     display: flex;
     width: 100%;
     object-fit: cover;
-
+    height: 100%;
     border-radius: 12px;
   }
 }

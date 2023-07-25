@@ -57,7 +57,6 @@ function InputLogo({ label, companyId, preview = "" }) {
         .pop()}`;
 
       formData.append("file", file, modifiedFileNameWithExtension);
-
       formData.append("companyId", companyId);
 
       const response = await fetch(
@@ -98,14 +97,14 @@ function InputLogo({ label, companyId, preview = "" }) {
             onChange={handleFileChange}
           />
           <div className="imageSize">
-            {previewUrl !== "" ? (
+            {!previewUrl && !file ? (
+              <img src={uploadIcon} className="upload-icon" alt="Upload" />
+            ) : (
               <img
                 src={previewUrl}
                 className="upload-file"
                 alt="Uploaded Profile"
               />
-            ) : (
-              <img src={uploadIcon} className="upload-icon" alt="Upload" />
             )}
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             {file && (

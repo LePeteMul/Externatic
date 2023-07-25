@@ -2,7 +2,7 @@ const models = require("../models");
 
 const browse = (req, res) => {
   models.company
-    .findAll()
+    .findAllWithoutPassword()
     .then(([rows]) => {
       res.send(rows);
     })
@@ -14,7 +14,7 @@ const browse = (req, res) => {
 
 const read = (req, res) => {
   models.company
-    .find(req.params.id)
+    .findByIdWithoutPassword(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
         res.sendStatus(404);
