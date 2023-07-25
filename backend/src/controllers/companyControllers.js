@@ -181,9 +181,7 @@ const getCompanyByEmailWithPasswordAndPassToNext = (req, res, next) => {
         console.info("company identified by email");
         next();
       } else {
-        res
-          .status(500)
-          .send("Tas pas reussi userController get company by mail");
+        res.status(401).send("Adresse mail incorrecte");
       }
     })
     .catch((err) => {
