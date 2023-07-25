@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import uploadIcon from "../../assets/icons/upload.png";
+import uploadIcon from "../../assets/icons/logo_generique.jpg";
 
-function InputLogo({ label, companyId, handleChange, preview = "" }) {
+function InputLogo({ label, companyId, preview = "" }) {
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState("");
   const [previewUrl, setPreviewUrl] = useState(preview);
@@ -122,7 +122,6 @@ function InputLogo({ label, companyId, handleChange, preview = "" }) {
 InputLogo.propTypes = {
   label: PropTypes.string.isRequired,
   companyId: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired,
   preview: PropTypes.func.isRequired,
 };
 

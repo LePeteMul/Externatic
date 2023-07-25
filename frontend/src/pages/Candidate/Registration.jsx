@@ -41,6 +41,7 @@ function Registration() {
     const requestData = { ...formData };
     const requestEmail = { email: formData.email };
 
+
     /* eslint-disable-next-line */
     if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)) {
       setError("Adresse mail incorrecte");

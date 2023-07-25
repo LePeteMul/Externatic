@@ -12,7 +12,7 @@ function OffersListCompany() {
 
   const [result, setResult] = useState([]);
   const { companyId } = useContext(CompanyConnexionContext);
-  const { offerId, setOfferId } = useContext(JobOfferContext);
+  const { setOfferId } = useContext(JobOfferContext);
 
   useEffect(() => {
     const url = `http://localhost:8080/api/offerDetailss/${companyId}`;

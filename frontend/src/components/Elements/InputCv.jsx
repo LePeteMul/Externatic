@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import upload from "../../assets/icons/upload.png";
 
-function InputCv({ label, handleChange, userId }) {
+function InputCv({ label, userId }) {
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -64,7 +64,6 @@ function InputCv({ label, handleChange, userId }) {
         // Le fichier a été téléchargé avec succès
         console.info("Le fichier a été téléchargé avec succès !");
         // Traitez la réponse du backend ici si nécessaire
-        const data = await response.json();
       } else {
         // Gérez les erreurs de requête ici
         console.error(
@@ -108,7 +107,6 @@ function InputCv({ label, handleChange, userId }) {
 InputCv.propTypes = {
   label: PropTypes.string.isRequired,
   userId: PropTypes.number.isRequired,
-  handleChange: PropTypes.func.isRequired,
 };
 
 export default InputCv;

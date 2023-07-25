@@ -11,7 +11,7 @@ function CandidateJobApplications() {
   const navigate = useNavigate();
   const [application, setApplication] = useState([]);
   const { userId } = useContext(UserConnexionContext);
-  const { offerId, setOfferId } = useContext(JobOfferContext);
+  const { setOfferId } = useContext(JobOfferContext);
 
   useEffect(() => {
     const url = `http://localhost:8080/api/applicationByUser/${userId}`;

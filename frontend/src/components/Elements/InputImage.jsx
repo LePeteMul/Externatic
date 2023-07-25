@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import uploadIcon from "../../assets/icons/upload.png";
 
-function InputImage({ label, userId, handleChange, preview = "" }) {
+function InputImage({ label, userId, preview = "" }) {
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState("");
   const [previewUrl, setPreviewUrl] = useState(preview);
@@ -123,7 +123,6 @@ function InputImage({ label, userId, handleChange, preview = "" }) {
 InputImage.propTypes = {
   label: PropTypes.string.isRequired,
   userId: PropTypes.number.isRequired,
-  handleChange: PropTypes.func.isRequired,
   preview: PropTypes.string.isRequired,
 };
 

@@ -29,9 +29,13 @@ router.put("/api/company/:id", companyControllers.edit);
 router.post("/api/company/register", hashPassword, companyControllers.add);
 router.delete("/api/company/:id", companyControllers.destroy);
 router.put("/api/picture/company/edit", companyControllers.changePicture);
-router.put("/api/pass/company/edit", companyControllers.changePassword);
 router.put(
-  "/api/presentation/company/edit",
+  "/api/pass/company/edit",
+  hashPassword,
+  companyControllers.changePassword
+);
+router.put(
+  "/api/presentation/company/edit/:id",
   companyControllers.changePresentation
 );
 

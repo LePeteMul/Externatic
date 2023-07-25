@@ -1,12 +1,10 @@
-import React, { useState, useContext, useEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import CompanyCard from "../../components/Elements/CompanyCard";
 import BlackButton from "../../components/Elements/BlackButton";
 
 function CompanyList() {
-  const navigate = useNavigate();
-
   const [result, setResult] = useState([]);
 
   // find all companies List

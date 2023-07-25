@@ -2,15 +2,13 @@ import React, { useState, useEffect, useContext } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import InputTexte from "../../components/Elements/InputTexte";
-import userIcon from "../../assets/icons/user.png";
 import BlackButton from "../../components/Elements/BlackButton";
-import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
 import CompanyConnexionContext from "../../contexts/CompanyConnexionContext/CompanyConnexionContext";
 
 function ProfileCandidate() {
   // const { userId } = useContext(UserConnexionContext);
   const [user, setUser] = useState([]);
-  const { result, setResult } = useContext(CompanyConnexionContext);
+  const { result } = useContext(CompanyConnexionContext);
   const params = useParams();
 
   console.warn("result dans Profile Candidate = ", result);

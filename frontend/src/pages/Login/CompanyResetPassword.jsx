@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import queryString from "query-string";
 import HeaderWave from "../../components/Header/HeaderWave";
@@ -43,7 +43,7 @@ function CompanyResetPassword() {
 
     console.info(formData);
 
-    fetch("http://localhost:8080//api/pass/company/edit", {
+    fetch("http://localhost:8080/api/pass/company/edit", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Slider } from "@material-ui/core";
 import PropTypes from "prop-types";
 import BlackButton from "../../components/Elements/BlackButton";
