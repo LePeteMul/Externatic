@@ -35,7 +35,7 @@ router.put(
   companyControllers.changePassword
 );
 router.put(
-  "/api/presentation/company/edit",
+  "/api/presentation/company/edit/:id",
   companyControllers.changePresentation
 );
 
