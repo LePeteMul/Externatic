@@ -1,6 +1,6 @@
 import "./App.scss";
 import React, { useContext, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import UserConnexionContext from "./contexts/UserConnexionContext/UserConnexionContext";
 import CompanyConnexionContext from "./contexts/CompanyConnexionContext/CompanyConnexionContext";
@@ -9,14 +9,14 @@ import Router from "./components/Router";
 function App() {
   const location = useLocation();
 
-  const { setUserConnected, userConnected, setUserId, userId, setIsAdmin } =
+  const { setUserConnected, setUserId, userId, setIsAdmin } =
     useContext(UserConnexionContext);
 
-  const { setCompanyConnected, companyConnected, setCompanyId, companyId } =
-    useContext(CompanyConnexionContext);
+  const { setCompanyConnected, setCompanyId, companyId } = useContext(
+    CompanyConnexionContext
+  );
 
   const token = localStorage.getItem("token");
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (token) {

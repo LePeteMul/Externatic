@@ -10,8 +10,6 @@ import Popup from "../../components/Elements/Popup";
 import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
 
 function Login() {
-  const token = localStorage.getItem("token");
-
   const [error, setError] = useState(null);
 
   const { setUserConnected, setUserId, userId, setIsAdmin } =

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import queryString from "query-string";
 import HeaderWave from "../../components/Header/HeaderWave";
@@ -37,7 +37,7 @@ function CompanyResetPassword() {
       [e.target.name]: e.target.value,
     }));
   };
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
