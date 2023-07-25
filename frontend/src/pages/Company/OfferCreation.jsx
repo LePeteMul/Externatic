@@ -20,7 +20,7 @@ function OfferCreation() {
 
   const handlePopup1Close = () => {
     setShowPopup1(false);
-    navigate("/company/dashboard"); // Rediriger vers le dashboard
+    navigate("/company/dashboard");
   };
 
   const [formData, setFormData] = useState({
@@ -34,13 +34,18 @@ function OfferCreation() {
     remote: "",
     date: new Date().toISOString(),
     prerequisites: "",
-    department: "",
     tech_name: "",
+    department: "",
   });
 
-  const handleTextAreaChange = (value) => {
-    setFormData({ ...formData, presentation: value });
+  const handleChange = (e) => {
+    setFormData((previousValue) => ({
+      ...previousValue,
+      [e.target.name]: e.target.value,
+    }));
   };
+
+  const [error, setError] = useState(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -57,21 +62,42 @@ function OfferCreation() {
 
     const url = "http://localhost:8080/api/offer";
 
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestData),
-    })
-      .then((response) => {
-        if (response.status !== 200) {
-          console.error(response.statusText);
-        }
+    if (
+      !/^[0-9]*$/.test(formData.min_salary) ||
+      !/^[0-9]*$/.test(formData.max_salary)
+    ) {
+      setError(
+        "Caractères numériques uniquement autorisés pour le champ salaire"
+      );
+    } else if (
+      formData.job &&
+      formData.contract_id &&
+      formData.min_salary &&
+      formData.max_salary &&
+      formData.description &&
+      formData.city_job &&
+      formData.remote &&
+      formData.prerequisites &&
+      formData.tech_name
+    ) {
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestData),
       })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+        .then((response) => {
+          if (response.status !== 200) {
+            console.error(response.statusText);
+          }
+        })
+        .catch((err) => {
+          console.error("Error:", err);
+        });
+    } else {
+      setError("Merci de compléter tous les champs");
+    }
   };
 
   useEffect(() => {
@@ -80,8 +106,8 @@ function OfferCreation() {
         const response = await fetch("http://localhost:8080/api/offer/jobList");
         const data = await response.json();
         setOfferData(data);
-      } catch (error) {
-        console.error("Error fetching offer data:", error);
+      } catch (err) {
+        console.error("Error fetching offer data:", err);
       }
     };
 
@@ -103,7 +129,7 @@ function OfferCreation() {
                 label="Poste"
                 name="job"
                 placeholder="Selectionner un métier"
-                handleChange={handleTextAreaChange}
+                handleChange={handleChange}
                 data={offerData.map((offer) => ({
                   value: offer.job,
                   name: offer.job,
@@ -114,7 +140,7 @@ function OfferCreation() {
                 label="Type de contrat"
                 name="contract_id"
                 placeholder="Selectionner un contrat"
-                handleChange={handleTextAreaChange}
+                handleChange={handleChange}
                 data={[
                   { value: "1", name: "CDI" },
                   { value: "2", name: "CDD" },
@@ -126,14 +152,14 @@ function OfferCreation() {
                 label="Salaire annuel brut minimum (euros)"
                 name="min_salary"
                 placeholder="30000"
-                handleChange={handleTextAreaChange}
+                handleChange={handleChange}
                 type="text"
               />
               <InputTexte
                 label="Salaire annuel brut maximum (euros)"
                 name="max_salary"
                 placeholder="35000"
-                handleChange={handleTextAreaChange}
+                handleChange={handleChange}
                 type="text"
               />
 
@@ -141,7 +167,7 @@ function OfferCreation() {
                 label="Missions du poste"
                 name="description"
                 placeholder="Description"
-                handleChange={handleTextAreaChange}
+                handleChange={handleChange}
                 rows={3}
                 type="text"
               />
@@ -150,7 +176,7 @@ function OfferCreation() {
                 label="Localisation"
                 placeholder="Selectionner la ville"
                 name="city_job"
-                handleChange={handleTextAreaChange}
+                handleChange={handleChange}
                 data={[
                   { value: "Nantes", name: "Nantes" },
                   { value: "Angers", name: "Angers" },
@@ -162,7 +188,7 @@ function OfferCreation() {
                 label="Télétravail"
                 placeholder="Selectionner un mode de télétravail"
                 name="remote"
-                handleChange={handleTextAreaChange}
+                handleChange={handleChange}
                 data={[
                   { value: "total", name: "total" },
                   { value: "partiel", name: "partiel" },
@@ -174,7 +200,7 @@ function OfferCreation() {
                 label="SoftSkills"
                 placeholder="Description"
                 name="prerequisites"
-                handleChange={handleTextAreaChange}
+                handleChange={handleChange}
                 rows={9}
                 type="text"
               />
@@ -183,7 +209,7 @@ function OfferCreation() {
                 label="Hard Skills"
                 placeholder="Hard Skills"
                 name="tech_name"
-                handleChange={handleTextAreaChange}
+                handleChange={handleChange}
                 data={[
                   { value: "1", name: "Java" },
                   { value: "2", name: "C#" },
@@ -204,8 +230,8 @@ function OfferCreation() {
                 />
                 {showPopup1 && (
                   <Popup
-                    title="L'offre d'emploi a bien été publiée"
-                    message=""
+                    title=""
+                    message={error || "L'offre d'emploi a bien été publiée"}
                     open={showPopup1}
                     onClose={handlePopup1Close}
                     buttonname="Retour au Dashboard"

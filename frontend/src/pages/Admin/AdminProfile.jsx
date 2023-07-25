@@ -34,7 +34,7 @@ function AdminProfile() {
 
   const handlePopup1Close = () => {
     setShowPopup1(false);
-    navigate("/admin/dashboard"); // Rediriger vers la première page différente
+    navigate("/admin/dashboard");
   };
 
   const [formData, setFormData] = useState({
@@ -50,31 +50,39 @@ function AdminProfile() {
     }));
   };
 
+  const [error, setError] = useState(null);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const url = `http://localhost:8080/api/user/${userId}`;
     const requestData = { ...formData };
 
-    fetch(url, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestData),
-    })
-      .then((response) => {
-        if (response.status !== 204) {
-          console.error(response.statusText);
-        }
+    /* eslint-disable-next-line */
+    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)) {
+      setError("Adresse mail incorrecte");
+    } else if (formData.lastname && formData.firstname && formData.email) {
+      fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestData),
       })
-      .catch((error) => {
-        console.error("Error:", error);
-        // Handle any errors that occurred during the POST request
-      });
+        .then((response) => {
+          if (response.status !== 204) {
+            console.error(response.statusText);
+          }
+        })
+        .catch((err) => {
+          console.error("Error:", error);
+        });
+    } else {
+      setError("Merci de compléter tous les champs");
+    }
   };
 
   if (Object.keys(admin).length === 0) {
-    return null; // or render a loading spinner/placeholder
+    return null;
   }
 
   return (
@@ -124,8 +132,8 @@ function AdminProfile() {
             />
             {showPopup1 && (
               <Popup
-                title="Mise à jour effectuée"
-                message=""
+                title=""
+                message={error || "Les informations ont bien été modifiées"}
                 open={showPopup1}
                 onClose={handlePopup1Close}
                 buttonname="Retour au Dashboard"
