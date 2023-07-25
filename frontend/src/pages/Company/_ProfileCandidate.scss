@@ -18,12 +18,40 @@
       border-radius: 50%;
     }
   }
+  .cv {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
 
+    color: white;
+    font-family: $fontFamily;
+    width: 100%;
+    a {
+      display: flex;
+      align-items: center;
+      border-radius: 10px;
+      background-color: white;
+      height: 48px;
+      margin-top: 3%;
+      padding-left: 12px;
+    }
+  }
   .profileButton {
     padding-top: 10%;
 
     a {
       width: 100%;
+    }
+  }
+
+  @media screen and (min-width: 801px) {
+    padding-left: 20%;
+    padding-right: 20%;
+
+    .profileButton {
+      .BlackButton {
+        padding-top: 0;
+      }
     }
   }
 }

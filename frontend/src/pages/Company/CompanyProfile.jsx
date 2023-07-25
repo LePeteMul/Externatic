@@ -21,13 +21,11 @@ function CompanyProfile() {
           ...formData,
           company_name: data.company_name,
           email: data.email,
-          password: data.password,
           phone: data.phone,
         });
       })
       .catch((err) => console.error(err));
   }, []);
-  console.warn(company);
 
   const handlePopup1Open = () => {
     setShowPopup1(true);
@@ -35,10 +33,11 @@ function CompanyProfile() {
 
   const handlePopup1Close = () => {
     setShowPopup1(false);
-    navigate("/company/dashboard"); // Rediriger vers la première page différente
+    navigate("/company/dashboard");
   };
 
   const [formData, setFormData] = useState({
+    company_name: company.company_name,
     email: company.email,
     phone: company.phone,
   });
@@ -50,28 +49,36 @@ function CompanyProfile() {
     }));
   };
 
+  const [error, setError] = useState(null);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const url = `http://localhost:8080/api/company/${companyId}`;
     const requestData = { ...formData };
 
-    fetch(url, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.info("Response:", data);
-        // Perform any necessary actions after successful POST request
+    /* eslint-disable-next-line */
+    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)) {
+      setError("Adresse mail incorrecte");
+    } else if (formData.company_name && formData.phone && formData.email) {
+      fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestData),
       })
-      .catch((error) => {
-        console.error("Error:", error);
-        // Handle any errors that occurred during the POST request
-      });
+        .then((response) => {
+          if (response.status !== 204) {
+            console.error(response.statusText);
+          }
+        })
+        .catch((err) => {
+          console.error("Error:", err);
+        });
+    } else {
+      setError("Merci de compléter tous les champs");
+    }
   };
 
   return (
@@ -84,9 +91,18 @@ function CompanyProfile() {
         <form onSubmit={handleSubmit} className="input">
           <div className="CompanyProfileInformations">
             <InputTexte
+              label="Nom"
+              name="company_name"
+              placeholder="Nom de l'entreprise"
+              type="name"
+              handleChange={handleChange}
+              value={formData.company_name}
+            />
+
+            <InputTexte
               label="Email"
               name="email"
-              placeholder="bob@groupama.fr"
+              placeholder="mail@entreprise.fr"
               type="email"
               handleChange={handleChange}
               value={formData.email}
@@ -94,7 +110,7 @@ function CompanyProfile() {
             <InputTexte
               label="Téléphone"
               name="phone"
-              placeholder="06 99 99 99 99"
+              placeholder="0606060606"
               type="tel"
               handleChange={handleChange}
               value={formData.phone}
@@ -111,8 +127,8 @@ function CompanyProfile() {
             />
             {showPopup1 && (
               <Popup
-                title="Données modifiées"
-                message=""
+                title=""
+                message={error || "Les informations ont bien été modifiées"}
                 open={showPopup1}
                 onClose={handlePopup1Close}
                 buttonname="Retour au Dashboard"

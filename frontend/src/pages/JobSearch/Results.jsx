@@ -8,16 +8,25 @@ import BlackButton from "../../components/Elements/BlackButton";
 import JobCard from "../../components/Elements/JobCard";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import JobOfferContext from "../../contexts/JobOfferContext/JobOfferContext";
+import { formatDate } from "../../services/formatDate";
 
 function Results() {
   const navigate = useNavigate();
+  const {
+    jobOffer,
+    setOfferId,
+    selectedRemote,
+    selectedTechno,
+    mensualSalary,
+  } = useContext(JobOfferContext);
+  const annualSalary = mensualSalary * 12;
 
-  function formatDate(dateSql) {
-    const dateObj = new Date(dateSql);
-    const options = { day: "2-digit", month: "2-digit", year: "numeric" };
-    const newDate = dateObj.toLocaleDateString("fr-FR", options);
-    return newDate;
-  }
+  const resultsNumber = jobOffer
+    .filter((job) => selectedRemote === "" || job.remote === selectedRemote)
+    .filter(
+      (job) => selectedTechno === "" || job.techno_name === selectedTechno
+    )
+    .filter((job) => annualSalary <= job.min_salary).length;
 
   const [resultVisibility, setResultVisibility] = useState(true);
   const [filterVisibility, setFilterVisibility] = useState(false);
@@ -25,9 +34,6 @@ function Results() {
     setResultVisibility(!resultVisibility);
     setFilterVisibility(!filterVisibility);
   };
-
-  const { jobOffer, setOfferId } = useContext(JobOfferContext);
-  const resultsNumber = jobOffer.length;
 
   const handleClick = (jobId) => {
     setOfferId(jobId);
@@ -43,13 +49,13 @@ function Results() {
         }`}
       >
         <div className="SearchResume">
-          <div className="InputList">
+          <div className="InputText">
             <JobInput />
           </div>
           <div className="InputList">
             <ContractInput />
           </div>
-          <div className="InputText">
+          <div className="InputList">
             <CityInput />
           </div>
         </div>
@@ -59,27 +65,45 @@ function Results() {
             buttonFunction={handleClickFilters}
           />
           <h2>
-            {resultsNumber} <span>résulats</span>
+            {resultsNumber === 0 ? (
+              <span>Aucun résultat</span>
+            ) : (
+              <>
+                {resultsNumber}{" "}
+                <span>résultat{resultsNumber > 1 ? "s" : ""}</span>
+              </>
+            )}
           </h2>
         </div>
+
         <div className="JobResults">
-          {jobOffer.map((job) => {
-            return (
-              <div>
-                <JobCard
-                  logo={job.logo}
-                  companyName={job.companyName}
-                  job={job.job}
-                  contractType={job.contractType}
-                  jobCity={job.jobCity}
-                  date={formatDate(job.date)}
-                  key={job.id}
-                  id={job.id}
-                  onClick={() => handleClick(job.id)}
-                />
-              </div>
-            );
-          })}
+          {jobOffer
+            .filter(
+              (job) => selectedRemote === "" || job.remote === selectedRemote
+            )
+            .filter(
+              (job) =>
+                selectedTechno === "" || job.techno_name === selectedTechno
+            )
+            .filter((job) => annualSalary <= job.min_salary)
+            .map((job) => {
+              return (
+                <div>
+                  <JobCard
+                    logo={job.logo}
+                    companyName={job.companyName}
+                    job={job.job}
+                    contractType={job.contract_type}
+                    jobCity={job.city_job}
+                    date={formatDate(job.date)}
+                    key={job.id}
+                    id={job.id}
+                    onClick={() => handleClick(job.id)}
+                    showButtons={false}
+                  />
+                </div>
+              );
+            })}
         </div>
       </div>
       <div

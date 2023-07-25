@@ -104,4 +104,62 @@
       }
     }
   }
+
+  @media screen and (min-width: 650px) and (max-width: 800px) {
+    .boxWithoutHeader {
+      padding: 8%;
+
+      .SearchFiltersEnd {
+        .BlackButton {
+          padding-top: 0;
+        }
+      }
+    }
+
+    .boxWithoutHeader2 {
+      .SearchResume {
+        padding: 8%;
+      }
+      .MoreFilters {
+        padding: 8%;
+        .BlackButton {
+          padding-top: 0;
+        }
+      }
+      .JobResults {
+        padding: 8%;
+      }
+    }
+  }
+
+  @media screen and (min-width: 801px) {
+    .boxWithoutHeader {
+      padding-left: 20%;
+      padding-right: 20%;
+
+      .SearchFiltersEnd {
+        .BlackButton {
+          padding-top: 0;
+        }
+      }
+    }
+
+    .boxWithoutHeader2 {
+      .SearchResume {
+        padding-left: 20%;
+        padding-right: 20%;
+      }
+      .MoreFilters {
+        padding-left: 20%;
+        padding-right: 20%;
+        .BlackButton {
+          padding-top: 0;
+        }
+      }
+      .JobResults {
+        padding-left: 20%;
+        padding-right: 20%;
+      }
+    }
+  }
 }

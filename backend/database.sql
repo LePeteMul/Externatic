@@ -45,18 +45,14 @@ CREATE TABLE
         password VARCHAR(250) NOT NULL,
         profil_picture VARCHAR(250),
         contact_mode VARCHAR(250),
-        pref_job VARCHAR(250),
-        job_city VARCHAR(300),
-        pref_contract INT,
-        PRIMARY KEY (id),
-        FOREIGN KEY (pref_contract) REFERENCES contract(id)
+        PRIMARY KEY (id)
     );
 
 CREATE TABLE
     company(
         id INT NOT NULL AUTO_INCREMENT,
         company_name VARCHAR(300) NOT NULL,
-        email VARCHAR(450) NOT NULL,
+        email VARCHAR(450) NOT NULL UNIQUE,
         password VARCHAR(250) NOT NULL,
         phone VARCHAR(450) NOT NULL,
         logo VARCHAR(300),
@@ -76,7 +72,7 @@ CREATE TABLE
         id INT NOT NULL AUTO_INCREMENT,
         company_id INT NOT NULL,
         job VARCHAR(400) NOT NULL,
-        date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        date TIMESTAMP ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         remote VARCHAR(250),
         contract_id INT NOT NULL,
         min_salary INT NOT NULL,
@@ -92,16 +88,16 @@ CREATE TABLE
 
 CREATE TABLE
     application(
-        id INT NOT NULL AUTO_INCREMENT,
+        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         candidate_id INT NOT NULL,
         offer_id INT NOT NULL,
         status_id INT NOT NULL,
         company_id INT NOT NULL,
-        FOREIGN KEY(candidate_id) REFERENCES user(id),
+        FOREIGN KEY(candidate_id) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE,
         FOREIGN KEY (offer_id) REFERENCES offer(id) ON DELETE CASCADE ON UPDATE CASCADE,
         FOREIGN KEY (status_id) REFERENCES status(id),
         FOREIGN KEY (company_id) REFERENCES company(id) ON DELETE CASCADE ON UPDATE CASCADE,
-        PRIMARY KEY (id)
+        CONSTRAINT uc_candidate_offer UNIQUE (candidate_id, offer_id)
     );
 
 CREATE TABLE
@@ -154,10 +150,7 @@ INSERT INTO
         admin,
         password,
         profil_picture,
-        contact_mode,
-        pref_job,
-        job_city,
-        pref_contract
+        contact_mode
     )
 VALUES (
         "Female",
@@ -170,10 +163,7 @@ VALUES (
         0,
         "****",
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdqUGJHg5RA-YchvuWW8TPgbvoSC2K2SiAPQ&usqp=CAU",
-        "email",
-        "Dévloppeuse front-end",
-        "Nantes",
-        1
+        "email"
     ), (
         "Male",
         "Dupont",
@@ -185,10 +175,7 @@ VALUES (
         0,
         "****",
         "https://img.freepik.com/photos-gratuite/portrait-homme-blanc-isole_53876-40306.jpg?q=10&h=200",
-        "email",
-        "Dévloppeuse back-end",
-        "Bordeaux",
-        2
+        "email"
     ), (
         "Male",
         "Martini",
@@ -200,10 +187,7 @@ VALUES (
         0,
         "****",
         "https://images.pexels.com/photos/5378700/pexels-photo-5378700.jpeg?cs=srgb&dl=pexels-cottonbro-studio-5378700.jpg&fm=jpg",
-        "email",
-        "Dévloppeuse back-end",
-        "Nantes",
-        1
+        "email"
     ), (
         "Female",
         "Leclerc",
@@ -214,11 +198,8 @@ VALUES (
         "amandine.cv",
         0,
         "****",
-        "https://media.https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHx8&w=1000&q=80",
-        "email",
-        "Lead Tech Java",
-        "Nantes",
-        4
+        "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "email"
     ), (
         "Female",
         "Chabert",
@@ -230,10 +211,7 @@ VALUES (
         0,
         "****",
         "https://www.frejoux-photographe.fr/wp-content/gallery/portrait-pro-corporate/Photographe-portrait-entreprise-pro-Corporate-toulon-Celine.jpg",
-        "email",
-        "Dévloppeuse back-end",
-        "Nantes",
-        1
+        "email"
     );
 
 INSERT INTO
@@ -284,7 +262,7 @@ VALUES (
         "recrutement@groupama.fr",
         "****",
         "02 40 05 17 27",
-        "https://presse.groupama.com/download-image/62432ca1728ee72abb6d0f78",
+        "https://www.1min30.com/wp-content/uploads/2018/05/Couleur-logo-Groupama.jpg",
         "Groupama est une compagnie d'assurance française qui propose une large gamme de services d'assurance et financiers"
     ), (
         "Decathlon",
@@ -313,7 +291,7 @@ VALUES (
         1,
         "Data Analyst Produit",
         "2023-06-20 15:30:45",
-        "remote",
+        "occasionnel",
         2,
         42000,
         45000,
@@ -323,9 +301,9 @@ VALUES (
         " la Loire-Atlantique"
     ), (
         2,
-        "Développeur fullstack junior",
+        "Développeur Fullstack",
         "2023-06-20 17:30:45",
-        "remote",
+        "occasionnel",
         1,
         33000,
         40000,
@@ -334,30 +312,30 @@ Outils interactifs pour les visio : tableau-blanc, sondage intéractifs, etc…
 Animations in-app et outils pédagogiques pour les patients
 Fonctionnalités autour du suivi des objets connectés remis aux patients
 Tableau de bord avec des alertes pour les professionnels",
-        "Symfony & React",
+        "Travailler sur une solution qui aide les collaborateurs opérationnels au quotidien ",
         "Nantes",
         " la Loire-Atlantique"
     ), (
         3,
-        "Lead Tech Java",
+        "Lead Tech",
         "2023-06-20 16:30:45",
-        "remote",
-        3,
-        10000,
-        12000,
+        "partiel",
+        1,
+        20000,
+        22000,
         "Vous intégrez une équipe AGILE, en tant que développeur JAVA (F/H/X). Vos missions consistent à : 
 
 Comprendre les besoins clients dans le but de définir les solutions les plus adaptées,
 Participer aux cérémonies avec les équipes PO, Scrum, MOAs, Métiers,
 Partager les bonnes pratiques de développement : qualité de code et de tests, industrialisation",
-        " JAVA, Springboot, JS (Angular et Vue)",
+        "Un poste sur mesure avec la possibilité de se positionner vers un poste axé architecte ou lead",
         "Nantes",
         " la Loire-Atlantique"
     ), (
         4,
-        "Développeur Back end Java",
+        "Développeur Front end",
         "2023-06-21 11:30:45",
-        "remote",
+        "partiel",
         2,
         37000,
         42000,
@@ -368,14 +346,14 @@ Architecture, conception et développement d’applications web essentiellement 
 Tests (unitaires et fonctionnels)
 Veille technologique",
         "Esprit d'équipe",
-        "Java",
+        "Angers",
         " la Loire-Atlantique"
     ), (
         4,
-        "Responsable de projets SI H/F",
+        "Responsable de projets SI",
         "2023-06-21 10:30:45",
-        "remote",
-        4,
+        "partiel",
+        3,
         35000,
         40000,
         " En tant que Responsable de Projets SI Outre-mer vous aurez en charge le pilotage des projets et le management des ressources internes MOE.
@@ -385,8 +363,61 @@ En tant que Responsable de projets SI Outre-mer vous aurez pour missions :
 Responsable de l'équipe MOE, AMOA du périmètre SI Outre Mer (Antilles Guyane et Pacifique, Nouvelle Calédonie),
 Conduite du projet (Planning / Coûts / Délais - ~ 4m€ de budget),
 Organisation, communication, animation, management, pilotage, recrutement et suivi des prestataires",
-        "Min 3ans d'expériences",
-        "DevOps",
+        "Minimum 3 ans d'expérience exigée",
+        "Angers",
+        " la Loire-Atlantique"
+    ), (
+        1,
+        "Chef de Projet Data",
+        "2023-07-17 15:30:45",
+        "partiel",
+        1,
+        38000,
+        43000,
+        "Dans le cadre d'une création de poste, vous accompagner la transformation digitale de l'entreprise au travers de l'organisation et le pilotage de la Data.
+En collaboration avec les équipes techniques, vous participez à l'architecture et à la construction du schéma de management de la Data/Marketing, que vous deployez auprès des équipes internes.
+En ce sens, les missions s'articuleront autour de plusieurs volets : Gestion de Projet Amont,
+Sourcing de données,  Gestion de la données et Gestion de Projet Aval.",
+        "Capacité d'animer des équipes en mode projet, capacité d'analyse et force de proposition",
+        "Nantes",
+        " la Loire-Atlantique"
+    ), (
+        2,
+        "Développeur Back end",
+        "2023-07-13 17:30:45",
+        "occasionnel",
+        1,
+        38000,
+        40000,
+        "Sous la direction des cheffes de projet et en collaboration avec l’équipe de développement, vous participez aux phases de conception technique, du développement et de la maintenance des sites internet des clients. Dans le cadre de vos missions, vous participez aux phases de conceptions techniques, formalisez les spécifications techniques détaillées, développez les applications web client, dans le respect du cahier des charges et des délais, anticipez les risques techniques,
+êtes force de proposition sur les évolutions de composants et de l’architecture concernant les applications.",
+        "Première expérience dans le développement de sites web appréciée ",
+        "Nantes",
+        " la Loire-Atlantique"
+    ), (
+        3,
+        "Responsable Support IT",
+        "2023-07-10 16:30:45",
+        "partiel",
+        1,
+        45000,
+        50000,
+        "Sous la responsabilité du Responsable des Infrastructures, vous êtes garant du traitement des incidents ou demandes dans les délais impartis, ainsi que de la qualité de service apportée aux 2000 utilisateurs de l'entreprise, dans un environnement groupe et multisite. Dans le cadre de vos missions, vous participez à la gestion des incidents et demandes dans outil ITSM et à leurs résolutions, vous accompagnez et animez l’équipe dans le suivi, la planification des activités et veiller à leur montée en compétences. ",
+        "Expérience managériale requise, aisance relationnelle",
+        "Nantes",
+        " la Loire-Atlantique"
+    ), (
+        4,
+        "Architecte technique",
+        "2023-07-17 10:30:45",
+        "partiel",
+        1,
+        45000,
+        52000,
+        " Dans le cadre d'une création de poste, vous êtes responsable du maintien des frameworks et des librairies propriétaires, ainsi que de la réalisation des conceptions les plus complexes.
+Dans le cadre de vos missions, vous animez et supervisez techniquement les travaux autour des librairies et frameworks propriétaires, rédigez la documentation technique, assurer une veille permanente sur les évolutions technologiques  ",
+        "Expertise approfondie dans les technologies et les architectures logicielles",
+        "Angers",
         " la Loire-Atlantique"
     );
 
@@ -400,7 +431,7 @@ VALUES (1, 1), (1, 5), (2, 3), (3, 4), (4, 1);
 
 INSERT INTO
     offer_techno(techno_id, offer_id)
-VALUES (4, 1), (2, 2), (5, 2), (1, 4);
+VALUES (4, 1), (5, 2), (1, 3), (2, 4), (4, 5), (5, 6), (1, 7), (2, 8), (3, 9);
 
 INSERT INTO
     favorite(candidate_id, offer_id)
@@ -417,4 +448,4 @@ INSERT INTO
         status_id,
         company_id
     )
-VALUES (1, 1, 1, 3), (1, 1, 3, 4), (2, 2, 2, 1), (3, 1, 1, 2), (3, 5, 1, 3), (3, 2, 1, 4), (3, 3, 1, 1), (3, 4, 1, 3), (4, 4, 1, 4), (5, 1, 3, 1), (5, 4, 2, 1);
+VALUES (1, 1, 1, 1), (2, 2, 2, 2), (3, 2, 1, 2), (3, 3, 1, 3), (3, 4, 1, 4), (4, 4, 1, 4), (5, 1, 3, 1), (5, 4, 2, 4);

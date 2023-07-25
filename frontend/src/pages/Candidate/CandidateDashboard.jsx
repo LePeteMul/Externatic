@@ -14,11 +14,10 @@ function CandidateDashboard() {
       .then((data) => setUser(data))
       .catch((err) => console.error(err));
   }, []);
-  console.warn("user = ", user);
 
   return (
     <div className="CandidateDashboard test">
-      <HeaderWaveInverted title={`Bienvenue, ${user.firstname}`} />
+      <HeaderWaveInverted title={`Bienvenue ${user.firstname}`} />
 
       <div className="boxWithoutHeader">
         <div className="boxInside">

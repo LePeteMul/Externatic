@@ -1,23 +1,23 @@
 import React, { useContext, useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import BlackButton from "../../components/Elements/BlackButton";
 import HeartButton from "../../assets/icons/heart.png";
 import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
 import JobOfferContext from "../../contexts/JobOfferContext/JobOfferContext";
+import Popup from "../../components/Elements/Popup";
+import { formatDate } from "../../services/formatDate";
 
 function JobDetails() {
-  function formatDate(dateSql) {
-    const dateObj = new Date(dateSql);
-    const options = { day: "2-digit", month: "2-digit", year: "numeric" };
-    const newDate = dateObj.toLocaleDateString("fr-FR", options);
-    return newDate;
-  }
-
   const { offerId } = useContext(JobOfferContext);
-  const { userConnected, userId } = useContext(UserConnexionContext);
+  const { userConnected, userId, isAdmin } = useContext(UserConnexionContext);
 
   const [jobDetails, setJobDetails] = useState([]);
+
+  const [error, setError] = useState(null);
+
+  const handlePopupClose = () => {
+    setError(false);
+  };
 
   const [application, setApplication] = useState({
     candidate_id: userId,
@@ -46,6 +46,12 @@ function JobDetails() {
     offer_id: offerId,
   });
 
+  const [hasApply, setHasApply] = useState(false);
+
+  const handlePopupApplyClose = () => {
+    setHasApply(false);
+  };
+
   const applicationClick = (e) => {
     e.preventDefault();
 
@@ -59,13 +65,20 @@ function JobDetails() {
       },
       body: JSON.stringify(requestData),
     })
-      .then((response) => response.text())
-      .then((res) => {
-        console.info("Response:", res);
+      .then((response) => {
+        if (response.status === 201) {
+          setHasApply(true);
+        } else setError("Votre candidature a déjà été transmise");
       })
-      .catch((error) => {
-        console.error("Error:", error);
+      .catch((err) => {
+        console.error("Error:", err);
       });
+  };
+
+  const [hasFavorite, setHasFavorite] = useState(false);
+
+  const handlePopupFavoriteClose = () => {
+    setHasFavorite(false);
   };
 
   const favoriteClick = (e) => {
@@ -81,12 +94,13 @@ function JobDetails() {
       },
       body: JSON.stringify(requestData),
     })
-      .then((response) => response.text())
-      .then((res) => {
-        console.info("Response:", res);
+      .then((response) => {
+        if (response.status === 201) {
+          setHasFavorite(true);
+        } else setError("Offre déjà enregistrée dans vos favoris");
       })
-      .catch((error) => {
-        console.error("Error:", error);
+      .catch((err) => {
+        console.error("Error:", err);
       });
   };
 
@@ -129,15 +143,18 @@ function JobDetails() {
         </div>
         <br />
         <div className="OfferTechno">
-          <h3>Environnement technique :</h3>
+          <h3>Hard Skills :</h3>
           <br />
           <p>{jobDetails.techno_name}</p>
+          <br />
+          <h3>Soft Skills :</h3>
+          <br />
+          <p>{jobDetails.prerequisites}</p>
         </div>
         <br />
         <div className="OfferConditions">
           <h3>Conditions de travail</h3>
           <br />
-          <p>{jobDetails.prerequisites}</p>
           <p>Télétravail : {jobDetails.remote}</p>
           <p>
             Salaire : de {jobDetails.min_salary} € à {jobDetails.max_salary} €
@@ -147,20 +164,43 @@ function JobDetails() {
         <br />
         <br />
         <br />
-        {userConnected && (
+        {userConnected && !isAdmin && (
           <div className="ConnectButtons">
-            <NavLink to="/candidate/applicationconfirmation">
-              <BlackButton
-                buttonName="Candidater"
-                buttonFunction={applicationClick}
-              />
-            </NavLink>
+            <BlackButton
+              buttonName="Candidater"
+              buttonFunction={applicationClick}
+            />
             <div className="Heart">
               <button type="button" onClick={favoriteClick}>
                 <img src={HeartButton} alt="FavoriteButton" />
               </button>
             </div>
           </div>
+        )}
+        {hasApply && (
+          <Popup
+            title="Votre candidature a bien été transmise"
+            message="L'entreprise vous rencontactera dans les
+            meilleurs délais"
+            onClose={handlePopupApplyClose}
+            buttonname="Retour à l'offre"
+          />
+        )}
+        {hasFavorite && (
+          <Popup
+            title="Cette offre a bien été ajoutée à vos favoris"
+            message=""
+            onClose={handlePopupFavoriteClose}
+            buttonname="Retour à l'offre"
+          />
+        )}
+        {error && (
+          <Popup
+            title="Erreur"
+            message={error}
+            onClose={handlePopupClose}
+            buttonname="Retour à l'offre"
+          />
         )}
       </div>
     </div>

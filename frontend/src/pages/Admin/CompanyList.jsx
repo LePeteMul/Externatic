@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import CompanyCard from "../../components/Elements/CompanyCard";
-import nickel from "../../assets/images/HomePage/logo-nickel.png";
 import BlackButton from "../../components/Elements/BlackButton";
 
 function CompanyList() {
@@ -10,12 +9,11 @@ function CompanyList() {
 
   // find all companies List
   useEffect(() => {
-    const url = "http://localhost:8080/api/company";
+    const url = `http://localhost:8080/api/company`;
 
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        console.info("Response:", data);
         setResult(data);
       })
       .catch((error) => {
@@ -33,8 +31,10 @@ function CompanyList() {
         }
       );
 
-      if (response.ok) {
-        console.info("Company deleted successfully");
+      if (response.status === 204) {
+        setResult((prevResult) =>
+          prevResult.filter((results) => results.id !== companyId)
+        );
       } else {
         console.error("Failed to delete company");
       }

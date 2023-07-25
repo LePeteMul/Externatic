@@ -14,7 +14,7 @@ function YourSearch({ count, handleClick }) {
       </div>
       <div className="JobSearchSelection">
         {count === 1 && (
-          <div className="InputList">
+          <div className="InputText">
             <label htmlFor="label">Je recherche un poste de </label>
             <JobInput />
           </div>
@@ -26,8 +26,8 @@ function YourSearch({ count, handleClick }) {
           </div>
         )}
         {count === 3 && (
-          <div className="InputText">
-            <label htmlFor="label">Mon périmètre de recherche </label>
+          <div className="InputList">
+            <label htmlFor="label">Ma localisation </label>
             <CityInput />
           </div>
         )}

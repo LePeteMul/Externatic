@@ -14,7 +14,7 @@ class UserManager extends AbstractManager {
 
   update(user) {
     return this.database.query(
-      `update ${this.table} set gender = ?, lastname = ?, firstname = ?, email = ?, phone = ?, city = ?, cv = ?, profil_picture = ?,  password = ?, pref_contract = ? where id = ?`,
+      `update ${this.table} set gender = ?, lastname = ?, firstname = ?, email = ?, phone = ?, city = ? where id = ?`,
       [
         user.gender,
         user.lastname,
@@ -22,12 +22,30 @@ class UserManager extends AbstractManager {
         user.email,
         user.phone,
         user.city,
-        user.cv,
-        user.profil_picture,
-        user.password,
-        user.pref_contract,
         user.id,
       ]
+    );
+  }
+
+  updateById(user) {
+    return this.database.query(
+      `update ${this.table} set gender = ?, lastname = ?, firstname = ?, email = ?, phone = ?, city = ? where id = ?`,
+      [
+        user.gender,
+        user.lastname,
+        user.firstname,
+        user.email,
+        user.phone,
+        user.city,
+        user.id,
+      ]
+    );
+  }
+
+  updatePassword(email, password) {
+    return this.database.query(
+      `update ${this.table} set password = ? where email = ?`,
+      [password, email]
     );
   }
 
@@ -59,7 +77,12 @@ class UserManager extends AbstractManager {
   // Query to get application by offer id
   findApplicationByOffer(id) {
     return this.database.query(
-      `SELECT  offer.id AS offer_id, application.id, user.firstname,user.lastname,user.profil_picture, user.email, offer.job, contract.contract_type, company.company_name, status.status_name, offer.city_job
+      `SELECT  offer.id AS offer_id,
+      application.id, user.firstname,
+      user.lastname,user.profil_picture, user.email,
+      offer.job, contract.contract_type,
+      company.company_name, status.status_name,
+      status.id as status_id, offer.city_job, user.id as user_id
     from  ${this.table} 
     INNER JOIN application ON user.id = application.candidate_id
     INNER JOIN offer ON application.offer_id = offer.id
@@ -71,10 +94,10 @@ class UserManager extends AbstractManager {
     );
   }
 
-  updatePreference(user) {
+  updatePreference(user, id) {
     return this.database.query(
       `update ${this.table} set pref_job = ?, job_city = ?, pref_contract = ? where id = ?`,
-      [user.pref_job, user.job_city, user.pref_contract, user.id]
+      [user.pref_job, user.job_city, user.pref_contract, id]
     );
   }
 
@@ -82,6 +105,27 @@ class UserManager extends AbstractManager {
     return this.database.query(
       `select pref_job, job_city, pref_contract from  ${this.table} where id = ?`,
       [id]
+    );
+  }
+
+  updateProfilePicture(user) {
+    return this.database.query(
+      `update ${this.table} set profil_picture = ? where id = ?`,
+      [user.profil_picture, user.id]
+    );
+  }
+
+  addProfilePicture(url, id) {
+    return this.database.query(
+      `UPDATE ${this.table} SET profil_picture = ? WHERE id = ?`,
+      [url, id]
+    );
+  }
+
+  addCv(cv, id) {
+    return this.database.query(
+      `update ${this.table} set  cv = ? where id = ?`,
+      [cv, id]
     );
   }
 }

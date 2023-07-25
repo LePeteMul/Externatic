@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import BlackButton from "../../components/Elements/BlackButton";
-import InputListe from "../../components/Elements/InputListe";
 import InputTexte from "../../components/Elements/InputTexte";
 import Popup from "../../components/Elements/Popup";
 import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
@@ -10,7 +9,6 @@ import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnex
 function AdminProfile() {
   const { userId } = useContext(UserConnexionContext);
   const [admin, setAdmin] = useState({});
-  console.warn("Dans AdminProfile, userID : ", admin.id);
 
   useEffect(() => {
     fetch(`http://localhost:8080/api/user/${userId}`)
@@ -19,19 +17,13 @@ function AdminProfile() {
         setAdmin(data);
         setFormData({
           ...formData,
-          gender: data.gender,
           lastname: data.lastname,
           firstname: data.firstname,
           email: data.email,
-          phone: data.phone,
-          // password: "£££",
         });
       })
       .catch((err) => console.error(err));
   }, []);
-  console.warn("admin dans le admin profile = ", admin);
-  console.warn("is admin ? ", admin.admin);
-  console.warn("lastname = ", admin.lastname);
 
   const navigate = useNavigate();
   const [showPopup1, setShowPopup1] = useState(false);
@@ -42,16 +34,13 @@ function AdminProfile() {
 
   const handlePopup1Close = () => {
     setShowPopup1(false);
-    navigate("/admin/dashboard"); // Rediriger vers la première page différente
+    navigate("/admin/dashboard");
   };
 
   const [formData, setFormData] = useState({
-    gender: admin.gender,
     lastname: admin.lastname,
     firstname: admin.firstname,
     email: admin.email,
-    phone: admin.phone,
-    // password: "£££",
   });
 
   const handleChange = (e) => {
@@ -61,32 +50,39 @@ function AdminProfile() {
     }));
   };
 
+  const [error, setError] = useState(null);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.info(formData);
     const url = `http://localhost:8080/api/user/${userId}`;
     const requestData = { ...formData };
 
-    fetch(url, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.info("Response:", data);
-        // Perform any necessary actions after successful POST request
+    /* eslint-disable-next-line */
+    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)) {
+      setError("Adresse mail incorrecte");
+    } else if (formData.lastname && formData.firstname && formData.email) {
+      fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestData),
       })
-      .catch((error) => {
-        console.error("Error:", error);
-        // Handle any errors that occurred during the POST request
-      });
+        .then((response) => {
+          if (response.status !== 204) {
+            console.error(response.statusText);
+          }
+        })
+        .catch((err) => {
+          console.error("Error:", error);
+        });
+    } else {
+      setError("Merci de compléter tous les champs");
+    }
   };
 
   if (Object.keys(admin).length === 0) {
-    return null; // or render a loading spinner/placeholder
+    return null;
   }
 
   return (
@@ -98,18 +94,6 @@ function AdminProfile() {
         </div>
         <form onSubmit={handleSubmit} className="input">
           <div className="AdminProfileInformations">
-            <InputListe
-              label="Genre"
-              name="gender"
-              placeholder="non spécifié"
-              handleChange={handleChange}
-              data={[
-                { value: "choix1", name: "Je suis une femme" },
-                { value: "choix2", name: "Je suis un homme" },
-                { value: "choix3", name: "ne souhaite pas spécifier" },
-              ]}
-              value={formData.gender}
-            />
             <InputTexte
               label="Nom"
               name="lastname"
@@ -136,14 +120,6 @@ function AdminProfile() {
               type="email"
               value={formData.email}
             />
-            <InputTexte
-              label="Téléphone"
-              name="phone"
-              placeholder="06 99 99 99 99"
-              handleChange={handleChange}
-              type="tel"
-              value={formData.phone}
-            />
           </div>
           <div className="AdminProfileEnd">
             <BlackButton
@@ -151,13 +127,13 @@ function AdminProfile() {
               buttonFunction={(event) => {
                 event.preventDefault();
                 handlePopup1Open();
-                handleSubmit();
+                handleSubmit(event);
               }}
             />
             {showPopup1 && (
               <Popup
-                title="Données modifiées"
-                message=""
+                title=""
+                message={error || "Les informations ont bien été modifiées"}
                 open={showPopup1}
                 onClose={handlePopup1Close}
                 buttonname="Retour au Dashboard"

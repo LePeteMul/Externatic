@@ -4,8 +4,6 @@ import HeaderBasic from "../../components/Header/HeaderBasic";
 import InputTexte from "../../components/Elements/InputTexte";
 import BlackButton from "../../components/Elements/BlackButton";
 import RedButton from "../../components/Elements/RedButton";
-import InputListe from "../../components/Elements/InputListe";
-import LanguageList from "../../components/Elements/LanguageList";
 import InputCv from "../../components/Elements/InputCv";
 import Popup from "../../components/Elements/Popup";
 import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
@@ -13,7 +11,6 @@ import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnex
 function CandidateProfile() {
   const { userId } = useContext(UserConnexionContext);
   const [user, setUser] = useState({});
-  console.warn("Dans UserProfile, userID : ", user.id);
 
   useEffect(() => {
     fetch(`http://localhost:8080/api/user/${userId}`)
@@ -28,18 +25,11 @@ function CandidateProfile() {
           email: data.email,
           phone: data.phone,
           city: data.city,
-          // language: "",
           cv: data.cv,
-          // password: "****",
-          admin: data.admin,
         });
       })
       .catch((err) => console.error(err));
   }, []);
-
-  console.warn("user dans le admin profile = ", user);
-  console.warn("is admin ? ", user.admin);
-  console.warn("lastname = ", user.lastname);
 
   const navigate = useNavigate();
   const [showPopup1, setShowPopup1] = useState(false);
@@ -51,7 +41,7 @@ function CandidateProfile() {
 
   const handlePopup1Close = () => {
     setShowPopup1(false);
-    navigate("/candidate/dashboard"); // Rediriger vers la première page différente
+    navigate("/candidate/dashboard");
   };
 
   const handlePopup2Open = () => {
@@ -60,20 +50,15 @@ function CandidateProfile() {
 
   const handlePopup2Close = () => {
     setShowPopup2(false);
-    navigate("/"); // Rediriger vers la deuxième page différente
+    navigate("/");
   };
 
   const [formData, setFormData] = useState({
-    gender: user.gender,
     lastname: user.lastname,
     firstname: user.firstname,
     email: user.email,
     phone: user.phone,
     city: user.city,
-    // language: "",
-    cv: user.cv,
-    // password: "****",
-    admin: user.admin,
   });
 
   const handleChange = (e) => {
@@ -90,28 +75,40 @@ function CandidateProfile() {
     }));
   };
 
+  const [error, setError] = useState(null);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const url = `http://localhost:8080/api/user/${userId}`;
     const requestData = { ...formData };
 
-    fetch(url, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.info("Response:", data);
-        // Perform any necessary actions after successful POST request
+    /* eslint-disable-next-line */
+    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)) {
+      setError("Adresse mail incorrecte");
+    } else if (
+      formData.lastname &&
+      formData.firstname &&
+      formData.email &&
+      formData.phone
+    ) {
+      fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestData),
       })
-      .catch((error) => {
-        console.error("Error:", error);
-        // Handle any errors that occurred during the POST request
-      });
+        .then((response) => response.json())
+        .then((data) => {
+          console.info("Response:", data);
+        })
+        .catch((err) => {
+          console.error("Error:", err);
+        });
+    } else {
+      setError("Merci de compléter tous les champs");
+    }
   };
 
   const handleDeletion = () => {
@@ -127,9 +124,8 @@ function CandidateProfile() {
             email: user.email,
             phone: user.phone,
             city: user.city,
-            // language: "",
             cv: user.cv,
-            // password: "****",
+            password: user.password,
             admin: user.admin,
           });
           handlePopup2Open();
@@ -148,18 +144,6 @@ function CandidateProfile() {
           <h1>Mon profil</h1>
         </div>
         <form onSubmit={handleSubmit} className="input">
-          <InputListe
-            label="Genre"
-            name="gender"
-            placeholder="Selectionner votre genre"
-            handleChange={handleChange}
-            data={[
-              { value: "genre1", name: "Je suis une femme" },
-              { value: "genre 2", name: "Je suis un homme" },
-              { value: "genre 3", name: "je suis non binaire" },
-            ]}
-            value={formData.gender}
-          />
           <InputTexte
             label="Nom"
             name="lastname"
@@ -187,7 +171,7 @@ function CandidateProfile() {
           <InputTexte
             label="Téléphone"
             name="phone"
-            placeholder="06 06 06 06 06"
+            placeholder="0606060606"
             type="tel"
             handleChange={handleChange}
             value={formData.phone}
@@ -200,21 +184,29 @@ function CandidateProfile() {
             handleChange={handleChange}
             value={formData.city}
           />
-          <InputCv label="CV" accept=".pdf" handleChange={handleFileChange} />
-          <LanguageList
-            name="language"
-            handleChange={handleChange}
-            selectedLanguages={formData.language}
+          <InputCv
+            label="CV"
+            accept=".pdf"
+            handleChange={handleFileChange}
+            userId={userId}
           />
+          <a href={user.cv} target="_blank" rel="noopener noreferrer">
+            Consulter le CV
+          </a>
+
           <BlackButton
             buttonName="Valider mes modifications"
-            buttonFunction={handlePopup1Open}
+            buttonFunction={(event) => {
+              event.preventDefault();
+              handlePopup1Open();
+              handleSubmit(event);
+            }}
           />
 
           {showPopup1 && (
             <Popup
-              title="Données modifiées"
-              message="Super, tes données ont été modifiées !"
+              title=""
+              message={error || "Les informations ont bien été modifiées"}
               open={showPopup1}
               onClose={handlePopup1Close}
               buttonname="Retour au Dashboard"
@@ -231,10 +223,10 @@ function CandidateProfile() {
 
           {showPopup2 && (
             <Popup
-              title="Données supprimées"
+              title="Votre compte a bien été supprimé"
               open={showPopup2}
               onClose={handlePopup2Close}
-              buttonname={"Retour a l'acceuil"}
+              buttonname={"Retour a l'accueil"}
             />
           )}
         </form>

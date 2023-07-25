@@ -1,12 +1,26 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Slider } from "@material-ui/core";
 import PropTypes from "prop-types";
 import BlackButton from "../../components/Elements/BlackButton";
 import InputListe from "../../components/Elements/InputListe";
+import JobOfferContext from "../../contexts/JobOfferContext/JobOfferContext";
 
 function SearchFilters({ handleClickFilters }) {
-  const [mensualSalary, setMensualSalary] = useState(1700);
+  const {
+    setSelectedRemote,
+    setSelectedTechno,
+    mensualSalary,
+    setMensualSalary,
+  } = useContext(JobOfferContext);
   const annualSalary = mensualSalary * 12;
+
+  const handleSelectRemote = (e) => {
+    setSelectedRemote(e.target.value);
+  };
+
+  const handleSelectTechno = (e) => {
+    setSelectedTechno(e.target.value);
+  };
 
   const handleSliderChange = (event, newValue) => {
     setMensualSalary(newValue);
@@ -26,27 +40,31 @@ function SearchFilters({ handleClickFilters }) {
             { value: "partiel", name: "Partiel" },
             { value: "occasionnel", name: "Occasionnel" },
           ]}
+          handleChange={handleSelectRemote}
         />
         <InputListe
           label="Mes technos"
           inputMessage="Selectionner les technologies maitrisées"
           data={[
-            { value: "JavaScript", name: "JavaScript" },
-            { value: "PHP", name: "PHP" },
             { value: "Java", name: "Java" },
+            { value: "C#", name: "C#" },
+            { value: "PHP", name: "PHP" },
+            { value: "Python", name: "Python" },
+            { value: "React", name: "React" },
           ]}
+          handleChange={handleSelectTechno}
         />
         <div className="Salary">
           <h2>Mon salaire minimum</h2>
           <div>
             <Slider
               value={mensualSalary}
-              min={1700}
+              min={1500}
               max={10000}
               step={100}
               onChange={handleSliderChange}
               orientation="horizontal"
-              style={{ color: "white" }}
+              style={{ color: "white", zIndex: 0 }}
             />
           </div>
           <div className="AnnualSalary">

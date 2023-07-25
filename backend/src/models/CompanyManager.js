@@ -5,6 +5,19 @@ class CompanyManager extends AbstractManager {
     super({ table: "company" });
   }
 
+  findByIdWithoutPassword(id) {
+    return this.database.query(
+      `select id, company_name, email, phone, logo, presentation  from  ${this.table} where id = ?`,
+      [id]
+    );
+  }
+
+  findAllWithoutPassword() {
+    return this.database.query(
+      `select id, company_name, email, phone, logo, presentation from  ${this.table}`
+    );
+  }
+
   insert(company) {
     return this.database.query(
       `insert into ${this.table} (company_name, email,password, phone, logo) values (?, ?, ?, ?, ?)`,
@@ -28,13 +41,11 @@ class CompanyManager extends AbstractManager {
 
   update(company) {
     return this.database.query(
-      `update ${this.table} set company_name = ?, email = ?, password = ?, phone = ?, logo = ?, presentation = ? where id = ?`,
+      `update ${this.table} set company_name = ?, email = ?, phone = ?, presentation = ? where id = ?`,
       [
         company.company_name,
         company.email,
-        company.password,
         company.phone,
-        company.logo,
         company.presentation,
         company.id,
       ]
@@ -48,11 +59,12 @@ class CompanyManager extends AbstractManager {
     ]);
   }
 
-  updatePassword(password, id) {
-    return this.database.query(`update company set password = ? where id = ?`, [
-      password,
-      id,
-    ]);
+  updatePassword(password, email) {
+    console.info(password, email);
+    return this.database.query(
+      `update company set password = ? where email = ?`,
+      [password, email]
+    );
   }
 
   updatePresentation(presentation, id) {
@@ -65,13 +77,27 @@ class CompanyManager extends AbstractManager {
   findAllOffersWithDetails(id) {
     return this.database.query(
       `
-      SELECT ${this.table}.company_name,${this.table}.logo, offer.date, offer.job, contract.contract_type, offer.city_job 
+      SELECT ${this.table}.company_name,${this.table}.logo, offer.id as offer_id, offer.date, offer.job, contract.contract_type, offer.city_job 
       FROM ${this.table}
-      INNER JOIN offer ON offer.id = ${this.table}.id
-      INNER JOIN contract ON offer.id = contract.id
+      INNER JOIN offer ON offer.company_id = ${this.table}.id
+      INNER JOIN contract ON offer.contract_id = contract.id
       WHERE ${this.table}.id = ?;
       `,
       [id]
+    );
+  }
+
+  updateProfilePicture(company) {
+    return this.database.query(
+      `update ${this.table} , profil_picture = ? where id = ?`,
+      [company.logo, company.id]
+    );
+  }
+
+  addLogo(logo, id) {
+    return this.database.query(
+      `update ${this.table} set logo = ? where id = ?`,
+      [logo, id]
     );
   }
 }

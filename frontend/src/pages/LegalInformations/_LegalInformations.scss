@@ -26,9 +26,21 @@
 
     .legalInformationsEnd {
       padding-top: 10%;
+
+      a {
+        width: 100%;
+      }
     }
-    a {
-      width: 100%;
+  }
+
+  @media screen and (min-width: 801px) {
+    .boxWithoutHeader {
+      padding-left: 20%;
+      padding-right: 20%;
+
+      .legalInformationsTitle {
+        padding-top: 10%;
+      }
     }
   }
 }

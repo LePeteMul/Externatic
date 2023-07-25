@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import loupe from "../../assets/icons/loupe.png";
 import croix from "../../assets/icons/cross.png";
 
 function CandidateCard({
@@ -9,6 +8,7 @@ function CandidateCard({
   lastname,
   firstname,
   email,
+  onClick,
   onDelete,
 }) {
   const handleDelete = () => {
@@ -16,7 +16,13 @@ function CandidateCard({
   };
 
   return (
-    <div className="candidateCard">
+    <div
+      className="candidateCard"
+      onClick={onClick}
+      onKeyDown={onClick}
+      role="button"
+      tabIndex={0}
+    >
       <div className="content">
         <div className="profile_image_container">
           <img
@@ -40,9 +46,6 @@ function CandidateCard({
           >
             <img src={croix} alt="croix" />
           </button>
-          <button type="button" className="candidateCardButtons">
-            <img src={loupe} alt="loupe" />
-          </button>
         </div>
       </div>
     </div>
@@ -55,6 +58,7 @@ CandidateCard.propTypes = {
   lastname: PropTypes.string.isRequired,
   firstname: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
 };
 

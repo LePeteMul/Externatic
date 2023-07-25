@@ -20,6 +20,7 @@
   }
 
   .boxInside {
+    margin-top: 8dvh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -30,12 +31,6 @@
     margin-bottom: 20px;
   }
 
-  // @media (max-width: 480px) {
-  //   .boxInside > * {
-  //     flex-basis: 100%;
-  //   }
-  // }
-
   .titleHeader {
     display: flex;
     justify-content: center;
@@ -43,5 +38,12 @@
     font-size: 32px;
     color: $textColorLight;
     padding-top: 25px;
+  }
+
+  @media screen and (min-width: 801px) {
+    .boxWithoutHeader {
+      padding-left: 20%;
+      padding-right: 20%;
+    }
   }
 }

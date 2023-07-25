@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import upluod from "../../assets/icons/upload.png";
+import upload from "../../assets/icons/upload.png";
 
-function InputCv({ label }) {
+function InputCv({ label, userId }) {
   const [file, setFile] = useState(null);
+  const [fileName, setFileName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
+    setFile(selectedFile);
+    const modifiedFileName = `cv_${userId}`;
+    setFileName(modifiedFileName);
+
     const fileSizeInBytes = selectedFile.size;
-    const maxSizeInBytes = 5 * 1024 * 1024; // 5 MB
+    const maxSizeInBytes = 5 * 1024 * 1024; // 5 Mo
 
     if (fileSizeInBytes > maxSizeInBytes) {
       // Le fichier dépasse la limite de taille
@@ -28,13 +33,48 @@ function InputCv({ label }) {
       return;
     }
 
-    setFile(selectedFile);
     setErrorMessage(""); // Réinitialiser le message d'erreur
-    // Traitez le fichier ici selon vos besoins
-    console.info(selectedFile);
-    console.info(file);
   };
 
+  const uploadFile = async () => {
+    try {
+      if (!file) {
+        // Aucun fichier sélectionné
+        return;
+      }
+      // changement du nom du fichier
+      const formData = new FormData();
+      const modifiedFileNameWithExtension = `${fileName}.${file.name
+        .split(".")
+        .pop()}`;
+
+      formData.append("file", file, modifiedFileNameWithExtension);
+
+      formData.append("userId", userId);
+
+      const response = await fetch(
+        `http://localhost:8080/api/user/cv/${userId}`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      if (response.ok) {
+        // Le fichier a été téléchargé avec succès
+        console.info("Le fichier a été téléchargé avec succès !");
+        // Traitez la réponse du backend ici si nécessaire
+      } else {
+        // Gérez les erreurs de requête ici
+        console.error(
+          "Une erreur s'est produite lors du téléchargement du fichier."
+        );
+      }
+    } catch (error) {
+      // Gérez les erreurs ici
+      console.error(error);
+    }
+  };
   return (
     <div className="InputCv">
       <label htmlFor="fileInput" className="custom-label">
@@ -47,11 +87,14 @@ function InputCv({ label }) {
             onChange={handleFileChange}
           />
           <div className="upload-icon">
-            <img src={upluod} alt="Upload" />
+            <img src={upload} alt="Upload" />
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             {file && (
               <div className="selected-file">
                 <p>{file.name}</p>
+                <button onClick={uploadFile} type="button">
+                  Upload
+                </button>
               </div>
             )}
           </div>
@@ -63,6 +106,7 @@ function InputCv({ label }) {
 
 InputCv.propTypes = {
   label: PropTypes.string.isRequired,
+  userId: PropTypes.number.isRequired,
 };
 
 export default InputCv;

@@ -1,11 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import loupe from "../../assets/icons/loupe.png";
 import croix from "../../assets/icons/cross.png";
 
-function CompanyCard({ logo, name, email, onDelete }) {
+function CompanyCard({ logo, name, email, onClick, onDelete }) {
   return (
-    <div className="companyCard">
+    <div
+      className="companyCard"
+      onClick={onClick}
+      onKeyDown={onClick}
+      role="button"
+      tabIndex={0}
+    >
       <div className="content">
         <div className="logo_container">
           <img className="logo" src={logo} alt={name} />
@@ -24,9 +29,6 @@ function CompanyCard({ logo, name, email, onDelete }) {
             {" "}
             <img src={croix} alt="croix" />
           </button>
-          <button type="button" className="companyCardButtons">
-            <img src={loupe} alt="loupe" />
-          </button>
         </div>
       </div>
     </div>
@@ -37,7 +39,12 @@ CompanyCard.propTypes = {
   logo: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
   onDelete: PropTypes.func.isRequired,
+};
+
+CompanyCard.defaultProps = {
+  onClick: undefined,
 };
 
 export default CompanyCard;

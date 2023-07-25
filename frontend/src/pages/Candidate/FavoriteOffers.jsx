@@ -5,15 +5,9 @@ import JobOfferContext from "../../contexts/JobOfferContext/JobOfferContext";
 import JobCard from "../../components/Elements/JobCard";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import BlackButton from "../../components/Elements/BlackButton";
+import { formatDate } from "../../services/formatDate";
 
 function FavoriteOffers() {
-  function formatDate(dateSql) {
-    const dateObj = new Date(dateSql);
-    const options = { day: "2-digit", month: "2-digit", year: "numeric" };
-    const newDate = dateObj.toLocaleDateString("fr-FR", options);
-    return newDate;
-  }
-
   const navigate = useNavigate();
 
   const { userId } = useContext(UserConnexionContext);
@@ -35,7 +29,19 @@ function FavoriteOffers() {
     navigate("/jobdetails");
   };
 
-  const handleDelete = () => {};
+  const handleDelete = (id) => {
+    setOfferId(id);
+
+    fetch(`http://localhost:8080/api/favorite/${userId}/${offerId}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (response.status === 204) {
+          navigate("/candidate/favorite");
+        }
+      })
+      .catch((err) => console.error(err));
+  };
 
   return (
     <div className="favoriteOffers">
@@ -55,8 +61,10 @@ function FavoriteOffers() {
                 jobCity={offer.city_job}
                 date={formatDate(offer.date)}
                 id={offer.offer_id}
-                onDelete={handleDelete}
+                key={offer.offer_id}
+                onDelete={() => handleDelete(offer.offer_id)}
                 onClick={() => handleClick(offer.offer_id)}
+                showButtons
               />
             );
           })}

@@ -21,6 +21,7 @@
     width: 100%;
     height: 80dvh;
     background-color: $primaryColor;
+    z-index: inherit;
   }
   .menuClosed {
     left: -100%;
@@ -39,5 +40,12 @@
     font-weight: 500;
     font-family: $fontFamily;
     color: $textColorLight;
+  }
+
+  @media screen and (min-width: 801px) {
+    font-size: 22px;
+    .menuItem {
+      padding: 2%;
+    }
   }
 }

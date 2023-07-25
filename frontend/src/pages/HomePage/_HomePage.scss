@@ -36,7 +36,6 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-
     margin: 4% auto;
   }
 
@@ -45,5 +44,33 @@
     overflow: hidden;
     max-width: auto;
     height: auto;
+  }
+
+  @media screen and (min-width: 801px) {
+    .boxWithoutHeader {
+      font-size: 20px;
+      padding-left: 17%;
+      padding-right: 17%;
+
+      .descriptionText {
+        padding: 2% 0 2% 0;
+      }
+
+      .handshakeContainer {
+        margin-top: 2%;
+      }
+
+      .trust {
+        margin-top: 2%;
+      }
+
+      .trustingCompanies {
+        margin: 2% auto;
+      }
+
+      .BlackButton {
+        padding-top: 2%;
+      }
+    }
   }
 }

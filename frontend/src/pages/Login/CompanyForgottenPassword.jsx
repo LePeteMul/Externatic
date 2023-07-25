@@ -5,7 +5,7 @@ import InputTexte from "../../components/Elements/InputTexte";
 import BlackButton from "../../components/Elements/BlackButton";
 import WhiteButton from "../../components/Elements/WhiteButton";
 
-function ForgottenPassword() {
+function CompanyForgottenPassword() {
   const date = new Date();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -32,8 +32,7 @@ function ForgottenPassword() {
     //   ipLocal: ,
     // }));
 
-    // Envoyer la requête à votre backend
-    fetch("http://localhost:8080/api/email/resetpassword", {
+    fetch("http://localhost:8080/api/email/resetpasswordCompany", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -41,13 +40,10 @@ function ForgottenPassword() {
       body: JSON.stringify(formData),
     })
       .then((response) => {
-        // Traiter la réponse du serveur
         if (response.ok) {
-          // La requête a réussi, afficher la pop-up
           toggleModal();
           console.info("Message envoyé avec succès");
         } else {
-          // La requête a échoué
           console.error("Erreur lors de l'envoi du message");
         }
       })
@@ -56,10 +52,8 @@ function ForgottenPassword() {
       });
   };
 
-  // Nouvelle variable d'état pour contrôler l'affichage de la pop-up
   const [showModal, setShowModal] = useState(false);
 
-  // Fonction pour basculer l'état de la pop-up
   const toggleModal = () => {
     setShowModal((prevShowModal) => !prevShowModal);
   };
@@ -95,7 +89,7 @@ function ForgottenPassword() {
         </form>
 
         <div className="card_signing">
-          <NavLink to="/login">
+          <NavLink to="/logincompany">
             <WhiteButton buttonName="Revenir à la page de connexion" />
           </NavLink>
         </div>
@@ -131,4 +125,4 @@ function ForgottenPassword() {
   );
 }
 
-export default ForgottenPassword;
+export default CompanyForgottenPassword;

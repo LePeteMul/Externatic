@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import InputListe from "../../components/Elements/InputListe";
@@ -6,29 +6,36 @@ import Textearea from "../../components/Elements/Textearea";
 import BlackButton from "../../components/Elements/BlackButton";
 import InputTexte from "../../components/Elements/InputTexte";
 import Popup from "../../components/Elements/Popup";
+import CompanyConnexionContext from "../../contexts/CompanyConnexionContext/CompanyConnexionContext";
 
 function OfferCreation() {
   const navigate = useNavigate();
   const [showPopup1, setShowPopup1] = useState(false);
+  const { companyId } = useContext(CompanyConnexionContext);
+  const [offerData, setOfferData] = useState([]);
+
   const handlePopup1Open = () => {
     setShowPopup1(true);
   };
 
   const handlePopup1Close = () => {
     setShowPopup1(false);
-    navigate("/company/dashboard"); // Rediriger vers le dashboard
+    navigate("/company/dashboard");
   };
 
   const [formData, setFormData] = useState({
-    company_id: 1,
+    company_id: companyId,
     job: "",
     contract_id: "",
     min_salary: "",
     max_salary: "",
     description: "",
     city_job: "",
-    // softskills: "",
-    // hardskills: "",
+    remote: "",
+    date: new Date().toISOString(),
+    prerequisites: "",
+    tech_name: "",
+    department: "",
   });
 
   const handleChange = (e) => {
@@ -37,29 +44,75 @@ function OfferCreation() {
       [e.target.name]: e.target.value,
     }));
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
+
+  const [error, setError] = useState(null);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const formattedDate = new Date(formData.date)
+      .toISOString()
+      .slice(0, 19)
+      .replace("T", " ");
+
+    const requestData = {
+      ...formData,
+      date: formattedDate,
+    };
 
     const url = "http://localhost:8080/api/offer";
-    const requestData = { ...formData };
 
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.info("Response:", data);
-        // Perform any necessary actions after successful POST request
+    if (
+      !/^[0-9]*$/.test(formData.min_salary) ||
+      !/^[0-9]*$/.test(formData.max_salary)
+    ) {
+      setError(
+        "Caractères numériques uniquement autorisés pour le champ salaire"
+      );
+    } else if (
+      formData.job &&
+      formData.contract_id &&
+      formData.min_salary &&
+      formData.max_salary &&
+      formData.description &&
+      formData.city_job &&
+      formData.remote &&
+      formData.prerequisites &&
+      formData.tech_name
+    ) {
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestData),
       })
-      .catch((error) => {
-        console.error("Error:", error);
-        // Handle any errors that occurred during the POST request
-      });
+        .then((response) => {
+          if (response.status !== 200) {
+            console.error(response.statusText);
+          }
+        })
+        .catch((err) => {
+          console.error("Error:", err);
+        });
+    } else {
+      setError("Merci de compléter tous les champs");
+    }
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/api/offer/jobList");
+        const data = await response.json();
+        setOfferData(data);
+      } catch (err) {
+        console.error("Error fetching offer data:", err);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="offer_creation">
@@ -77,11 +130,10 @@ function OfferCreation() {
                 name="job"
                 placeholder="Selectionner un métier"
                 handleChange={handleChange}
-                data={[
-                  { value: "metier1", name: "Metier n°1" },
-                  { value: "metier2", name: "Metier n°2" },
-                  { value: "metier3", name: "Metier n°3" },
-                ]}
+                data={offerData.map((offer) => ({
+                  value: offer.job,
+                  name: offer.job,
+                }))}
               />
 
               <InputListe
@@ -90,25 +142,27 @@ function OfferCreation() {
                 placeholder="Selectionner un contrat"
                 handleChange={handleChange}
                 data={[
-                  { value: "1", name: "1" },
-                  { value: "CDD", name: "CDD" },
-                  { value: "Stage", name: "Stage" },
+                  { value: "1", name: "CDI" },
+                  { value: "2", name: "CDD" },
+                  { value: "3", name: "Alternance" },
+                  { value: "4", name: "Interim" },
                 ]}
               />
               <InputTexte
                 label="Salaire annuel brut minimum (euros)"
                 name="min_salary"
-                placeholder="30 000"
+                placeholder="30000"
                 handleChange={handleChange}
                 type="text"
               />
               <InputTexte
                 label="Salaire annuel brut maximum (euros)"
                 name="max_salary"
-                placeholder="35 000"
+                placeholder="35000"
                 handleChange={handleChange}
                 type="text"
               />
+
               <Textearea
                 label="Missions du poste"
                 name="description"
@@ -125,39 +179,44 @@ function OfferCreation() {
                 handleChange={handleChange}
                 data={[
                   { value: "Nantes", name: "Nantes" },
-                  { value: "Paris", name: "Paris" },
-                  { value: "Toulouse", name: "Toulouse" },
+                  { value: "Angers", name: "Angers" },
+                  { value: "Bordeaux", name: "Bordeaux" },
                 ]}
               />
 
               <InputListe
                 label="Télétravail"
                 placeholder="Selectionner un mode de télétravail"
-                name="teletravail"
+                name="remote"
                 handleChange={handleChange}
                 data={[
-                  { value: "Total", name: "Total" },
-                  { value: "Partiel", name: "Partiel" },
-                  { value: "Pas disponible", name: "Pas disponible" },
+                  { value: "total", name: "total" },
+                  { value: "partiel", name: "partiel" },
+                  { value: "occasionnel", name: "occasionnel" },
                 ]}
               />
 
               <Textearea
-                label="Soft Skills"
-                name="softskills"
-                handleChange={handleChange}
+                label="SoftSkills"
                 placeholder="Description"
+                name="prerequisites"
+                handleChange={handleChange}
                 rows={9}
                 type="text"
               />
 
-              <Textearea
+              <InputListe
                 label="Hard Skills"
-                name="hardskills"
+                placeholder="Hard Skills"
+                name="tech_name"
                 handleChange={handleChange}
-                placeholder="Description"
-                rows={9}
-                type="text"
+                data={[
+                  { value: "1", name: "Java" },
+                  { value: "2", name: "C#" },
+                  { value: "3", name: "PHP" },
+                  { value: "4", name: "Python" },
+                  { value: "5", name: "React" },
+                ]}
               />
 
               <div className="offerEnd">
@@ -166,14 +225,13 @@ function OfferCreation() {
                   buttonFunction={(event) => {
                     event.preventDefault();
                     handlePopup1Open();
-                    handleSubmit();
+                    handleSubmit(event);
                   }}
-                  // buttonFunction={handlePosted}
                 />
                 {showPopup1 && (
                   <Popup
-                    title="L'offre d'emploi a bien été publiée"
-                    message=""
+                    title=""
+                    message={error || "L'offre d'emploi a bien été publiée"}
                     open={showPopup1}
                     onClose={handlePopup1Close}
                     buttonname="Retour au Dashboard"
@@ -183,19 +241,6 @@ function OfferCreation() {
             </div>
           </form>
         </div>
-
-        {/* )}
-
-        {posted && (
-          <div>
-            <div className="confOfferCreation">
-              <h2>L'offre d'emploi a bien été publiée</h2>
-            </div>
-            <div className="confOfferCreation">
-                <WhiteButton buttonName="Retour à mon espace"buttonFunction={handleSubmit} />
-            </div>
-          </div>
-        )} */}
       </div>
     </div>
   );

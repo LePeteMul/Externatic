@@ -14,12 +14,10 @@ function CompanyDashboard() {
       .then((data) => setCompany(data))
       .catch((err) => console.error(err));
   }, []);
-  console.warn(company);
 
   return (
     <div className="CompanyDashboard">
-      <HeaderWaveInverted title={`Bienvenue, ${company.company_name}`} />
-      {/* <HeaderWaveInverted title="Bienvenue, placeholder" /> */}
+      <HeaderWaveInverted title={`Bienvenue ${company.company_name}`} />
       <div className="boxWithoutHeader">
         <div className="boxInside">
           <NavLink to="/company/profile">

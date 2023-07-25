@@ -5,12 +5,13 @@ import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnex
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import JobCard from "../../components/Elements/JobCard";
 import BlackButton from "../../components/Elements/BlackButton";
+import { formatDate } from "../../services/formatDate";
 
 function CandidateJobApplications() {
   const navigate = useNavigate();
   const [application, setApplication] = useState([]);
   const { userId } = useContext(UserConnexionContext);
-  const { offerId, setOfferId } = useContext(JobOfferContext);
+  const { setOfferId } = useContext(JobOfferContext);
 
   useEffect(() => {
     const url = `http://localhost:8080/api/applicationByUser/${userId}`;
@@ -69,12 +70,12 @@ function CandidateJobApplications() {
                 logo={offer.logo}
                 companyName={offer.companyName}
                 job={offer.job}
-                contractType={offer.contractType}
-                jobCity={offer.jobCity}
-                date={offer.date}
+                contractType={offer.contract_type}
+                jobCity={offer.city_job}
+                date={formatDate(offer.date)}
                 status={offer.status}
                 onClick={() => handleClick(offer.offer_id)}
-                onDelete={handleDelete}
+                showButtons={false}
               />
             ))}
           </div>
@@ -84,12 +85,12 @@ function CandidateJobApplications() {
             {entretiensProgrammes.map((offer) => (
               <JobCard
                 key={offer.offer_id}
-                logo={offer.companyLogo}
+                logo={offer.logo}
                 companyName={offer.companyName}
                 job={offer.job}
-                contractType={offer.contractType}
-                jobCity={offer.jobCity}
-                date={offer.date}
+                contractType={offer.contract_type}
+                jobCity={offer.city_job}
+                date={formatDate(offer.date)}
                 status={offer.status}
                 onClick={() => handleClick(offer.offer_id)}
                 onDelete={handleDelete}
@@ -102,12 +103,12 @@ function CandidateJobApplications() {
             {acceptees.map((offer) => (
               <JobCard
                 key={offer.offer_id}
-                logo={offer.companyLogo}
+                logo={offer.logo}
                 companyName={offer.companyName}
                 job={offer.job}
-                contractType={offer.contractType}
-                jobCity={offer.jobCity}
-                date={offer.date}
+                contractType={offer.contract_type}
+                jobCity={offer.city_job}
+                date={formatDate(offer.date)}
                 status={offer.status}
                 onClick={() => handleClick(offer.offer_id)}
                 onDelete={handleDelete}
@@ -120,12 +121,12 @@ function CandidateJobApplications() {
             {refusees.map((offer) => (
               <JobCard
                 key={offer.offer_id}
-                logo={offer.companyLogo}
+                logo={offer.logo}
                 companyName={offer.companyName}
                 job={offer.job}
-                contractType={offer.contractType}
-                jobCity={offer.jobCity}
-                date={offer.date}
+                contractType={offer.contract_type}
+                jobCity={offer.city_job}
+                date={formatDate(offer.date)}
                 status={offer.status}
                 onClick={() => handleClick(offer.offer_id)}
                 onDelete={handleDelete}

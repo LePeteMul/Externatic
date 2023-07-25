@@ -1,26 +1,48 @@
-import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext, useState, useEffect } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import JobOfferContext from "../../contexts/JobOfferContext/JobOfferContext";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import JobCard from "../../components/Elements/JobCard";
 import BlackButton from "../../components/Elements/BlackButton";
+import { formatDate } from "../../services/formatDate";
 
 function OffersList() {
+  const navigate = useNavigate();
+
   const [result, setResult] = useState([]);
+
+  const { setOfferId } = useContext(JobOfferContext);
 
   // find all offers with details
   useEffect(() => {
-    const url = "http://localhost:8080/api/offerDetails";
+    const url = "http://localhost:8080/api/offer";
 
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        console.info("Response:", data);
         setResult(data);
       })
       .catch((error) => {
         console.error("Error:", error);
       });
   }, []);
+
+  const handleClick = (id) => {
+    setOfferId(id);
+    navigate("/jobdetails");
+  };
+
+  const handleDelete = (id) => {
+    fetch(`http://localhost:8080/api/offer/${id}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (response.status === 204) {
+          navigate("/admin/offerlist");
+        }
+      })
+      .catch((err) => console.error(err));
+  };
 
   return (
     <div className="OffersList">
@@ -39,7 +61,11 @@ function OffersList() {
                 job={offer.job}
                 contractType={offer.contract_type}
                 jobCity={offer.city_job}
-                date={offer.date}
+                date={formatDate(offer.date)}
+                id={offer.id}
+                onDelete={() => handleDelete(offer.id)}
+                onClick={() => handleClick(offer.id)}
+                showButtons
               />
             );
           })}
