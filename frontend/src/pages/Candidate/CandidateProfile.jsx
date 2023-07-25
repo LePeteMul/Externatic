@@ -4,7 +4,6 @@ import HeaderBasic from "../../components/Header/HeaderBasic";
 import InputTexte from "../../components/Elements/InputTexte";
 import BlackButton from "../../components/Elements/BlackButton";
 import RedButton from "../../components/Elements/RedButton";
-import LanguageList from "../../components/Elements/LanguageList";
 import InputCv from "../../components/Elements/InputCv";
 import Popup from "../../components/Elements/Popup";
 import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";

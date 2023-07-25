@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import InputTexte from "../../components/Elements/InputTexte";
-import userIcon from "../../assets/icons/user.png";
 import BlackButton from "../../components/Elements/BlackButton";
 import CompanyConnexionContext from "../../contexts/CompanyConnexionContext/CompanyConnexionContext";
 

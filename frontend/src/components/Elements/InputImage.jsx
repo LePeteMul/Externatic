@@ -123,7 +123,6 @@ function InputImage({ label, userId, preview = "" }) {
 InputImage.propTypes = {
   label: PropTypes.string.isRequired,
   userId: PropTypes.number.isRequired,
-  handleChange: PropTypes.func.isRequired,
   preview: PropTypes.string.isRequired,
 };
 
