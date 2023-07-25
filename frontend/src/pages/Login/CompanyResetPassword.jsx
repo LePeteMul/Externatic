@@ -37,13 +37,13 @@ function CompanyResetPassword() {
       [e.target.name]: e.target.value,
     }));
   };
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
 
     console.info(formData);
 
-    fetch("http://localhost:8080//api/pass/company/edit", {
+    fetch("http://localhost:8080/api/pass/company/edit", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

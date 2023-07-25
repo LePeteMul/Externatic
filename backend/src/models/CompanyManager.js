@@ -48,11 +48,12 @@ class CompanyManager extends AbstractManager {
     ]);
   }
 
-  updatePassword(password, id) {
-    return this.database.query(`update company set password = ? where id = ?`, [
-      password,
-      id,
-    ]);
+  updatePassword(password, email) {
+    console.info(password, email);
+    return this.database.query(
+      `update company set password = ? where email = ?`,
+      [password, email]
+    );
   }
 
   updatePresentation(presentation, id) {
