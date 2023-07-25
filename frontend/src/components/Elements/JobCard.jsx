@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import croix from "../../assets/icons/cross.png";
+import logo_generique from "../../assets/images/logo_generique.jpg"
 
 function JobCard({
   logo,
@@ -9,12 +10,12 @@ function JobCard({
   contractType,
   jobCity,
   date,
-
   onClick,
   onDelete,
-
   showButtons,
 }) {
+  const logoToShow = logo || logo_generique;
+
   return (
     <div
       className="jobCard"
@@ -24,7 +25,7 @@ function JobCard({
       tabIndex={0}
     >
       <div className="company_logo">
-        <img className="logo" src={logo} alt={companyName} />
+        <img className="logo" src={logoToShow} alt={companyName} />
       </div>
       <div className="job_details">
         <h2 className="job_title">{job}</h2>
