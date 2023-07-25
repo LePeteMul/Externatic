@@ -85,7 +85,7 @@ function CandidateJobApplications() {
             {entretiensProgrammes.map((offer) => (
               <JobCard
                 key={offer.offer_id}
-                logo={offer.companyLogo}
+                logo={offer.logo}
                 companyName={offer.companyName}
                 job={offer.job}
                 contractType={offer.contract_type}
@@ -103,7 +103,7 @@ function CandidateJobApplications() {
             {acceptees.map((offer) => (
               <JobCard
                 key={offer.offer_id}
-                logo={offer.companyLogo}
+                logo={offer.logo}
                 companyName={offer.companyName}
                 job={offer.job}
                 contractType={offer.contract_type}
@@ -121,7 +121,7 @@ function CandidateJobApplications() {
             {refusees.map((offer) => (
               <JobCard
                 key={offer.offer_id}
-                logo={offer.companyLogo}
+                logo={offer.logo}
                 companyName={offer.companyName}
                 job={offer.job}
                 contractType={offer.contract_type}

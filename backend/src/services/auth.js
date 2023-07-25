@@ -76,7 +76,7 @@ const verifyCompanyPassword = async (req, res) => {
 
       return res.status(200).send(token);
     }
-    return res.status(401).send("Incorrect password");
+    return res.status(401).send("Mot de passe incorrect");
   } catch (error) {
     console.error("Error verifying password:", error);
     return res.status(500).send("Internal Server Error");
