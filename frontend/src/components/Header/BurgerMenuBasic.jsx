@@ -67,16 +67,14 @@ function BurgerMenuBasic() {
         <Link to="/legalinformations" onClick={handleClick}>
           <li className="menuItem">Mentions légales</li>
         </Link>
-        {userConnected && (
-          <div
-            onClick={handleDisconnect}
-            onKeyDown={handleDisconnect}
-            role="button"
-            tabIndex={0}
-          >
-            <li className="menuItem">Se déconnecter</li>
-          </div>
-        )}
+        <div
+          onClick={handleDisconnect}
+          onKeyDown={handleDisconnect}
+          role="button"
+          tabIndex={0}
+        >
+          <li className="menuItem">Se déconnecter</li>
+        </div>
       </ul>
     </div>
   );
