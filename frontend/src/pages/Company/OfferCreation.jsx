@@ -20,7 +20,7 @@ function OfferCreation() {
 
   const handlePopup1Close = () => {
     setShowPopup1(false);
-    navigate("/company/dashboard"); // Rediriger vers le dashboard
+    navigate("/company/dashboard");
   };
 
   const [formData, setFormData] = useState({
@@ -34,13 +34,15 @@ function OfferCreation() {
     remote: "",
     date: new Date().toISOString(),
     prerequisites: "",
-    department: "",
     tech_name: "",
+    department: "",
   });
 
   const handleTextAreaChange = (value) => {
     setFormData({ ...formData, presentation: value });
   };
+
+  const [error, setError] = useState(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -57,21 +59,42 @@ function OfferCreation() {
 
     const url = "http://localhost:8080/api/offer";
 
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestData),
-    })
-      .then((response) => {
-        if (response.status !== 200) {
-          console.error(response.statusText);
-        }
+    if (
+      !/^[0-9]*$/.test(formData.min_salary) ||
+      !/^[0-9]*$/.test(formData.max_salary)
+    ) {
+      setError(
+        "Caractères numériques uniquement autorisés pour le champ salaire"
+      );
+    } else if (
+      formData.job &&
+      formData.contract_id &&
+      formData.min_salary &&
+      formData.max_salary &&
+      formData.description &&
+      formData.city_job &&
+      formData.remote &&
+      formData.prerequisites &&
+      formData.tech_name
+    ) {
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestData),
       })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+        .then((response) => {
+          if (response.status !== 200) {
+            console.error(response.statusText);
+          }
+        })
+        .catch((err) => {
+          console.error("Error:", err);
+        });
+    } else {
+      setError("Merci de compléter tous les champs");
+    }
   };
 
   useEffect(() => {
@@ -80,8 +103,8 @@ function OfferCreation() {
         const response = await fetch("http://localhost:8080/api/offer/jobList");
         const data = await response.json();
         setOfferData(data);
-      } catch (error) {
-        console.error("Error fetching offer data:", error);
+      } catch (err) {
+        console.error("Error fetching offer data:", err);
       }
     };
 
@@ -204,8 +227,8 @@ function OfferCreation() {
                 />
                 {showPopup1 && (
                   <Popup
-                    title="L'offre d'emploi a bien été publiée"
-                    message=""
+                    title=""
+                    message={error || "L'offre d'emploi a bien été publiée"}
                     open={showPopup1}
                     onClose={handlePopup1Close}
                     buttonname="Retour au Dashboard"

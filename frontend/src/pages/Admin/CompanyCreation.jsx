@@ -12,11 +12,10 @@ function CompanyCreation() {
 
   const handlePopup1Close = () => {
     setShowPopup1(false);
-    navigate("/admin/dashboard"); // Rediriger vers la première page différente
+    navigate("/admin/dashboard");
   };
 
   const [formData, setFormData] = useState({
-    // Logo & presentation are not required fields in the DB
     company_name: "",
     email: "",
     password: "",
@@ -32,33 +31,44 @@ function CompanyCreation() {
     }));
   };
 
-  // Submission and triggering the post datas to the DB
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const url = "http://localhost:8080/api/company/register";
     const requestData = { ...formData };
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestData),
-    })
-      .then((response) => {
-        if (response.status === 400) {
-          setError("Cet email est déjà utilisé");
-        } else {
-          setShowPopup1(true);
-        }
+
+    /* eslint-disable-next-line */
+    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)) {
+      setError("Adresse mail incorrecte");
+    } else if (
+      formData.company_name &&
+      formData.email &&
+      formData.password &&
+      formData.phone
+    ) {
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestData),
       })
-      .catch((err) => {
-        console.error("Error:", err);
-      });
+        .then((response) => {
+          if (response.status === 400) {
+            setError("Cet email est déjà utilisé");
+          } else {
+            setShowPopup1(true);
+          }
+        })
+        .catch((err) => {
+          console.error("Error:", err);
+        });
+    } else {
+      setError("Merci de compléter tous les champs");
+    }
 
     const MailUrl = "http://localhost:8080/api/email/company";
     const MailRequestData = { ...formData };
-    console.info("mauvais");
     fetch(MailUrl, {
       method: "POST",
       headers: {
@@ -81,6 +91,7 @@ function CompanyCreation() {
         console.error("Error:", err);
       });
   };
+
   return (
     <div className="CompanyCreation">
       <HeaderBasic />
@@ -107,7 +118,7 @@ function CompanyCreation() {
             <InputTexte
               label="Téléphone de contact"
               name="phone"
-              placeholder="06 06 06 06 60"
+              placeholder="0606060606"
               type="tel"
               handleChange={handleChange}
             />

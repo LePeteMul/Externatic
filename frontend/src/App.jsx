@@ -1,6 +1,6 @@
 import "./App.scss";
 import React, { useContext, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import UserConnexionContext from "./contexts/UserConnexionContext/UserConnexionContext";
 import CompanyConnexionContext from "./contexts/CompanyConnexionContext/CompanyConnexionContext";
@@ -8,7 +8,6 @@ import Router from "./components/Router";
 
 function App() {
   const location = useLocation();
-  const navigate = useNavigate();
 
   const { setUserConnected, setUserId, setIsAdmin } =
     useContext(UserConnexionContext);
@@ -24,14 +23,15 @@ function App() {
       const user = jwtDecode(token);
       const now = Math.floor(Date.now() / 1000);
       if (user.exp < now) {
-        navigate("/");
         if (user.company === true) {
           setCompanyConnected(false);
           setCompanyId(null);
+          localStorage.removeItem("token");
         } else {
           setIsAdmin(false);
           setUserConnected(false);
           setUserId(null);
+          localStorage.removeItem("token");
         }
       } else {
         if (user.admin === 1) {
