@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import uploadIcon from "../../assets/icons/logo_generique.jpg";
+import uploadIcon from "../../assets/images/logo_generique.jpg";
 
 function InputLogo({ label, companyId, preview = "" }) {
   const [file, setFile] = useState(null);
