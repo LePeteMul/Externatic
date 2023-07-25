@@ -28,7 +28,12 @@ function Registration() {
   const navigate = useNavigate();
 
   const handlePopupClose = () => {
-    navigate("/login");
+    if (isSent) {
+      navigate("/login");
+      setIsSent(false);
+    } else if (error) {
+      setError(null);
+    }
   };
 
   const handleSubmit = (e) => {
@@ -36,35 +41,49 @@ function Registration() {
     const requestData = { ...formData };
     const requestEmail = { email: formData.email };
 
-    fetch("http://localhost:8080/api/user/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestData),
-    })
-      .then((response) => {
-        if (response.status === 400) {
-          setError("Cet email est déjà utilisé");
-        }
-        fetch("http://localhost:8080/api/email", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(requestEmail),
-        })
-          .then((res) => {
-            setIsSent(!isSent);
-          })
-          .catch((err) => {
-            console.error("Error:", err);
-          });
+    /* eslint-disable-next-line */
+    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)) {
+      setError("Adresse mail incorrecte");
+    } else if (formData.password !== formData.validation_password) {
+      setError("Les mots de passe ne sont pas identiques");
+    } else if (
+      formData.email &&
+      formData.lastname &&
+      formData.firstname &&
+      formData.password &&
+      formData.validation_password
+    ) {
+      fetch("http://localhost:8080/api/user/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestData),
       })
-      .catch((err) => {
-        console.error("Error:", err);
-        // Handle any errors that occurred during the POST request
-      });
+        .then((response) => {
+          if (response.status === 400) {
+            setError("Cet email est déjà utilisé");
+          }
+          fetch("http://localhost:8080/api/email", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(requestEmail),
+          })
+            .then((res) => {
+              setIsSent(!isSent);
+            })
+            .catch((err) => {
+              console.error("Error:", err);
+            });
+        })
+        .catch((err) => {
+          console.error("Error:", err);
+        });
+    } else {
+      setError("Merci de compléter tous les champs");
+    }
   };
 
   return (
@@ -108,7 +127,7 @@ function Registration() {
             <InputTexte
               label="Confirmer le mot de passe :"
               placeholder="*******************"
-              name="password"
+              name="validation_password"
               image={eye}
               type="password"
               handleChange={handleChange}
@@ -134,7 +153,7 @@ function Registration() {
             title="Erreur"
             message={error}
             onClose={handlePopupClose}
-            buttonname="Se connecter"
+            buttonname="Ok"
           />
         )}
       </div>

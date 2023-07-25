@@ -4,7 +4,6 @@ import HeaderBasic from "../../components/Header/HeaderBasic";
 import InputTexte from "../../components/Elements/InputTexte";
 import BlackButton from "../../components/Elements/BlackButton";
 import RedButton from "../../components/Elements/RedButton";
-import LanguageList from "../../components/Elements/LanguageList";
 import InputCv from "../../components/Elements/InputCv";
 import Popup from "../../components/Elements/Popup";
 import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
@@ -12,7 +11,6 @@ import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnex
 function CandidateProfile() {
   const { userId } = useContext(UserConnexionContext);
   const [user, setUser] = useState({});
-  // console.warn("Dans UserProfile, userID : ", user.id);
 
   useEffect(() => {
     fetch(`http://localhost:8080/api/user/${userId}`)
@@ -28,17 +26,10 @@ function CandidateProfile() {
           phone: data.phone,
           city: data.city,
           cv: data.cv,
-          // language: data.language,
         });
       })
       .catch((err) => console.error(err));
   }, []);
-
-  // console.warn("user dans le admin profile = ", user);
-  // console.warn("is admin ? ", user.admin);
-  // console.warn("lastname = ", user.lastname);
-  // console.warn("password = ", user.password);
-  // console.warn("language = ", user.language);
 
   const navigate = useNavigate();
   const [showPopup1, setShowPopup1] = useState(false);
@@ -50,7 +41,7 @@ function CandidateProfile() {
 
   const handlePopup1Close = () => {
     setShowPopup1(false);
-    navigate("/candidate/dashboard"); // Rediriger vers la première page différente
+    navigate("/candidate/dashboard");
   };
 
   const handlePopup2Open = () => {
@@ -59,18 +50,15 @@ function CandidateProfile() {
 
   const handlePopup2Close = () => {
     setShowPopup2(false);
-    navigate("/"); // Rediriger vers la deuxième page différente
+    navigate("/");
   };
 
   const [formData, setFormData] = useState({
-    gender: user.gender,
     lastname: user.lastname,
     firstname: user.firstname,
     email: user.email,
     phone: user.phone,
     city: user.city,
-    cv: user.cv,
-    // language: "",
   });
 
   const handleChange = (e) => {
@@ -87,28 +75,40 @@ function CandidateProfile() {
     }));
   };
 
+  const [error, setError] = useState(null);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const url = `http://localhost:8080/api/user/${userId}`;
     const requestData = { ...formData };
 
-    fetch(url, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.info("Response:", data);
-        // Perform any necessary actions after successful POST request
+    /* eslint-disable-next-line */
+    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)) {
+      setError("Adresse mail incorrecte");
+    } else if (
+      formData.lastname &&
+      formData.firstname &&
+      formData.email &&
+      formData.phone
+    ) {
+      fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestData),
       })
-      .catch((error) => {
-        console.error("Error:", error);
-        // Handle any errors that occurred during the POST request
-      });
+        .then((response) => response.json())
+        .then((data) => {
+          console.info("Response:", data);
+        })
+        .catch((err) => {
+          console.error("Error:", err);
+        });
+    } else {
+      setError("Merci de compléter tous les champs");
+    }
   };
 
   const handleDeletion = () => {
@@ -124,7 +124,6 @@ function CandidateProfile() {
             email: user.email,
             phone: user.phone,
             city: user.city,
-            // language: "",
             cv: user.cv,
             password: user.password,
             admin: user.admin,
@@ -172,7 +171,7 @@ function CandidateProfile() {
           <InputTexte
             label="Téléphone"
             name="phone"
-            placeholder="06 06 06 06 06"
+            placeholder="0606060606"
             type="tel"
             handleChange={handleChange}
             value={formData.phone}
@@ -206,8 +205,8 @@ function CandidateProfile() {
 
           {showPopup1 && (
             <Popup
-              title="Mise à jour effectuée"
-              message="Les informations ont bien été modifiées"
+              title=""
+              message={error || "Les informations ont bien été modifiées"}
               open={showPopup1}
               onClose={handlePopup1Close}
               buttonname="Retour au Dashboard"
