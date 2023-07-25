@@ -38,11 +38,8 @@ function OfferCreation() {
     tech_name: "",
   });
 
-  const handleChange = (e) => {
-    setFormData((previousValue) => ({
-      ...previousValue,
-      [e.target.name]: e.target.value,
-    }));
+  const handleTextAreaChange = (value) => {
+    setFormData({ ...formData, presentation: value });
   };
 
   const handleSubmit = (event) => {
@@ -106,7 +103,7 @@ function OfferCreation() {
                 label="Poste"
                 name="job"
                 placeholder="Selectionner un métier"
-                handleChange={handleChange}
+                handleChange={handleTextAreaChange}
                 data={offerData.map((offer) => ({
                   value: offer.job,
                   name: offer.job,
@@ -117,7 +114,7 @@ function OfferCreation() {
                 label="Type de contrat"
                 name="contract_id"
                 placeholder="Selectionner un contrat"
-                handleChange={handleChange}
+                handleChange={handleTextAreaChange}
                 data={[
                   { value: "1", name: "CDI" },
                   { value: "2", name: "CDD" },
@@ -129,14 +126,14 @@ function OfferCreation() {
                 label="Salaire annuel brut minimum (euros)"
                 name="min_salary"
                 placeholder="30000"
-                handleChange={handleChange}
+                handleChange={handleTextAreaChange}
                 type="text"
               />
               <InputTexte
                 label="Salaire annuel brut maximum (euros)"
                 name="max_salary"
                 placeholder="35000"
-                handleChange={handleChange}
+                handleChange={handleTextAreaChange}
                 type="text"
               />
 
@@ -144,7 +141,7 @@ function OfferCreation() {
                 label="Missions du poste"
                 name="description"
                 placeholder="Description"
-                handleChange={handleChange}
+                handleChange={handleTextAreaChange}
                 rows={3}
                 type="text"
               />
@@ -153,7 +150,7 @@ function OfferCreation() {
                 label="Localisation"
                 placeholder="Selectionner la ville"
                 name="city_job"
-                handleChange={handleChange}
+                handleChange={handleTextAreaChange}
                 data={[
                   { value: "Nantes", name: "Nantes" },
                   { value: "Angers", name: "Angers" },
@@ -165,7 +162,7 @@ function OfferCreation() {
                 label="Télétravail"
                 placeholder="Selectionner un mode de télétravail"
                 name="remote"
-                handleChange={handleChange}
+                handleChange={handleTextAreaChange}
                 data={[
                   { value: "total", name: "total" },
                   { value: "partiel", name: "partiel" },
@@ -177,7 +174,7 @@ function OfferCreation() {
                 label="SoftSkills"
                 placeholder="Description"
                 name="prerequisites"
-                handleChange={handleChange}
+                handleChange={handleTextAreaChange}
                 rows={9}
                 type="text"
               />
@@ -186,7 +183,7 @@ function OfferCreation() {
                 label="Hard Skills"
                 placeholder="Hard Skills"
                 name="tech_name"
-                handleChange={handleChange}
+                handleChange={handleTextAreaChange}
                 data={[
                   { value: "1", name: "Java" },
                   { value: "2", name: "C#" },
