@@ -8,9 +8,7 @@ import BlackButton from "../../components/Elements/BlackButton";
 import CompanyConnexionContext from "../../contexts/CompanyConnexionContext/CompanyConnexionContext";
 
 function LoginCompany() {
-  const token = localStorage.getItem("token");
-
-  const { setCompanyConnected, setCompanyId, companyId } = useContext(
+  const { setCompanyConnected, setCompanyId } = useContext(
     CompanyConnexionContext
   );
 

@@ -70,11 +70,11 @@ const changePicture = (req, res) => {
 };
 
 const changePassword = (req, res) => {
-  const { password, id } = req.body;
+  const { password, email } = req.body;
   console.error(req.body);
 
   models.company
-    .updatePassword(password, id)
+    .updatePassword(password, email)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);

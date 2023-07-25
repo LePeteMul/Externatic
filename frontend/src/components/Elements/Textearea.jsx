@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 function Textearea({ label, inputMessage, rows, type, handleChange, name }) {
-  const [entry, setEntry] = useState("");
+  const [entry] = useState("");
 
   const handleChangeInput = (event) => {
     setEntry(event.target.value);
   };
-
+  
   return (
     <div className="TextArea">
       <label htmlFor="label">{label} </label>

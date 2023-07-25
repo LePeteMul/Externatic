@@ -54,7 +54,7 @@ function Registration() {
           },
           body: JSON.stringify(requestEmail),
         })
-          .then((res) => {
+          .then(() => {
             setIsSent(!isSent);
           })
           .catch((err) => {

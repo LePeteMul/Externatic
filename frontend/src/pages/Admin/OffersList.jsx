@@ -11,7 +11,7 @@ function OffersList() {
 
   const [result, setResult] = useState([]);
 
-  const { offerId, setOfferId } = useContext(JobOfferContext);
+  const { setOfferId } = useContext(JobOfferContext);
 
   // find all offers with details
   useEffect(() => {
