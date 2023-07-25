@@ -107,7 +107,6 @@ function InputCv({ label, userId }) {
 InputCv.propTypes = {
   label: PropTypes.string.isRequired,
   userId: PropTypes.number.isRequired,
-  handleChange: PropTypes.func.isRequired,
 };
 
 export default InputCv;
