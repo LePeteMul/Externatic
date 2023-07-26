@@ -99,10 +99,7 @@ function CandidateProfile() {
         },
         body: JSON.stringify(requestData),
       })
-        .then((response) => response.json())
-        .then((data) => {
-          console.info("Response:", data);
-        })
+        .then(() => {})
         .catch((err) => {
           console.error("Error:", err);
         });

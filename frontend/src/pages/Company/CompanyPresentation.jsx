@@ -86,7 +86,7 @@ function CompanyPresentation() {
             className="textPres"
             rows={16}
             handleChange={handleChange}
-            value={formData.presentation}
+            value={formData.presentation || ""}
           />
         </div>
         <div className="actionbuttons">

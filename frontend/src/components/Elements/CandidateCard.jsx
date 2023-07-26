@@ -58,8 +58,12 @@ CandidateCard.propTypes = {
   lastname: PropTypes.string.isRequired,
   firstname: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   onDelete: PropTypes.func.isRequired,
+};
+
+CandidateCard.defaultProps = {
+  onClick: undefined,
 };
 
 export default CandidateCard;

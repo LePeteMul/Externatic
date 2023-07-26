@@ -69,9 +69,6 @@ function InputImage({ label, userId, preview = "" }) {
 
       if (response.ok) {
         // Le fichier a été téléchargé avec succès
-        // Traitez la réponse du backend ici si nécessaire
-        const data = await response.json();
-
         // setUploadedImageUrl(`http://localhost:8080/image_profile_${userId}.jpg`)  test NICO
       } else {
         // Gérez les erreurs de requête ici
@@ -123,7 +120,11 @@ function InputImage({ label, userId, preview = "" }) {
 InputImage.propTypes = {
   label: PropTypes.string.isRequired,
   userId: PropTypes.number.isRequired,
-  preview: PropTypes.string.isRequired,
+  preview: PropTypes.string,
+};
+
+InputImage.defaultProps = {
+  preview: undefined,
 };
 
 export default InputImage;

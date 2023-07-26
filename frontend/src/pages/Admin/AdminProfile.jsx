@@ -74,7 +74,7 @@ function AdminProfile() {
           }
         })
         .catch((err) => {
-          console.error("Error:", error);
+          console.error("Error:", err);
         });
     } else {
       setError("Merci de compléter tous les champs");

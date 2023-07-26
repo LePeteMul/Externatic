@@ -5,29 +5,34 @@ import loupe from "../../assets/icons/loupe.png";
 import InputListe from "../../components/Elements/InputListe";
 import BlackButton from "../../components/Elements/BlackButton";
 import JobOfferContext from "../../contexts/JobOfferContext/JobOfferContext";
+import userlogo from "../../assets/icons/userIcon2.png";
 
 function Application() {
   const [result, setResult] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("");
   const { offerId } = useContext(JobOfferContext);
 
-  // Getting application by offer id
   useEffect(() => {
     const url = `http://localhost:8080/api/application/byOfferId/${offerId}`;
 
     fetch(url)
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.status === 404) {
+          return console.info("");
+        }
+        return response.json();
+      })
       .then((data) => {
-        console.info("Response (data):", data);
-        setResult(data);
-        setSelectedStatus(parseInt(data.status_id));
+        if (data) {
+          setResult(data);
+          setSelectedStatus(parseInt(data.status_id));
+        }
       })
       .catch((error) => {
         console.error("Error:", error);
       });
   }, [offerId]);
 
-  // Function to handle status change
   const handleStatusChange = (e) => {
     setSelectedStatus(e.target.value);
     updateApplicationStatus(e.target.value);
@@ -89,7 +94,7 @@ function Application() {
               <div className="card_info">
                 <img
                   className="user_pic"
-                  src={result.profil_picture}
+                  src={result.profil_picture ? result.profil_picture : userlogo}
                   alt=""
                   srcSet=""
                 />

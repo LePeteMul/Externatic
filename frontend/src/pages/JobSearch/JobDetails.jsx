@@ -6,6 +6,7 @@ import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnex
 import JobOfferContext from "../../contexts/JobOfferContext/JobOfferContext";
 import Popup from "../../components/Elements/Popup";
 import { formatDate } from "../../services/formatDate";
+import logo_generique from "../../assets/images/logo_generique.jpg";
 
 function JobDetails() {
   const { offerId } = useContext(JobOfferContext);
@@ -117,7 +118,7 @@ function JobDetails() {
           <div className="OfferLogo">
             <img
               className="logo"
-              src={jobDetails.logo}
+              src={jobDetails.logo ? jobDetails.logo : logo_generique}
               alt={jobDetails.company_name}
             />
           </div>

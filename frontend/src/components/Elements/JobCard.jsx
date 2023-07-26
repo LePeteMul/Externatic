@@ -34,7 +34,7 @@ function JobCard({
         </h3>
         <h3 className="publication"> offre publiée le {date}</h3>
       </div>
-      {showButtons && ( // Conditionally render buttons based on showButtons prop
+      {showButtons && (
         <div className="navigation">
           <button type="button" className="jobCardButtons" onClick={onDelete}>
             <img src={croix} alt="croix" />
@@ -47,14 +47,19 @@ function JobCard({
 
 JobCard.propTypes = {
   logo: PropTypes.string.isRequired,
-  companyName: PropTypes.string.isRequired,
+  companyName: PropTypes.string,
   job: PropTypes.string.isRequired,
   contractType: PropTypes.string.isRequired,
   jobCity: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired,
+  onDelete: PropTypes.func,
   showButtons: PropTypes.bool.isRequired,
+};
+
+JobCard.defaultProps = {
+  companyName: undefined,
+  onDelete: undefined,
 };
 
 export default JobCard;

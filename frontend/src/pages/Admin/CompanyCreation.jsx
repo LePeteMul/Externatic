@@ -78,14 +78,8 @@ function CompanyCreation() {
     })
       .then((response) => {
         if (response.status === 400) {
-          setError("Cet email est déjà utilisé");
-        } else {
-          response.json();
+          setShowPopup1(true);
         }
-      })
-      .then((data) => {
-        console.info("Email:", data);
-        setShowPopup1(true);
       })
       .catch((err) => {
         console.error("Error:", err);
