@@ -67,6 +67,7 @@ function InputImage({ label, userId, preview = "" }) {
       );
 
       if (response.ok) {
+        console.info("");
       } else {
         console.error(
           "Une erreur s'est produite lors du téléchargement du fichier."
