@@ -100,10 +100,10 @@ function CompanyForgottenPassword() {
           <div className="modal">
             {/* <img src="/chemin/vers/le/logo.png" alt="Logo" /> */}
 
-            <h2>📨 Email de confirmation envoyé !</h2>
+            <h2>📨 Email de réinitialisation envoyé !</h2>
 
             <p>
-              Vous y trouverez un lien de confirmation de création de compte. Le
+              Vous y trouverez un lien pour réinitialiser votre mot de passe. Le
               lien est valable durant 24h.
             </p>
 

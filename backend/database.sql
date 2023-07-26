@@ -45,7 +45,7 @@ CREATE TABLE
         password VARCHAR(250) NOT NULL,
         profil_picture VARCHAR(250),
         contact_mode VARCHAR(250),
-        PRIMARY KEY (id),
+        PRIMARY KEY (id)
     );
 
 CREATE TABLE
@@ -150,10 +150,7 @@ INSERT INTO
         admin,
         password,
         profil_picture,
-        contact_mode,
-        pref_job,
-        job_city,
-        pref_contract
+        contact_mode
     )
 VALUES (
         "Female",
@@ -166,10 +163,7 @@ VALUES (
         0,
         "****",
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdqUGJHg5RA-YchvuWW8TPgbvoSC2K2SiAPQ&usqp=CAU",
-        "email",
-        "Dévloppeuse front-end",
-        "Nantes",
-        1
+        "email"
     ), (
         "Male",
         "Dupont",
@@ -181,10 +175,7 @@ VALUES (
         0,
         "****",
         "https://img.freepik.com/photos-gratuite/portrait-homme-blanc-isole_53876-40306.jpg?q=10&h=200",
-        "email",
-        "Dévloppeuse back-end",
-        "Bordeaux",
-        2
+        "email"
     ), (
         "Male",
         "Martini",
@@ -196,10 +187,7 @@ VALUES (
         0,
         "****",
         "https://images.pexels.com/photos/5378700/pexels-photo-5378700.jpeg?cs=srgb&dl=pexels-cottonbro-studio-5378700.jpg&fm=jpg",
-        "email",
-        "Dévloppeuse back-end",
-        "Nantes",
-        1
+        "email"
     ), (
         "Female",
         "Leclerc",
@@ -211,10 +199,7 @@ VALUES (
         0,
         "****",
         "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "email",
-        "Lead Tech Java",
-        "Nantes",
-        4
+        "email"
     ), (
         "Female",
         "Chabert",
@@ -226,31 +211,9 @@ VALUES (
         0,
         "****",
         "https://www.frejoux-photographe.fr/wp-content/gallery/portrait-pro-corporate/Photographe-portrait-entreprise-pro-Corporate-toulon-Celine.jpg",
-        "email",
-        "Dévloppeuse back-end",
-        "Nantes",
-        1
+        "email"
     );
 
-INSERT INTO
-    user (
-        lastname,
-        firstname,
-        email,
-        phone,
-        city,
-        admin,
-        password
-    )
-VALUES (
-        'Admin',
-        'Admin',
-        'admin@externatic.fr',
-        '06 62 18 34 73',
-        'Nantes',
-        1,
-        '**'
-    );
 
 INSERT INTO
     company (

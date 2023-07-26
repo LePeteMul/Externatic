@@ -61,7 +61,7 @@ function BurgerMenuBasic() {
             </Link>
           </>
         )}
-        <Link to="/contact" onClick={handleClick}>
+        <Link to="/contact" onClick={handleClick} open={open} setOpen={setOpen}>
           <li className="menuItem">Contact</li>
         </Link>
         <Link to="/legalinformations" onClick={handleClick}>
