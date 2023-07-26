@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import PropTypes from "prop-types";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import InputTexte from "../../components/Elements/InputTexte";
 import BlackButton from "../../components/Elements/BlackButton";
 
-function Contact({ open, setOpen }) {
+function Contact() {
   const navigate = useNavigate();
   const date = new Date();
   const [formData, setFormData] = useState({
@@ -16,10 +15,6 @@ function Contact({ open, setOpen }) {
     request: "POST",
     date: date.toLocaleString(),
   });
-
-  const handleClick = () => {
-    setOpen(!open);
-  };
 
   const handleChange = (e) => {
     setFormData((previousValue) => ({
@@ -91,7 +86,6 @@ function Contact({ open, setOpen }) {
         <BlackButton
           buttonName="Envoyer votre message"
           buttonFunction={handleSubmit}
-          onClick={handleClick}
         />
 
         <div className="contactPageInformations">
@@ -104,10 +98,5 @@ function Contact({ open, setOpen }) {
     </div>
   );
 }
-
-Contact.propTypes = {
-  open: PropTypes.bool.isRequired,
-  setOpen: PropTypes.func.isRequired,
-};
 
 export default Contact;
