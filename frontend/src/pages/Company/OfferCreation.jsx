@@ -9,6 +9,8 @@ import Popup from "../../components/Elements/Popup";
 import CompanyConnexionContext from "../../contexts/CompanyConnexionContext/CompanyConnexionContext";
 
 function OfferCreation() {
+  const token = localStorage.getItem("token");
+
   const navigate = useNavigate();
   const [showPopup1, setShowPopup1] = useState(false);
   const { companyId } = useContext(CompanyConnexionContext);
@@ -84,6 +86,7 @@ function OfferCreation() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(requestData),
       })

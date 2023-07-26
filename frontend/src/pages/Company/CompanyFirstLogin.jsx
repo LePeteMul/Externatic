@@ -17,7 +17,6 @@ function CompanyFirstLogin() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.info(formData);
   };
 
   const navigate = useNavigate();

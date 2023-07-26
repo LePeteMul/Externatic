@@ -8,6 +8,8 @@ import JobOfferContext from "../../contexts/JobOfferContext/JobOfferContext";
 import userlogo from "../../assets/icons/userIcon2.png";
 
 function Application() {
+  const token = localStorage.getItem("token");
+
   const [result, setResult] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("");
   const { offerId } = useContext(JobOfferContext);
@@ -38,7 +40,6 @@ function Application() {
     updateApplicationStatus(e.target.value);
   };
 
-  // Function to update application status
   const updateApplicationStatus = (status) => {
     const parsedStatus = parseInt(status);
     const offer_id = parseInt(result.offer_id);
@@ -49,6 +50,7 @@ function Application() {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({ status: parsedStatus, offer_id }),
       })
@@ -59,7 +61,6 @@ function Application() {
         })
         .catch((error) => {
           console.error("Error:", error);
-          // Handle any errors that occurred during the status update
         });
     } else {
       console.error("Invalid status or ID values");

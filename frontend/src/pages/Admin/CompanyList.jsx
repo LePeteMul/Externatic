@@ -6,6 +6,8 @@ import BlackButton from "../../components/Elements/BlackButton";
 import logo_generique from "../../assets/images/logo_generique.jpg";
 
 function CompanyList() {
+  const token = localStorage.getItem("token");
+
   const [result, setResult] = useState([]);
 
   // find all companies List
@@ -29,6 +31,7 @@ function CompanyList() {
         `http://localhost:8080/api/company/${companyId}`,
         {
           method: "DELETE",
+          Authorization: `Bearer ${token}`,
         }
       );
 

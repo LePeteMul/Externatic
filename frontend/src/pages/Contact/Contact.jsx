@@ -52,6 +52,7 @@ function Contact() {
         <div className="contactPageTitle">
           <h1>Nous contacter</h1>
         </div>
+
         <InputTexte
           label="Votre nom:"
           name="name"
