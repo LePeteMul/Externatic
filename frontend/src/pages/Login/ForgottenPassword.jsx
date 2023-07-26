@@ -88,11 +88,13 @@ function ForgottenPassword() {
 
       {showModal && (
         <div className="modal-container">
-          <div className="modal">
-            <h2>📨 Email de confirmation envoyé !</h2>
+          <div className="modal"> 
+
+            <h2>📨 Email de réinitialisation envoyé !</h2>
+
 
             <p>
-              Vous y trouverez un lien de confirmation de création de compte. Le
+              Vous y trouverez un lien pour réinitialiser votre mot de passe. Le
               lien est valable durant 24h.
             </p>
 

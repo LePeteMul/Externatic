@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import InputTexte from "../../components/Elements/InputTexte";
 import BlackButton from "../../components/Elements/BlackButton";
 
 function Contact() {
+  const navigate = useNavigate();
   const date = new Date();
   const [formData, setFormData] = useState({
     name: "",
@@ -33,7 +35,10 @@ function Contact() {
     })
       .then((response) => {
         if (response.ok) {
-          console.info("Votre message a été envoyé avec succès !");
+
+          // La requête a réussi
+          console.info("Message envoyé avec succès");
+          navigate("/");
         } else {
           console.error("Erreur lors de l'envoi du message");
         }
