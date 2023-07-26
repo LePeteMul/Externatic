@@ -6,7 +6,7 @@ const router = express.Router();
 const { hashPassword } = require("./services/auth");
 const { verifyPassword, verifyCompanyPassword } = require("./services/auth");
 
-/* const { verifyToken } = require("./services/auth"); */
+const { verifyToken } = require("./services/auth");
 /* A ajouter sur les routes concernées */
 
 const applicationControllers = require("./controllers/applicationControllers");
@@ -26,7 +26,12 @@ const companyControllers = require("./controllers/companyControllers");
 router.get("/api/company", companyControllers.browse);
 router.get("/api/company/:id", companyControllers.read);
 router.put("/api/company/:id", companyControllers.edit);
-router.post("/api/company/register", hashPassword, companyControllers.add);
+router.post(
+  "/api/company/register",
+  verifyToken,
+  hashPassword,
+  companyControllers.add
+);
 router.delete("/api/company/:id", companyControllers.destroy);
 router.put("/api/picture/company/edit", companyControllers.changePicture);
 router.put(
@@ -36,6 +41,7 @@ router.put(
 );
 router.put(
   "/api/presentation/company/edit/:id",
+  verifyToken,
   companyControllers.changePresentation
 );
 
@@ -73,10 +79,10 @@ router.get("/api/offer", offerControllers.browse);
 router.get("/api/citiesOffers", offerControllers.getCities);
 router.get("/api/offerByCriteria", offerControllers.getOfferByCriteria);
 router.get("/api/offer/jobList", offerControllers.getJobList);
-router.get("/api/offer/:id", offerControllers.read);
+router.get("/api/offer/:id", verifyToken, offerControllers.read);
 router.get("/api/offerDetails/:id", offerControllers.getOfferDetails);
 router.put("/api/offer/:id", offerControllers.edit);
-router.post("/api/offer", offerControllers.add);
+router.post("/api/offer", verifyToken, offerControllers.add);
 router.delete("/api/offer/:id", offerControllers.destroy);
 
 const statusControllers = require("./controllers/statusControllers");
@@ -114,7 +120,7 @@ router.put(
 
 router.put("/api/user/:id", userControllers.editById);
 router.post("/api/user/register", hashPassword, userControllers.add);
-router.delete("/api/user/:id", userControllers.destroy);
+router.delete("/api/user/:id", verifyToken, userControllers.destroy);
 
 // Route to get application by offer id
 router.get("/api/application/byOfferId/:id", userControllers.getAppliByOfferId);
@@ -128,6 +134,7 @@ router.post(
 // Route to update the status for the application
 router.put(
   "/api/application/:applicationId/status",
+  verifyToken,
   applicationControllers.editStatus
 );
 

@@ -1,5 +1,4 @@
 import React from "react";
-// eslint-disable-next-line import/no-duplicates
 import PropTypes from "prop-types";
 
 function DashboardCard({ title, description }) {

@@ -24,14 +24,6 @@ function CompanyForgottenPassword() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Récupérer la date et l'heure de la requête
-
-    // Récupérer la date et l'ip
-    // setFormData((table) => ({
-    //   ...table,
-    //   ipLocal: ,
-    // }));
-
     fetch("http://localhost:8080/api/email/resetpasswordCompany", {
       method: "POST",
       headers: {
@@ -42,7 +34,6 @@ function CompanyForgottenPassword() {
       .then((response) => {
         if (response.ok) {
           toggleModal();
-          console.info("Message envoyé avec succès");
         } else {
           console.error("Erreur lors de l'envoi du message");
         }

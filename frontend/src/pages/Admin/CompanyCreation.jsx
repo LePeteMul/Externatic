@@ -6,6 +6,8 @@ import BlackButton from "../../components/Elements/BlackButton";
 import Popup from "../../components/Elements/Popup";
 
 function CompanyCreation() {
+  const token = localStorage.getItem("token");
+
   const navigate = useNavigate();
   const [showPopup1, setShowPopup1] = useState(false);
   const [error, setError] = useState(null);
@@ -50,6 +52,7 @@ function CompanyCreation() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(requestData),
       })
@@ -73,6 +76,7 @@ function CompanyCreation() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(MailRequestData),
     })
@@ -84,7 +88,6 @@ function CompanyCreation() {
         }
       })
       .then((data) => {
-        console.info("Email:", data);
         setShowPopup1(true);
       })
       .catch((err) => {

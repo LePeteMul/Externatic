@@ -7,6 +7,8 @@ import Popup from "../../components/Elements/Popup";
 import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
 
 function AdminProfile() {
+  const token = localStorage.getItem("token");
+
   const { userId } = useContext(UserConnexionContext);
   const [admin, setAdmin] = useState({});
 
@@ -65,6 +67,7 @@ function AdminProfile() {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(requestData),
       })

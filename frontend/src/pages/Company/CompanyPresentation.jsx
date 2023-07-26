@@ -8,6 +8,8 @@ import Popup from "../../components/Elements/Popup";
 import CompanyConnexionContext from "../../contexts/CompanyConnexionContext/CompanyConnexionContext";
 
 function CompanyPresentation() {
+  const token = localStorage.getItem("token");
+
   const navigate = useNavigate();
 
   const { companyId } = useContext(CompanyConnexionContext);
@@ -60,6 +62,7 @@ function CompanyPresentation() {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(requestData),
     })

@@ -26,7 +26,6 @@ function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Envoyer la requête à votre backend
     fetch("http://localhost:8080/api/email/contact", {
       method: "POST",
       headers: {
@@ -35,13 +34,12 @@ function Contact() {
       body: JSON.stringify(formData),
     })
       .then((response) => {
-        // Traiter la réponse du serveur
         if (response.ok) {
+
           // La requête a réussi
           console.info("Message envoyé avec succès");
           navigate("/");
         } else {
-          // La requête a échoué
           console.error("Erreur lors de l'envoi du message");
         }
       })
@@ -57,9 +55,7 @@ function Contact() {
         <div className="contactPageTitle">
           <h1>Nous contacter</h1>
         </div>
-        {/* <InputText label="Votre nom :" />
-        <InputText label="Votre adresse mail :" />
-        <LargeTextInput label="Votre message :" /> */}
+
         <InputTexte
           label="Votre nom:"
           name="name"

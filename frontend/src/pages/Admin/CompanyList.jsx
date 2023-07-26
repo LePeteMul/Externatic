@@ -5,6 +5,8 @@ import CompanyCard from "../../components/Elements/CompanyCard";
 import BlackButton from "../../components/Elements/BlackButton";
 
 function CompanyList() {
+  const token = localStorage.getItem("token");
+
   const [result, setResult] = useState([]);
 
   // find all companies List
@@ -28,6 +30,7 @@ function CompanyList() {
         `http://localhost:8080/api/company/${companyId}`,
         {
           method: "DELETE",
+          Authorization: `Bearer ${token}`,
         }
       );
 

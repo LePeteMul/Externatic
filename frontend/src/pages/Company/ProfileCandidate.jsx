@@ -6,12 +6,9 @@ import BlackButton from "../../components/Elements/BlackButton";
 import CompanyConnexionContext from "../../contexts/CompanyConnexionContext/CompanyConnexionContext";
 
 function ProfileCandidate() {
-  // const { userId } = useContext(UserConnexionContext);
   const [user, setUser] = useState([]);
   const { result } = useContext(CompanyConnexionContext);
   const params = useParams();
-
-  console.warn("result dans Profile Candidate = ", result);
 
   useEffect(() => {
     fetch(`http://localhost:8080/api/user/${params.id}`)
@@ -19,7 +16,6 @@ function ProfileCandidate() {
       .then((data) => setUser(data))
       .catch((err) => console.error(err));
   }, []);
-  console.warn("user = ", user);
 
   return (
     <div>

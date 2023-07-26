@@ -36,13 +36,6 @@ function InputTexte({
         disabled={disabled}
       />
       {type === "password" && image && (
-        //   <img
-        //   className="eye"
-        //   src={image}
-        //   alt="IconEye"
-        //   onClick={handleTogglePasswordVisibility}
-        // />
-
         <div className="eyeButtonSystem">
           <button
             type="button"
