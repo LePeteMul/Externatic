@@ -177,13 +177,6 @@ router.post(
   userControllers.addProfilePicture,
   (req, res, next) => {
     next();
-    // récupérer l'id
-    // update la bdd avec l'id et modifier le champ profile_picture
-    // BACKEND_IMAGE_URL+fname
-    // res send (BACKEND_IMAGE_URL+fname)
-    // -> req.fname BACKEND_IMAGE_URL+fname
-    // Le fichier est accessible via req.file
-    // Faites ici le traitement souhaité avec le fichier
   }
 );
 

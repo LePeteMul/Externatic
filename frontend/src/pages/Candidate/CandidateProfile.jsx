@@ -114,7 +114,7 @@ function CandidateProfile() {
   const handleDeletion = () => {
     fetch(`http://localhost:8080/api/user/${userId}`, {
       method: "DELETE",
-      Authorization: `Bearer ${token}`,
+      headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => {
         if (response.status === 204) {

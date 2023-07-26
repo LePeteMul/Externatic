@@ -88,10 +88,8 @@ function ForgottenPassword() {
 
       {showModal && (
         <div className="modal-container">
-          <div className="modal"> 
-
+          <div className="modal">
             <h2>📨 Email de réinitialisation envoyé !</h2>
-
 
             <p>
               Vous y trouverez un lien pour réinitialiser votre mot de passe. Le
