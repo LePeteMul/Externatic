@@ -214,25 +214,6 @@ VALUES (
         "email"
     );
 
-INSERT INTO
-    user (
-        lastname,
-        firstname,
-        email,
-        phone,
-        city,
-        admin,
-        password
-    )
-VALUES (
-        'Admin',
-        'Admin',
-        'admin@externatic.fr',
-        '06 62 18 34 73',
-        'Nantes',
-        1,
-        '**'
-    );
 
 INSERT INTO
     company (
