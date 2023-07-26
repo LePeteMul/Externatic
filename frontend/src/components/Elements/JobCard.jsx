@@ -54,12 +54,13 @@ JobCard.propTypes = {
   date: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   onDelete: PropTypes.func,
-  showButtons: PropTypes.bool.isRequired,
+  showButtons: PropTypes.bool,
 };
 
 JobCard.defaultProps = {
   companyName: undefined,
   onDelete: undefined,
+  showButtons: undefined,
 };
 
 export default JobCard;

@@ -23,10 +23,15 @@ function InputListe({ label, placeholder, data, handleChange, name, value }) {
 }
 
 InputListe.propTypes = {
-  label: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
+  label: PropTypes.string,
+  placeholder: PropTypes.string,
   data: PropTypes.arrayOf(
-    PropTypes.oneOfType([PropTypes.string, PropTypes.string])
+    PropTypes.shape({
+      name: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+        .isRequired,
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+        .isRequired,
+    })
   ),
   name: PropTypes.string,
   handleChange: PropTypes.func.isRequired,
@@ -34,6 +39,8 @@ InputListe.propTypes = {
 };
 
 InputListe.defaultProps = {
+  label: undefined,
+  placeholder: undefined,
   name: undefined,
   data: undefined,
   value: undefined,
