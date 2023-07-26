@@ -4,9 +4,7 @@ import PropTypes from "prop-types";
 function LargeInputText({ label, inputMessage, image, image2, image3 }) {
   const [entry, setEntry] = useState(inputMessage);
 
-  const handleClickInput = () => {
-    // setEntry("");
-  };
+  const handleClickInput = () => {};
 
   const handleChangeInput = (event) => {
     setEntry(event.target.value);

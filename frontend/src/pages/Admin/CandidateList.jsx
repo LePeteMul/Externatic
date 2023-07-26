@@ -6,6 +6,8 @@ import userlogo from "../../assets/icons/userIcon2.png";
 import BlackButton from "../../components/Elements/BlackButton";
 
 function CandidateList() {
+  const token = localStorage.getItem("token");
+
   const [candidates, setCandidates] = useState([]);
 
   useEffect(() => {
@@ -18,10 +20,10 @@ function CandidateList() {
   const handleDeleteCandidate = (id) => {
     fetch(`http://localhost:8080/api/user/${id}`, {
       method: "DELETE",
+      Authorization: `Bearer ${token}`,
     })
       .then((response) => {
         if (response.status === 204) {
-          // If deletion is successful, update the candidate list
           setCandidates((prevCandidates) =>
             prevCandidates.filter((candidate) => candidate.id !== id)
           );
@@ -43,7 +45,6 @@ function CandidateList() {
 
         <div className="candidate">
           {candidates.map((candidate) => {
-            // Assuming candidateArray contains the necessary data for rendering CandidateCard
             return (
               <CandidateCard
                 key={candidate.id}

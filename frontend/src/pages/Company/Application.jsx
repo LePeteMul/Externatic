@@ -7,18 +7,18 @@ import BlackButton from "../../components/Elements/BlackButton";
 import JobOfferContext from "../../contexts/JobOfferContext/JobOfferContext";
 
 function Application() {
+  const token = localStorage.getItem("token");
+
   const [result, setResult] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("");
   const { offerId } = useContext(JobOfferContext);
 
-  // Getting application by offer id
   useEffect(() => {
     const url = `http://localhost:8080/api/application/byOfferId/${offerId}`;
 
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        console.info("Response (data):", data);
         setResult(data);
         setSelectedStatus(parseInt(data.status_id));
       })
@@ -27,13 +27,11 @@ function Application() {
       });
   }, [offerId]);
 
-  // Function to handle status change
   const handleStatusChange = (e) => {
     setSelectedStatus(e.target.value);
     updateApplicationStatus(e.target.value);
   };
 
-  // Function to update application status
   const updateApplicationStatus = (status) => {
     const parsedStatus = parseInt(status);
     const offer_id = parseInt(result.offer_id);
@@ -44,6 +42,7 @@ function Application() {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({ status: parsedStatus, offer_id }),
       })
@@ -54,7 +53,6 @@ function Application() {
         })
         .catch((error) => {
           console.error("Error:", error);
-          // Handle any errors that occurred during the status update
         });
     } else {
       console.error("Invalid status or ID values");

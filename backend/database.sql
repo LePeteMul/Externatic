@@ -1,5 +1,3 @@
-DROP TABLE IF EXISTS user_techno;
-
 DROP TABLE IF EXISTS offer_techno;
 
 DROP TABLE IF EXISTS favorite;
@@ -125,14 +123,7 @@ CREATE TABLE
         PRIMARY KEY (techno_id, offer_id)
     );
 
-CREATE TABLE
-    user_techno(
-        user_id INT NOT NULL,
-        techno_id INT NOT NULL,
-        FOREIGN KEY (user_id) REFERENCES user (id),
-        FOREIGN KEY (techno_id) REFERENCES techno (id),
-        PRIMARY KEY (user_id, techno_id)
-    );
+
 
 INSERT INTO
     contract (contract_type)
@@ -425,9 +416,6 @@ INSERT INTO
     techno (techno_name)
 VALUES ("Java"), ("C#"), ("PHP"), ("Python"), ("React");
 
-INSERT INTO
-    user_techno(user_id, techno_id)
-VALUES (1, 1), (1, 5), (2, 3), (3, 4), (4, 1);
 
 INSERT INTO
     offer_techno(techno_id, offer_id)

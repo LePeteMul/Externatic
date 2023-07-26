@@ -9,6 +9,8 @@ import Popup from "../../components/Elements/Popup";
 import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnexionContext";
 
 function CandidateProfile() {
+  const token = localStorage.getItem("token");
+
   const { userId } = useContext(UserConnexionContext);
   const [user, setUser] = useState({});
 
@@ -96,13 +98,12 @@ function CandidateProfile() {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(requestData),
       })
         .then((response) => response.json())
-        .then((data) => {
-          console.info("Response:", data);
-        })
+        .then((data) => {})
         .catch((err) => {
           console.error("Error:", err);
         });
@@ -114,6 +115,7 @@ function CandidateProfile() {
   const handleDeletion = () => {
     fetch(`http://localhost:8080/api/user/${userId}`, {
       method: "DELETE",
+      Authorization: `Bearer ${token}`,
     })
       .then((response) => {
         if (response.status === 204) {

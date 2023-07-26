@@ -34,7 +34,7 @@ function JobCard({
         </h3>
         <h3 className="publication"> offre publiée le {date}</h3>
       </div>
-      {showButtons && ( // Conditionally render buttons based on showButtons prop
+      {showButtons && (
         <div className="navigation">
           <button type="button" className="jobCardButtons" onClick={onDelete}>
             <img src={croix} alt="croix" />

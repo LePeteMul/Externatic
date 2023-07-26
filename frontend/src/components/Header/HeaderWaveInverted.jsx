@@ -11,6 +11,8 @@ import InputImage from "../Elements/InputImage";
 import InputLogo from "../Elements/InputLogo";
 
 function HeaderWaveInverted({ open, handleOpen, title, profil_picture }) {
+  const token = localStorage.getItem("token");
+
   const { userConnected, isAdmin, userId } = useContext(UserConnexionContext);
   const { companyConnected, companyId } = useContext(CompanyConnexionContext);
   const [uploadedImageUrl, setUploadedImageUrl] = useState("");
@@ -70,6 +72,7 @@ function HeaderWaveInverted({ open, handleOpen, title, profil_picture }) {
     fetch(`http://localhost:8080/api/image/${userId}`, {
       method: "POST",
       body: formData,
+      Authorization: `Bearer ${token}`,
     })
       .then((response) => response.json())
       .then((data) => {
@@ -91,6 +94,7 @@ function HeaderWaveInverted({ open, handleOpen, title, profil_picture }) {
     fetch(`http://localhost:8080/api/image/${companyId}`, {
       method: "POST",
       body: formData,
+      Authorization: `Bearer ${token}`,
     })
       .then((response) => response.json())
       .then((data) => {

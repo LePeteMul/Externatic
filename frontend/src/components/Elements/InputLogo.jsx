@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import uploadIcon from "../../assets/images/logo_generique.jpg";
 
 function InputLogo({ label, companyId, preview = "" }) {
+  const token = localStorage.getItem("token");
+
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState("");
   const [previewUrl, setPreviewUrl] = useState(preview);
@@ -21,7 +23,6 @@ function InputLogo({ label, companyId, preview = "" }) {
     const fileSizeInBytes = selectedFile.size;
     const maxSizeInBytes = 5 * 1024 * 1024; // 5 Mo
 
-    // Vérification de la taille du fichier
     if (fileSizeInBytes > maxSizeInBytes) {
       setErrorMessage("Taille maximale dépassée (5 Mo)");
       setFile(null);
@@ -64,23 +65,18 @@ function InputLogo({ label, companyId, preview = "" }) {
         {
           method: "POST",
           body: formData,
+          Authorization: `Bearer ${token}`,
         }
       );
 
       if (response.ok) {
-        // Le fichier a été téléchargé avec succès
-        console.info("Le fichier a été téléchargé avec succès !");
-        // Traitez la réponse du backend ici si nécessaire
         const data = await response.json();
-        console.info(data);
       } else {
-        // Gérez les erreurs de requête ici
         console.error(
           "Une erreur s'est produite lors du téléchargement du fichier."
         );
       }
     } catch (error) {
-      // Gérez les erreurs ici
       console.error(error);
     }
   };
