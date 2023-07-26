@@ -48,10 +48,8 @@ function InputLogo({ label, companyId, preview = "" }) {
   const uploadFile = async () => {
     try {
       if (!file) {
-        // Aucun fichier sélectionné
         return;
       }
-      // changement du nom du fichier
       const formData = new FormData();
       const modifiedFileNameWithExtension = `${fileName}.${file.name
         .split(".")
@@ -70,7 +68,6 @@ function InputLogo({ label, companyId, preview = "" }) {
       );
 
       if (response.ok) {
-        const data = await response.json();
       } else {
         console.error(
           "Une erreur s'est produite lors du téléchargement du fichier."
@@ -117,8 +114,13 @@ function InputLogo({ label, companyId, preview = "" }) {
 
 InputLogo.propTypes = {
   label: PropTypes.string.isRequired,
-  companyId: PropTypes.string.isRequired,
-  preview: PropTypes.func.isRequired,
+  companyId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  preview: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+};
+
+InputLogo.defaultProps = {
+  companyId: undefined,
+  preview: undefined,
 };
 
 export default InputLogo;

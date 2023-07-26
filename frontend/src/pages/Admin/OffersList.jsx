@@ -42,6 +42,8 @@ function OffersList() {
       .then((response) => {
         if (response.status === 204) {
           navigate("/admin/offerlist");
+        } else {
+          console.info("");
         }
       })
       .catch((err) => console.error(err));
@@ -66,6 +68,7 @@ function OffersList() {
                 jobCity={offer.city_job}
                 date={formatDate(offer.date)}
                 id={offer.id}
+                key={offer.id}
                 onDelete={() => handleDelete(offer.id)}
                 onClick={() => handleClick(offer.id)}
                 showButtons

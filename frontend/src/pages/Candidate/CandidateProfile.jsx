@@ -102,8 +102,7 @@ function CandidateProfile() {
         },
         body: JSON.stringify(requestData),
       })
-        .then((response) => response.json())
-        .then((data) => {})
+        .then(() => {})
         .catch((err) => {
           console.error("Error:", err);
         });

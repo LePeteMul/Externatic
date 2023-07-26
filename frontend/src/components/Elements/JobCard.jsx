@@ -47,14 +47,19 @@ function JobCard({
 
 JobCard.propTypes = {
   logo: PropTypes.string.isRequired,
-  companyName: PropTypes.string.isRequired,
+  companyName: PropTypes.string,
   job: PropTypes.string.isRequired,
   contractType: PropTypes.string.isRequired,
   jobCity: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired,
+  onDelete: PropTypes.func,
   showButtons: PropTypes.bool.isRequired,
+};
+
+JobCard.defaultProps = {
+  companyName: undefined,
+  onDelete: undefined,
 };
 
 export default JobCard;

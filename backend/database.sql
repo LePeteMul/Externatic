@@ -123,8 +123,6 @@ CREATE TABLE
         PRIMARY KEY (techno_id, offer_id)
     );
 
-
-
 INSERT INTO
     contract (contract_type)
 VALUES ("CDI"), ("CDD"), ("Alternance"), ("Interim");
@@ -204,7 +202,6 @@ VALUES (
         "https://www.frejoux-photographe.fr/wp-content/gallery/portrait-pro-corporate/Photographe-portrait-entreprise-pro-Corporate-toulon-Celine.jpg",
         "email"
     );
-
 
 INSERT INTO
     company (
@@ -396,7 +393,6 @@ Dans le cadre de vos missions, vous animez et supervisez techniquement les trava
 INSERT INTO
     techno (techno_name)
 VALUES ("Java"), ("C#"), ("PHP"), ("Python"), ("React");
-
 
 INSERT INTO
     offer_techno(techno_id, offer_id)

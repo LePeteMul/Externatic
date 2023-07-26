@@ -35,9 +35,6 @@ function Contact() {
     })
       .then((response) => {
         if (response.ok) {
-
-          // La requête a réussi
-          console.info("Message envoyé avec succès");
           navigate("/");
         } else {
           console.error("Erreur lors de l'envoi du message");

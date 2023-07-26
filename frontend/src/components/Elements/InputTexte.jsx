@@ -53,9 +53,9 @@ function InputTexte({
 }
 
 InputTexte.propTypes = {
-  type: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  name: PropTypes.string,
+  placeholder: PropTypes.string,
   handleChange: PropTypes.func,
   label: PropTypes.string,
   image: PropTypes.string,
@@ -71,6 +71,9 @@ InputTexte.defaultProps = {
   image: "",
   image2: "",
   image3: "",
+  placeholder: undefined,
+  name: undefined,
+  type: undefined,
   value: undefined,
   disabled: false,
 };

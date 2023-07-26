@@ -28,12 +28,13 @@ InputListe.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.oneOfType([PropTypes.string, PropTypes.string])
   ),
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   handleChange: PropTypes.func.isRequired,
-  value: PropTypes.number,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 InputListe.defaultProps = {
+  name: undefined,
   data: undefined,
   value: undefined,
 };

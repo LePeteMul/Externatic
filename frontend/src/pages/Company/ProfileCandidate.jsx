@@ -1,13 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import InputTexte from "../../components/Elements/InputTexte";
 import BlackButton from "../../components/Elements/BlackButton";
-import CompanyConnexionContext from "../../contexts/CompanyConnexionContext/CompanyConnexionContext";
 
 function ProfileCandidate() {
   const [user, setUser] = useState([]);
-  const { result } = useContext(CompanyConnexionContext);
   const params = useParams();
 
   useEffect(() => {

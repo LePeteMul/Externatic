@@ -67,7 +67,6 @@ function InputImage({ label, userId, preview = "" }) {
       );
 
       if (response.ok) {
-        const data = await response.json();
       } else {
         console.error(
           "Une erreur s'est produite lors du téléchargement du fichier."
@@ -116,7 +115,11 @@ function InputImage({ label, userId, preview = "" }) {
 InputImage.propTypes = {
   label: PropTypes.string.isRequired,
   userId: PropTypes.number.isRequired,
-  preview: PropTypes.string.isRequired,
+  preview: PropTypes.string,
+};
+
+InputImage.defaultProps = {
+  preview: undefined,
 };
 
 export default InputImage;
