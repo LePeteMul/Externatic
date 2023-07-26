@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import croix from "../../assets/icons/cross.png";
-import logo_generique from "../../assets/images/logo_generique.jpg"
+import logo_generique from "../../assets/images/logo_generique.jpg";
 
 function JobCard({
   logo,
