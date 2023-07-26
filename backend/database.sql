@@ -176,7 +176,6 @@ VALUES (
         "****",
         "https://img.freepik.com/photos-gratuite/portrait-homme-blanc-isole_53876-40306.jpg?q=10&h=200",
         "email"
-
     ), (
         "Male",
         "Martini",
