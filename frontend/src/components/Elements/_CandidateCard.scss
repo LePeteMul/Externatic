@@ -24,7 +24,7 @@
 
       .profile_picture {
         max-width: 100%;
-        max-height: 100%;
+        max-height: 90%;
       }
     }
 
@@ -34,6 +34,7 @@
       flex-direction: column;
       justify-content: center;
       overflow: hidden;
+      padding-left: 10px;
 
       .identity {
         font-size: 18px;

@@ -19,10 +19,6 @@ function InputTexte({
     setIsPasswordVisible(!isPasswordVisible);
   };
 
-  const inputStyle = {
-    cursor: disabled ? "not-allowed" : "none",
-  };
-
   return (
     <div className="inputText">
       <label htmlFor={name}>{label}</label>
@@ -32,7 +28,6 @@ function InputTexte({
         name={name}
         onChange={handleChange}
         value={value}
-        style={inputStyle}
         disabled={disabled}
       />
       {type === "password" && image && (
