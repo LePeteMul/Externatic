@@ -25,6 +25,10 @@
     padding-left: 12px;
   }
 
+  input:hover {
+    cursor: crosshair;
+  }
+
   .selected {
     color: $textColorDark;
   }
