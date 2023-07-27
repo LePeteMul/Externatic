@@ -9,7 +9,7 @@ function AdminDashboard() {
   const [admin, setAdmin] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/user/${userId}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/${userId}`)
       .then((response) => response.json())
       .then((data) => setAdmin(data))
       .catch((err) => console.error(err));

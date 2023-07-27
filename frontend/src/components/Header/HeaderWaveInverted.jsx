@@ -22,7 +22,7 @@ function HeaderWaveInverted({ open, handleOpen, title, profil_picture }) {
 
   useEffect(() => {
     if (userId) {
-      fetch(`http://localhost:8080/api/user/${userId}`)
+      fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/${userId}`)
         .then((response) => response.json())
         .then((data) => {
           if (data.profil_picture !== undefined && data.profil_picture !== "") {
@@ -35,7 +35,7 @@ function HeaderWaveInverted({ open, handleOpen, title, profil_picture }) {
 
   useEffect(() => {
     if (companyId) {
-      fetch(`http://localhost:8080/api/company/${companyId}`)
+      fetch(`${import.meta.env.VITE_BACKEND_URL}/api/company/${companyId}`)
         .then((response) => response.json())
         .then((data) => {
           if (data.logo !== undefined && data.logo !== "") {
@@ -69,7 +69,7 @@ function HeaderWaveInverted({ open, handleOpen, title, profil_picture }) {
     formData.append("file", file);
     formData.append("userId", userId);
 
-    fetch(`http://localhost:8080/api/image/${userId}`, {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/image/${userId}`, {
       method: "POST",
       body: formData,
       Authorization: `Bearer ${token}`,
@@ -91,7 +91,7 @@ function HeaderWaveInverted({ open, handleOpen, title, profil_picture }) {
     formData.append("file", file);
     formData.append("companyId", companyId);
 
-    fetch(`http://localhost:8080/api/image/${companyId}`, {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/image/${companyId}`, {
       method: "POST",
       body: formData,
       Authorization: `Bearer ${token}`,

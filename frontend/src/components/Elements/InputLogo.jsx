@@ -59,7 +59,7 @@ function InputLogo({ label, companyId, preview = "" }) {
       formData.append("companyId", companyId);
 
       const response = await fetch(
-        `http://localhost:8080/api/company/image/${companyId}`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/company/image/${companyId}`,
         {
           method: "POST",
           body: formData,

@@ -9,7 +9,7 @@ function ProfileCandidate() {
   const params = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/user/${params.id}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/${params.id}`)
       .then((response) => response.json())
       .then((data) => setUser(data))
       .catch((err) => console.error(err));

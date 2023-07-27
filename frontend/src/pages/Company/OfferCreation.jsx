@@ -62,7 +62,7 @@ function OfferCreation() {
       date: formattedDate,
     };
 
-    const url = "http://localhost:8080/api/offer";
+    const url = `${import.meta.env.VITE_BACKEND_URL}/api/offer`;
 
     if (
       !/^[0-9]*$/.test(formData.min_salary) ||
@@ -106,7 +106,9 @@ function OfferCreation() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/offer/jobList");
+        const response = await fetch(
+          `${import.meta.env.VITE_BACKEND_URL}/api/offer/jobList`
+        );
         const data = await response.json();
         setOfferData(data);
       } catch (err) {

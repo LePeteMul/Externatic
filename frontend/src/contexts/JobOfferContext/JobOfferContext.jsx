@@ -23,7 +23,9 @@ export function JobOfferContextProvider({ children }) {
       contract: searchContractId,
       city: searchCity,
     }).toString();
-    const url = `http://localhost:8080/api/offerByCriteria?${queryParams}`;
+    const url = `${
+      import.meta.env.VITE_BACKEND_URL
+    }/api/offerByCriteria?${queryParams}`;
 
     fetch(url)
       .then((response) => response.json())

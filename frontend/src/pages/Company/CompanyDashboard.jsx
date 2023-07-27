@@ -9,7 +9,7 @@ function CompanyDashboard() {
   const [company, setCompany] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/company/${companyId}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/company/${companyId}`)
       .then((response) => response.json())
       .then((data) => setCompany(data))
       .catch((err) => console.error(err));

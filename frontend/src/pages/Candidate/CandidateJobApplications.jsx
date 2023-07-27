@@ -14,7 +14,9 @@ function CandidateJobApplications() {
   const { setOfferId } = useContext(JobOfferContext);
 
   useEffect(() => {
-    const url = `http://localhost:8080/api/applicationByUser/${userId}`;
+    const url = `${
+      import.meta.env.VITE_BACKEND_URL
+    }/api/applicationByUser/${userId}`;
 
     fetch(url)
       .then((response) => response.json())

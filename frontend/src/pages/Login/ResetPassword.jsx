@@ -36,13 +36,16 @@ function ResetPassword() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch("http://localhost:8080/api/user/edition/resetpassword", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
+    fetch(
+      `${import.meta.env.VITE_BACKEND_URL}/api/user/edition/resetpassword`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    )
       .then((response) => {
         if (response.ok) {
           toggleModal();

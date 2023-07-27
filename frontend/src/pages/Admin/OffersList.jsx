@@ -17,7 +17,7 @@ function OffersList() {
 
   // find all offers with details
   useEffect(() => {
-    const url = "http://localhost:8080/api/offer";
+    const url = `${import.meta.env.VITE_BACKEND_URL}/api/offer`;
 
     fetch(url)
       .then((response) => response.json())
@@ -35,7 +35,7 @@ function OffersList() {
   };
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:8080/api/offer/${id}`, {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/offer/${id}`, {
       method: "DELETE",
       Authorization: `Bearer ${token}`,
     })

@@ -26,7 +26,7 @@ function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch("http://localhost:8080/api/email/contact", {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/email/contact`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

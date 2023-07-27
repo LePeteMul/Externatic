@@ -17,7 +17,9 @@ function OffersListCompany() {
   const { setOfferId } = useContext(JobOfferContext);
 
   useEffect(() => {
-    const url = `http://localhost:8080/api/offerDetailss/${companyId}`;
+    const url = `${
+      import.meta.env.VITE_BACKEND_URL
+    }/api/offerDetailss/${companyId}`;
 
     fetch(url)
       .then((response) => response.json())
@@ -35,7 +37,7 @@ function OffersListCompany() {
   };
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:8080/api/offer/${id}`, {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/offer/${id}`, {
       method: "DELETE",
       Authorization: `Bearer ${token}`,
     })

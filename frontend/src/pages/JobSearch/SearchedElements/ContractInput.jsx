@@ -19,7 +19,7 @@ function ContractInput() {
   const [contractList, setContractList] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/contract")
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/contract`)
       .then((response) => response.json())
       .then((data) => setContractList(data))
       .catch((err) => console.error(err));

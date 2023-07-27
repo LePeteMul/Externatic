@@ -53,7 +53,7 @@ function InputCv({ label, userId }) {
       formData.append("userId", userId);
 
       const response = await fetch(
-        `http://localhost:8080/api/user/cv/${userId}`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/user/cv/${userId}`,
         {
           method: "POST",
           body: formData,
