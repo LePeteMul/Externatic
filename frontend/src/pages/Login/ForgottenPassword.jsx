@@ -24,15 +24,6 @@ function ForgottenPassword() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Récupérer la date et l'heure de la requête
-
-    // Récupérer la date et l'ip
-    // setFormData((table) => ({
-    //   ...table,
-    //   ipLocal: ,
-    // }));
-
-    // Envoyer la requête à votre backend
     fetch("http://localhost:8080/api/email/resetpassword", {
       method: "POST",
       headers: {
@@ -41,13 +32,9 @@ function ForgottenPassword() {
       body: JSON.stringify(formData),
     })
       .then((response) => {
-        // Traiter la réponse du serveur
         if (response.ok) {
-          // La requête a réussi, afficher la pop-up
           toggleModal();
-          console.info("Message envoyé avec succès");
         } else {
-          // La requête a échoué
           console.error("Erreur lors de l'envoi du message");
         }
       })
@@ -56,10 +43,8 @@ function ForgottenPassword() {
       });
   };
 
-  // Nouvelle variable d'état pour contrôler l'affichage de la pop-up
   const [showModal, setShowModal] = useState(false);
 
-  // Fonction pour basculer l'état de la pop-up
   const toggleModal = () => {
     setShowModal((prevShowModal) => !prevShowModal);
   };
@@ -104,12 +89,10 @@ function ForgottenPassword() {
       {showModal && (
         <div className="modal-container">
           <div className="modal">
-            {/* <img src="/chemin/vers/le/logo.png" alt="Logo" /> */}
-
-            <h2>📨 Email de confirmation envoyé !</h2>
+            <h2>📨 Email de réinitialisation envoyé !</h2>
 
             <p>
-              Vous y trouverez un lien de confirmation de création de compte. Le
+              Vous y trouverez un lien pour réinitialiser votre mot de passe. Le
               lien est valable durant 24h.
             </p>
 

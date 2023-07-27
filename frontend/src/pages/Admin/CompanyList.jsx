@@ -3,8 +3,11 @@ import { NavLink } from "react-router-dom";
 import HeaderBasic from "../../components/Header/HeaderBasic";
 import CompanyCard from "../../components/Elements/CompanyCard";
 import BlackButton from "../../components/Elements/BlackButton";
+import logo_generique from "../../assets/images/logo_generique.jpg";
 
 function CompanyList() {
+  const token = localStorage.getItem("token");
+
   const [result, setResult] = useState([]);
 
   // find all companies List
@@ -28,6 +31,7 @@ function CompanyList() {
         `http://localhost:8080/api/company/${companyId}`,
         {
           method: "DELETE",
+          Authorization: `Bearer ${token}`,
         }
       );
 
@@ -55,7 +59,8 @@ function CompanyList() {
           {result.map((company) => {
             return (
               <CompanyCard
-                logo={company.logo}
+                key={company.company_name}
+                logo={company.logo ? company.logo : logo_generique}
                 name={company.company_name}
                 email={company.email}
                 onDelete={() => handleDelete(company.id)}

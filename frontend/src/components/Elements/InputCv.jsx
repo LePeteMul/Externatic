@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import upload from "../../assets/icons/upload.png";
 
 function InputCv({ label, userId }) {
+  const token = localStorage.getItem("token");
+
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -17,7 +19,6 @@ function InputCv({ label, userId }) {
     const maxSizeInBytes = 5 * 1024 * 1024; // 5 Mo
 
     if (fileSizeInBytes > maxSizeInBytes) {
-      // Le fichier dépasse la limite de taille
       setErrorMessage("Taille maximale dépassée (5 Mo)");
       return;
     }
@@ -26,14 +27,13 @@ function InputCv({ label, userId }) {
     const fileFormat = selectedFile.type;
 
     if (!allowedFormats.includes(fileFormat)) {
-      // Le format du fichier n'est pas autorisé
       setErrorMessage(
         "Format de fichier non autorisé. Les formats acceptés sont PDF, PNG et JPEG."
       );
       return;
     }
 
-    setErrorMessage(""); // Réinitialiser le message d'erreur
+    setErrorMessage("");
   };
 
   const uploadFile = async () => {
@@ -57,21 +57,18 @@ function InputCv({ label, userId }) {
         {
           method: "POST",
           body: formData,
+          headers: { Authorization: `Bearer ${token}` },
         }
       );
 
       if (response.ok) {
-        // Le fichier a été téléchargé avec succès
-        console.info("Le fichier a été téléchargé avec succès !");
-        // Traitez la réponse du backend ici si nécessaire
+        console.info("Votre CV a été téléchargé avec succès !");
       } else {
-        // Gérez les erreurs de requête ici
         console.error(
           "Une erreur s'est produite lors du téléchargement du fichier."
         );
       }
     } catch (error) {
-      // Gérez les erreurs ici
       console.error(error);
     }
   };

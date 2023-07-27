@@ -143,18 +143,6 @@ const destroy = (req, res) => {
     });
 };
 
-// const OffersList = (req, res) => {
-//   models.company
-//     .findAllOffersWithDetails(req.params.id)
-//     .then(([rows]) => {
-//       res.send(rows);
-//     })
-//     .catch((err) => {
-//       console.error(err);
-//       res.sendStatus(500);
-//     });
-// };
-
 const offersListcompany = (req, res) => {
   console.info("ici");
 

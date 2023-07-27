@@ -24,14 +24,6 @@ function CompanyForgottenPassword() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Récupérer la date et l'heure de la requête
-
-    // Récupérer la date et l'ip
-    // setFormData((table) => ({
-    //   ...table,
-    //   ipLocal: ,
-    // }));
-
     fetch("http://localhost:8080/api/email/resetpasswordCompany", {
       method: "POST",
       headers: {
@@ -42,7 +34,6 @@ function CompanyForgottenPassword() {
       .then((response) => {
         if (response.ok) {
           toggleModal();
-          console.info("Message envoyé avec succès");
         } else {
           console.error("Erreur lors de l'envoi du message");
         }
@@ -100,10 +91,10 @@ function CompanyForgottenPassword() {
           <div className="modal">
             {/* <img src="/chemin/vers/le/logo.png" alt="Logo" /> */}
 
-            <h2>📨 Email de confirmation envoyé !</h2>
+            <h2>📨 Email de réinitialisation envoyé !</h2>
 
             <p>
-              Vous y trouverez un lien de confirmation de création de compte. Le
+              Vous y trouverez un lien pour réinitialiser votre mot de passe. Le
               lien est valable durant 24h.
             </p>
 

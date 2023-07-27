@@ -6,6 +6,8 @@ import BlackButton from "../../components/Elements/BlackButton";
 import Popup from "../../components/Elements/Popup";
 
 function CompanyCreation() {
+  const token = localStorage.getItem("token");
+
   const navigate = useNavigate();
   const [showPopup1, setShowPopup1] = useState(false);
   const [error, setError] = useState(null);
@@ -50,6 +52,7 @@ function CompanyCreation() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(requestData),
       })
@@ -73,19 +76,14 @@ function CompanyCreation() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(MailRequestData),
     })
       .then((response) => {
         if (response.status === 400) {
-          setError("Cet email est déjà utilisé");
-        } else {
-          response.json();
+          setShowPopup1(true);
         }
-      })
-      .then((data) => {
-        console.info("Email:", data);
-        setShowPopup1(true);
       })
       .catch((err) => {
         console.error("Error:", err);
@@ -140,7 +138,7 @@ function CompanyCreation() {
             />
             {showPopup1 && (
               <Popup
-                title="L'entreprise a bien été crée dans la base de données."
+                title="L'entreprise a bien été créée dans la base de données."
                 message="Un mail de confirmation a été transmis sur l'adresse renseignée."
                 open={showPopup1}
                 onClose={handlePopup1Close}

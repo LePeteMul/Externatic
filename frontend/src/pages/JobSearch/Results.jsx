@@ -88,7 +88,7 @@ function Results() {
             .filter((job) => annualSalary <= job.min_salary)
             .map((job) => {
               return (
-                <div>
+                <div key={job.id}>
                   <JobCard
                     logo={job.logo}
                     companyName={job.companyName}
@@ -96,7 +96,6 @@ function Results() {
                     contractType={job.contract_type}
                     jobCity={job.city_job}
                     date={formatDate(job.date)}
-                    key={job.id}
                     id={job.id}
                     onClick={() => handleClick(job.id)}
                     showButtons={false}

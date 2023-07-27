@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import croix from "../../assets/icons/cross.png";
+import logo_generique from "../../assets/images/logo_generique.jpg";
 
 function JobCard({
   logo,
@@ -9,12 +10,12 @@ function JobCard({
   contractType,
   jobCity,
   date,
-
   onClick,
   onDelete,
-
   showButtons,
 }) {
+  const logoToShow = logo || logo_generique;
+
   return (
     <div
       className="jobCard"
@@ -24,7 +25,7 @@ function JobCard({
       tabIndex={0}
     >
       <div className="company_logo">
-        <img className="logo" src={logo} alt={companyName} />
+        <img className="logo" src={logoToShow} alt={companyName} />
       </div>
       <div className="job_details">
         <h2 className="job_title">{job}</h2>
@@ -33,7 +34,7 @@ function JobCard({
         </h3>
         <h3 className="publication"> offre publiée le {date}</h3>
       </div>
-      {showButtons && ( // Conditionally render buttons based on showButtons prop
+      {showButtons && (
         <div className="navigation">
           <button type="button" className="jobCardButtons" onClick={onDelete}>
             <img src={croix} alt="croix" />
@@ -46,14 +47,20 @@ function JobCard({
 
 JobCard.propTypes = {
   logo: PropTypes.string.isRequired,
-  companyName: PropTypes.string.isRequired,
+  companyName: PropTypes.string,
   job: PropTypes.string.isRequired,
   contractType: PropTypes.string.isRequired,
   jobCity: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired,
-  showButtons: PropTypes.bool.isRequired,
+  onDelete: PropTypes.func,
+  showButtons: PropTypes.bool,
+};
+
+JobCard.defaultProps = {
+  companyName: undefined,
+  onDelete: undefined,
+  showButtons: undefined,
 };
 
 export default JobCard;

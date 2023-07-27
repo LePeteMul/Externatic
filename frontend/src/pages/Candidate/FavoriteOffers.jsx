@@ -8,6 +8,8 @@ import BlackButton from "../../components/Elements/BlackButton";
 import { formatDate } from "../../services/formatDate";
 
 function FavoriteOffers() {
+  const token = localStorage.getItem("token");
+
   const navigate = useNavigate();
 
   const { userId } = useContext(UserConnexionContext);
@@ -34,6 +36,7 @@ function FavoriteOffers() {
 
     fetch(`http://localhost:8080/api/favorite/${userId}/${offerId}`, {
       method: "DELETE",
+      Authorization: `Bearer ${token}`,
     })
       .then((response) => {
         if (response.status === 204) {

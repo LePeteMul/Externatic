@@ -12,7 +12,7 @@ import UserConnexionContext from "../../contexts/UserConnexionContext/UserConnex
 function Login() {
   const [error, setError] = useState(null);
 
-  const { setUserConnected, setUserId, userId, setIsAdmin } =
+  const { setUserConnected, setUserId, setIsAdmin } =
     useContext(UserConnexionContext);
 
   const navigate = useNavigate();

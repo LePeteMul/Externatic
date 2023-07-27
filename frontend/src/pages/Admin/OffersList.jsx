@@ -7,6 +7,8 @@ import BlackButton from "../../components/Elements/BlackButton";
 import { formatDate } from "../../services/formatDate";
 
 function OffersList() {
+  const token = localStorage.getItem("token");
+
   const navigate = useNavigate();
 
   const [result, setResult] = useState([]);
@@ -35,10 +37,13 @@ function OffersList() {
   const handleDelete = (id) => {
     fetch(`http://localhost:8080/api/offer/${id}`, {
       method: "DELETE",
+      Authorization: `Bearer ${token}`,
     })
       .then((response) => {
         if (response.status === 204) {
           navigate("/admin/offerlist");
+        } else {
+          console.info("");
         }
       })
       .catch((err) => console.error(err));
@@ -63,6 +68,7 @@ function OffersList() {
                 jobCity={offer.city_job}
                 date={formatDate(offer.date)}
                 id={offer.id}
+                key={offer.id}
                 onDelete={() => handleDelete(offer.id)}
                 onClick={() => handleClick(offer.id)}
                 showButtons

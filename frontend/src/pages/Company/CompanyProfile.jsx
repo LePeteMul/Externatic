@@ -7,6 +7,8 @@ import Popup from "../../components/Elements/Popup";
 import CompanyConnexionContext from "../../contexts/CompanyConnexionContext/CompanyConnexionContext";
 
 function CompanyProfile() {
+  const token = localStorage.getItem("token");
+
   const navigate = useNavigate();
   const [showPopup1, setShowPopup1] = useState(false);
   const { companyId } = useContext(CompanyConnexionContext);
@@ -65,6 +67,7 @@ function CompanyProfile() {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(requestData),
       })

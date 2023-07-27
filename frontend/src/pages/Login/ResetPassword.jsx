@@ -21,17 +21,12 @@ function ResetPassword() {
   const navigate = useNavigate();
   const finalEmail = extraireEmail(queryString.parse(location.search));
 
-  // const navigate = useNavigate();
-  // const [showPopup1, setShowPopup1] = useState(false);
-
   const [formData, setFormData] = useState({
     email: finalEmail,
     password: "",
   });
 
   const handleChange = (e) => {
-    console.info(e.target.value);
-
     setFormData((previousValue) => ({
       ...previousValue,
       [e.target.name]: e.target.value,
@@ -40,8 +35,6 @@ function ResetPassword() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.info(formData);
 
     fetch("http://localhost:8080/api/user/edition/resetpassword", {
       method: "PUT",
@@ -52,7 +45,6 @@ function ResetPassword() {
     })
       .then((response) => {
         if (response.ok) {
-          console.info("Message envoyé avec succès");
           toggleModal();
         } else {
           console.error("Erreur lors de l'envoi du message");
@@ -112,8 +104,6 @@ function ResetPassword() {
       {showModal && (
         <div className="modal-container">
           <div className="modal">
-            {/* <img src="/chemin/vers/le/logo.png" alt="Logo" /> */}
-
             <h2>✨ Votre mot de passe a été modifié !</h2>
 
             <p>

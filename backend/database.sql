@@ -1,5 +1,3 @@
-DROP TABLE IF EXISTS user_techno;
-
 DROP TABLE IF EXISTS offer_techno;
 
 DROP TABLE IF EXISTS favorite;
@@ -125,15 +123,6 @@ CREATE TABLE
         PRIMARY KEY (techno_id, offer_id)
     );
 
-CREATE TABLE
-    user_techno(
-        user_id INT NOT NULL,
-        techno_id INT NOT NULL,
-        FOREIGN KEY (user_id) REFERENCES user (id),
-        FOREIGN KEY (techno_id) REFERENCES techno (id),
-        PRIMARY KEY (user_id, techno_id)
-    );
-
 INSERT INTO
     contract (contract_type)
 VALUES ("CDI"), ("CDD"), ("Alternance"), ("Interim");
@@ -212,26 +201,6 @@ VALUES (
         "****",
         "https://www.frejoux-photographe.fr/wp-content/gallery/portrait-pro-corporate/Photographe-portrait-entreprise-pro-Corporate-toulon-Celine.jpg",
         "email"
-    );
-
-INSERT INTO
-    user (
-        lastname,
-        firstname,
-        email,
-        phone,
-        city,
-        admin,
-        password
-    )
-VALUES (
-        'Admin',
-        'Admin',
-        'admin@externatic.fr',
-        '06 62 18 34 73',
-        'Nantes',
-        1,
-        '**'
     );
 
 INSERT INTO
@@ -424,10 +393,6 @@ Dans le cadre de vos missions, vous animez et supervisez techniquement les trava
 INSERT INTO
     techno (techno_name)
 VALUES ("Java"), ("C#"), ("PHP"), ("Python"), ("React");
-
-INSERT INTO
-    user_techno(user_id, techno_id)
-VALUES (1, 1), (1, 5), (2, 3), (3, 4), (4, 1);
 
 INSERT INTO
     offer_techno(techno_id, offer_id)

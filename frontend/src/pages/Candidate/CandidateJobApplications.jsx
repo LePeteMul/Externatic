@@ -30,7 +30,6 @@ function CandidateJobApplications() {
     navigate("/jobdetails");
   };
   const handleDelete = () => {};
-  // Filtrer les candidatures pour éviter les doublons
   const filterApplications = application.reduce((acc, curr) => {
     const isDuplicate = acc.find((app) => app.offer_id === curr.offer_id);
     if (!isDuplicate) {
@@ -38,8 +37,6 @@ function CandidateJobApplications() {
     }
     return acc;
   }, []);
-
-  // Filtrer les offres en fonction de leur statut
 
   const enCoursDeTraitement = filterApplications.filter(
     (offer) => offer.status_name === "En cours de traitement"

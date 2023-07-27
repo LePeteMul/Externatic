@@ -71,7 +71,7 @@ function Registration() {
             },
             body: JSON.stringify(requestEmail),
           })
-            .then((res) => {
+            .then(() => {
               setIsSent(!isSent);
             })
             .catch((err) => {
@@ -142,7 +142,7 @@ function Registration() {
 
         {isSent && (
           <Popup
-            title="Enregistrer"
+            title=""
             message="Un email de confirmation vous a été envoyé. Consultez votre boite mail et suivez les instructions pour confirmer votre inscription."
             onClose={handlePopupClose}
             buttonname="Se connecter"

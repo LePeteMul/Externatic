@@ -20,7 +20,6 @@ function InputImage({ label, userId, preview = "" }) {
     const fileSizeInBytes = selectedFile.size;
     const maxSizeInBytes = 5 * 1024 * 1024; // 5 MB
 
-    // Vérification de la taille du fichier
     if (fileSizeInBytes > maxSizeInBytes) {
       setErrorMessage("Taille maximale dépassée (5 Mo)");
       setFile(null);
@@ -50,7 +49,7 @@ function InputImage({ label, userId, preview = "" }) {
         // Aucun fichier sélectionné
         return;
       }
-      // changement du nom du fichier
+
       const formData = new FormData();
       const modifiedFileNameWithExtension = `${fileName}.${file.name
         .split(".")
@@ -68,19 +67,13 @@ function InputImage({ label, userId, preview = "" }) {
       );
 
       if (response.ok) {
-        // Le fichier a été téléchargé avec succès
-        // Traitez la réponse du backend ici si nécessaire
-        const data = await response.json();
-
-        // setUploadedImageUrl(`http://localhost:8080/image_profile_${userId}.jpg`)  test NICO
+        console.info("");
       } else {
-        // Gérez les erreurs de requête ici
         console.error(
           "Une erreur s'est produite lors du téléchargement du fichier."
         );
       }
     } catch (error) {
-      // Gérez les erreurs ici
       console.error(error);
     }
   };
@@ -123,7 +116,11 @@ function InputImage({ label, userId, preview = "" }) {
 InputImage.propTypes = {
   label: PropTypes.string.isRequired,
   userId: PropTypes.number.isRequired,
-  preview: PropTypes.string.isRequired,
+  preview: PropTypes.string,
+};
+
+InputImage.defaultProps = {
+  preview: undefined,
 };
 
 export default InputImage;
