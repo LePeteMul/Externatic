@@ -36,7 +36,7 @@ function CompanyResetPassword() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch("http://localhost:8080/api/pass/company/edit", {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/pass/company/edit`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

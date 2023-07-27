@@ -15,7 +15,9 @@ function Application() {
   const { offerId } = useContext(JobOfferContext);
 
   useEffect(() => {
-    const url = `http://localhost:8080/api/application/byOfferId/${offerId}`;
+    const url = `${
+      import.meta.env.VITE_BACKEND_URL
+    }/api/application/byOfferId/${offerId}`;
 
     fetch(url)
       .then((response) => {
@@ -43,7 +45,9 @@ function Application() {
   const updateApplicationStatus = (status) => {
     const parsedStatus = parseInt(status);
     const offer_id = parseInt(result.offer_id);
-    const url = `http://localhost:8080/api/application/${result.id}/status`;
+    const url = `${import.meta.env.VITE_BACKEND_URL}/api/application/${
+      result.id
+    }/status`;
 
     if (!isNaN(parsedStatus) && !isNaN(result.id) && !isNaN(result.offer_id)) {
       fetch(url, {

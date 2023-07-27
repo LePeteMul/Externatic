@@ -13,7 +13,7 @@ function AdminProfile() {
   const [admin, setAdmin] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/user/${userId}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/${userId}`)
       .then((response) => response.json())
       .then((data) => {
         setAdmin(data);
@@ -56,7 +56,7 @@ function AdminProfile() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const url = `http://localhost:8080/api/user/${userId}`;
+    const url = `${import.meta.env.VITE_BACKEND_URL}/api/user/${userId}`;
     const requestData = { ...formData };
 
     /* eslint-disable-next-line */

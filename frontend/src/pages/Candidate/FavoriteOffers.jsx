@@ -18,7 +18,9 @@ function FavoriteOffers() {
   const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
-    const url = `http://localhost:8080/api/FavoriteByUser/${userId}`;
+    const url = `${
+      import.meta.env.VITE_BACKEND_URL
+    }/api/FavoriteByUser/${userId}`;
 
     fetch(url)
       .then((response) => response.json())
@@ -34,10 +36,13 @@ function FavoriteOffers() {
   const handleDelete = (id) => {
     setOfferId(id);
 
-    fetch(`http://localhost:8080/api/favorite/${userId}/${offerId}`, {
-      method: "DELETE",
-      Authorization: `Bearer ${token}`,
-    })
+    fetch(
+      `${import.meta.env.VITE_BACKEND_URL}/api/favorite/${userId}/${offerId}`,
+      {
+        method: "DELETE",
+        Authorization: `Bearer ${token}`,
+      }
+    )
       .then((response) => {
         if (response.status === 204) {
           navigate("/candidate/favorite");

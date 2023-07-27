@@ -53,7 +53,7 @@ function Registration() {
       formData.password &&
       formData.validation_password
     ) {
-      fetch("http://localhost:8080/api/user/register", {
+      fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -64,7 +64,7 @@ function Registration() {
           if (response.status === 400) {
             setError("Cet email est déjà utilisé");
           }
-          fetch("http://localhost:8080/api/email", {
+          fetch(`${import.meta.env.VITE_BACKEND_URL}/api/email`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

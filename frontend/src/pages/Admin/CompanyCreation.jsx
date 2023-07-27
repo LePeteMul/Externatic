@@ -36,7 +36,7 @@ function CompanyCreation() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const url = "http://localhost:8080/api/company/register";
+    const url = `${import.meta.env.VITE_BACKEND_URL}/api/company/register`;
     const requestData = { ...formData };
 
     /* eslint-disable-next-line */
@@ -70,7 +70,7 @@ function CompanyCreation() {
       setError("Merci de compléter tous les champs");
     }
 
-    const MailUrl = "http://localhost:8080/api/email/company";
+    const MailUrl = `${import.meta.env.VITE_BACKEND_URL}/api/email/company`;
     const MailRequestData = { ...formData };
     fetch(MailUrl, {
       method: "POST",

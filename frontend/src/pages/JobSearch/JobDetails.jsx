@@ -27,7 +27,9 @@ function JobDetails() {
   });
 
   useEffect(() => {
-    const url = `http://localhost:8080/api/offerDetails/${offerId}`;
+    const url = `${
+      import.meta.env.VITE_BACKEND_URL
+    }/api/offerDetails/${offerId}`;
 
     fetch(url)
       .then((response) => response.json())
@@ -56,7 +58,7 @@ function JobDetails() {
   const applicationClick = (e) => {
     e.preventDefault();
 
-    const url = "http://localhost:8080/api/application";
+    const url = `${import.meta.env.VITE_BACKEND_URL}/api/application`;
     const requestData = { ...application };
 
     fetch(url, {
@@ -85,7 +87,7 @@ function JobDetails() {
   const favoriteClick = (e) => {
     e.preventDefault();
 
-    const url = "http://localhost:8080/api/favorite";
+    const url = `${import.meta.env.VITE_BACKEND_URL}/api/favorite`;
     const requestData = { ...favorite };
 
     fetch(url, {

@@ -35,7 +35,7 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const url = "http://localhost:8080/api/user/login";
+    const url = `${import.meta.env.VITE_BACKEND_URL}/api/user/login`;
     const requestData = { ...formData };
 
     fetch(url, {

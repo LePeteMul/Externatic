@@ -24,7 +24,7 @@ function ForgottenPassword() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch("http://localhost:8080/api/email/resetpassword", {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/email/resetpassword`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

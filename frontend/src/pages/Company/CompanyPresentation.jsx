@@ -22,7 +22,7 @@ function CompanyPresentation() {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/company/${companyId}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/company/${companyId}`)
       .then((response) => response.json())
       .then((data) => {
         setCompany(data);
@@ -55,7 +55,9 @@ function CompanyPresentation() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const url = `http://localhost:8080/api/presentation/company/edit/${companyId}`;
+    const url = `${
+      import.meta.env.VITE_BACKEND_URL
+    }/api/presentation/company/edit/${companyId}`;
     const requestData = { ...formData };
 
     fetch(url, {

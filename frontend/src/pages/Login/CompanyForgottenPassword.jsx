@@ -24,13 +24,16 @@ function CompanyForgottenPassword() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch("http://localhost:8080/api/email/resetpasswordCompany", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
+    fetch(
+      `${import.meta.env.VITE_BACKEND_URL}/api/email/resetpasswordCompany`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    )
       .then((response) => {
         if (response.ok) {
           toggleModal();

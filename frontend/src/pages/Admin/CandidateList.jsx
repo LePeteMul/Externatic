@@ -11,14 +11,14 @@ function CandidateList() {
   const [candidates, setCandidates] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/user/candidats")
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/candidats`)
       .then((response) => response.json())
       .then((data) => setCandidates(data))
       .catch((err) => console.error(err));
   }, []);
 
   const handleDeleteCandidate = (id) => {
-    fetch(`http://localhost:8080/api/user/${id}`, {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/${id}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` },
     })

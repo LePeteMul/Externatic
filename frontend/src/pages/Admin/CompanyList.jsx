@@ -12,7 +12,7 @@ function CompanyList() {
 
   // find all companies List
   useEffect(() => {
-    const url = `http://localhost:8080/api/company`;
+    const url = `${import.meta.env.VITE_BACKEND_URL}/api/company`;
 
     fetch(url)
       .then((response) => response.json())
@@ -28,7 +28,7 @@ function CompanyList() {
   const handleDelete = async (companyId) => {
     try {
       const response = await fetch(
-        `http://localhost:8080/api/company/${companyId}`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/company/${companyId}`,
         {
           method: "DELETE",
           Authorization: `Bearer ${token}`,

@@ -59,7 +59,7 @@ function InputImage({ label, userId, preview = "" }) {
       formData.append("userId", userId);
 
       const response = await fetch(
-        `http://localhost:8080/api/user/image/${userId}`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/user/image/${userId}`,
         {
           method: "POST",
           body: formData,
