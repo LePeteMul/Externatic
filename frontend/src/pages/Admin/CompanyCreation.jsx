@@ -138,7 +138,7 @@ function CompanyCreation() {
             />
             {showPopup1 && (
               <Popup
-                title="L'entreprise a bien été crée dans la base de données."
+                title="L'entreprise a bien été créée dans la base de données."
                 message="Un mail de confirmation a été transmis sur l'adresse renseignée."
                 open={showPopup1}
                 onClose={handlePopup1Close}
